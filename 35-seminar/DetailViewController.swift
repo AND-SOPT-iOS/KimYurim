@@ -11,7 +11,7 @@ import SnapKit
 class DetailViewController: UIViewController {
     
     // MARK: - Properties
-    let titleLabel: UILabel = {
+    let modeLabel: UILabel = {
         let label = UILabel()
         label.text = "현재 모드"
         label.textColor = .black
@@ -19,7 +19,7 @@ class DetailViewController: UIViewController {
         return label
     }()
     
-    let customTitleLabel: UILabel = {
+    let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
         label.backgroundColor = .white
@@ -29,7 +29,7 @@ class DetailViewController: UIViewController {
         return label
     }()
     
-    let customContentLabel: UILabel = {
+    let contentLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
         label.backgroundColor = .white
@@ -49,15 +49,6 @@ class DetailViewController: UIViewController {
         return button
     }()
     
-    init(title: String) {
-        super.init(nibName: .none, bundle: .main)
-        titleLabel.text = title
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     //   MARK: - Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,26 +59,26 @@ class DetailViewController: UIViewController {
     }
 
     private func setHirarchy() {
-        [titleLabel, customTitleLabel, customContentLabel, backButton].forEach {
+        [modeLabel, titleLabel, contentLabel, backButton].forEach {
             view.addSubview($0)
         }
     }
     
     private func setLayout() {
-        titleLabel.snp.makeConstraints {
+        modeLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.top.equalToSuperview().offset(100)
         }
         
-        customTitleLabel.snp.makeConstraints {
+        titleLabel.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(30)
-            $0.top.equalTo(titleLabel.snp.bottom).offset(20)
+            $0.top.equalTo(modeLabel.snp.bottom).offset(20)
             $0.height.equalTo(30)
         }
         
-        customContentLabel.snp.makeConstraints {
+        contentLabel.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(30)
-            $0.top.equalTo(customTitleLabel.snp.bottom).offset(20)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(20)
             $0.height.greaterThanOrEqualTo(30)
         }
         
@@ -115,8 +106,9 @@ class DetailViewController: UIViewController {
         }
     }
     
-    func dataBind(title: String, content: String) {
-        customTitleLabel.text = title
-        customContentLabel.text = content
+    func dataBind(mode: String, title: String, content: String) {
+        modeLabel.text = mode
+        titleLabel.text = title
+        contentLabel.text = content
     }
 }
