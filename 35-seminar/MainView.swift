@@ -12,11 +12,41 @@ class MainView: UIView {
     // MARK: - Properties
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "현재 모드"
+        label.text = "화면 전환 실습"
         label.textColor = .black
         label.font = .systemFont(ofSize: 20, weight: .bold)
         return label
     }()
+    
+    let modeLabel: UILabel = {
+        let label = UILabel()
+        label.text = "전환 모드 :"
+        label.textColor = .black
+        label.font = .systemFont(ofSize: 16, weight: .light)
+        return label
+    }()
+    
+    lazy var modePopupButton: UIButton = {
+        let button = UIButton()
+        var config = UIButton.Configuration.plain()
+        config.baseForegroundColor = .black
+        config.background.strokeColor = .lightGray
+        config.background.strokeWidth = 1
+        config.cornerStyle = .capsule
+        config.buttonSize = .mini
+        
+        button.configuration = config
+        button.menu = modeButtonMenu
+        button.showsMenuAsPrimaryAction = true
+        button.changesSelectionAsPrimaryAction = true
+        return button
+    }()
+    
+    let modeButtonMenu = UIMenu(title: "전환 모드 선택",
+                                children: [UIAction(title: "네비게이션", handler: { _ in print("네비게이션") }),
+                                           UIAction(title: "모달", handler: { _ in print("모달") })
+                                          ]
+    )
     
     private let titleTextField: UITextField = {
         let textField = UITextField()
@@ -46,14 +76,6 @@ class MainView: UIView {
         button.setTitleColor(.white, for: .normal)
         return button
     }()
-    
-    lazy var modeButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("전환 모드 변경", for: .normal)
-        button.backgroundColor = .tintColor
-        button.setTitleColor(.white, for: .normal)
-        return button
-    }()
 
     
     // MARK: - Methods
@@ -69,7 +91,7 @@ class MainView: UIView {
     }
     
     private func setHirarchy() {
-        [titleLabel, titleTextField, contentTextView, nextButton, modeButton].forEach {
+        [titleLabel, modeLabel, modePopupButton, titleTextField, contentTextView, nextButton].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             self.addSubview($0)
         }
@@ -78,12 +100,24 @@ class MainView: UIView {
     private func setLayout() {
         titleLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalToSuperview().offset(100)
+            $0.top.equalTo(self.safeAreaLayoutGuide)
+        }
+        
+        modeLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(titleLabel.snp.bottom).offset(20)
+        }
+        
+        modePopupButton.snp.makeConstraints {
+            $0.centerY.equalTo(modeLabel)
+            $0.leading.equalTo(modeLabel.snp.trailing).offset(15)
+            $0.trailing.equalToSuperview().inset(20)
+            $0.height.equalTo(30)
         }
         
         titleTextField.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(30)
-            $0.top.equalTo(titleLabel.snp.bottom).offset(20)
+            $0.top.equalTo(modeLabel.snp.bottom).offset(30)
             $0.height.equalTo(50)
         }
         
@@ -98,12 +132,6 @@ class MainView: UIView {
             $0.top.equalTo(contentTextView.snp.bottom).offset(20)
             $0.height.equalTo(50)
         }
-        
-        modeButton.snp.makeConstraints {
-            $0.horizontalEdges.equalToSuperview().inset(30)
-            $0.top.equalTo(nextButton.snp.bottom).offset(20)
-            $0.height.equalTo(50)
-        }
     }
     
     private func setUI() {
@@ -111,10 +139,10 @@ class MainView: UIView {
     }
     
     func updateTitleLabel(isNavigation: Bool) {
-        if isNavigation {
-            self.titleLabel.text = "현재 모드: 네비게이션"
-        } else {
-            self.titleLabel.text = "현재 모드: 모달"
-        }
+//        if isNavigation {
+//            self.titleLabel.text = "현재 모드: 네비게이션"
+//        } else {
+//            self.titleLabel.text = "현재 모드: 모달"
+//        }
     }
 }
