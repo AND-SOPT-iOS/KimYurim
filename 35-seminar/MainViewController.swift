@@ -32,7 +32,7 @@ class MainViewController: UIViewController {
     
     private func setAction() {
         mainView.nextButton.addTarget(self, action: #selector(tappedNextButton), for: .touchUpInside)
-        mainView.modeButton.addTarget(self, action: #selector(tappedModeButton), for: .touchUpInside)
+        mainView.modePopupButton.addTarget(self, action: #selector(tappedModeButton), for: .touchUpInside)
     }
     
     @objc func tappedNextButton() {
