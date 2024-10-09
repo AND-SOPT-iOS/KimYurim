@@ -81,7 +81,7 @@ class DetailView: UIView {
         
         modeLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalToSuperview().offset(100)
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(20)
         }
         
         titleLabel.snp.makeConstraints {
@@ -93,13 +93,13 @@ class DetailView: UIView {
         contentLabel.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(30)
             $0.top.equalTo(titleLabel.snp.bottom).offset(10)
-            $0.bottom.lessThanOrEqualTo(backButton.snp.top).inset(20)
+            $0.bottom.lessThanOrEqualTo(backButton.snp.top).offset(-20)
             $0.height.greaterThanOrEqualTo(36)
         }
         
         backButton.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.bottom.equalToSuperview().inset(100)
+            $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(50)
             $0.width.equalTo(100)
             $0.height.equalTo(50)
         }
