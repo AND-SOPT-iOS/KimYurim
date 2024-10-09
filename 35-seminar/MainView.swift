@@ -48,7 +48,7 @@ class MainView: UIView {
                                           ]
     )
     
-    private let titleTextField: UITextField = {
+    let titleTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "제목을 입력해주세요."
         textField.clearButtonMode = .whileEditing
@@ -60,7 +60,7 @@ class MainView: UIView {
         return textField
     }()
     
-    private let contentTextView: UITextView = {
+    let contentTextView: UITextView = {
         let textView = UITextView()
         textView.font = .systemFont(ofSize: 14, weight: .light)
         textView.layer.borderColor = UIColor.gray.cgColor

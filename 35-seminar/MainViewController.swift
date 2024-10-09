@@ -29,13 +29,19 @@ class MainViewController: UIViewController {
     }
     
     @objc func tappedNextButton() {
-        let detailVC = DetailViewController()
-        detailVC.dataBind(mode: "", title: "", content: "" )
+        let mode = mainView.modePopupButton.titleLabel?.text ?? "미지정"
         
-        if mainView.modePopupButton.titleLabel?.text == "네비게이션" {
+        let detailVC = DetailViewController()
+        detailVC.dataBind(mode: "\(mode)(으)로 전환됨",
+                          title: mainView.titleTextField.text ?? "",
+                          content: mainView.contentTextView.text ?? "" )
+        
+        if mode == "네비게이션" {
             self.navigationController?.pushViewController(detailVC, animated: true)
-        } else {
+        } else if mode == "모달" {
             self.present(detailVC, animated: true, completion: nil)
+        } else {
+            print("⚠️Error: \(mode) mode is not supported.")
         }
     }
 }
