@@ -62,7 +62,8 @@ class MainView: UIView {
     
     let contentTextView: UITextView = {
         let textView = UITextView()
-        textView.font = .systemFont(ofSize: 14, weight: .light)
+        textView.font = .systemFont(ofSize: 16, weight: .regular)
+        textView.backgroundColor = .white
         textView.layer.borderColor = UIColor.gray.cgColor
         textView.layer.borderWidth = 1
         textView.layer.cornerRadius = 10
@@ -72,11 +73,17 @@ class MainView: UIView {
     lazy var nextButton: UIButton = {
         let button = UIButton()
         button.setTitle("다음", for: .normal)
-        button.backgroundColor = .tintColor
+        button.backgroundColor = UIColor(named: "christmas_red")
         button.setTitleColor(.white, for: .normal)
         return button
     }()
-
+    
+    let santaImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "santa")
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
     
     // MARK: - Methods
     override init(frame: CGRect) {
@@ -91,7 +98,7 @@ class MainView: UIView {
     }
     
     private func setHirarchy() {
-        [titleLabel, modeLabel, modePopupButton, titleTextField, contentTextView, nextButton].forEach {
+        [titleLabel, modeLabel, modePopupButton, titleTextField, contentTextView, nextButton, santaImageView].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             self.addSubview($0)
         }
@@ -131,6 +138,12 @@ class MainView: UIView {
             $0.horizontalEdges.equalToSuperview().inset(30)
             $0.top.equalTo(contentTextView.snp.bottom).offset(20)
             $0.height.equalTo(50)
+        }
+        
+        santaImageView.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalToSuperview()
+            $0.height.equalTo(250)
         }
     }
     

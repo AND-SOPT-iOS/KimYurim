@@ -13,25 +13,25 @@ class DetailView: UIView {
     let modeLabel: UILabel = {
         let label = UILabel()
         label.text = "현재 모드"
-        label.textColor = .black
-        label.font = .systemFont(ofSize: 20, weight: .bold)
+        label.textColor = .white
+        label.font = .systemFont(ofSize: 18, weight: .regular)
         return label
     }()
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
-        label.font = .systemFont(ofSize: 20, weight: .medium)
+        label.textColor = .white
+        label.font = .systemFont(ofSize: 20, weight: .bold)
         label.layer.borderColor = UIColor.gray.cgColor
         return label
     }()
     
     let contentLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
-        label.backgroundColor = .init(white: 1, alpha: 0.8)
+        label.textColor = .white
+        label.backgroundColor = .init(white: 1, alpha: 0.1)
         label.layer.borderColor = UIColor.gray.cgColor
-        label.font = .systemFont(ofSize: 15, weight: .light)
+        label.font = .systemFont(ofSize: 18, weight: .light)
         label.numberOfLines = 0
         label.clipsToBounds = true
         label.layer.cornerRadius = 10
@@ -41,10 +41,18 @@ class DetailView: UIView {
     var backButton: UIButton = {
         let button = UIButton()
         button.setTitle("뒤로 가기", for: .normal)
-        button.backgroundColor = .white
-        button.setTitleColor(.black, for: .normal)
+        button.backgroundColor = UIColor(named: "christmas_green")
+        button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 10
         return button
+    }()
+    
+    let backgroundImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "christmas")
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.opacity = 0.5
+        return imageView
     }()
     
     
@@ -61,12 +69,16 @@ class DetailView: UIView {
     }
     
     private func setHirarchy() {
-        [modeLabel, titleLabel, contentLabel, backButton].forEach {
+        [backgroundImageView, modeLabel, titleLabel, contentLabel, backButton].forEach {
             self.addSubview($0)
         }
     }
     
     private func setLayout() {
+        backgroundImageView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
         modeLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.top.equalToSuperview().offset(100)
@@ -82,7 +94,7 @@ class DetailView: UIView {
             $0.horizontalEdges.equalToSuperview().inset(30)
             $0.top.equalTo(titleLabel.snp.bottom).offset(10)
             $0.bottom.lessThanOrEqualTo(backButton.snp.top).inset(20)
-            $0.height.greaterThanOrEqualTo(40)
+            $0.height.greaterThanOrEqualTo(36)
         }
         
         backButton.snp.makeConstraints {
@@ -94,6 +106,6 @@ class DetailView: UIView {
     }
     
     private func setUI() {
-        self.backgroundColor = .green
+        self.backgroundColor = .black
     }
 }
