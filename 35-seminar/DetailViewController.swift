@@ -37,7 +37,7 @@ class DetailViewController: UIViewController {
     
     func dataBind(mode: String, title: String, content: String) {
         detailView.modeLabel.text = mode
-        detailView.titleLabel.text = title
+        detailView.titleLabel.text = "제목: \(title)"
         detailView.contentLabel.text = content
     }
 }

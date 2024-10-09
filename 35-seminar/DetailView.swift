@@ -21,21 +21,20 @@ class DetailView: UIView {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
-        label.backgroundColor = .white
         label.font = .systemFont(ofSize: 20, weight: .medium)
         label.layer.borderColor = UIColor.gray.cgColor
-        label.layer.borderWidth = 1
         return label
     }()
     
     let contentLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
-        label.backgroundColor = .white
+        label.backgroundColor = .init(white: 1, alpha: 0.8)
+        label.layer.borderColor = UIColor.gray.cgColor
         label.font = .systemFont(ofSize: 15, weight: .light)
         label.numberOfLines = 0
-        label.layer.borderColor = UIColor.gray.cgColor
-        label.layer.borderWidth = 1
+        label.clipsToBounds = true
+        label.layer.cornerRadius = 10
         return label
     }()
     
@@ -81,8 +80,9 @@ class DetailView: UIView {
         
         contentLabel.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(30)
-            $0.top.equalTo(titleLabel.snp.bottom).offset(20)
-            $0.height.greaterThanOrEqualTo(30)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(10)
+            $0.bottom.lessThanOrEqualTo(backButton.snp.top).inset(20)
+            $0.height.greaterThanOrEqualTo(40)
         }
         
         backButton.snp.makeConstraints {
