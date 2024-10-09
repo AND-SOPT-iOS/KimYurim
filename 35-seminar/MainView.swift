@@ -137,12 +137,4 @@ class MainView: UIView {
     private func setUI() {
         self.backgroundColor = .white
     }
-    
-    func updateTitleLabel(isNavigation: Bool) {
-//        if isNavigation {
-//            self.titleLabel.text = "현재 모드: 네비게이션"
-//        } else {
-//            self.titleLabel.text = "현재 모드: 모달"
-//        }
-    }
 }

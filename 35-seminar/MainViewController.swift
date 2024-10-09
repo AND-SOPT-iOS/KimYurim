@@ -11,7 +11,6 @@ import SnapKit
 class MainViewController: UIViewController {
     
     // MARK: - Properties
-    var isNavigation: Bool = true
     let mainView = MainView()
     
     // MARK: - Methods
@@ -25,30 +24,19 @@ class MainViewController: UIViewController {
         setAction()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        mainView.updateTitleLabel(isNavigation: isNavigation)
-    }
-    
     private func setAction() {
         mainView.nextButton.addTarget(self, action: #selector(tappedNextButton), for: .touchUpInside)
-        mainView.modePopupButton.addTarget(self, action: #selector(tappedModeButton), for: .touchUpInside)
     }
     
     @objc func tappedNextButton() {
         let detailVC = DetailViewController()
         detailVC.dataBind(mode: "", title: "", content: "" )
         
-        if isNavigation {
+        if mainView.modePopupButton.titleLabel?.text == "네비게이션" {
             self.navigationController?.pushViewController(detailVC, animated: true)
         } else {
             self.present(detailVC, animated: true, completion: nil)
         }
-    }
-    
-    @objc func tappedModeButton() {
-        isNavigation = !isNavigation
-        mainView.updateTitleLabel(isNavigation: isNavigation)
     }
 }
 
