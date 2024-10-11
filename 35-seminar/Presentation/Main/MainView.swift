@@ -99,7 +99,6 @@ class MainView: UIView {
     
     private func setHirarchy() {
         [titleLabel, modeLabel, modePopupButton, titleTextField, contentTextView, nextButton, santaImageView].forEach {
-            $0.translatesAutoresizingMaskIntoConstraints = false
             self.addSubview($0)
         }
     }
