@@ -14,7 +14,6 @@ class MainViewController: UIViewController {
     let mainView = MainView()
     
     // MARK: - Methods
-    
     override func loadView() {
         view = mainView
     }
@@ -32,7 +31,15 @@ class MainViewController: UIViewController {
         let mode = mainView.modePopupButton.titleLabel?.text ?? "미지정"
         
         let detailVC = DetailViewController()
-        detailVC.delegate = self
+        // delegate
+//        detailVC.delegate = self
+        
+        // closure
+        detailVC.completionHandler = { [weak self] nickname in
+            guard let self else { return }
+            self.mainView.nicknameLabel.text = nickname
+        }
+        
         detailVC.dataBind(mode: "\(mode)(으)로 전환됨",
                           title: mainView.titleTextField.text ?? "",
                           content: mainView.contentTextView.text ?? "" )

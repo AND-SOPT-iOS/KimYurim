@@ -17,6 +17,7 @@ class DetailViewController: UIViewController {
     // MARK: - Properties
     let detailView = DetailView()
     weak var delegate: NicknameDelegate?
+    var completionHandler: ((String) -> ())?
     
     //   MARK: - Methods
     override func loadView() {
@@ -34,8 +35,13 @@ class DetailViewController: UIViewController {
     
     @objc func tappedBackButton() {
         if let nickname = detailView.nicknameTextField.text {
-            delegate?.dataBind(nickname: nickname)
+            // delegate
+//            delegate?.dataBind(nickname: nickname)
+            
+            // closure
+            completionHandler?(nickname)
         }
+        
         
         if self.navigationController == nil {
             self.dismiss(animated: true)
