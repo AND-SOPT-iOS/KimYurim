@@ -48,6 +48,14 @@ class MainView: UIView {
                                           ]
     )
     
+    let nicknameLabel: UILabel = {
+        let label = UILabel()
+        label.text = "닉네임 미정"
+        label.textColor = .black
+        label.font = .systemFont(ofSize: 16, weight: .medium)
+        return label
+    }()
+    
     let titleTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "제목을 입력해주세요."
@@ -98,7 +106,7 @@ class MainView: UIView {
     }
     
     private func setHirarchy() {
-        [titleLabel, modeLabel, modePopupButton, titleTextField, contentTextView, nextButton, santaImageView].forEach {
+        [titleLabel, modeLabel, modePopupButton, titleTextField, contentTextView, nextButton, santaImageView, nicknameLabel].forEach {
             self.addSubview($0)
         }
     }
@@ -119,6 +127,12 @@ class MainView: UIView {
             $0.leading.equalTo(modeLabel.snp.trailing).offset(15)
             $0.trailing.equalToSuperview().inset(20)
             $0.height.equalTo(30)
+        }
+        
+        nicknameLabel.snp.makeConstraints {
+            $0.leading.equalToSuperview().inset(30)
+            $0.top.equalTo(modeLabel)
+            $0.trailing.equalTo(modeLabel.snp.leading).offset(-20)
         }
         
         titleTextField.snp.makeConstraints {
