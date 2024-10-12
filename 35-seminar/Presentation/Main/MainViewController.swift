@@ -32,6 +32,7 @@ class MainViewController: UIViewController {
         let mode = mainView.modePopupButton.titleLabel?.text ?? "미지정"
         
         let detailVC = DetailViewController()
+        detailVC.delegate = self
         detailVC.dataBind(mode: "\(mode)(으)로 전환됨",
                           title: mainView.titleTextField.text ?? "",
                           content: mainView.contentTextView.text ?? "" )
@@ -44,5 +45,12 @@ class MainViewController: UIViewController {
             print("⚠️Error: \(mode) mode is not supported.")
         }
     }
+    
 }
 
+extension MainViewController: NicknameDelegate {
+    func dataBind(nickname: String) {
+        guard !nickname.isEmpty else { return }
+        self.mainView.nicknameLabel.text = nickname
+    }
+}
