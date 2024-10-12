@@ -55,6 +55,19 @@ class DetailView: UIView {
         return imageView
     }()
     
+    let nicknameTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "닉네임을 입력해주세요."
+        textField.clearButtonMode = .whileEditing
+        textField.backgroundColor = .white
+        textField.layer.borderColor = UIColor.gray.cgColor
+        textField.layer.borderWidth = 1
+        textField.layer.cornerRadius = 10
+        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
+        textField.leftViewMode = .always
+        return textField
+    }()
+    
     
     // MARK: - Methods
     override init(frame: CGRect) {
@@ -69,7 +82,7 @@ class DetailView: UIView {
     }
     
     private func setHirarchy() {
-        [backgroundImageView, modeLabel, titleLabel, contentLabel, backButton].forEach {
+        [backgroundImageView, modeLabel, titleLabel, contentLabel, backButton, nicknameTextField].forEach {
             self.addSubview($0)
         }
     }
@@ -93,8 +106,14 @@ class DetailView: UIView {
         contentLabel.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(30)
             $0.top.equalTo(titleLabel.snp.bottom).offset(10)
-            $0.bottom.lessThanOrEqualTo(backButton.snp.top).offset(-20)
+            $0.bottom.lessThanOrEqualTo(nicknameTextField.snp.top).offset(-20)
             $0.height.greaterThanOrEqualTo(36)
+        }
+        
+        nicknameTextField.snp.makeConstraints {
+            $0.horizontalEdges.equalToSuperview().inset(30)
+            $0.bottom.equalTo(backButton.snp.top).offset(-20)
+            $0.height.equalTo(30)
         }
         
         backButton.snp.makeConstraints {
