@@ -8,13 +8,12 @@
 import UIKit
 import SnapKit
 
-class MainViewController: UIViewController {
+class Week1MainViewController: UIViewController {
     
     // MARK: - Properties
-    let mainView = MainView()
+    let mainView = Week1MainView()
     
     // MARK: - Methods
-    
     override func loadView() {
         view = mainView
     }
@@ -31,7 +30,7 @@ class MainViewController: UIViewController {
     @objc func tappedNextButton() {
         let mode = mainView.modePopupButton.titleLabel?.text ?? "미지정"
         
-        let detailVC = DetailViewController()
+        let detailVC = Week1DetailViewController()
         detailVC.dataBind(mode: "\(mode)(으)로 전환됨",
                           title: mainView.titleTextField.text ?? "",
                           content: mainView.contentTextView.text ?? "" )

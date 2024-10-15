@@ -8,10 +8,10 @@
 import UIKit
 import SnapKit
 
-class DetailViewController: UIViewController {
+class Week1DetailViewController: UIViewController {
     
     // MARK: - Properties
-    let detailView = DetailView()
+    let detailView = Week1DetailView()
     
     //   MARK: - Methods
     override func loadView() {

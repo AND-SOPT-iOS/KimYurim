@@ -7,8 +7,8 @@
 
 import UIKit
 
-class MainView: UIView {
-
+class Week1MainView: UIView {
+    
     // MARK: - Properties
     let titleLabel: UILabel = {
         let label = UILabel()
@@ -45,8 +45,7 @@ class MainView: UIView {
     let modeButtonMenu = UIMenu(title: "전환 모드 선택",
                                 children: [UIAction(title: "네비게이션", handler: { _ in print("네비게이션") }),
                                            UIAction(title: "모달", handler: { _ in print("모달") })
-                                          ]
-    )
+                                          ])
     
     let titleTextField: UITextField = {
         let textField = UITextField()

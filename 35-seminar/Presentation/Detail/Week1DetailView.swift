@@ -7,8 +7,8 @@
 
 import UIKit
 
-class DetailView: UIView {
-
+class Week1DetailView: UIView {
+    
     // MARK: - Properties
     let modeLabel: UILabel = {
         let label = UILabel()
@@ -54,7 +54,6 @@ class DetailView: UIView {
         imageView.layer.opacity = 0.5
         return imageView
     }()
-    
     
     // MARK: - Methods
     override init(frame: CGRect) {

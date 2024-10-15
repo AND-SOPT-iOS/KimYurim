@@ -12,10 +12,10 @@
 		15A530942CB815E9002749E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15A5308A2CB815E9002749E5 /* Assets.xcassets */; };
 		15A530962CB815E9002749E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15A5308F2CB815E9002749E5 /* LaunchScreen.storyboard */; };
 		15A530972CB815E9002749E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A530892CB815E9002749E5 /* AppDelegate.swift */; };
-		15A530982CB815E9002749E5 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A5308B2CB815E9002749E5 /* DetailView.swift */; };
-		15A530992CB815E9002749E5 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A5308C2CB815E9002749E5 /* DetailViewController.swift */; };
-		15A5309A2CB815E9002749E5 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A530902CB815E9002749E5 /* MainView.swift */; };
-		15A5309B2CB815E9002749E5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A530912CB815E9002749E5 /* MainViewController.swift */; };
+		15A530982CB815E9002749E5 /* Week1DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A5308B2CB815E9002749E5 /* Week1DetailView.swift */; };
+		15A530992CB815E9002749E5 /* Week1DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A5308C2CB815E9002749E5 /* Week1DetailViewController.swift */; };
+		15A5309A2CB815E9002749E5 /* Week1MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A530902CB815E9002749E5 /* Week1MainView.swift */; };
+		15A5309B2CB815E9002749E5 /* Week1MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A530912CB815E9002749E5 /* Week1MainViewController.swift */; };
 		15A5309C2CB815E9002749E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A530922CB815E9002749E5 /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
@@ -24,12 +24,12 @@
 		1570C8CC2CB43A4C00A43324 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		15A530892CB815E9002749E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15A5308A2CB815E9002749E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		15A5308B2CB815E9002749E5 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
-		15A5308C2CB815E9002749E5 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		15A5308B2CB815E9002749E5 /* Week1DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week1DetailView.swift; sourceTree = "<group>"; };
+		15A5308C2CB815E9002749E5 /* Week1DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week1DetailViewController.swift; sourceTree = "<group>"; };
 		15A5308D2CB815E9002749E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15A5308E2CB815E9002749E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		15A530902CB815E9002749E5 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		15A530912CB815E9002749E5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		15A530902CB815E9002749E5 /* Week1MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week1MainView.swift; sourceTree = "<group>"; };
+		15A530912CB815E9002749E5 /* Week1MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week1MainViewController.swift; sourceTree = "<group>"; };
 		15A530922CB815E9002749E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,8 +75,8 @@
 		15A5309D2CB81620002749E5 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				15A530902CB815E9002749E5 /* MainView.swift */,
-				15A530912CB815E9002749E5 /* MainViewController.swift */,
+				15A530902CB815E9002749E5 /* Week1MainView.swift */,
+				15A530912CB815E9002749E5 /* Week1MainViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -84,8 +84,8 @@
 		15A5309E2CB81647002749E5 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				15A5308B2CB815E9002749E5 /* DetailView.swift */,
-				15A5308C2CB815E9002749E5 /* DetailViewController.swift */,
+				15A5308B2CB815E9002749E5 /* Week1DetailView.swift */,
+				15A5308C2CB815E9002749E5 /* Week1DetailViewController.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -197,10 +197,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				15A530972CB815E9002749E5 /* AppDelegate.swift in Sources */,
-				15A530982CB815E9002749E5 /* DetailView.swift in Sources */,
-				15A530992CB815E9002749E5 /* DetailViewController.swift in Sources */,
-				15A5309A2CB815E9002749E5 /* MainView.swift in Sources */,
-				15A5309B2CB815E9002749E5 /* MainViewController.swift in Sources */,
+				15A530982CB815E9002749E5 /* Week1DetailView.swift in Sources */,
+				15A530992CB815E9002749E5 /* Week1DetailViewController.swift in Sources */,
+				15A5309A2CB815E9002749E5 /* Week1MainView.swift in Sources */,
+				15A5309B2CB815E9002749E5 /* Week1MainViewController.swift in Sources */,
 				15A5309C2CB815E9002749E5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
