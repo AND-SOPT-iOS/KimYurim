@@ -17,6 +17,7 @@
 		1590A6432CBE6C6A00FB32AE /* Week1DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1590A62E2CBE6C6A00FB32AE /* Week1DetailViewController.swift */; };
 		1590A6442CBE6C6A00FB32AE /* Week1MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1590A6302CBE6C6A00FB32AE /* Week1MainView.swift */; };
 		1590A6452CBE6C6A00FB32AE /* Week1MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1590A6312CBE6C6A00FB32AE /* Week1MainViewController.swift */; };
+		1590A6A12CBE737600FB32AE /* PractScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1590A6A02CBE737600FB32AE /* PractScrollViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		1590A6352CBE6C6A00FB32AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1590A6372CBE6C6A00FB32AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1590A6382CBE6C6A00FB32AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1590A6A02CBE737600FB32AE /* PractScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PractScrollViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 			children = (
 				1590A6392CBE6C6A00FB32AE /* LaunchScreen.storyboard */,
 				1590A6332CBE6C6A00FB32AE /* Week1 */,
+				1590A69F2CBE719000FB32AE /* Week2 */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -124,6 +127,14 @@
 				1590A6372CBE6C6A00FB32AE /* Info.plist */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		1590A69F2CBE719000FB32AE /* Week2 */ = {
+			isa = PBXGroup;
+			children = (
+				1590A6A02CBE737600FB32AE /* PractScrollViewController.swift */,
+			);
+			path = Week2;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1590A6A12CBE737600FB32AE /* PractScrollViewController.swift in Sources */,
 				1590A6402CBE6C6A00FB32AE /* AppDelegate.swift in Sources */,
 				1590A6412CBE6C6A00FB32AE /* SceneDelegate.swift in Sources */,
 				1590A6422CBE6C6A00FB32AE /* Week1DetailView.swift in Sources */,
