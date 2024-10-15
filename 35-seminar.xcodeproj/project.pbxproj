@@ -18,6 +18,8 @@
 		1590A6442CBE6C6A00FB32AE /* Week1MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1590A6302CBE6C6A00FB32AE /* Week1MainView.swift */; };
 		1590A6452CBE6C6A00FB32AE /* Week1MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1590A6312CBE6C6A00FB32AE /* Week1MainViewController.swift */; };
 		1590A6A12CBE737600FB32AE /* PractScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1590A6A02CBE737600FB32AE /* PractScrollViewController.swift */; };
+		1590A6A42CBE8A9200FB32AE /* AppDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1590A6A32CBE8A9200FB32AE /* AppDetailViewController.swift */; };
+		1590A6A62CBE8AA600FB32AE /* AppDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1590A6A52CBE8AA600FB32AE /* AppDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		1590A6372CBE6C6A00FB32AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1590A6382CBE6C6A00FB32AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1590A6A02CBE737600FB32AE /* PractScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PractScrollViewController.swift; sourceTree = "<group>"; };
+		1590A6A32CBE8A9200FB32AE /* AppDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailViewController.swift; sourceTree = "<group>"; };
+		1590A6A52CBE8AA600FB32AE /* AppDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +137,8 @@
 			isa = PBXGroup;
 			children = (
 				1590A6A02CBE737600FB32AE /* PractScrollViewController.swift */,
+				1590A6A52CBE8AA600FB32AE /* AppDetailView.swift */,
+				1590A6A32CBE8A9200FB32AE /* AppDetailViewController.swift */,
 			);
 			path = Week2;
 			sourceTree = "<group>";
@@ -218,6 +224,8 @@
 				1590A6A12CBE737600FB32AE /* PractScrollViewController.swift in Sources */,
 				1590A6402CBE6C6A00FB32AE /* AppDelegate.swift in Sources */,
 				1590A6412CBE6C6A00FB32AE /* SceneDelegate.swift in Sources */,
+				1590A6A42CBE8A9200FB32AE /* AppDetailViewController.swift in Sources */,
+				1590A6A62CBE8AA600FB32AE /* AppDetailView.swift in Sources */,
 				1590A6422CBE6C6A00FB32AE /* Week1DetailView.swift in Sources */,
 				1590A6432CBE6C6A00FB32AE /* Week1DetailViewController.swift in Sources */,
 				1590A6442CBE6C6A00FB32AE /* Week1MainView.swift in Sources */,
