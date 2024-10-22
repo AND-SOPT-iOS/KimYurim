@@ -6,15 +6,41 @@
 //
 
 import UIKit
+import SnapKit
 
 class BorderView: UIView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    
+    // MARK: - Properties
+    let grayLine = UIView()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setUI()
+        setHierarchy()
+        setConstraints()
     }
-    */
-
+    
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setUI() {
+        self.backgroundColor = .none
+        grayLine.backgroundColor = .separator
+    }
+    
+    private func setHierarchy() {
+        self.addSubview(grayLine)
+    }
+    
+    private func setConstraints() {
+        self.snp.makeConstraints {
+            $0.height.equalTo(1)
+        }
+        
+        grayLine.snp.makeConstraints {
+            $0.height.equalTo(1)
+            $0.horizontalEdges.equalToSuperview().inset(20)
+        }
+    }
 }
