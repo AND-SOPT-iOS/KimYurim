@@ -1,13 +1,13 @@
 //
-//  AppDetailView.swift
+//  BorderView.swift
 //  35-seminar
 //
-//  Created by 김유림 on 10/15/24.
+//  Created by 김유림 on 10/22/24.
 //
 
 import UIKit
 
-class AppDetailView: UIView {
+class BorderView: UIView {
 
     /*
     // Only override draw() if you perform custom drawing.
