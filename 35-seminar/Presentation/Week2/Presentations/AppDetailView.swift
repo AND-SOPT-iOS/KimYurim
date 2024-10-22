@@ -11,8 +11,7 @@ class AppDetailView: UIView {
     
     // MARK: - Properties
     private let scrollView = UIScrollView()
-    private var contentView = UIView()
-    private let borderView = UIView()
+    private var contentView = UIStackView()
     
     // 타이틀뷰
     private let titleView = UIView()
@@ -24,16 +23,18 @@ class AppDetailView: UIView {
     
     // 요약뷰
     private let summaryView = UIView()
-    private let summaryRatingSummaryView = UIView()
+    // 1번칸
+    private let summaryRatingView = UIView()
     private let summaryRatingTitleLabel = SubtitleLabel()
     private let summaryRatingAverageLabel = SubtitleLabel()
-    private let summaryRatingStarImageStackView = UIStackView()
-    private let summaryRatingStarImageView = UIImageView()
-    private let summaryPrizeSummaryView = UIView()
+    private let summaryRatingStarStackView = StarStackView()
+    // 2번칸
+    private let summaryPrizeView = UIView()
     private let summaryPrizeTitleLabel = SubtitleLabel()
     private let summaryPrizeContentImageView = UIImageView()
     private let summaryPrizeSubtitleLabel = SubtitleLabel()
-    private let summaryAgeSummaryView = UIView()
+    //3번칸
+    private let summaryAgeView = UIView()
     private let summaryAgeTitleLabel = SubtitleLabel()
     private let summaryAgeContentLabel = SubtitleLabel()
     private let summaryAgeSubtitleLabel = SubtitleLabel()
@@ -54,24 +55,25 @@ class AppDetailView: UIView {
     private let descriptionLabel = ContentLabel()
     private let descriptionMoreButton = UIButton()
     
-    // 평가 및 리뷰 뷰
-    private let ratingView = UIView()
-    private let ratingTitleLabel = TitleLabel()
-    private let ratingAverageLabel = TitleLabel()
-    private let ratingSubtitleLabel = SubtitleLabel()
-    private let ratingTabToRateLabel = SubtitleLabel()
-    // TODO: Star rating stack
+    // 피드백 요약 뷰
+    private let feedbackSummaryView = UIView()
+    private let feedbackSummaryTitleLabel = TitleLabel()
+    private let feedbackSummaryAverageLabel = TitleLabel()
+    private let feedbackSummarySubtitleLabel = SubtitleLabel()
+    private let feedbackSummaryTabToRateLabel = SubtitleLabel()
+    let feedbackSummaryStarStackView = UIStackView()
     
-    private let reviewView = UIView()
-    private let reviewTitleLabel = ContentLabel()
-    private let reviewStarStackView = UIStackView()
-    private let reviewStarImageView = UIImageView()
-    private let reviewDateLabel = SubtitleLabel()
-    private let reviewAuthorLabel = SubtitleLabel()
-    private let reviewContentLabel = ContentLabel()
-    private let reviewDeveloperTitleLabel = ContentLabel()
-    private let reviewDeveloperContentLabel = ContentLabel()
-    private let reviewMoreButton = UIButton()
+    // 피드백 뷰
+    private let feedbackView = UIView()
+    private let feedbackGuideLabel = ContentLabel()
+    private let feedbackStarStackView = UIStackView()
+    private let feedbackStarImageView = UIImageView()
+    private let feedbackDateLabel = SubtitleLabel()
+    private let feedbackAuthorLabel = SubtitleLabel()
+    private let feedbackContentLabel = ContentLabel()
+    private let feedbackDeveloperTitleLabel = ContentLabel()
+    private let feedbackDeveloperContentLabel = ContentLabel()
+    private let feedbackMoreButton = UIButton()
     
     
     
@@ -87,21 +89,109 @@ class AppDetailView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setUI() {
+    // MARK: UI
+    private func setUI() {
         self.backgroundColor = .systemBackground
-        borderView.backgroundColor = .lightGray
+        contentView.axis = .vertical
+        contentView.spacing = 10
+        setTitleViewUI()
     }
     
-    func setHierarchy() {
+    private func setTitleViewUI() {
+        iconImageView.image = UIImage(named: "toss_icon")
+        iconImageView.clipsToBounds = true
+        iconImageView.layer.cornerRadius = 20
+        iconImageView.layer.borderColor = UIColor.systemGray5.cgColor
+        iconImageView.layer.borderWidth = 1
+        
+        titleLabel.text = "토스"
+        subtitleLabel.text = "금융이 쉬워진다"
+        
+        var openButtonConfig = UIButton.Configuration.filled()
+        openButtonConfig.buttonSize = .mini
+        openButtonConfig.cornerStyle = .capsule
+        let attributes: [NSAttributedString.Key: Any] = [.font : UIFont.systemFont(ofSize: 17, weight: .bold)]
+        let attributedTitle = NSAttributedString(string: "열기", attributes: attributes)
+        openButton.configuration = openButtonConfig
+        openButton.setAttributedTitle(attributedTitle, for: .normal)
+        
+        let symbolConfig = UIImage.SymbolConfiguration(weight: .medium)
+        var shareButtonConfig = UIButton.Configuration.plain()
+        shareButtonConfig.image = UIImage(systemName: "square.and.arrow.up",
+                                          withConfiguration: symbolConfig)
+        shareButton.configuration = shareButtonConfig
+    }
+    
+    // TODO: summary view
+    
+    // TODO: update view
+    
+    // TODO: previewView
+    
+    // TODO: descriptionView
+    
+    // TODO: feedbackSummaryView
+    
+    // TODO: feedbackView
+    
+    
+    // MARK: - Hierarchy
+    private func setHierarchy() {
         self.addSubview(scrollView)
         scrollView.addSubview(contentView)
         
-        [titleView, summaryView, updateView].forEach {
-            contentView.addSubview($0)
+        [titleView, summaryView, updateView, previewView, descriptionView, feedbackSummaryView, feedbackView].forEach {
+            contentView.addArrangedSubview($0)
+            contentView.addArrangedSubview(BorderView())
+        }
+        
+        setTitleViewHierarchy()
+        setSummaryViewHierarchy()
+        setUpdateViewHierarchy()
+        
+    }
+    
+    private func setTitleViewHierarchy() {
+        [iconImageView, titleLabel, subtitleLabel, openButton, shareButton].forEach {
+            titleView.addSubview($0)
         }
     }
     
-    func setConstraints() {
+    private func setSummaryViewHierarchy() {
+        [summaryRatingView, summaryPrizeView, summaryAgeView].forEach {
+            summaryView.addSubview($0)
+        }
+        
+        [summaryRatingTitleLabel, summaryRatingAverageLabel, summaryRatingStarStackView].forEach {
+            summaryRatingView.addSubview($0)
+        }
+        
+        [summaryPrizeTitleLabel, summaryPrizeContentImageView, summaryPrizeSubtitleLabel].forEach {
+            summaryPrizeView.addSubview($0)
+        }
+        
+        [summaryAgeTitleLabel, summaryAgeContentLabel, summaryAgeSubtitleLabel].forEach {
+            summaryAgeView.addSubview($0)
+        }
+    }
+    
+    private func setUpdateViewHierarchy() {
+        [updateTitleLabel, updateSubtitleLabel, updateContentLabel].forEach {
+            updateView.addSubview($0)
+        }
+    }
+    
+    // TODO: previewView
+    
+    // TODO: descriptionView
+    
+    // TODO: feedbackSummaryView
+    
+    // TODO: feedbackView
+    
+    
+    // MARK: - Constraints
+    private func setConstraints() {
         scrollView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
@@ -112,23 +202,53 @@ class AppDetailView: UIView {
             $0.height.greaterThanOrEqualToSuperview().priority(.low)
         }
         
-        titleView.snp.makeConstraints {
+        // 타이틀뷰
+        iconImageView.snp.makeConstraints {
+            $0.size.equalTo(128)
+            $0.leading.equalToSuperview().inset(20)
             $0.top.equalToSuperview()
-            $0.horizontalEdges.equalToSuperview()
-            $0.height.equalTo(300)
+            $0.bottom.equalToSuperview().inset(10)
         }
         
+        titleLabel.snp.makeConstraints {
+            $0.leading.equalTo(iconImageView.snp.trailing).offset(16)
+            $0.top.equalTo(iconImageView)
+        }
+        
+        subtitleLabel.snp.makeConstraints {
+            $0.leading.equalTo(titleLabel)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(5)
+        }
+        
+        openButton.snp.makeConstraints {
+            $0.leading.equalTo(titleLabel)
+            $0.bottom.equalTo(iconImageView)
+            $0.width.equalTo(76)
+            $0.height.equalTo(34)
+        }
+        
+        shareButton.snp.makeConstraints {
+            $0.trailing.equalToSuperview().inset(20)
+            $0.bottom.equalTo(iconImageView)
+            
+        }
+        
+        // TODO: SummaryView
         summaryView.snp.makeConstraints {
-            $0.top.equalTo(titleView.snp.bottom)
-            $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(300)
         }
         
+        // TODO: UpdateView
         updateView.snp.makeConstraints {
-            $0.top.equalTo(summaryView.snp.bottom)
-            $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(300)
-            $0.bottom.equalToSuperview()
         }
+        
+        // TODO: previewView
+        
+        // TODO: descriptionView
+        
+        // TODO: feedbackSummaryView
+        
+        // TODO: feedbackView
     }
 }
