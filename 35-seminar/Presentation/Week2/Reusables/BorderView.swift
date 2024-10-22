@@ -26,7 +26,7 @@ class BorderView: UIView {
     
     private func setUI() {
         self.backgroundColor = .none
-        grayLine.backgroundColor = .separator
+        grayLine.backgroundColor = .systemGray5
     }
     
     private func setHierarchy() {
@@ -35,11 +35,11 @@ class BorderView: UIView {
     
     private func setConstraints() {
         self.snp.makeConstraints {
-            $0.height.equalTo(1)
+            $0.height.equalTo(0.5)
         }
         
         grayLine.snp.makeConstraints {
-            $0.height.equalTo(1)
+            $0.height.equalTo(0.5)
             $0.horizontalEdges.equalToSuperview().inset(20)
         }
     }
