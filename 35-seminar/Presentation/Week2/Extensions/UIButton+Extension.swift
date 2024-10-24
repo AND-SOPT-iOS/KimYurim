@@ -22,6 +22,7 @@ extension UIButton {
                          cornerStyle: UIButton.Configuration.CornerStyle? = nil,
                          foregroundColor: UIColor = .tintColor,
                          backgroundColor: UIColor = .clear,
+                         removeContentInsets: Bool = false,
                          for state: UIControl.State = .normal) {
         
         var config = {
@@ -51,6 +52,10 @@ extension UIButton {
         
         config.baseForegroundColor = foregroundColor
         config.baseBackgroundColor = backgroundColor
+        
+        if removeContentInsets {
+            config.contentInsets = .zero
+        }
         
         self.configuration = config
     }
