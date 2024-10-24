@@ -63,6 +63,12 @@ class AppDetailView: UIView {
     private let descriptionLabel = ContentLabel()
     private let descriptionMoreButton = UIButton()
     
+    private let developerView = UIView()
+    private let developerNameLabel = ContentLabel()
+    private let developerRoleLabel = SubtitleLabel()
+    private let chevronImageView = UIImageView()
+    lazy var developerButton = UIButton()
+    
     // 피드백 요약 뷰
     private let feedbackSummaryView = UIView()
     private let feedbackSummaryTitleLabel = TitleLabel()
@@ -200,7 +206,32 @@ class AppDetailView: UIView {
     }
     
     private func setDescriptionViewUI() {
+        let description = """
+토스뱅크, 토스증권 서비스를 이용하시려면 토스 앱 설치가 필요합니다.
+        • 내 금융 현황을 한눈에, 홈•소비
+        • 모든 계좌의 모든 정보를 한 곳에서, 따로 보았던 예적금, 청약, 증권, 대출 계좌의 정보를 한 곳에서 확인할 수 있어 요.
+        • 얼마나 벌고 얼마나 썼을까? 한 달 동안의 수입과 소비를 시간순으로 모아볼 수 있고, 소비 분석 리포트도 제공해드 려요.
+        • 카드 실적 헷갈릴 필요 없이, 실적을 충족한 카드가 무엇 인지 얼마나 더 써야 실적을 달성하는지 한눈에 확인할 수 있어요.
+        • 매달 고정적으로 나가는 보험비, 생활요금, 구독료 등도 쉽게 확인할 수 있어요.
+        • 평생 무료로 간편하고 안전하게, 송금
+        • 송금을 자유롭게, 토스에서는 은행 상관없이 수수료가 평 생 무료에요.
+        • 송금을 안전하게, 송금 전 사기계좌를 미리 조회해 안전 하게 송금할 수 있어요.
+        • 송금을 간편하게, 단 한 번의 터치까지 줄였어요. 최소한 의 터치로 송금하세요.
+        • 그리고 마음까지, 간단한 메시지와 이모티콘을 함께 보내 보세요.
+"""
+        descriptionLabel.text = description
+        descriptionLabel.numberOfLines = 3
+        descriptionLabel.setLineSpacing(8)
         
+        descriptionMoreButton.configureButton(title: "더 보기", fontWeight: .light, removeContentInsets: true)
+        
+        developerNameLabel.configureLabel(color: .tintColor, size: 17, weight: .regular, text: "Viva Republica")
+        
+        developerRoleLabel.configureLabel(color: .secondaryLabel, size: 15, weight: .regular, text: "개발자")
+        
+        chevronImageView.image = UIImage(systemName: "chevron.right")
+        chevronImageView.contentMode = .scaleAspectFit
+        chevronImageView.tintColor = .secondaryLabel
     }
     
     private func setFeedbackSummaryViewUI() {
@@ -275,7 +306,13 @@ class AppDetailView: UIView {
     }
     
     private func setDescriptionViewHierarchy() {
+        [descriptionLabel, descriptionMoreButton, developerView].forEach {
+            descriptionView.addSubview($0)
+        }
         
+        [developerNameLabel, developerRoleLabel, chevronImageView, developerButton].forEach {
+            developerView.addSubview($0)
+        }
     }
     
     private func setFeedbackSummaryViewHierarchy() {
@@ -459,7 +496,40 @@ class AppDetailView: UIView {
     }
     
     private func setDescriptionViewConstraints() {
+        descriptionView.snp.makeConstraints {
+            $0.horizontalEdges.equalToSuperview().inset(20)
+        }
         
+        descriptionLabel.snp.makeConstraints {
+            $0.top.horizontalEdges.equalToSuperview().offset(10)
+        }
+        
+        descriptionMoreButton.snp.makeConstraints {
+            $0.bottom.equalTo(descriptionLabel)
+            $0.trailing.equalToSuperview()
+        }
+        
+        developerView.snp.makeConstraints {
+            $0.top.equalTo(descriptionLabel.snp.bottom).offset(30)
+            $0.bottom.equalToSuperview().offset(-30)
+            $0.horizontalEdges.equalToSuperview()
+        }
+        
+        developerNameLabel.snp.makeConstraints {
+            $0.top.leading.equalToSuperview()
+        }
+        
+        developerRoleLabel.snp.makeConstraints {
+            $0.top.equalTo(developerNameLabel.snp.bottom).offset(2)
+            $0.leading.equalToSuperview()
+            $0.bottom.equalToSuperview()
+        }
+        
+        chevronImageView.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            $0.size.equalTo(22)
+        }
     }
     
     private func setFeedbackSummaryViewConstraints() {
