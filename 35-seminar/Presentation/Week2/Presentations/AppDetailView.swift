@@ -24,8 +24,8 @@ class AppDetailView: UIView {
     
     // 요약뷰
     private let summaryStackView = UIStackView()
-    private let verticalBorderView1 = UIView()
-    private let verticalBorderView2 = UIView()
+    private let verticalBorderView1 = BorderView()
+    private let verticalBorderView2 = BorderView()
     
     // 1번칸
     private let summaryRatingStackView = UIStackView()
@@ -48,6 +48,8 @@ class AppDetailView: UIView {
     private let updateTitleLabel = TitleLabel()
     private let updateSubtitleLabel = SubtitleLabel()
     private let updateContentLabel = ContentLabel()
+    private let updateRecordButton = UIButton()
+    private let updateDateLabel = SubtitleLabel()
     
     // 미리보기뷰
     private let previewView = UIView()
@@ -99,6 +101,11 @@ class AppDetailView: UIView {
         
         setTitleViewUI()
         setSummaryViewUI()
+        setUpdateViewUI()
+        setPreviewViewUI()
+        setDescriptionViewUI()
+        setFeedbackSummaryViewUI()
+        setFeedbackViewUI()
     }
     
     private func setTitleViewUI() {
@@ -109,31 +116,24 @@ class AppDetailView: UIView {
         iconImageView.layer.borderWidth = 1
         
         titleLabel.text = "토스"
+        
         subtitleLabel.text = "금융이 쉬워진다"
         
-        var openButtonConfig = UIButton.Configuration.filled()
-        openButtonConfig.buttonSize = .mini
-        openButtonConfig.cornerStyle = .capsule
-        let attributes: [NSAttributedString.Key: Any] = [.font : UIFont.systemFont(ofSize: 17, weight: .bold)]
-        let attributedTitle = NSAttributedString(string: "열기", attributes: attributes)
-        openButton.configuration = openButtonConfig
-        openButton.setAttributedTitle(attributedTitle, for: .normal)
+        openButton.configureButton(configType: .filled,
+                                   title: "열기",
+                                   fontWeight: .bold,
+                                   cornerStyle: .capsule,
+                                   foregroundColor: .white,
+                                   backgroundColor: .tintColor)
         
-        let symbolConfig = UIImage.SymbolConfiguration(weight: .medium)
-        var shareButtonConfig = UIButton.Configuration.plain()
-        shareButtonConfig.image = UIImage(systemName: "square.and.arrow.up",
-                                          withConfiguration: symbolConfig)
-        shareButton.configuration = shareButtonConfig
+        shareButton.configureButton(image: UIImage(systemName: "square.and.arrow.up"),
+                                    symbolWeight: .semibold)
+        
     }
     
-    // TODO: summary view
     private func setSummaryViewUI() {
         summaryStackView.axis = .horizontal
         summaryStackView.alignment = .center
-        
-        [verticalBorderView1, verticalBorderView2].forEach {
-            $0.backgroundColor = .systemGray5
-        }
         
         [summaryRatingStackView, summaryPrizeStackView, summaryAgeStackView].forEach {
             $0.axis = .vertical
@@ -170,16 +170,31 @@ class AppDetailView: UIView {
         summaryAgeSubtitleLabel.text = "세"
     }
     
-    // TODO: update view
+    private func setUpdateViewUI() {
+        updateTitleLabel.text = "새로운 소식"
+        updateSubtitleLabel.text = "버전 5.185.0"
+        updateContentLabel.text = "• 구석구석 숨어있던 버그들을 잡았어요. 또 다른 버그가 나타나면 토스 고객센터를 찾아주세요. 늘 열려있답니다. 365일 24시간 언제든지요."
+        updateContentLabel.setLineSpacing(8)
+        
+        updateRecordButton.configureButton(title: "버전 기록", fontSize: 19, fontWeight: .light, removeContentInsets: true)
+        updateDateLabel.text = "3시간 전"
+    }
     
-    // TODO: previewView
+    private func setPreviewViewUI() {
+        
+    }
     
-    // TODO: descriptionView
+    private func setDescriptionViewUI() {
+        
+    }
     
-    // TODO: feedbackSummaryView
+    private func setFeedbackSummaryViewUI() {
+        
+    }
     
-    // TODO: feedbackView
-    
+    private func setFeedbackViewUI() {
+        
+    }
     
     // MARK: - Hierarchy
     private func setHierarchy() {
@@ -187,7 +202,10 @@ class AppDetailView: UIView {
         setTitleViewHierarchy()
         setSummaryViewHierarchy()
         setUpdateViewHierarchy()
-        
+        setPreviewViewHierarchy()
+        setDescriptionViewHierarchy()
+        setFeedbackSummaryViewHierarchy()
+        setFeedbackViewHierarchy()
     }
     
     private func setBaseHierarchy() {
@@ -195,14 +213,10 @@ class AppDetailView: UIView {
         scrollView.addSubview(contentStackView)
         
         [titleView, summaryStackView, updateView, previewView, descriptionView, feedbackSummaryView, feedbackView].forEach {
-            let borderView: UIView = {
-                let view = UIView()
-                view.backgroundColor = .systemGray5
-                return view
-            }()
+            let borderView = BorderView()
             contentStackView.addArrangedSubview($0)
             contentStackView.addArrangedSubview(borderView)
-            borderView.snp.updateConstraints {
+            borderView.snp.makeConstraints {
                 $0.horizontalEdges.equalToSuperview().inset(20)
                 $0.height.equalTo(0.5)
             }
@@ -234,19 +248,26 @@ class AppDetailView: UIView {
     }
     
     private func setUpdateViewHierarchy() {
-        [updateTitleLabel, updateSubtitleLabel, updateContentLabel].forEach {
+        [updateTitleLabel, updateSubtitleLabel, updateContentLabel, updateRecordButton, updateDateLabel].forEach {
             updateView.addSubview($0)
         }
     }
     
-    // TODO: previewView
+    private func setPreviewViewHierarchy() {
+        
+    }
     
-    // TODO: descriptionView
+    private func setDescriptionViewHierarchy() {
+        
+    }
     
-    // TODO: feedbackSummaryView
+    private func setFeedbackSummaryViewHierarchy() {
+        
+    }
     
-    // TODO: feedbackView
-    
+    private func setFeedbackViewHierarchy() {
+        
+    }
     
     // MARK: - Constraints
     private func setConstraints() {
@@ -254,14 +275,10 @@ class AppDetailView: UIView {
         setTitleViewConstraints()
         setSummaryViewConstraints()
         setUpdateViewConstraints()
-        
-        // TODO: previewView
-        
-        // TODO: descriptionView
-        
-        // TODO: feedbackSummaryView
-        
-        // TODO: feedbackView
+        setPreviewViewConstraints()
+        setDescriptionViewConstraints()
+        setFeedbackSummaryViewConstraints()
+        setFeedbackViewConstraints()
     }
     
     private func setBaseConstraints() {
@@ -278,7 +295,7 @@ class AppDetailView: UIView {
     
     private func setTitleViewConstraints() {
         titleView.snp.makeConstraints {
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.horizontalEdges.equalToSuperview()
         }
         
         iconImageView.snp.makeConstraints {
@@ -366,7 +383,48 @@ class AppDetailView: UIView {
     private func setUpdateViewConstraints() {
         updateView.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.height.equalTo(1000)
         }
+        
+        updateTitleLabel.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.equalToSuperview()
+        }
+        
+        updateSubtitleLabel.snp.makeConstraints {
+            $0.top.equalTo(updateTitleLabel.snp.bottom).offset(8)
+            $0.leading.equalTo(updateTitleLabel)
+        }
+        
+        updateContentLabel.snp.makeConstraints {
+            $0.top.equalTo(updateSubtitleLabel.snp.bottom).offset(16)
+            $0.horizontalEdges.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(10)
+        }
+        
+        updateRecordButton.snp.makeConstraints {
+            $0.bottom.equalTo(updateTitleLabel)
+            $0.trailing.equalToSuperview()
+        }
+        
+        updateDateLabel.snp.makeConstraints {
+            $0.bottom.equalTo(updateSubtitleLabel)
+            $0.trailing.equalToSuperview()
+        }
+    }
+    
+    private func setPreviewViewConstraints() {
+        
+    }
+    
+    private func setDescriptionViewConstraints() {
+        
+    }
+    
+    private func setFeedbackSummaryViewConstraints() {
+        
+    }
+    
+    private func setFeedbackViewConstraints() {
+        
     }
 }
