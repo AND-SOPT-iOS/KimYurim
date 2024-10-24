@@ -88,13 +88,17 @@ class AppDetailView: UIView {
     private let feedbackBoxView = UIView()
     private let feedbackTitleLabel = ContentLabel()
     private let feedbackStarStackView = StarStackView()
-    private let feedbackDateLabel = SubtitleLabel()
+    private let feedbackAuthorDateLabel = SubtitleLabel()
     private let feedbackAuthorLabel = SubtitleLabel()
     private let feedbackContentLabel = ContentLabel()
     private let feedbackDeveloperTitleLabel = ContentLabel()
     private let feedbackDeveloperContentLabel = ContentLabel()
+    private let feedbackDeveloperDateLabel = SubtitleLabel()
     private let feedbackMoreButton1 = UIButton()
     private let feedbackMoreButton2 = UIButton()
+    
+    private let feedbackWriteButton = UIButton()
+    private let appSupportButton = UIButton()
     
     // MARK: - Methods
     override init(frame: CGRect) {
@@ -130,7 +134,7 @@ class AppDetailView: UIView {
         iconImageView.layer.borderColor = UIColor.systemGray5.cgColor
         iconImageView.layer.borderWidth = 1
         
-        titleLabel.text = "토스"
+        titleLabel.configureLabel(size: 23, weight: .semibold, text: "토스")
         
         subtitleLabel.text = "금융이 쉬워진다"
         
@@ -141,8 +145,8 @@ class AppDetailView: UIView {
                                    foregroundColor: .white,
                                    backgroundColor: .tintColor)
         
-        shareButton.configureButton(image: UIImage(systemName: "square.and.arrow.up"),
-                                    symbolWeight: .semibold)
+        shareButton.configureButton(systemName: "square.and.arrow.up",
+                                    symbolWeight: .medium)
         
     }
     
@@ -156,17 +160,17 @@ class AppDetailView: UIView {
         }
         
         [summaryRatingTitleLabel, summaryPrizeTitleLabel, summaryAgeTitleLabel].forEach {
-            $0.configureLabel(color: .secondaryLabel, size: 13, weight: .regular)
+            $0.configureLabel(color: .secondaryLabel, size: 12, weight: .regular)
             $0.textAlignment = .center
         }
         
         [summaryRatingAverageLabel, summaryAgeLimitLabel].forEach {
-            $0.configureLabel(color: .secondaryLabel, size: 24, weight: .bold)
+            $0.configureLabel(color: .secondaryLabel, size: 22, weight: .bold)
             $0.textAlignment = .center
         }
         
         [summaryPrizeSubtitleLabel, summaryAgeSubtitleLabel].forEach {
-            $0.configureLabel(color: .secondaryLabel, size: 15, weight: .regular)
+            $0.configureLabel(color: .secondaryLabel, size: 13, weight: .regular)
             $0.textAlignment = .center
         }
         
@@ -191,7 +195,7 @@ class AppDetailView: UIView {
         updateContentLabel.text = "• 구석구석 숨어있던 버그들을 잡았어요. 또 다른 버그가 나타나면 토스 고객센터를 찾아주세요. 늘 열려있답니다. 365일 24시간 언제든지요."
         updateContentLabel.setLineSpacing(8)
         
-        updateRecordButton.configureButton(title: "버전 기록", fontSize: 19, fontWeight: .light, removeContentInsets: true)
+        updateRecordButton.configureButton(title: "버전 기록", fontSize: 16, fontWeight: .light, removeContentInsets: true)
         updateDateLabel.text = "3시간 전"
     }
     
@@ -205,11 +209,10 @@ class AppDetailView: UIView {
         previewImageView.layer.borderColor = UIColor.systemGray5.cgColor
         previewImageView.layer.borderWidth = 1
         
-        let symbolConfig = UIImage.SymbolConfiguration(weight: .regular)
-        previewDeviceImageView.image = UIImage(systemName: "iphone", withConfiguration: symbolConfig)?.withTintColor(.secondaryLabel)
+        previewDeviceImageView.image = UIImage.configureImage(systemName: "iphone", symbolWeight: .regular)?.withTintColor(.secondaryLabel)
         previewDeviceImageView.contentMode = .scaleAspectFit
         
-        previewDeviceLabel.configureLabel(color: .secondaryLabel, size: 14, weight: .semibold, text: "iPhone")
+        previewDeviceLabel.configureLabel(color: .secondaryLabel, size: 13, weight: .semibold, text: "iPhone")
     }
     
     private func setDescriptionViewUI() {
@@ -232,9 +235,9 @@ class AppDetailView: UIView {
         
         descriptionMoreButton.configureButton(title: "더 보기", fontWeight: .light, removeContentInsets: true)
         
-        developerNameLabel.configureLabel(color: .tintColor, size: 17, weight: .regular, text: "Viva Republica")
+        developerNameLabel.configureLabel(color: .tintColor, size: 15, weight: .regular, text: "Viva Republica")
         
-        developerRoleLabel.configureLabel(color: .secondaryLabel, size: 15, weight: .regular, text: "개발자")
+        developerRoleLabel.configureLabel(color: .secondaryLabel, size: 14, weight: .regular, text: "개발자")
         
         chevronImageView.image = UIImage(systemName: "chevron.right")
         chevronImageView.contentMode = .scaleAspectFit
@@ -244,9 +247,9 @@ class AppDetailView: UIView {
     private func setFeedbackSummaryViewUI() {
         feedbackSummaryTitleLabel.text = "평가 및 리뷰"
         
-        feedbackSummaryAverageLabel.configureLabel(color: .label, size: 68, weight: .bold, text: "4.4")
+        feedbackSummaryAverageLabel.configureLabel(color: .label, size: 60, weight: .bold, text: "4.4")
         
-        feedbackSummarySubtitleLabel.configureLabel(color: .secondaryLabel, size: 17, weight: .bold, text: "5점 만점")
+        feedbackSummarySubtitleLabel.configureLabel(color: .secondaryLabel, size: 15, weight: .bold, text: "5점 만점")
         
         feedbackSummaryAllButton.configureButton(title: "모두 보기", removeContentInsets: true)
         
@@ -258,28 +261,41 @@ class AppDetailView: UIView {
     
     private func setFeedbackViewUI() {
         feedbackTapToRateStackView.axis = .horizontal
+        feedbackTapToRateStackView.spacing = 10
         
-        feedbackTapToRateLabel.text = "탭하여 평가하기:"
+        feedbackTapToRateLabel.configureLabel(color: .secondaryLabel, size: 17, weight: .medium, text: "탭하여 평가하기:")
         feedbackTapToRateLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         
         feedbackTapToRateStarStackView.setContentHuggingPriority(.defaultLow, for: .horizontal)
         
-        feedbackBoxView.backgroundColor = UIColor(named: "reviewbox")
-        feedbackTitleLabel.text = "김유림"
-        feedbackStarStackView.bind(2, .yellow)
-        feedbackDateLabel.text = "24.10.25"
-        feedbackAuthorLabel.text = "ISTJ"
-        feedbackContentLabel.text = """
-"1. 동해물과 백두산이 마르고 닳도록
-        하느님이 보우하사 우리나라 만세
-        무궁화 삼천리 화려 강산
-        대한 사람 대한으로 길이 보전하세
-"""
-        feedbackDeveloperTitleLabel.text = "개발자 답변"
+        feedbackBoxView.backgroundColor = .systemGray6
+        feedbackBoxView.layer.cornerRadius = 10
+        
+        feedbackTitleLabel.configureLabel(size: 15, weight: .semibold, text: "김유림")
+        
+        feedbackStarStackView.bind(2, .orange)
+        
+        feedbackAuthorDateLabel.configureLabel(color: .secondaryLabel, size: 15, weight: .regular, text: "10월 25")
+        
+        feedbackAuthorLabel.configureLabel(color: .secondaryLabel, size: 14, weight: .regular, text: "ISTJ")
+        
+        feedbackContentLabel.text = "1. 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려 강산 대한 사람 대한으로 길이 보전하세"
+        feedbackContentLabel.setLineSpacing(4)
+        
+        feedbackDeveloperTitleLabel.configureLabel(size: 15, weight: .medium, text: "개발자 답변")
+        
         feedbackDeveloperContentLabel.text = "안녕하세요, 감사합니다."
+        feedbackDeveloperContentLabel.setLineSpacing(4)
+        
+        feedbackDeveloperDateLabel.configureLabel(color: .secondaryLabel, size: 15, weight: .regular, text: "10월 25")
+        
         [feedbackMoreButton1, feedbackMoreButton2].forEach {
             $0.configureButton(title: "더 보기", removeContentInsets: true)
         }
+        
+        feedbackWriteButton.configureButton(title: " 리뷰 작성", systemName: "square.and.pencil")
+        
+        appSupportButton.configureButton(title: " 앱 지원", systemName: "questionmark.circle")
     }
     
     // MARK: - Hierarchy
@@ -362,7 +378,7 @@ class AppDetailView: UIView {
     }
     
     private func setFeedbackViewHierarchy() {
-        [feedbackTapToRateStackView, feedbackBoxView].forEach {
+        [feedbackTapToRateStackView, feedbackBoxView, feedbackWriteButton, appSupportButton].forEach {
             feedbackView.addSubview($0)
         }
         
@@ -370,7 +386,7 @@ class AppDetailView: UIView {
             feedbackTapToRateStackView.addArrangedSubview($0)
         }
         
-        [feedbackTitleLabel, feedbackStarStackView, feedbackDateLabel, feedbackAuthorLabel, feedbackContentLabel, feedbackDeveloperTitleLabel, feedbackDeveloperContentLabel, feedbackMoreButton1, feedbackMoreButton2].forEach {
+        [feedbackTitleLabel, feedbackStarStackView, feedbackAuthorDateLabel, feedbackAuthorLabel, feedbackContentLabel, feedbackDeveloperTitleLabel, feedbackDeveloperContentLabel, feedbackDeveloperDateLabel, feedbackMoreButton1, feedbackMoreButton2].forEach {
             feedbackBoxView.addSubview($0)
         }
     }
@@ -497,7 +513,7 @@ class AppDetailView: UIView {
         }
         
         updateSubtitleLabel.snp.makeConstraints {
-            $0.top.equalTo(updateTitleLabel.snp.bottom).offset(8)
+            $0.top.equalTo(updateTitleLabel.snp.bottom).offset(5)
             $0.leading.equalTo(updateTitleLabel)
         }
         
@@ -537,8 +553,8 @@ class AppDetailView: UIView {
         previewDeviceImageView.snp.makeConstraints {
             $0.top.equalTo(previewImageView.snp.bottom).offset(10)
             $0.leading.equalToSuperview()
-            $0.size.equalTo(22)
-            $0.bottom.equalToSuperview()
+            $0.size.equalTo(20)
+            $0.bottom.equalToSuperview().offset(-10)
         }
         
         previewDeviceLabel.snp.makeConstraints {
@@ -580,7 +596,7 @@ class AppDetailView: UIView {
         chevronImageView.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.trailing.equalToSuperview()
-            $0.size.equalTo(22)
+            $0.size.equalTo(20)
         }
     }
     
@@ -629,36 +645,39 @@ class AppDetailView: UIView {
         
         feedbackTapToRateStackView.snp.makeConstraints {
             $0.top.horizontalEdges.equalToSuperview()
+            $0.height.equalTo(28)
         }
         
         feedbackBoxView.snp.makeConstraints {
-            $0.top.equalTo(feedbackTapToRateStackView.snp.bottom).offset(10)
+            $0.top.equalTo(feedbackTapToRateStackView.snp.bottom).offset(20)
             $0.horizontalEdges.equalToSuperview()
         }
         
         feedbackTitleLabel.snp.makeConstraints {
-            $0.top.leading.equalToSuperview().offset(20)
+            $0.top.equalToSuperview().offset(18)
+            $0.leading.equalTo(feedbackContentLabel)
         }
         
         feedbackStarStackView.snp.makeConstraints {
-            $0.leading.equalTo(feedbackTitleLabel)
-            $0.top.equalTo(feedbackTitleLabel.snp.bottom).offset(5)
-            $0.height.equalTo(20)
+            $0.leading.equalTo(feedbackContentLabel)
+            $0.top.equalTo(feedbackTitleLabel.snp.bottom).offset(4)
+            $0.height.equalTo(16)
+            $0.width.equalTo(80)
         }
         
-        feedbackDateLabel.snp.makeConstraints {
-            $0.trailing.equalToSuperview().offset(-20)
+        feedbackAuthorDateLabel.snp.makeConstraints {
+            $0.trailing.equalTo(feedbackContentLabel)
             $0.centerY.equalTo(feedbackTitleLabel)
         }
         
         feedbackAuthorLabel.snp.makeConstraints {
-            $0.trailing.equalTo(feedbackDateLabel)
+            $0.trailing.equalTo(feedbackContentLabel)
             $0.centerY.equalTo(feedbackStarStackView)
         }
         
         feedbackContentLabel.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.top.equalTo(feedbackStarStackView.snp.bottom).offset(15)
+            $0.top.equalTo(feedbackStarStackView.snp.bottom).offset(10)
         }
         
         feedbackMoreButton1.snp.makeConstraints {
@@ -670,6 +689,30 @@ class AppDetailView: UIView {
             $0.leading.equalTo(feedbackContentLabel)
         }
         
+        feedbackDeveloperDateLabel.snp.makeConstraints {
+            $0.trailing.equalTo(feedbackContentLabel)
+            $0.centerY.equalTo(feedbackDeveloperTitleLabel)
+        }
         
+        feedbackDeveloperContentLabel.snp.makeConstraints {
+            $0.horizontalEdges.equalTo(feedbackContentLabel)
+            $0.top.equalTo(feedbackDeveloperTitleLabel.snp.bottom).offset(5)
+            $0.bottom.equalToSuperview().offset(-20)
+        }
+        
+        feedbackMoreButton2.snp.makeConstraints {
+            $0.bottom.trailing.equalTo(feedbackDeveloperContentLabel)
+        }
+        
+        feedbackWriteButton.snp.makeConstraints {
+            $0.top.equalTo(feedbackBoxView.snp.bottom).offset(20)
+            $0.leading.equalTo(feedbackBoxView)
+            $0.bottom.equalToSuperview().offset(-10)
+        }
+        
+        appSupportButton.snp.makeConstraints {
+            $0.top.equalTo(feedbackBoxView.snp.bottom).offset(20)
+            $0.trailing.equalTo(feedbackBoxView)
+        }
     }
 }

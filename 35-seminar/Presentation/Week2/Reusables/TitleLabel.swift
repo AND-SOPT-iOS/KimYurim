@@ -11,7 +11,7 @@ class TitleLabel: UILabel {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.configureLabel(size: 24, weight: .semibold)
+        self.configureLabel(size: 23, weight: .bold)
     }
     
     required init?(coder: NSCoder) {

@@ -11,7 +11,7 @@ class SubtitleLabel: UILabel {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.configureLabel(color: .secondaryLabel, size: 17, weight: .light)
+        self.configureLabel(color: .secondaryLabel, size: 15, weight: .light)
     }
     
     required init?(coder: NSCoder) {
