@@ -254,8 +254,8 @@ class AppDetailView: UIView {
         
         feedbackSummaryAllButton.configureButton(title: "모두 보기", removeContentInsets: true)
         
-        feedbackSummaryStarsImageView.image = UIImage(systemName: "photo")?.withTintColor(.secondaryLabel, renderingMode: .alwaysOriginal)
-        feedbackSummaryStarsImageView.backgroundColor = .systemGray5
+        feedbackSummaryStarsImageView.image = UIImage(named: "summary_stars")
+        feedbackSummaryStarsImageView.contentMode = .scaleAspectFit
         
         feedbackSummaryCountLabel.text = "8.4만개의 평가"
     }
@@ -613,7 +613,8 @@ class AppDetailView: UIView {
         feedbackSummaryAverageLabel.snp.makeConstraints {
             $0.leading.equalToSuperview()
             $0.top.equalTo(feedbackSummaryTitleLabel.snp.bottom)
-            $0.width.equalTo(120)
+            $0.width.equalTo(100)
+            $0.height.equalTo(64)
         }
         
         feedbackSummarySubtitleLabel.snp.makeConstraints {
@@ -628,7 +629,7 @@ class AppDetailView: UIView {
         }
         
         feedbackSummaryStarsImageView.snp.makeConstraints {
-            $0.leading.equalTo(feedbackSummaryAverageLabel.snp.trailing).offset(30)
+            $0.leading.equalTo(feedbackSummaryAverageLabel.snp.trailing).offset(20)
             $0.trailing.equalToSuperview()
             $0.verticalEdges.equalTo(feedbackSummaryAverageLabel).inset(5)
         }
