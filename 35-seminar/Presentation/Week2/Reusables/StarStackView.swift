@@ -10,7 +10,7 @@ import UIKit
 enum StarColor {
     case tint
     case gray
-    case yellow
+    case orange
 }
 
 class StarStackView: UIStackView {
@@ -25,8 +25,8 @@ class StarStackView: UIStackView {
     private let starImageView4 = UIImageView()
     private let starImageView5 = UIImageView()
     
-    private let starEmptyImage = UIImage(systemName: "star")
-    private let starFilledImage = UIImage(systemName:"star.fill")
+    private let starEmptyImage = UIImage.configureImage(systemName: "star", symbolWeight: .regular)
+    private let starFilledImage = UIImage.configureImage(systemName: "star.fill", symbolWeight: .regular)
     
     // MARK: - Methods
     override init(frame: CGRect) {
@@ -74,8 +74,8 @@ class StarStackView: UIStackView {
                 imageView.tintColor = .tintColor
             case .gray:
                 imageView.tintColor = .secondaryLabel
-            case .yellow:
-                imageView.tintColor = .yellow
+            case .orange:
+                imageView.tintColor = .systemOrange
             }
         }
     }
