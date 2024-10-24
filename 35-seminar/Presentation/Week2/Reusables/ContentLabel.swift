@@ -11,7 +11,7 @@ class ContentLabel: UILabel {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.configureLabel(color: .label, size: 16, weight: .regular)
+        self.configureLabel(color: .label, size: 16, weight: .light, numberOfLines: 0)
     }
     
     required init?(coder: NSCoder) {
