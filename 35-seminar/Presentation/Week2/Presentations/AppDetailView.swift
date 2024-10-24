@@ -55,6 +55,8 @@ class AppDetailView: UIView {
     private let previewView = UIView()
     private let previewTitleLabel = TitleLabel()
     private let previewImageView = UIImageView()
+    private let previewDeviceImageView = UIImageView()
+    private let previewDeviceLabel = SubtitleLabel()
     
     // 앱 설명 뷰
     private let descriptionView = UIView()
@@ -181,7 +183,19 @@ class AppDetailView: UIView {
     }
     
     private func setPreviewViewUI() {
+        previewTitleLabel.text = "미리 보기"
         
+        previewImageView.image = UIImage(named: "toss_preview") // NSBundle 오류 발생
+        // NSBundle file:///Library/Developer/CoreSimulator/Volumes/iOS_22A3351/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS%2018.0.simruntime/Contents/Resources/RuntimeRoot/System/Library/PrivateFrameworks/MetalTools.framework/ principal class is nil because all fallbacks have failed
+        
+        previewImageView.contentMode = .scaleAspectFit
+        previewImageView.layer.cornerRadius = 20
+        
+        let symbolConfig = UIImage.SymbolConfiguration(weight: .regular)
+        previewDeviceImageView.image = UIImage(systemName: "iphone", withConfiguration: symbolConfig)?.withTintColor(.secondaryLabel)
+        previewDeviceImageView.contentMode = .scaleAspectFit
+        
+        previewDeviceLabel.configureLabel(color: .secondaryLabel, size: 14, weight: .semibold, text: "iPhone")
     }
     
     private func setDescriptionViewUI() {
@@ -254,7 +268,9 @@ class AppDetailView: UIView {
     }
     
     private func setPreviewViewHierarchy() {
-        
+        [previewTitleLabel, previewImageView, previewDeviceImageView, previewDeviceLabel].forEach {
+            previewView.addSubview($0)
+        }
     }
     
     private func setDescriptionViewHierarchy() {
@@ -413,7 +429,31 @@ class AppDetailView: UIView {
     }
     
     private func setPreviewViewConstraints() {
+        previewView.snp.makeConstraints {
+            $0.horizontalEdges.equalToSuperview().inset(20)
+        }
         
+        previewTitleLabel.snp.makeConstraints {
+            $0.top.leading.equalToSuperview()
+        }
+        
+        previewImageView.snp.makeConstraints {
+            $0.top.equalTo(previewTitleLabel.snp.bottom).offset(5)
+            $0.centerX.equalToSuperview()
+            $0.height.equalTo(500)
+        }
+        
+        previewDeviceImageView.snp.makeConstraints {
+            $0.top.equalTo(previewImageView.snp.bottom).offset(10)
+            $0.leading.equalToSuperview()
+            $0.size.equalTo(22)
+            $0.bottom.equalToSuperview()
+        }
+        
+        previewDeviceLabel.snp.makeConstraints {
+            $0.bottom.equalTo(previewDeviceImageView)
+            $0.leading.equalTo(previewDeviceImageView.snp.trailing).offset(5)
+        }
     }
     
     private func setDescriptionViewConstraints() {
