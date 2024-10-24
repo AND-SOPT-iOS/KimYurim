@@ -186,10 +186,11 @@ class AppDetailView: UIView {
         previewTitleLabel.text = "미리 보기"
         
         previewImageView.image = UIImage(named: "toss_preview") // NSBundle 오류 발생
-        // NSBundle file:///Library/Developer/CoreSimulator/Volumes/iOS_22A3351/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS%2018.0.simruntime/Contents/Resources/RuntimeRoot/System/Library/PrivateFrameworks/MetalTools.framework/ principal class is nil because all fallbacks have failed
-        
-        previewImageView.contentMode = .scaleAspectFit
+        previewImageView.contentMode = .scaleAspectFill
+        previewImageView.clipsToBounds = true
         previewImageView.layer.cornerRadius = 20
+        previewImageView.layer.borderColor = UIColor.systemGray5.cgColor
+        previewImageView.layer.borderWidth = 1
         
         let symbolConfig = UIImage.SymbolConfiguration(weight: .regular)
         previewDeviceImageView.image = UIImage(systemName: "iphone", withConfiguration: symbolConfig)?.withTintColor(.secondaryLabel)
@@ -441,6 +442,7 @@ class AppDetailView: UIView {
             $0.top.equalTo(previewTitleLabel.snp.bottom).offset(5)
             $0.centerX.equalToSuperview()
             $0.height.equalTo(500)
+            $0.width.equalTo(240)
         }
         
         previewDeviceImageView.snp.makeConstraints {
