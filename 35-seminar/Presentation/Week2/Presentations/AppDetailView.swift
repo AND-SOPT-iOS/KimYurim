@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import SnapKit
 
 class AppDetailView: UIView {
     
     // MARK: - Properties
     private let scrollView = UIScrollView()
-    private var contentView = UIStackView()
+    private var contentStackView = UIStackView()
     
     // 타이틀뷰
     private let titleView = UIView()
@@ -22,21 +23,24 @@ class AppDetailView: UIView {
     private let shareButton = UIButton()
     
     // 요약뷰
-    private let summaryView = UIView()
+    private let summaryStackView = UIStackView()
+    private let verticalBorderView1 = UIView()
+    private let verticalBorderView2 = UIView()
+    
     // 1번칸
-    private let summaryRatingView = UIView()
+    private let summaryRatingStackView = UIStackView()
     private let summaryRatingTitleLabel = SubtitleLabel()
     private let summaryRatingAverageLabel = SubtitleLabel()
     private let summaryRatingStarStackView = StarStackView()
     // 2번칸
-    private let summaryPrizeView = UIView()
+    private let summaryPrizeStackView = UIStackView()
     private let summaryPrizeTitleLabel = SubtitleLabel()
     private let summaryPrizeContentImageView = UIImageView()
     private let summaryPrizeSubtitleLabel = SubtitleLabel()
     //3번칸
-    private let summaryAgeView = UIView()
+    private let summaryAgeStackView = UIStackView()
     private let summaryAgeTitleLabel = SubtitleLabel()
-    private let summaryAgeContentLabel = SubtitleLabel()
+    private let summaryAgeLimitLabel = SubtitleLabel()
     private let summaryAgeSubtitleLabel = SubtitleLabel()
     
     // 업데이트뷰
@@ -75,8 +79,6 @@ class AppDetailView: UIView {
     private let feedbackDeveloperContentLabel = ContentLabel()
     private let feedbackMoreButton = UIButton()
     
-    
-    
     // MARK: - Methods
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -92,9 +94,11 @@ class AppDetailView: UIView {
     // MARK: UI
     private func setUI() {
         self.backgroundColor = .systemBackground
-        contentView.axis = .vertical
-        contentView.spacing = 10
+        contentStackView.axis = .vertical
+        contentStackView.spacing = 10
+        
         setTitleViewUI()
+        setSummaryViewUI()
     }
     
     private func setTitleViewUI() {
@@ -123,6 +127,48 @@ class AppDetailView: UIView {
     }
     
     // TODO: summary view
+    private func setSummaryViewUI() {
+        summaryStackView.axis = .horizontal
+        summaryStackView.alignment = .center
+        
+        [verticalBorderView1, verticalBorderView2].forEach {
+            $0.backgroundColor = .systemGray5
+        }
+        
+        [summaryRatingStackView, summaryPrizeStackView, summaryAgeStackView].forEach {
+            $0.axis = .vertical
+            $0.alignment = .center
+        }
+        
+        [summaryRatingTitleLabel, summaryPrizeTitleLabel, summaryAgeTitleLabel].forEach {
+            $0.configureLabel(color: .secondaryLabel, size: 13, weight: .regular)
+            $0.textAlignment = .center
+        }
+        
+        [summaryRatingAverageLabel, summaryAgeLimitLabel].forEach {
+            $0.configureLabel(color: .secondaryLabel, size: 24, weight: .bold)
+            $0.textAlignment = .center
+        }
+        
+        [summaryPrizeSubtitleLabel, summaryAgeSubtitleLabel].forEach {
+            $0.configureLabel(color: .secondaryLabel, size: 15, weight: .regular)
+            $0.textAlignment = .center
+        }
+        
+        summaryRatingTitleLabel.text = "8.4만개의 평가"
+        summaryRatingAverageLabel.text = "4.4"
+        summaryRatingStarStackView.bind(4, .gray)
+        
+        summaryPrizeTitleLabel.text = "수상"
+        summaryPrizeContentImageView.image = UIImage(systemName: "person")
+        summaryPrizeContentImageView.tintColor = .secondaryLabel
+        summaryPrizeContentImageView.contentMode = .scaleAspectFit
+        summaryPrizeSubtitleLabel.text = "앱"
+        
+        summaryAgeTitleLabel.text = "연령"
+        summaryAgeLimitLabel.text = "4+"
+        summaryAgeSubtitleLabel.text = "세"
+    }
     
     // TODO: update view
     
@@ -137,18 +183,30 @@ class AppDetailView: UIView {
     
     // MARK: - Hierarchy
     private func setHierarchy() {
-        self.addSubview(scrollView)
-        scrollView.addSubview(contentView)
-        
-        [titleView, summaryView, updateView, previewView, descriptionView, feedbackSummaryView, feedbackView].forEach {
-            contentView.addArrangedSubview($0)
-            contentView.addArrangedSubview(BorderView())
-        }
-        
+        setBaseHierarchy()
         setTitleViewHierarchy()
         setSummaryViewHierarchy()
         setUpdateViewHierarchy()
         
+    }
+    
+    private func setBaseHierarchy() {
+        self.addSubview(scrollView)
+        scrollView.addSubview(contentStackView)
+        
+        [titleView, summaryStackView, updateView, previewView, descriptionView, feedbackSummaryView, feedbackView].forEach {
+            let borderView: UIView = {
+                let view = UIView()
+                view.backgroundColor = .systemGray5
+                return view
+            }()
+            contentStackView.addArrangedSubview($0)
+            contentStackView.addArrangedSubview(borderView)
+            borderView.snp.updateConstraints {
+                $0.horizontalEdges.equalToSuperview().inset(20)
+                $0.height.equalTo(0.5)
+            }
+        }
     }
     
     private func setTitleViewHierarchy() {
@@ -158,20 +216,20 @@ class AppDetailView: UIView {
     }
     
     private func setSummaryViewHierarchy() {
-        [summaryRatingView, summaryPrizeView, summaryAgeView].forEach {
-            summaryView.addSubview($0)
+        [summaryRatingStackView, verticalBorderView1, summaryPrizeStackView, verticalBorderView2, summaryAgeStackView].forEach {
+            summaryStackView.addArrangedSubview($0)
         }
         
         [summaryRatingTitleLabel, summaryRatingAverageLabel, summaryRatingStarStackView].forEach {
-            summaryRatingView.addSubview($0)
+            summaryRatingStackView.addArrangedSubview($0)
         }
         
         [summaryPrizeTitleLabel, summaryPrizeContentImageView, summaryPrizeSubtitleLabel].forEach {
-            summaryPrizeView.addSubview($0)
+            summaryPrizeStackView.addArrangedSubview($0)
         }
         
-        [summaryAgeTitleLabel, summaryAgeContentLabel, summaryAgeSubtitleLabel].forEach {
-            summaryAgeView.addSubview($0)
+        [summaryAgeTitleLabel, summaryAgeLimitLabel, summaryAgeSubtitleLabel].forEach {
+            summaryAgeStackView.addArrangedSubview($0)
         }
     }
     
@@ -192,17 +250,37 @@ class AppDetailView: UIView {
     
     // MARK: - Constraints
     private func setConstraints() {
+        setBaseConstraints()
+        setTitleViewConstraints()
+        setSummaryViewConstraints()
+        setUpdateViewConstraints()
+        
+        // TODO: previewView
+        
+        // TODO: descriptionView
+        
+        // TODO: feedbackSummaryView
+        
+        // TODO: feedbackView
+    }
+    
+    private func setBaseConstraints() {
         scrollView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.edges.equalTo(self.safeAreaLayoutGuide)
         }
         
-        contentView.snp.makeConstraints {
+        contentStackView.snp.makeConstraints {
             $0.edges.equalToSuperview()
             $0.width.equalToSuperview()
             $0.height.greaterThanOrEqualToSuperview().priority(.low)
         }
+    }
+    
+    private func setTitleViewConstraints() {
+        titleView.snp.makeConstraints {
+            $0.horizontalEdges.equalToSuperview().inset(20)
+        }
         
-        // 타이틀뷰
         iconImageView.snp.makeConstraints {
             $0.size.equalTo(128)
             $0.leading.equalToSuperview().inset(20)
@@ -230,25 +308,65 @@ class AppDetailView: UIView {
         shareButton.snp.makeConstraints {
             $0.trailing.equalToSuperview().inset(20)
             $0.bottom.equalTo(iconImageView)
-            
+        }
+    }
+    
+    private func setSummaryViewConstraints() {
+        summaryStackView.snp.makeConstraints {
+            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.height.equalTo(84)
         }
         
-        // TODO: SummaryView
-        summaryView.snp.makeConstraints {
-            $0.height.equalTo(300)
+        [verticalBorderView1, verticalBorderView2].forEach {
+            $0.snp.makeConstraints {
+                $0.height.equalTo(40)
+                $0.width.equalTo(0.5)
+            }
         }
         
-        // TODO: UpdateView
+        summaryRatingStackView.snp.makeConstraints {
+            $0.height.equalToSuperview()
+            $0.width.equalTo(summaryPrizeStackView)
+            $0.width.equalTo(summaryAgeStackView)
+        }
+        
+        summaryPrizeStackView.snp.makeConstraints {
+            $0.height.equalToSuperview()
+            $0.width.equalTo(summaryRatingStackView)
+            $0.width.equalTo(summaryAgeStackView)
+        }
+        
+        summaryAgeStackView.snp.makeConstraints {
+            $0.height.equalToSuperview()
+            $0.width.equalTo(summaryPrizeStackView)
+            $0.width.equalTo(summaryRatingStackView)
+        }
+        
+        [summaryRatingTitleLabel, summaryPrizeTitleLabel, summaryAgeTitleLabel].forEach {
+            $0.snp.makeConstraints {
+                $0.height.equalTo(30)
+            }
+        }
+        
+        [summaryRatingAverageLabel, summaryPrizeContentImageView, summaryAgeLimitLabel].forEach {
+            $0.snp.makeConstraints {
+                $0.height.equalTo(30)
+                $0.horizontalEdges.equalToSuperview()
+            }
+        }
+        
+        [summaryRatingStarStackView, summaryPrizeSubtitleLabel, summaryAgeSubtitleLabel].forEach {
+            $0.snp.makeConstraints {
+                $0.height.equalTo(24)
+                $0.horizontalEdges.equalToSuperview().inset(16)
+            }
+        }
+    }
+    
+    private func setUpdateViewConstraints() {
         updateView.snp.makeConstraints {
-            $0.height.equalTo(300)
+            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.height.equalTo(1000)
         }
-        
-        // TODO: previewView
-        
-        // TODO: descriptionView
-        
-        // TODO: feedbackSummaryView
-        
-        // TODO: feedbackView
     }
 }
