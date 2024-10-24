@@ -97,8 +97,8 @@
 		157119DB2CBE96DE00362252 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				157119DC2CBE96F500362252 /* UILabel+Extension.swift */,
 				15EC30522CCA434700A0480B /* UIButton+Extension.swift */,
+				157119DC2CBE96F500362252 /* UILabel+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";

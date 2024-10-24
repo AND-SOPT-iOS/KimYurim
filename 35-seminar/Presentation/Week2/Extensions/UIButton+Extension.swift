@@ -33,8 +33,6 @@ extension UIButton {
             }
         }()
         
-        print(config)
-        
         if let title = title {
             let attributes: [NSAttributedString.Key: Any] = [.font : UIFont.systemFont(ofSize: fontSize, weight: fontWeight)]
             let attributedTitle = NSAttributedString(string: title, attributes: attributes)
@@ -43,8 +41,8 @@ extension UIButton {
         
         if let image = image {
             let symbolConfig = UIImage.SymbolConfiguration(weight: symbolWeight)
-            image.withConfiguration(symbolConfig)
-            config.image = image
+            let configuredImage = image.withConfiguration(symbolConfig)
+            config.image = configuredImage
         }
         
         if let cornerStyle = cornerStyle {
