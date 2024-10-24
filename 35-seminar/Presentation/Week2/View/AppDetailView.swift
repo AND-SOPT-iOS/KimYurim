@@ -157,10 +157,11 @@ class AppDetailView: UIView {
         [summaryRatingStackView, summaryPrizeStackView, summaryAgeStackView].forEach {
             $0.axis = .vertical
             $0.alignment = .center
+            $0.distribution = .equalSpacing
         }
         
         [summaryRatingTitleLabel, summaryPrizeTitleLabel, summaryAgeTitleLabel].forEach {
-            $0.configureLabel(color: .secondaryLabel, size: 12, weight: .regular)
+            $0.configureLabel(color: .secondaryLabel, size: 11, weight: .regular)
             $0.textAlignment = .center
         }
         
@@ -195,7 +196,7 @@ class AppDetailView: UIView {
         updateContentLabel.text = "• 구석구석 숨어있던 버그들을 잡았어요. 또 다른 버그가 나타나면 토스 고객센터를 찾아주세요. 늘 열려있답니다. 365일 24시간 언제든지요."
         updateContentLabel.setLineSpacing(8)
         
-        updateRecordButton.configureButton(title: "버전 기록", fontSize: 16, fontWeight: .light, removeContentInsets: true)
+        updateRecordButton.configureButton(title: "버전 기록", fontSize: 17, fontWeight: .regular, removeContentInsets: true)
         updateDateLabel.text = "3시간 전"
     }
     
@@ -320,7 +321,7 @@ class AppDetailView: UIView {
             contentStackView.addArrangedSubview(borderView)
             borderView.snp.makeConstraints {
                 $0.horizontalEdges.equalToSuperview().inset(20)
-                $0.height.equalTo(0.5)
+                $0.height.equalTo(0.4)
             }
         }
     }
@@ -453,13 +454,13 @@ class AppDetailView: UIView {
     private func setSummaryViewConstraints() {
         summaryStackView.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.height.equalTo(84)
+            $0.height.equalTo(72)
         }
         
         [verticalBorderView1, verticalBorderView2].forEach {
             $0.snp.makeConstraints {
                 $0.height.equalTo(40)
-                $0.width.equalTo(0.5)
+                $0.width.equalTo(0.4)
             }
         }
         
@@ -483,21 +484,21 @@ class AppDetailView: UIView {
         
         [summaryRatingTitleLabel, summaryPrizeTitleLabel, summaryAgeTitleLabel].forEach {
             $0.snp.makeConstraints {
-                $0.height.equalTo(30)
+                $0.height.equalTo(20)
             }
         }
         
         [summaryRatingAverageLabel, summaryPrizeContentImageView, summaryAgeLimitLabel].forEach {
             $0.snp.makeConstraints {
-                $0.height.equalTo(30)
+                $0.height.equalTo(24)
                 $0.horizontalEdges.equalToSuperview()
             }
         }
         
         [summaryRatingStarStackView, summaryPrizeSubtitleLabel, summaryAgeSubtitleLabel].forEach {
             $0.snp.makeConstraints {
-                $0.height.equalTo(24)
-                $0.horizontalEdges.equalToSuperview().inset(16)
+                $0.height.equalTo(20)
+                $0.horizontalEdges.equalToSuperview().inset(20)
             }
         }
     }
