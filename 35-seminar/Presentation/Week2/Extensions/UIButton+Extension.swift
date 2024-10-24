@@ -15,9 +15,9 @@ enum ConfigurationType {
 extension UIButton {
     func configureButton(configType: ConfigurationType = .plain,
                          title: String? = nil,
-                         fontSize: CGFloat = 17,
+                         fontSize: CGFloat = 15,
                          fontWeight: UIFont.Weight = .regular,
-                         image: UIImage? = nil,
+                         systemName: String = "",
                          symbolWeight: UIImage.SymbolWeight = .unspecified,
                          cornerStyle: UIButton.Configuration.CornerStyle? = nil,
                          foregroundColor: UIColor = .tintColor,
@@ -40,11 +40,7 @@ extension UIButton {
             self.setAttributedTitle(attributedTitle, for: state)
         }
         
-        if let image = image {
-            let symbolConfig = UIImage.SymbolConfiguration(weight: symbolWeight)
-            let configuredImage = image.withConfiguration(symbolConfig)
-            config.image = configuredImage
-        }
+        config.image = UIImage.configureImage(systemName: systemName, symbolWeight: symbolWeight)
         
         if let cornerStyle = cornerStyle {
             config.cornerStyle = cornerStyle
