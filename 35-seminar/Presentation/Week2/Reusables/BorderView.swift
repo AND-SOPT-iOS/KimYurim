@@ -12,7 +12,7 @@ class BorderView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .systemGray5
+        self.backgroundColor = .systemGray4
     }
     
     required init(coder: NSCoder) {
