@@ -41,6 +41,7 @@ class BorderView: UIView {
         grayLine.snp.makeConstraints {
             $0.height.equalTo(0.5)
             $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.verticalEdges.equalToSuperview()
         }
     }
 }
