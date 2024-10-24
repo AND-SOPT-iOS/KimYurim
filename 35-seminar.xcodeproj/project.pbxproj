@@ -24,6 +24,7 @@
 		1590A6A12CBE737600FB32AE /* PractScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1590A6A02CBE737600FB32AE /* PractScrollViewController.swift */; };
 		1590A6A42CBE8A9200FB32AE /* AppDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1590A6A32CBE8A9200FB32AE /* AppDetailViewController.swift */; };
 		1590A6A62CBE8AA600FB32AE /* AppDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1590A6A52CBE8AA600FB32AE /* AppDetailView.swift */; };
+		15EC30532CCA434700A0480B /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC30522CCA434700A0480B /* UIButton+Extension.swift */; };
 		15F4FD072CC73D0A00C99A20 /* StarStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F4FD062CC73D0A00C99A20 /* StarStackView.swift */; };
 		15F4FD0F2CC7649A00C99A20 /* BorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F4FD0E2CC7649A00C99A20 /* BorderView.swift */; };
 /* End PBXBuildFile section */
@@ -47,6 +48,7 @@
 		1590A6A02CBE737600FB32AE /* PractScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PractScrollViewController.swift; sourceTree = "<group>"; };
 		1590A6A32CBE8A9200FB32AE /* AppDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailViewController.swift; sourceTree = "<group>"; };
 		1590A6A52CBE8AA600FB32AE /* AppDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailView.swift; sourceTree = "<group>"; };
+		15EC30522CCA434700A0480B /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		15F4FD062CC73D0A00C99A20 /* StarStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarStackView.swift; sourceTree = "<group>"; };
 		15F4FD0E2CC7649A00C99A20 /* BorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				157119DC2CBE96F500362252 /* UILabel+Extension.swift */,
+				15EC30522CCA434700A0480B /* UIButton+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				1590A6402CBE6C6A00FB32AE /* AppDelegate.swift in Sources */,
 				1590A6412CBE6C6A00FB32AE /* SceneDelegate.swift in Sources */,
 				157119D62CBE962F00362252 /* TitleLabel.swift in Sources */,
+				15EC30532CCA434700A0480B /* UIButton+Extension.swift in Sources */,
 				1590A6A42CBE8A9200FB32AE /* AppDetailViewController.swift in Sources */,
 				1590A6A62CBE8AA600FB32AE /* AppDetailView.swift in Sources */,
 				1590A6422CBE6C6A00FB32AE /* Week1DetailView.swift in Sources */,
