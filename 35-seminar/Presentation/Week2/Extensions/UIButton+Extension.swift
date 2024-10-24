@@ -18,6 +18,7 @@ extension UIButton {
                          fontSize: CGFloat = 15,
                          fontWeight: UIFont.Weight = .regular,
                          systemName: String = "",
+                         pointSize: CGFloat? = nil,
                          symbolWeight: UIImage.SymbolWeight = .unspecified,
                          cornerStyle: UIButton.Configuration.CornerStyle? = nil,
                          foregroundColor: UIColor = .tintColor,
@@ -40,7 +41,7 @@ extension UIButton {
             self.setAttributedTitle(attributedTitle, for: state)
         }
         
-        config.image = UIImage.configureImage(systemName: systemName, symbolWeight: symbolWeight)
+        config.image = UIImage.configureImage(systemName: systemName, pointSize: pointSize, symbolWeight: symbolWeight)
         
         if let cornerStyle = cornerStyle {
             config.cornerStyle = cornerStyle
