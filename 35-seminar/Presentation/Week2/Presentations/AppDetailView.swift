@@ -74,14 +74,18 @@ class AppDetailView: UIView {
     private let feedbackSummaryTitleLabel = TitleLabel()
     private let feedbackSummaryAverageLabel = TitleLabel()
     private let feedbackSummarySubtitleLabel = SubtitleLabel()
-    private let feedbackSummaryTabToRateLabel = SubtitleLabel()
-    let feedbackSummaryStarStackView = UIStackView()
+    lazy var feedbackSummaryAllButton = UIButton()
+    private let feedbackSummaryStarsImageView = UIImageView()
+    private let feedbackSummaryCountLabel = SubtitleLabel()
     
     // 피드백 뷰
     private let feedbackView = UIView()
-    private let feedbackGuideLabel = ContentLabel()
-    private let feedbackStarStackView = UIStackView()
-    private let feedbackStarImageView = UIImageView()
+    private let feedbackTabToRateLabel = SubtitleLabel()
+    var feedbackTabToRateStarStackView = UIStackView()
+    
+    private let feedbackBoxView = UIView()
+    private let feedbackTitleLabel = ContentLabel()
+    private let feedbackStarStackView = StarStackView()
     private let feedbackDateLabel = SubtitleLabel()
     private let feedbackAuthorLabel = SubtitleLabel()
     private let feedbackContentLabel = ContentLabel()
@@ -235,7 +239,18 @@ class AppDetailView: UIView {
     }
     
     private func setFeedbackSummaryViewUI() {
+        feedbackSummaryTitleLabel.text = "평가 및 리뷰"
         
+        feedbackSummaryAverageLabel.configureLabel(color: .label, size: 68, weight: .bold, text: "4.4")
+        
+        feedbackSummarySubtitleLabel.configureLabel(color: .secondaryLabel, size: 17, weight: .bold, text: "5점 만점")
+        
+        feedbackSummaryAllButton.configureButton(title: "모두 보기", removeContentInsets: true)
+        
+        feedbackSummaryStarsImageView.image = UIImage(systemName: "photo")?.withTintColor(.secondaryLabel, renderingMode: .alwaysOriginal)
+        feedbackSummaryStarsImageView.backgroundColor = .systemGray5
+        
+        feedbackSummaryCountLabel.text = "8.4만개의 평가"
     }
     
     private func setFeedbackViewUI() {
@@ -316,7 +331,9 @@ class AppDetailView: UIView {
     }
     
     private func setFeedbackSummaryViewHierarchy() {
-        
+        [feedbackSummaryTitleLabel, feedbackSummaryAverageLabel, feedbackSummarySubtitleLabel, feedbackSummaryAllButton, feedbackSummaryStarsImageView, feedbackSummaryCountLabel].forEach {
+            feedbackSummaryView.addSubview($0)
+        }
     }
     
     private func setFeedbackViewHierarchy() {
@@ -533,7 +550,41 @@ class AppDetailView: UIView {
     }
     
     private func setFeedbackSummaryViewConstraints() {
+        feedbackSummaryView.snp.makeConstraints {
+            $0.horizontalEdges.equalToSuperview().inset(20)
+        }
         
+        feedbackSummaryTitleLabel.snp.makeConstraints {
+            $0.leading.top.equalToSuperview()
+        }
+        
+        feedbackSummaryAverageLabel.snp.makeConstraints {
+            $0.leading.equalToSuperview()
+            $0.top.equalTo(feedbackSummaryTitleLabel.snp.bottom)
+            $0.width.equalTo(120)
+        }
+        
+        feedbackSummarySubtitleLabel.snp.makeConstraints {
+            $0.centerX.equalTo(feedbackSummaryAverageLabel)
+            $0.top.equalTo(feedbackSummaryAverageLabel.snp.bottom)
+            $0.bottom.equalToSuperview().offset(-10)
+        }
+        
+        feedbackSummaryAllButton.snp.makeConstraints {
+            $0.trailing.equalToSuperview()
+            $0.centerY.equalTo(feedbackSummaryTitleLabel)
+        }
+        
+        feedbackSummaryStarsImageView.snp.makeConstraints {
+            $0.leading.equalTo(feedbackSummaryAverageLabel.snp.trailing).offset(30)
+            $0.trailing.equalToSuperview()
+            $0.verticalEdges.equalTo(feedbackSummaryAverageLabel).inset(5)
+        }
+        
+        feedbackSummaryCountLabel.snp.makeConstraints {
+            $0.trailing.equalToSuperview()
+            $0.centerY.equalTo(feedbackSummarySubtitleLabel)
+        }
     }
     
     private func setFeedbackViewConstraints() {
