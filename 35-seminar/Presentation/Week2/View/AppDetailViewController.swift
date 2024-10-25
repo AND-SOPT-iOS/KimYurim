@@ -26,6 +26,8 @@ class AppDetailViewController: UIViewController {
         appDetailView.versionRecordButton.addTarget(self, action: #selector (tappedVersionRecordButton), for: .touchUpInside)
         
         appDetailView.feedbackSummaryAllButton.addTarget(self, action: #selector (tappedFeedbackSummaryAllButton), for: .touchUpInside)
+        
+        appDetailView.feedbackWriteButton.addTarget(self, action: #selector(tappedFeedbackWriteButton), for: .touchUpInside)
     }
     
     @objc private func tappedVersionRecordButton() {
@@ -34,5 +36,9 @@ class AppDetailViewController: UIViewController {
     
     @objc private func tappedFeedbackSummaryAllButton() {
         self.navigationController?.pushViewController(AllFeedbackViewController(), animated: true)
+    }
+    
+    @objc private func tappedFeedbackWriteButton() {
+        self.present(FeedbackWriteViewController(), animated: true)
     }
 }
