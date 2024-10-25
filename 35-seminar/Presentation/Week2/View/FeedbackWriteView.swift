@@ -110,12 +110,12 @@ class FeedbackWriteView: UIView {
     }
     
     func returnFeedback() -> Feedback {
-        let feedback = Feedback(title: feedbackTitleTextField.text ?? "",
+        let feedback = Feedback(title: feedbackTitleTextField.text,
                                 author: "김유림",
-                                starCount: 5,
+                                starCount: 0,
                                 authorDate: Date(),
-                                content: feedbackTextView.text ?? "",
-                                developerContent: "",
+                                content: feedbackTextView.text,
+                                developerContent: nil,
                                 developerDate: nil)
         return feedback
     }
