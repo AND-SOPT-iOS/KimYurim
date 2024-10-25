@@ -44,13 +44,13 @@ class AppDetailView: UIView {
     private let summaryAgeLimitLabel = SubtitleLabel()
     private let summaryAgeSubtitleLabel = SubtitleLabel()
     
-    // 업데이트뷰
-    private let updateView = UIView()
-    private let updateTitleLabel = TitleLabel()
-    private let updateSubtitleLabel = SubtitleLabel()
-    private let updateContentLabel = ContentLabel()
-    private let updateRecordButton = UIButton()
-    private let updateDateLabel = SubtitleLabel()
+    // 버전 뷰
+    private let versionView = UIView()
+    private let versionTitleLabel = TitleLabel()
+    private let versionSubtitleLabel = SubtitleLabel()
+    private let versionContentLabel = ContentLabel()
+    private let versionRecordButton = UIButton()
+    private let versionDateLabel = SubtitleLabel()
     
     // 미리보기뷰
     private let previewView = UIView()
@@ -120,7 +120,7 @@ class AppDetailView: UIView {
         
         setTitleViewUI()
         setSummaryViewUI()
-        setUpdateViewUI()
+        setVersionViewUI()
         setPreviewViewUI()
         setDescriptionViewUI()
         setFeedbackSummaryViewUI()
@@ -192,14 +192,14 @@ class AppDetailView: UIView {
         summaryAgeSubtitleLabel.text = "세"
     }
     
-    private func setUpdateViewUI() {
-        updateTitleLabel.text = "새로운 소식"
-        updateSubtitleLabel.text = "버전 5.185.0"
-        updateContentLabel.text = "• 구석구석 숨어있던 버그들을 잡았어요. 또 다른 버그가 나타나면 토스 고객센터를 찾아주세요. 늘 열려있답니다. 365일 24시간 언제든지요."
-        updateContentLabel.setLineSpacing(8)
+    private func setVersionViewUI() {
+        versionTitleLabel.text = "새로운 소식"
+        versionSubtitleLabel.text = "버전 5.185.0"
+        versionContentLabel.text = "• 구석구석 숨어있던 버그들을 잡았어요. 또 다른 버그가 나타나면 토스 고객센터를 찾아주세요. 늘 열려있답니다. 365일 24시간 언제든지요."
+        versionContentLabel.setLineSpacing(8)
         
-        updateRecordButton.configureButton(title: "버전 기록", fontSize: 17, fontWeight: .regular, removeContentInsets: true)
-        updateDateLabel.text = "3시간 전"
+        versionRecordButton.configureButton(title: "버전 기록", fontSize: 17, fontWeight: .regular, removeContentInsets: true)
+        versionDateLabel.text = "3시간 전"
     }
     
     private func setPreviewViewUI() {
@@ -306,7 +306,7 @@ class AppDetailView: UIView {
         setBaseHierarchy()
         setTitleViewHierarchy()
         setSummaryViewHierarchy()
-        setUpdateViewHierarchy()
+        setVersioinViewHierarchy()
         setPreviewViewHierarchy()
         setDescriptionViewHierarchy()
         setFeedbackSummaryViewHierarchy()
@@ -317,7 +317,7 @@ class AppDetailView: UIView {
         self.addSubview(scrollView)
         scrollView.addSubview(contentStackView)
         
-        [titleView, summaryStackView, updateView, previewView, descriptionView, feedbackSummaryView, feedbackView].forEach {
+        [titleView, summaryStackView, versionView, previewView, descriptionView, feedbackSummaryView, feedbackView].forEach {
             let borderView = BorderView()
             contentStackView.addArrangedSubview($0)
             contentStackView.addArrangedSubview(borderView)
@@ -352,9 +352,9 @@ class AppDetailView: UIView {
         }
     }
     
-    private func setUpdateViewHierarchy() {
-        [updateTitleLabel, updateSubtitleLabel, updateContentLabel, updateRecordButton, updateDateLabel].forEach {
-            updateView.addSubview($0)
+    private func setVersioinViewHierarchy() {
+        [versionTitleLabel, versionSubtitleLabel, versionContentLabel, versionRecordButton, versionDateLabel].forEach {
+            versionView.addSubview($0)
         }
     }
     
@@ -399,7 +399,7 @@ class AppDetailView: UIView {
         setBaseConstraints()
         setTitleViewConstraints()
         setSummaryViewConstraints()
-        setUpdateViewConstraints()
+        setVersionViewConstraints()
         setPreviewViewConstraints()
         setDescriptionViewConstraints()
         setFeedbackSummaryViewConstraints()
@@ -506,34 +506,34 @@ class AppDetailView: UIView {
         }
     }
     
-    private func setUpdateViewConstraints() {
-        updateView.snp.makeConstraints {
+    private func setVersionViewConstraints() {
+        versionView.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(20)
         }
         
-        updateTitleLabel.snp.makeConstraints {
+        versionTitleLabel.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.equalToSuperview()
         }
         
-        updateSubtitleLabel.snp.makeConstraints {
-            $0.top.equalTo(updateTitleLabel.snp.bottom).offset(5)
-            $0.leading.equalTo(updateTitleLabel)
+        versionSubtitleLabel.snp.makeConstraints {
+            $0.top.equalTo(versionTitleLabel.snp.bottom).offset(5)
+            $0.leading.equalTo(versionTitleLabel)
         }
         
-        updateContentLabel.snp.makeConstraints {
-            $0.top.equalTo(updateSubtitleLabel.snp.bottom).offset(16)
+        versionContentLabel.snp.makeConstraints {
+            $0.top.equalTo(versionSubtitleLabel.snp.bottom).offset(16)
             $0.horizontalEdges.equalToSuperview()
             $0.bottom.equalToSuperview().inset(10)
         }
         
-        updateRecordButton.snp.makeConstraints {
-            $0.bottom.equalTo(updateTitleLabel)
+        versionRecordButton.snp.makeConstraints {
+            $0.bottom.equalTo(versionTitleLabel)
             $0.trailing.equalToSuperview()
         }
         
-        updateDateLabel.snp.makeConstraints {
-            $0.bottom.equalTo(updateSubtitleLabel)
+        versionDateLabel.snp.makeConstraints {
+            $0.bottom.equalTo(versionSubtitleLabel)
             $0.trailing.equalToSuperview()
         }
     }
