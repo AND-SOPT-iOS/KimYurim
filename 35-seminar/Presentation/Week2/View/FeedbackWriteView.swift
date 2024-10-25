@@ -108,4 +108,15 @@ class FeedbackWriteView: UIView {
             $0.bottom.equalTo(self.safeAreaLayoutGuide)
         }
     }
+    
+    func returnFeedback() -> Feedback {
+        let feedback = Feedback(title: feedbackTitleTextField.text ?? "",
+                                author: "김유림",
+                                starCount: 5,
+                                authorDate: Date(),
+                                content: feedbackTextView.text ?? "",
+                                developerContent: "",
+                                developerDate: nil)
+        return feedback
+    }
 }

@@ -39,6 +39,15 @@ class AppDetailViewController: UIViewController {
     }
     
     @objc private func tappedFeedbackWriteButton() {
-        self.present(FeedbackWriteViewController(), animated: true)
+        let feedbackWriteVC = FeedbackWriteViewController()
+        feedbackWriteVC.delegate = self
+        self.present(feedbackWriteVC, animated: true)
+    }
+}
+
+
+extension AppDetailViewController: FeedbackDelegate {
+    func dataBind(feedback: Feedback) {
+        appDetailView.dataBind(feedback: feedback)
     }
 }

@@ -9,9 +9,32 @@
 import UIKit
 import SnapKit
 
+struct Feedback {
+    let title: String
+    let author: String
+    let starCount: Int
+    let authorDate: Date?
+    let content: String
+    let developerContent: String
+    let developerDate: Date?
+}
+
+protocol FeedbackDelegate: AnyObject {
+    func dataBind(feedback: Feedback)
+}
+
 class AppDetailView: UIView {
     
     // MARK: - Properties
+    // data
+    private var feedback: Feedback = .init(title: "김유림",
+                                           author: "ISTJ",
+                                           starCount: 2,
+                                           authorDate: Date.form(year: 2023, month: 8, day: 25),
+                                           content: "1. 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려 강산 대한 사람 대한으로 길이 보전하세",
+                                           developerContent: "안녕하세요, 토스팀입니다. 소중한 의견을 주셔서 너무나 감사합니다.",
+                                           developerDate: Date.form(year: 2024, month: 1, day: 25))
+    
     private let scrollView = UIScrollView()
     private let contentStackView = UIStackView()
     
@@ -88,7 +111,7 @@ class AppDetailView: UIView {
     private let feedbackBoxView = UIView()
     private let feedbackTitleLabel = ContentLabel()
     private let feedbackStarStackView = StarStackView()
-    private let feedbackAuthorDateLabel = SubtitleLabel()
+    private let feedbackDateLabel = SubtitleLabel()
     private let feedbackAuthorLabel = SubtitleLabel()
     private let feedbackContentLabel = ContentLabel()
     private let feedbackDeveloperTitleLabel = ContentLabel()
@@ -274,23 +297,23 @@ class AppDetailView: UIView {
         feedbackBoxView.backgroundColor = .systemGray6
         feedbackBoxView.layer.cornerRadius = 10
         
-        feedbackTitleLabel.configureLabel(size: 15, weight: .semibold, text: "김유림")
+        feedbackTitleLabel.configureLabel(size: 15, weight: .semibold, text: feedback.title)
         
         feedbackStarStackView.bind(2, .orange)
         
-        feedbackAuthorDateLabel.configureLabel(color: .secondaryLabel, size: 15, weight: .regular, text: "10월 25")
+        feedbackDateLabel.configureLabel(color: .secondaryLabel, size: 15, weight: .regular, text: Date.formattedDate(date: feedback.authorDate))
         
-        feedbackAuthorLabel.configureLabel(color: .secondaryLabel, size: 14, weight: .regular, text: "ISTJ")
+        feedbackAuthorLabel.configureLabel(color: .secondaryLabel, size: 14, weight: .regular, text: feedback.author)
         
-        feedbackContentLabel.text = "1. 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려 강산 대한 사람 대한으로 길이 보전하세"
+        feedbackContentLabel.text = feedback.content
         feedbackContentLabel.setLineSpacing(4)
         
         feedbackDeveloperTitleLabel.configureLabel(size: 15, weight: .medium, text: "개발자 답변")
         
-        feedbackDeveloperContentLabel.text = "안녕하세요, 감사합니다."
+        feedbackDeveloperContentLabel.text = feedback.developerContent
         feedbackDeveloperContentLabel.setLineSpacing(4)
         
-        feedbackDeveloperDateLabel.configureLabel(color: .secondaryLabel, size: 15, weight: .regular, text: "10월 25")
+        feedbackDeveloperDateLabel.configureLabel(color: .secondaryLabel, size: 15, weight: .regular, text: Date.formattedDate(date: feedback.authorDate))
         
         [feedbackMoreButton1, feedbackMoreButton2].forEach {
             $0.configureButton(title: "더 보기", removeContentInsets: true)
@@ -389,7 +412,7 @@ class AppDetailView: UIView {
             feedbackTapToRateStackView.addArrangedSubview($0)
         }
         
-        [feedbackTitleLabel, feedbackStarStackView, feedbackAuthorDateLabel, feedbackAuthorLabel, feedbackContentLabel, feedbackDeveloperTitleLabel, feedbackDeveloperContentLabel, feedbackDeveloperDateLabel, feedbackMoreButton1, feedbackMoreButton2].forEach {
+        [feedbackTitleLabel, feedbackStarStackView, feedbackDateLabel, feedbackAuthorLabel, feedbackContentLabel, feedbackDeveloperTitleLabel, feedbackDeveloperContentLabel, feedbackDeveloperDateLabel, feedbackMoreButton1, feedbackMoreButton2].forEach {
             feedbackBoxView.addSubview($0)
         }
     }
@@ -670,7 +693,7 @@ class AppDetailView: UIView {
             $0.width.equalTo(80)
         }
         
-        feedbackAuthorDateLabel.snp.makeConstraints {
+        feedbackDateLabel.snp.makeConstraints {
             $0.trailing.equalTo(feedbackContentLabel)
             $0.centerY.equalTo(feedbackTitleLabel)
         }
@@ -719,5 +742,16 @@ class AppDetailView: UIView {
             $0.top.equalTo(feedbackBoxView.snp.bottom).offset(20)
             $0.trailing.equalTo(feedbackBoxView)
         }
+    }
+    
+    func dataBind(feedback: Feedback) {
+        self.feedback = feedback
+        feedbackTitleLabel.text = feedback.title
+        feedbackAuthorLabel.text = feedback.author
+        feedbackStarStackView.bind(feedback.starCount, .orange)
+        feedbackDateLabel.text = Date.formattedDate(date: feedback.authorDate)
+        feedbackContentLabel.text = feedback.content
+        feedbackDeveloperContentLabel.text = feedback.developerContent
+        feedbackDeveloperDateLabel.text = Date.formattedDate(date: feedback.developerDate)
     }
 }

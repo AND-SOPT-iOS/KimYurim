@@ -11,6 +11,7 @@ class FeedbackWriteViewController: UIViewController {
     
     // MARK: - Properties
     private let feedbackWriteView = FeedbackWriteView()
+    weak var delegate: FeedbackDelegate?
     
     // MARK: - Methods
     override func loadView() {
@@ -24,9 +25,16 @@ class FeedbackWriteViewController: UIViewController {
     
     private func setButtonAction() {
         feedbackWriteView.cancelButton.addTarget(self, action: #selector(tappedCancelButton), for: .touchUpInside)
+        
+        feedbackWriteView.sendButton.addTarget(self, action: #selector(tappedSendButton), for: .touchUpInside)
     }
     
     @objc private func tappedCancelButton() {
+        self.dismiss(animated: true)
+    }
+    
+    @objc private func tappedSendButton() {
+        delegate?.dataBind(feedback: feedbackWriteView.returnFeedback())
         self.dismiss(animated: true)
     }
 }
