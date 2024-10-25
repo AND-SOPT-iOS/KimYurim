@@ -28,6 +28,8 @@ class AppDetailViewController: UIViewController {
         appDetailView.feedbackSummaryAllButton.addTarget(self, action: #selector (tappedFeedbackSummaryAllButton), for: .touchUpInside)
         
         appDetailView.feedbackWriteButton.addTarget(self, action: #selector(tappedFeedbackWriteButton), for: .touchUpInside)
+        
+        appDetailView.descriptionMoreButton.addTarget(self, action: #selector(tappedDescriptionMoreButton), for: .touchUpInside)
     }
     
     @objc private func tappedVersionRecordButton() {
@@ -42,6 +44,10 @@ class AppDetailViewController: UIViewController {
         let feedbackWriteVC = FeedbackWriteViewController()
         feedbackWriteVC.delegate = self
         self.present(feedbackWriteVC, animated: true)
+    }
+    
+    @objc private func tappedDescriptionMoreButton() {
+        appDetailView.expandDescriptionLabel()
     }
 }
 

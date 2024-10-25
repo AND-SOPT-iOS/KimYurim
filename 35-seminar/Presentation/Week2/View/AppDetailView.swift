@@ -775,4 +775,9 @@ class AppDetailView: UIView {
             feedbackDeveloperContentView.isHidden = false
         }
     }
+    
+    func expandDescriptionLabel() {
+        descriptionLabel.numberOfLines = 0
+        descriptionMoreButton.isHidden = true
+    }
 }
