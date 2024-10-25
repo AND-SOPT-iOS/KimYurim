@@ -22,10 +22,12 @@ class AppDetailViewController: UIViewController {
         setNavigationBar()
         setButtonAction()
         setStarStackViewGesture()
+        appDetailView.scrollView.delegate = self
     }
     
     private func setNavigationBar() {
         let iconImageView = UIImageView()
+        iconImageView.clipsToBounds = true
         iconImageView.contentMode = .scaleAspectFit
         iconImageView.image = .tossIcon
         iconImageView.layer.cornerRadius = 8
@@ -35,7 +37,18 @@ class AppDetailViewController: UIViewController {
             $0.size.equalTo(28)
         }
         
-        let rightBarButton = appDetailView.openButton
+        let rightBarButton = UIButton()
+        rightBarButton.configureButton(configType: .filled,
+                                       title: "열기",
+                                       fontSize: 16,
+                                       fontWeight: .bold,
+                                       cornerStyle: .capsule,
+                                       foregroundColor: .white,
+                                       backgroundColor: .tintColor)
+        rightBarButton.snp.makeConstraints {
+            $0.width.equalTo(72)
+            $0.height.equalTo(32)
+        }
         
         self.navigationItem.titleView = iconImageView
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBarButton)
@@ -82,5 +95,20 @@ class AppDetailViewController: UIViewController {
 extension AppDetailViewController: FeedbackDelegate {
     func dataBind(feedback: Feedback) {
         appDetailView.dataBind(feedback: feedback)
+    }
+}
+
+extension AppDetailViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let triggerOffset: CGFloat = 80
+        
+        if offsetY > triggerOffset {
+            navigationItem.titleView?.isHidden = false
+            navigationItem.rightBarButtonItem?.isHidden = false
+        } else {
+            navigationItem.titleView?.isHidden = true
+            navigationItem.rightBarButtonItem?.isHidden = true
+        }
     }
 }
