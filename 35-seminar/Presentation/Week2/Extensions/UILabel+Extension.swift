@@ -17,8 +17,9 @@ extension UILabel {
     }
     
     func setLineSpacing(_ lineSpacing: CGFloat) {
+        guard let text = self.text else { return }
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = lineSpacing
-        self.attributedText = NSAttributedString(string: self.text!, attributes: [.paragraphStyle: paragraphStyle])
+        self.attributedText = NSAttributedString(string: text, attributes: [.paragraphStyle: paragraphStyle])
     }
 }
