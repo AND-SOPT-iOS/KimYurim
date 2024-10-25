@@ -30,6 +30,7 @@
 		15EC305B2CCB76F500A0480B /* AllFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC305A2CCB76F500A0480B /* AllFeedbackViewController.swift */; };
 		15EC305D2CCB792300A0480B /* FeedbackWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC305C2CCB792300A0480B /* FeedbackWriteViewController.swift */; };
 		15EC305F2CCB793500A0480B /* FeedbackWriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC305E2CCB793500A0480B /* FeedbackWriteView.swift */; };
+		15EC30612CCB8E9C00A0480B /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC30602CCB8E9C00A0480B /* Date+Extension.swift */; };
 		15F4FD072CC73D0A00C99A20 /* StarStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F4FD062CC73D0A00C99A20 /* StarStackView.swift */; };
 		15F4FD0F2CC7649A00C99A20 /* BorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F4FD0E2CC7649A00C99A20 /* BorderView.swift */; };
 /* End PBXBuildFile section */
@@ -59,6 +60,7 @@
 		15EC305A2CCB76F500A0480B /* AllFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllFeedbackViewController.swift; sourceTree = "<group>"; };
 		15EC305C2CCB792300A0480B /* FeedbackWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackWriteViewController.swift; sourceTree = "<group>"; };
 		15EC305E2CCB793500A0480B /* FeedbackWriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackWriteView.swift; sourceTree = "<group>"; };
+		15EC30602CCB8E9C00A0480B /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		15F4FD062CC73D0A00C99A20 /* StarStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarStackView.swift; sourceTree = "<group>"; };
 		15F4FD0E2CC7649A00C99A20 /* BorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -110,6 +112,7 @@
 				15EC30522CCA434700A0480B /* UIButton+Extension.swift */,
 				15EC30562CCAC33700A0480B /* UIImage+Extension.swift */,
 				157119DC2CBE96F500362252 /* UILabel+Extension.swift */,
+				15EC30602CCB8E9C00A0480B /* Date+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15EC30592CCB727300A0480B /* VersionRecordViewController.swift in Sources */,
+				15EC30612CCB8E9C00A0480B /* Date+Extension.swift in Sources */,
 				1590A6A12CBE737600FB32AE /* PractScrollViewController.swift in Sources */,
 				157119D82CBE965700362252 /* SubtitleLabel.swift in Sources */,
 				15EC30552CCAB69000A0480B /* AppDetailView.swift in Sources */,
