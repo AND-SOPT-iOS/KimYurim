@@ -140,13 +140,15 @@ class AppDetailView: UIView {
         
         openButton.configureButton(configType: .filled,
                                    title: "열기",
+                                   fontSize: 16,
                                    fontWeight: .bold,
                                    cornerStyle: .capsule,
                                    foregroundColor: .white,
                                    backgroundColor: .tintColor)
         
         shareButton.configureButton(systemName: "square.and.arrow.up",
-                                    symbolWeight: .medium)
+                                    pointSize: 16,
+                                    symbolWeight: .semibold)
         
     }
     
@@ -441,13 +443,14 @@ class AppDetailView: UIView {
         openButton.snp.makeConstraints {
             $0.leading.equalTo(titleLabel)
             $0.bottom.equalTo(iconImageView)
-            $0.width.equalTo(76)
-            $0.height.equalTo(34)
+            $0.width.equalTo(72)
+            $0.height.equalTo(32)
         }
         
         shareButton.snp.makeConstraints {
             $0.trailing.equalToSuperview().inset(20)
             $0.bottom.equalTo(iconImageView)
+            $0.size.equalTo(32)
         }
     }
     
@@ -554,7 +557,7 @@ class AppDetailView: UIView {
         previewDeviceImageView.snp.makeConstraints {
             $0.top.equalTo(previewImageView.snp.bottom).offset(10)
             $0.leading.equalToSuperview()
-            $0.size.equalTo(20)
+            $0.size.equalTo(18)
             $0.bottom.equalToSuperview().offset(-10)
         }
         
