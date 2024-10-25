@@ -21,12 +21,21 @@ class FeedbackWriteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setButtonAction()
+        setStarStackViewGesture()
     }
     
     private func setButtonAction() {
         feedbackWriteView.cancelButton.addTarget(self, action: #selector(tappedCancelButton), for: .touchUpInside)
         
         feedbackWriteView.sendButton.addTarget(self, action: #selector(tappedSendButton), for: .touchUpInside)
+    }
+    
+    private func setStarStackViewGesture() {
+        let panGesture = UIPanGestureRecognizer(target: feedbackWriteView.tapToRateStarStackView, action: #selector(feedbackWriteView.tapToRateStarStackView.handlePangesture))
+        feedbackWriteView.tapToRateStarStackView.addGestureRecognizer(panGesture)
+        
+        let tapGesture = UITapGestureRecognizer(target: feedbackWriteView.tapToRateStarStackView, action: #selector(feedbackWriteView.tapToRateStarStackView.handlePangesture))
+        feedbackWriteView.tapToRateStarStackView.addGestureRecognizer(tapGesture)
     }
     
     @objc private func tappedCancelButton() {
