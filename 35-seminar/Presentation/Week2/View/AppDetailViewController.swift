@@ -19,8 +19,26 @@ class AppDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNavigationBar()
         setButtonAction()
         setStarStackViewGesture()
+    }
+    
+    private func setNavigationBar() {
+        let iconImageView = UIImageView()
+        iconImageView.contentMode = .scaleAspectFit
+        iconImageView.image = .tossIcon
+        iconImageView.layer.cornerRadius = 8
+        iconImageView.layer.borderColor = UIColor.systemGray5.cgColor
+        iconImageView.layer.borderWidth = 0.6
+        iconImageView.snp.makeConstraints {
+            $0.size.equalTo(28)
+        }
+        
+        let rightBarButton = appDetailView.openButton
+        
+        self.navigationItem.titleView = iconImageView
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBarButton)
     }
     
     private func setButtonAction() {
