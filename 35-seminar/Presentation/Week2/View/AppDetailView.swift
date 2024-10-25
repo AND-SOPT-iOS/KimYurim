@@ -10,13 +10,13 @@ import UIKit
 import SnapKit
 
 struct Feedback {
-    let title: String?
-    let author: String?
-    let starCount: Int?
-    let authorDate: Date?
-    let content: String?
-    let developerContent: String?
-    let developerDate: Date?
+    var title: String?
+    var author: String?
+    var starCount: Int?
+    var authorDate: Date?
+    var content: String?
+    var developerContent: String?
+    var developerDate: Date?
 }
 
 protocol FeedbackDelegate: AnyObject {
@@ -130,6 +130,7 @@ class AppDetailView: UIView {
         setUI()
         setHierarchy()
         setConstraints()
+        feedbackTapToRateStarStackView.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -779,5 +780,12 @@ class AppDetailView: UIView {
     func expandDescriptionLabel() {
         descriptionLabel.numberOfLines = 0
         descriptionMoreButton.isHidden = true
+    }
+}
+
+extension AppDetailView: StarStackViewDelegate {
+    func starStackView(_ view: StarStackView, newCount: Int) {
+        feedback?.starCount = newCount
+        feedbackStarStackView.bind(newCount, .orange)
     }
 }
