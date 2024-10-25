@@ -13,7 +13,7 @@ class AppDetailView: UIView {
     
     // MARK: - Properties
     private let scrollView = UIScrollView()
-    private var contentStackView = UIStackView()
+    private let contentStackView = UIStackView()
     
     // 타이틀뷰
     private let titleView = UIView()
@@ -83,7 +83,7 @@ class AppDetailView: UIView {
     private let feedbackView = UIView()
     private let feedbackTapToRateStackView = UIStackView()
     private let feedbackTapToRateLabel = SubtitleLabel()
-    var feedbackTapToRateStarStackView = StarStackView()
+    let feedbackTapToRateStarStackView = StarStackView()
     
     private let feedbackBoxView = UIView()
     private let feedbackTitleLabel = ContentLabel()
