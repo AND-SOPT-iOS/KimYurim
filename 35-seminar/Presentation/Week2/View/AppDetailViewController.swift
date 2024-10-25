@@ -20,6 +20,7 @@ class AppDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setButtonAction()
+        setStarStackViewGesture()
     }
     
     private func setButtonAction() {
@@ -30,6 +31,14 @@ class AppDetailViewController: UIViewController {
         appDetailView.feedbackWriteButton.addTarget(self, action: #selector(tappedFeedbackWriteButton), for: .touchUpInside)
         
         appDetailView.descriptionMoreButton.addTarget(self, action: #selector(tappedDescriptionMoreButton), for: .touchUpInside)
+    }
+    
+    private func setStarStackViewGesture() {
+        let panGesture = UIPanGestureRecognizer(target: appDetailView.feedbackTapToRateStarStackView, action: #selector(appDetailView.feedbackTapToRateStarStackView.handlePangesture))
+        appDetailView.feedbackTapToRateStarStackView.addGestureRecognizer(panGesture)
+        
+        let tapGesture = UITapGestureRecognizer(target: appDetailView.feedbackTapToRateStarStackView, action: #selector(appDetailView.feedbackTapToRateStarStackView.handlePangesture))
+        appDetailView.feedbackTapToRateStarStackView.addGestureRecognizer(tapGesture)
     }
     
     @objc private func tappedVersionRecordButton() {

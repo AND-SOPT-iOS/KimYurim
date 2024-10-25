@@ -13,9 +13,15 @@ enum StarColor {
     case orange
 }
 
+protocol StarStackViewDelegate: AnyObject {
+    func starStackView(_ view: StarStackView, newCount: Int)
+}
+
 class StarStackView: UIStackView {
     
     // MARK: - Properties
+    weak var delegate: StarStackViewDelegate?
+    
     private var starCount: Int = 0
     private var starColor: StarColor = .tint
     
@@ -84,5 +90,33 @@ class StarStackView: UIStackView {
         self.starCount = starCount
         self.starColor = color
         updateStarImage()
+    }
+    
+    // 드래그 제스처 핸들러
+    @objc func handlePangesture(_ gesture: UIPanGestureRecognizer) {
+        let location = gesture.location(in: self)
+        let startWidth = bounds.width / 5
+        let selectedStarIndex = Int(location.x / startWidth)
+        let newCount = selectedStarIndex + 1
+        
+        if newCount != starCount {
+            starCount = newCount
+            updateStarImage()
+            delegate?.starStackView(self, newCount: newCount)
+        }
+    }
+    
+    // 클릭 제스처 핸들러
+    @objc func handleTapGesture(_ gesture: UITapGestureRecognizer) {
+        let location = gesture.location(in: self)
+        let startWidth = bounds.width / 5
+        let selectedStarIndex = Int(location.x / startWidth)
+        let newCount = selectedStarIndex + 1
+        
+        if newCount != starCount {
+            starCount = newCount
+            updateStarImage()
+            delegate?.starStackView(self, newCount: newCount)
+        }
     }
 }
