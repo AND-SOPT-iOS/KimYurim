@@ -22,6 +22,7 @@ class FeedbackWriteViewController: UIViewController {
         super.viewDidLoad()
         setButtonAction()
         setStarStackViewGesture()
+        feedbackWriteView.feedbackTextView.delegate = self
     }
     
     private func setButtonAction() {
@@ -45,5 +46,15 @@ class FeedbackWriteViewController: UIViewController {
     @objc private func tappedSendButton() {
         delegate?.dataBind(feedback: feedbackWriteView.returnFeedback())
         self.dismiss(animated: true)
+    }
+}
+
+extension FeedbackWriteViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        feedbackWriteView.setTextViewToWrite()
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        feedbackWriteView.setTextViewToEnd()
     }
 }

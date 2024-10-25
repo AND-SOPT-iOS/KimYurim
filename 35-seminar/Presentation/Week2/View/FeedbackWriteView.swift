@@ -12,6 +12,7 @@ class FeedbackWriteView: UIView {
     
     // MARK: - Properties
     var starCount: Int = 0
+    let textViewPlaceHolder = "리뷰(선택사항)"
     
     private let titleLabel = UILabel()
     let cancelButton = UIButton()
@@ -20,8 +21,8 @@ class FeedbackWriteView: UIView {
     let tapToRateStarStackView = StarStackView()
     private let tapToRateGuideLabel = SubtitleLabel()
     
-    let feedbackStackView = UIStackView()
-    let feedbackTitleTextField = UITextField()
+    private let feedbackStackView = UIStackView()
+    private let feedbackTitleTextField = UITextField()
     let feedbackTextView = UITextView()
     
     // MARK: - Methods
@@ -55,10 +56,10 @@ class FeedbackWriteView: UIView {
         feedbackTitleTextField.font = .systemFont(ofSize: 17, weight: .regular)
         feedbackTitleTextField.setContentHuggingPriority(.defaultHigh, for: .vertical)
         
-        feedbackTextView.text = "리뷰(선택사항)"
         feedbackTextView.textContainerInset = .zero
         feedbackTextView.textContainer.lineFragmentPadding = 0
         feedbackTextView.font = .systemFont(ofSize: 17, weight: .regular)
+        setTextViewPlaceholder()
     }
     
     private func setHierarchy() {
@@ -112,12 +113,38 @@ class FeedbackWriteView: UIView {
         }
     }
     
+    func setTextViewPlaceholder() {
+        feedbackTextView.text = textViewPlaceHolder
+        feedbackTextView.textColor = .systemGray4
+    }
+    
+    func setTextViewToWrite() {
+        if feedbackTextView.text == textViewPlaceHolder {
+            feedbackTextView.text = nil
+            feedbackTextView.textColor = .label
+        }
+    }
+    
+    func setTextViewToEnd() {
+        let isPlaceHolder = feedbackTextView.text == textViewPlaceHolder
+        let isEmpty = feedbackTextView.text.isEmpty
+        
+        if isPlaceHolder || isEmpty {
+            setTextViewPlaceholder()
+        }
+    }
+    
     func returnFeedback() -> Feedback {
+        var content = feedbackTextView.text
+        if content == textViewPlaceHolder {
+            content = nil
+        }
+        
         let feedback = Feedback(title: feedbackTitleTextField.text,
                                 author: "김유림",
                                 starCount: starCount,
                                 authorDate: Date(),
-                                content: feedbackTextView.text,
+                                content: content,
                                 developerContent: nil,
                                 developerDate: nil)
         return feedback
