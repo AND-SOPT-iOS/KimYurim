@@ -37,11 +37,11 @@ class FeedbackWriteView: UIView {
     private func setUI() {
         self.backgroundColor = .systemBackground
         
-        titleLabel.configureLabel(size: 17, weight: .medium, text: "리뷰 작성하기")
+        titleLabel.configureLabel(size: 17, weight: .semibold, text: "리뷰 작성하기")
         
-        cancelButton.configureButton(title: "취소", fontSize: 17, fontWeight: .regular, removeContentInsets: true)
+        cancelButton.configureButton(title: "취소", fontSize: 17, fontWeight: .medium, removeContentInsets: true)
         
-        sendButton.configureButton(title: "보내기", fontSize: 17, fontWeight: .medium, removeContentInsets: true)
+        sendButton.configureButton(title: "보내기", fontSize: 17, fontWeight: .semibold, removeContentInsets: true)
         
         tapToRateGuideLabel.configureLabel(color: .secondaryLabel, size: 10, weight: .regular, text: "별점을 탭하여 평가하기")
         
@@ -49,12 +49,13 @@ class FeedbackWriteView: UIView {
         feedbackStackView.spacing = 10
         
         feedbackTitleTextField.placeholder = "제목"
+        feedbackTitleTextField.font = .systemFont(ofSize: 17, weight: .regular)
         feedbackTitleTextField.setContentHuggingPriority(.defaultHigh, for: .vertical)
         
         feedbackTextView.text = "리뷰(선택사항)"
         feedbackTextView.textContainerInset = .zero
         feedbackTextView.textContainer.lineFragmentPadding = 0
-        feedbackTextView.font = .systemFont(ofSize: 15, weight: .regular)
+        feedbackTextView.font = .systemFont(ofSize: 17, weight: .regular)
     }
     
     private func setHierarchy() {
@@ -93,7 +94,7 @@ class FeedbackWriteView: UIView {
         tapToRateStarStackView.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(30)
             $0.centerX.equalToSuperview()
-            $0.width.equalTo(200)
+            $0.width.equalTo(180)
         }
         
         tapToRateGuideLabel.snp.makeConstraints {

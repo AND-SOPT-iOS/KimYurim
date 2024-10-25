@@ -296,9 +296,9 @@ class AppDetailView: UIView {
             $0.configureButton(title: "더 보기", removeContentInsets: true)
         }
         
-        feedbackWriteButton.configureButton(title: " 리뷰 작성", systemName: "square.and.pencil")
+        feedbackWriteButton.configureButton(title: " 리뷰 작성", fontSize: 17, systemName: "square.and.pencil")
         
-        appSupportButton.configureButton(title: " 앱 지원", systemName: "questionmark.circle")
+        appSupportButton.configureButton(title: " 앱 지원", fontSize: 17, systemName: "questionmark.circle")
     }
     
     // MARK: - Hierarchy
