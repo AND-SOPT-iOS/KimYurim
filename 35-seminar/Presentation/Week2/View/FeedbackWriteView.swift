@@ -11,6 +11,8 @@ import SnapKit
 class FeedbackWriteView: UIView {
     
     // MARK: - Properties
+    var starCount: Int = 0
+    
     private let titleLabel = UILabel()
     let cancelButton = UIButton()
     let sendButton = UIButton()
@@ -28,6 +30,7 @@ class FeedbackWriteView: UIView {
         setUI()
         setHierarchy()
         setConstraints()
+        tapToRateStarStackView.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -112,11 +115,17 @@ class FeedbackWriteView: UIView {
     func returnFeedback() -> Feedback {
         let feedback = Feedback(title: feedbackTitleTextField.text,
                                 author: "김유림",
-                                starCount: 0,
+                                starCount: starCount,
                                 authorDate: Date(),
                                 content: feedbackTextView.text,
                                 developerContent: nil,
                                 developerDate: nil)
         return feedback
+    }
+}
+
+extension FeedbackWriteView: StarStackViewDelegate {
+    func starStackView(_ view: StarStackView, newCount: Int) {
+        starCount = newCount
     }
 }
