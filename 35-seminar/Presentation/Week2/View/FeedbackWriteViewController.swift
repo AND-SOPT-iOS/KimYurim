@@ -19,5 +19,14 @@ class FeedbackWriteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setButtonAction()
+    }
+    
+    private func setButtonAction() {
+        feedbackWriteView.cancelButton.addTarget(self, action: #selector(tappedCancelButton), for: .touchUpInside)
+    }
+    
+    @objc private func tappedCancelButton() {
+        self.dismiss(animated: true)
     }
 }
