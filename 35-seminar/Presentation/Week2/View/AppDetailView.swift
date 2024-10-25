@@ -20,8 +20,8 @@ class AppDetailView: UIView {
     private let iconImageView = UIImageView()
     private let titleLabel = TitleLabel()
     private let subtitleLabel = SubtitleLabel()
-    private let openButton = UIButton()
-    private let shareButton = UIButton()
+    let openButton = UIButton()
+    let shareButton = UIButton()
     
     // 요약뷰
     private let summaryStackView = UIStackView()
@@ -49,7 +49,7 @@ class AppDetailView: UIView {
     private let versionTitleLabel = TitleLabel()
     private let versionSubtitleLabel = SubtitleLabel()
     private let versionContentLabel = ContentLabel()
-    private let versionRecordButton = UIButton()
+    let versionRecordButton = UIButton()
     private let versionDateLabel = SubtitleLabel()
     
     // 미리보기뷰
@@ -62,20 +62,20 @@ class AppDetailView: UIView {
     // 앱 설명 뷰
     private let descriptionView = UIView()
     private let descriptionLabel = ContentLabel()
-    private let descriptionMoreButton = UIButton()
+    let descriptionMoreButton = UIButton()
     
     private let developerView = UIView()
     private let developerNameLabel = ContentLabel()
     private let developerRoleLabel = SubtitleLabel()
     private let chevronImageView = UIImageView()
-    lazy var developerButton = UIButton()
+    let developerButton = UIButton()
     
     // 피드백 요약 뷰
     private let feedbackSummaryView = UIView()
     private let feedbackSummaryTitleLabel = TitleLabel()
     private let feedbackSummaryAverageLabel = TitleLabel()
     private let feedbackSummarySubtitleLabel = SubtitleLabel()
-    lazy var feedbackSummaryAllButton = UIButton()
+    let feedbackSummaryAllButton = UIButton()
     private let feedbackSummaryStarsImageView = UIImageView()
     private let feedbackSummaryCountLabel = SubtitleLabel()
     
@@ -94,11 +94,11 @@ class AppDetailView: UIView {
     private let feedbackDeveloperTitleLabel = ContentLabel()
     private let feedbackDeveloperContentLabel = ContentLabel()
     private let feedbackDeveloperDateLabel = SubtitleLabel()
-    private let feedbackMoreButton1 = UIButton()
-    private let feedbackMoreButton2 = UIButton()
+    let feedbackMoreButton1 = UIButton()
+    let feedbackMoreButton2 = UIButton()
     
-    private let feedbackWriteButton = UIButton()
-    private let appSupportButton = UIButton()
+    let feedbackWriteButton = UIButton()
+    let appSupportButton = UIButton()
     
     // MARK: - Methods
     override init(frame: CGRect) {

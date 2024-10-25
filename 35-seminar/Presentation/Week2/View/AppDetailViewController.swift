@@ -19,5 +19,14 @@ class AppDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setButtonAction()
+    }
+    
+    private func setButtonAction() {
+        appDetailView.versionRecordButton.addTarget(self, action: #selector (tappedVersionRecordButton), for: .touchUpInside)
+    }
+    
+    @objc private func tappedVersionRecordButton() {
+        self.navigationController?.pushViewController(VersionRecordViewController(), animated: true)
     }
 }
