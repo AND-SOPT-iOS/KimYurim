@@ -27,6 +27,7 @@
 		15EC30552CCAB69000A0480B /* AppDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC30542CCAB69000A0480B /* AppDetailView.swift */; };
 		15EC30572CCAC33700A0480B /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC30562CCAC33700A0480B /* UIImage+Extension.swift */; };
 		15EC30592CCB727300A0480B /* VersionRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC30582CCB727300A0480B /* VersionRecordViewController.swift */; };
+		15EC305B2CCB76F500A0480B /* AllFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC305A2CCB76F500A0480B /* AllFeedbackViewController.swift */; };
 		15F4FD072CC73D0A00C99A20 /* StarStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F4FD062CC73D0A00C99A20 /* StarStackView.swift */; };
 		15F4FD0F2CC7649A00C99A20 /* BorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F4FD0E2CC7649A00C99A20 /* BorderView.swift */; };
 /* End PBXBuildFile section */
@@ -53,6 +54,7 @@
 		15EC30542CCAB69000A0480B /* AppDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailView.swift; sourceTree = "<group>"; };
 		15EC30562CCAC33700A0480B /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		15EC30582CCB727300A0480B /* VersionRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionRecordViewController.swift; sourceTree = "<group>"; };
+		15EC305A2CCB76F500A0480B /* AllFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllFeedbackViewController.swift; sourceTree = "<group>"; };
 		15F4FD062CC73D0A00C99A20 /* StarStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarStackView.swift; sourceTree = "<group>"; };
 		15F4FD0E2CC7649A00C99A20 /* BorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -189,6 +191,7 @@
 			children = (
 				15EC30542CCAB69000A0480B /* AppDetailView.swift */,
 				1590A6A32CBE8A9200FB32AE /* AppDetailViewController.swift */,
+				15EC305A2CCB76F500A0480B /* AllFeedbackViewController.swift */,
 				15EC30582CCB727300A0480B /* VersionRecordViewController.swift */,
 			);
 			path = View;
@@ -296,6 +299,7 @@
 				15F4FD072CC73D0A00C99A20 /* StarStackView.swift in Sources */,
 				157119DD2CBE96F500362252 /* UILabel+Extension.swift in Sources */,
 				15F4FD0F2CC7649A00C99A20 /* BorderView.swift in Sources */,
+				15EC305B2CCB76F500A0480B /* AllFeedbackViewController.swift in Sources */,
 				15EC30572CCAC33700A0480B /* UIImage+Extension.swift in Sources */,
 				1590A6452CBE6C6A00FB32AE /* Week1MainViewController.swift in Sources */,
 			);
