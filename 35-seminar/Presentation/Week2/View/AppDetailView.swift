@@ -328,7 +328,7 @@ class AppDetailView: UIView {
         feedbackDeveloperContentLabel.text = feedback?.developerContent
         feedbackDeveloperContentLabel.setLineSpacing(4)
         
-        feedbackDeveloperDateLabel.configureLabel(color: .secondaryLabel, size: 15, weight: .regular, text: Date.formattedDate(date: feedback?.authorDate))
+        feedbackDeveloperDateLabel.configureLabel(color: .secondaryLabel, size: 15, weight: .regular, text: Date.formattedDate(date: feedback?.developerDate))
         
         [feedbackMoreButton1, feedbackMoreButton2].forEach {
             $0.configureButton(title: "더 보기", removeContentInsets: true)
