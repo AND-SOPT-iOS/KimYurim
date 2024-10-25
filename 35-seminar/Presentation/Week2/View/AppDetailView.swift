@@ -99,8 +99,8 @@ class AppDetailView: UIView {
     // 피드백 뷰
     private let feedbackView = UIView()
     private let feedbackTapToRateStackView = UIStackView()
-    private let feedbackTapToRateLabel = SubtitleLabel()
-    let feedbackTapToRateStarStackView = StarStackView()
+    private let tapToRateLabel = SubtitleLabel()
+    let tapToRateStarStackView = StarStackView()
     
     private let feedbackBoxStackView = UIStackView()
     private let feedbackTitleStackView = UIStackView()
@@ -130,7 +130,7 @@ class AppDetailView: UIView {
         setUI()
         setHierarchy()
         setConstraints()
-        feedbackTapToRateStarStackView.delegate = self
+        tapToRateStarStackView.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -291,10 +291,11 @@ class AppDetailView: UIView {
         feedbackTapToRateStackView.axis = .horizontal
         feedbackTapToRateStackView.spacing = 10
         
-        feedbackTapToRateLabel.configureLabel(color: .secondaryLabel, size: 17, weight: .medium, text: "탭하여 평가하기:")
-        feedbackTapToRateLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        tapToRateLabel.configureLabel(color: .secondaryLabel, size: 17, weight: .medium, text: "탭하여 평가하기:")
+        tapToRateLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         
-        feedbackTapToRateStarStackView.setContentHuggingPriority(.defaultLow, for: .horizontal)
+        tapToRateStarStackView.setContentHuggingPriority(.defaultLow, for: .horizontal)
+        tapToRateStarStackView.bind(feedback?.starCount ?? 0, .tint)
         
         feedbackBoxStackView.axis = .vertical
         feedbackBoxStackView.backgroundColor = .systemGray6
@@ -422,7 +423,7 @@ class AppDetailView: UIView {
             feedbackView.addSubview($0)
         }
         
-        [feedbackTapToRateLabel, feedbackTapToRateStarStackView].forEach {
+        [tapToRateLabel, tapToRateStarStackView].forEach {
             feedbackTapToRateStackView.addArrangedSubview($0)
         }
         
@@ -768,6 +769,7 @@ class AppDetailView: UIView {
         feedbackContentLabel.text = feedback.content
         feedbackDeveloperContentLabel.text = feedback.developerContent
         feedbackDeveloperDateLabel.text = Date.formattedDate(date: feedback.developerDate)
+        tapToRateStarStackView.bind(feedback.starCount ?? 0, .tint)
         
         // 개발자 답변 있는지 확인
         if feedback.developerContent == nil {

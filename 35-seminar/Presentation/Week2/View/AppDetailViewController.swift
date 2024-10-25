@@ -34,11 +34,11 @@ class AppDetailViewController: UIViewController {
     }
     
     private func setStarStackViewGesture() {
-        let panGesture = UIPanGestureRecognizer(target: appDetailView.feedbackTapToRateStarStackView, action: #selector(appDetailView.feedbackTapToRateStarStackView.handlePangesture))
-        appDetailView.feedbackTapToRateStarStackView.addGestureRecognizer(panGesture)
+        let panGesture = UIPanGestureRecognizer(target: appDetailView.tapToRateStarStackView, action: #selector(appDetailView.tapToRateStarStackView.handlePangesture))
+        appDetailView.tapToRateStarStackView.addGestureRecognizer(panGesture)
         
-        let tapGesture = UITapGestureRecognizer(target: appDetailView.feedbackTapToRateStarStackView, action: #selector(appDetailView.feedbackTapToRateStarStackView.handlePangesture))
-        appDetailView.feedbackTapToRateStarStackView.addGestureRecognizer(tapGesture)
+        let tapGesture = UITapGestureRecognizer(target: appDetailView.tapToRateStarStackView, action: #selector(appDetailView.tapToRateStarStackView.handlePangesture))
+        appDetailView.tapToRateStarStackView.addGestureRecognizer(tapGesture)
     }
     
     @objc private func tappedVersionRecordButton() {
