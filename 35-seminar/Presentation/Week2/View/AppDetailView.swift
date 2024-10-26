@@ -9,16 +9,6 @@
 import UIKit
 import SnapKit
 
-struct Feedback {
-    var title: String?
-    var author: String?
-    var starCount: Int?
-    var authorDate: Date?
-    var content: String?
-    var developerContent: String?
-    var developerDate: Date?
-}
-
 protocol FeedbackDelegate: AnyObject {
     func dataBind(feedback: Feedback)
 }

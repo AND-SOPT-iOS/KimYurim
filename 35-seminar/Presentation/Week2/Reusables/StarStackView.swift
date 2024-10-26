@@ -7,12 +7,6 @@
 
 import UIKit
 
-enum StarColor {
-    case tint
-    case gray
-    case orange
-}
-
 protocol StarStackViewDelegate: AnyObject {
     func starStackView(_ view: StarStackView, newCount: Int)
 }

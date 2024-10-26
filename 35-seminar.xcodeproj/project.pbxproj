@@ -13,6 +13,8 @@
 		157119D82CBE965700362252 /* SubtitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157119D72CBE965700362252 /* SubtitleLabel.swift */; };
 		157119DA2CBE96BB00362252 /* ContentLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157119D92CBE96BB00362252 /* ContentLabel.swift */; };
 		157119DD2CBE96F500362252 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157119DC2CBE96F500362252 /* UILabel+Extension.swift */; };
+		15728FC52CCCAF0100E1E151 /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15728FC42CCCAF0100E1E151 /* Feedback.swift */; };
+		15728FC72CCCAF3100E1E151 /* StarColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15728FC62CCCAF3100E1E151 /* StarColor.swift */; };
 		1590A63D2CBE6C6A00FB32AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1590A6352CBE6C6A00FB32AE /* Assets.xcassets */; };
 		1590A63F2CBE6C6A00FB32AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1590A6392CBE6C6A00FB32AE /* LaunchScreen.storyboard */; };
 		1590A6402CBE6C6A00FB32AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1590A62A2CBE6C6A00FB32AE /* AppDelegate.swift */; };
@@ -42,6 +44,8 @@
 		157119D72CBE965700362252 /* SubtitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleLabel.swift; sourceTree = "<group>"; };
 		157119D92CBE96BB00362252 /* ContentLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentLabel.swift; sourceTree = "<group>"; };
 		157119DC2CBE96F500362252 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		15728FC42CCCAF0100E1E151 /* Feedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
+		15728FC62CCCAF3100E1E151 /* StarColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarColor.swift; sourceTree = "<group>"; };
 		1590A62A2CBE6C6A00FB32AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1590A62B2CBE6C6A00FB32AE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1590A62D2CBE6C6A00FB32AE /* Week1DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week1DetailView.swift; sourceTree = "<group>"; };
@@ -117,6 +121,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		15728FC32CCCAEE000E1E151 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				15728FC42CCCAF0100E1E151 /* Feedback.swift */,
+				15728FC62CCCAF3100E1E151 /* StarColor.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		1590A62C2CBE6C6A00FB32AE /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +198,7 @@
 		1590A69F2CBE719000FB32AE /* Week2 */ = {
 			isa = PBXGroup;
 			children = (
+				15728FC32CCCAEE000E1E151 /* Models */,
 				157119DB2CBE96DE00362252 /* Extensions */,
 				157119D42CBE8FB700362252 /* Reusables */,
 				15F4FD092CC7405800C99A20 /* Practice */,
@@ -295,6 +309,7 @@
 				15EC30592CCB727300A0480B /* VersionRecordViewController.swift in Sources */,
 				15EC30612CCB8E9C00A0480B /* Date+Extension.swift in Sources */,
 				1590A6A12CBE737600FB32AE /* PractScrollViewController.swift in Sources */,
+				15728FC72CCCAF3100E1E151 /* StarColor.swift in Sources */,
 				157119D82CBE965700362252 /* SubtitleLabel.swift in Sources */,
 				15EC30552CCAB69000A0480B /* AppDetailView.swift in Sources */,
 				1590A6402CBE6C6A00FB32AE /* AppDelegate.swift in Sources */,
@@ -314,6 +329,7 @@
 				15EC305B2CCB76F500A0480B /* AllFeedbackViewController.swift in Sources */,
 				15EC30572CCAC33700A0480B /* UIImage+Extension.swift in Sources */,
 				1590A6452CBE6C6A00FB32AE /* Week1MainViewController.swift in Sources */,
+				15728FC52CCCAF0100E1E151 /* Feedback.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
