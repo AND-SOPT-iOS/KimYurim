@@ -17,7 +17,7 @@ class AppDetailView: UIView {
     
     // MARK: - Properties
     private var feedback: Feedback?
-    private let initialFeedback = Feedback(title: "김유림", author: "ISTJ", starCount: 5, authorDate: Date.form(year: 2023, month: 12, day: 20), content: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세", developerContent: "안녕하세요, 토스팀입니다. 소중한 의견을 주셔서 너무나 감사합니다.", developerDate: Date.form(year: 2024, month: 5, day: 30))
+    private let initialFeedback = Feedback(title: "김유림", author: "ISTJ", starCount: 5, authorDate: Date(year: 2023, month: 12, day: 20), content: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세", developerContent: "안녕하세요, 토스팀입니다. 소중한 의견을 주셔서 너무나 감사합니다.", developerDate: Date(year: 2024, month: 5, day: 30))
     
     let scrollView = UIScrollView()
     private let contentStackView = UIStackView()

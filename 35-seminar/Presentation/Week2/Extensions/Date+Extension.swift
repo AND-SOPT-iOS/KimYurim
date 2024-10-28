@@ -8,13 +8,16 @@
 import Foundation
 
 extension Date {
-    static func form(year: Int, month: Int, day: Int) -> Date? {
+    init?(year: Int, month: Int, day: Int) {
         var dateComponents = DateComponents()
         dateComponents.year = year
         dateComponents.month = month
         dateComponents.day = day
-        
-        return Calendar.current.date(from: dateComponents)
+        if let date = Calendar.current.date(from: dateComponents) {
+            self = date
+        } else {
+            return nil
+        }
     }
     
     static func formattedDate(date: Date?) -> String {
