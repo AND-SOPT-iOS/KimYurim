@@ -20,17 +20,15 @@ extension Date {
         }
     }
     
-    static func formattedDate(date: Date?) -> String {
-        guard let inputDate = date else { return "날짜 없음" }
-        
+    func formattedDateToString() -> String {
         let currentYear = Calendar.current.component(.year, from: Date())
-        let inputYear = Calendar.current.component(.year, from: inputDate)
+        let inputYear = Calendar.current.component(.year, from: self)
         let yearDifference = currentYear - inputYear
         
         guard yearDifference > 0 else {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "M월 d"
-            return dateFormatter.string(from: inputDate)
+            return dateFormatter.string(from: self)
         }
         
         return "\(yearDifference)년 전"

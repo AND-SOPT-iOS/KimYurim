@@ -302,7 +302,7 @@ class AppDetailView: UIView {
         
         feedbackTitleLabel.configureLabel(size: 15, weight: .bold, text: feedback?.title)
         
-        feedbackDateLabel.configureLabel(alignment: .right, color: .secondaryLabel, size: 15, weight: .regular, text: Date.formattedDate(date: feedback?.authorDate))
+        feedbackDateLabel.configureLabel(alignment: .right, color: .secondaryLabel, size: 15, weight: .regular, text: feedback?.authorDate?.formattedDateToString())
         feedbackDateLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         
         feedbackStarStackView.bind(feedback?.starCount ?? 0, .orange)
@@ -318,7 +318,7 @@ class AppDetailView: UIView {
         feedbackDeveloperContentLabel.text = feedback?.developerContent
         feedbackDeveloperContentLabel.setLineSpacing(4)
         
-        feedbackDeveloperDateLabel.configureLabel(color: .secondaryLabel, size: 15, weight: .regular, text: Date.formattedDate(date: feedback?.developerDate))
+        feedbackDeveloperDateLabel.configureLabel(color: .secondaryLabel, size: 15, weight: .regular, text: feedback?.developerDate?.formattedDateToString())
         
         [feedbackMoreButton1, feedbackMoreButton2].forEach {
             $0.configureButton(title: "더 보기", removeContentInsets: true)
@@ -755,10 +755,10 @@ class AppDetailView: UIView {
         feedbackTitleLabel.text = feedback.title
         feedbackAuthorLabel.text = feedback.author
         feedbackStarStackView.bind(feedback.starCount ?? 0, .orange)
-        feedbackDateLabel.text = Date.formattedDate(date: feedback.authorDate)
+        feedbackDateLabel.text = feedback.authorDate?.formattedDateToString()
         feedbackContentLabel.text = feedback.content
         feedbackDeveloperContentLabel.text = feedback.developerContent
-        feedbackDeveloperDateLabel.text = Date.formattedDate(date: feedback.developerDate)
+        feedbackDeveloperDateLabel.text = feedback.developerDate?.formattedDateToString()
         tapToRateStarStackView.bind(feedback.starCount ?? 0, .tint)
         
         // 개발자 답변 있는지 확인
