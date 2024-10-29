@@ -19,9 +19,9 @@ struct App {
 
 extension App {
     static let sampleApps: [App] = [
-        App(iconImage: UIImage(systemName: "banknote")!, ranking: 1, title: "한국은행", subtitle: "모바일 뱅킹 앱", category: .finance, price: 0, downloadState: .installed),
-        App(iconImage: UIImage(systemName: "chart.bar")!, ranking: 2, title: "주식톡", subtitle: "실시간 주식 소셜 앱", category: .socialNetwork, price: 0, downloadState: .download),
-        App(iconImage: UIImage(systemName: "creditcard")!, ranking: 3, title: "카드관리", subtitle: "쉽고 빠른 카드 관리", category: .finance, price: 0, downloadState: .redownload),
+        App(iconImage: UIImage(systemName: "banknote")!, ranking: 1, title: "Fin - 가계부 및 예산 추적기", subtitle: "당신의 돈은 어디로 가고 있을까요?", category: .finance, price: 0, downloadState: .installed),
+        App(iconImage: UIImage(systemName: "chart.bar")!, ranking: 2, title: "Spendee Money & Budget Planner", subtitle: "금융", category: .finance, price: 0, downloadState: .download),
+        App(iconImage: UIImage(systemName: "creditcard")!, ranking: 3, title: "위플 가계부 Pro", subtitle: "아이폰 사용자 수 1위 가계부", category: .finance, price: 0, downloadState: .redownload),
         App(iconImage: UIImage(systemName: "dollarsign.circle")!, ranking: 4, title: "내돈내산", subtitle: "가계부 관리 앱", category: .finance, price: 0, downloadState: .update),
         App(iconImage: UIImage(systemName: "message")!, ranking: 5, title: "톡톡", subtitle: "가족과 친구와의 소통", category: .socialNetwork, price: 0, downloadState: .download),
         App(iconImage: UIImage(systemName: "wallet.pass")!, ranking: 6, title: "월렛", subtitle: "지갑 관리 및 결제", category: .finance, price: 0, downloadState: .installed),
