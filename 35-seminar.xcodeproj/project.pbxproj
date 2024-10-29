@@ -24,9 +24,9 @@
 		1590A6442CBE6C6A00FB32AE /* Week1MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1590A6302CBE6C6A00FB32AE /* Week1MainView.swift */; };
 		1590A6452CBE6C6A00FB32AE /* Week1MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1590A6312CBE6C6A00FB32AE /* Week1MainViewController.swift */; };
 		1590A6A12CBE737600FB32AE /* Week2ScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1590A6A02CBE737600FB32AE /* Week2ScrollViewController.swift */; };
-		1590A6A42CBE8A9200FB32AE /* AppDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1590A6A32CBE8A9200FB32AE /* AppDetailViewController.swift */; };
+		1590A6A42CBE8A9200FB32AE /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1590A6A32CBE8A9200FB32AE /* DetailViewController.swift */; };
 		15EC30532CCA434700A0480B /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC30522CCA434700A0480B /* UIButton+Extension.swift */; };
-		15EC30552CCAB69000A0480B /* AppDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC30542CCAB69000A0480B /* AppDetailView.swift */; };
+		15EC30552CCAB69000A0480B /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC30542CCAB69000A0480B /* DetailView.swift */; };
 		15EC30572CCAC33700A0480B /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC30562CCAC33700A0480B /* UIImage+Extension.swift */; };
 		15EC30592CCB727300A0480B /* VersionRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC30582CCB727300A0480B /* VersionRecordViewController.swift */; };
 		15EC305B2CCB76F500A0480B /* AllFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC305A2CCB76F500A0480B /* AllFeedbackViewController.swift */; };
@@ -56,9 +56,9 @@
 		1590A6372CBE6C6A00FB32AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1590A6382CBE6C6A00FB32AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1590A6A02CBE737600FB32AE /* Week2ScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week2ScrollViewController.swift; sourceTree = "<group>"; };
-		1590A6A32CBE8A9200FB32AE /* AppDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailViewController.swift; sourceTree = "<group>"; };
+		1590A6A32CBE8A9200FB32AE /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		15EC30522CCA434700A0480B /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
-		15EC30542CCAB69000A0480B /* AppDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailView.swift; sourceTree = "<group>"; };
+		15EC30542CCAB69000A0480B /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		15EC30562CCAC33700A0480B /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		15EC30582CCB727300A0480B /* VersionRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionRecordViewController.swift; sourceTree = "<group>"; };
 		15EC305A2CCB76F500A0480B /* AllFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllFeedbackViewController.swift; sourceTree = "<group>"; };
@@ -151,7 +151,7 @@
 		15769B4A2CD0ECE9000DBAD3 /* Appstore */ = {
 			isa = PBXGroup;
 			children = (
-				15F4FD082CC73E1D00C99A20 /* AppDetailView */,
+				15F4FD082CC73E1D00C99A20 /* DetailView */,
 			);
 			path = Appstore;
 			sourceTree = "<group>";
@@ -215,17 +215,17 @@
 			path = Week2;
 			sourceTree = "<group>";
 		};
-		15F4FD082CC73E1D00C99A20 /* AppDetailView */ = {
+		15F4FD082CC73E1D00C99A20 /* DetailView */ = {
 			isa = PBXGroup;
 			children = (
-				15EC30542CCAB69000A0480B /* AppDetailView.swift */,
-				1590A6A32CBE8A9200FB32AE /* AppDetailViewController.swift */,
+				15EC30542CCAB69000A0480B /* DetailView.swift */,
+				1590A6A32CBE8A9200FB32AE /* DetailViewController.swift */,
 				15EC305A2CCB76F500A0480B /* AllFeedbackViewController.swift */,
 				15EC305E2CCB793500A0480B /* FeedbackWriteView.swift */,
 				15EC305C2CCB792300A0480B /* FeedbackWriteViewController.swift */,
 				15EC30582CCB727300A0480B /* VersionRecordViewController.swift */,
 			);
-			path = AppDetailView;
+			path = DetailView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,12 +311,12 @@
 				1590A6A12CBE737600FB32AE /* Week2ScrollViewController.swift in Sources */,
 				15728FC72CCCAF3100E1E151 /* StarColor.swift in Sources */,
 				157119D82CBE965700362252 /* SubtitleLabel.swift in Sources */,
-				15EC30552CCAB69000A0480B /* AppDetailView.swift in Sources */,
+				15EC30552CCAB69000A0480B /* DetailView.swift in Sources */,
 				1590A6402CBE6C6A00FB32AE /* AppDelegate.swift in Sources */,
 				1590A6412CBE6C6A00FB32AE /* SceneDelegate.swift in Sources */,
 				157119D62CBE962F00362252 /* TitleLabel.swift in Sources */,
 				15EC30532CCA434700A0480B /* UIButton+Extension.swift in Sources */,
-				1590A6A42CBE8A9200FB32AE /* AppDetailViewController.swift in Sources */,
+				1590A6A42CBE8A9200FB32AE /* DetailViewController.swift in Sources */,
 				1590A6422CBE6C6A00FB32AE /* Week1DetailView.swift in Sources */,
 				157119DA2CBE96BB00362252 /* ContentLabel.swift in Sources */,
 				1590A6432CBE6C6A00FB32AE /* Week1DetailViewController.swift in Sources */,

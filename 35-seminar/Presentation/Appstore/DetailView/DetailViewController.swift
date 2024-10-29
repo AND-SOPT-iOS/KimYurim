@@ -1,5 +1,5 @@
 //
-//  AppDetailViewController.swift
+//  DetailViewController.swift
 //  35-seminar
 //
 //  Created by 김유림 on 10/15/24.
@@ -7,14 +7,14 @@
 
 import UIKit
 
-class AppDetailViewController: UIViewController {
+class DetailViewController: UIViewController {
     
     // MARK: - Properties
-    private let appDetailView = AppDetailView()
+    private let detailView = DetailView()
     
     // MARK: - Methods
     override func loadView() {
-        view = appDetailView
+        view = detailView
     }
     
     override func viewDidLoad() {
@@ -22,7 +22,7 @@ class AppDetailViewController: UIViewController {
         setNavigationBar()
         setButtonAction()
         setStarStackViewGesture()
-        appDetailView.scrollView.delegate = self
+        detailView.scrollView.delegate = self
     }
     
     private func setNavigationBar() {
@@ -55,21 +55,21 @@ class AppDetailViewController: UIViewController {
     }
     
     private func setButtonAction() {
-        appDetailView.versionRecordButton.addTarget(self, action: #selector (tappedVersionRecordButton), for: .touchUpInside)
+        detailView.versionRecordButton.addTarget(self, action: #selector (tappedVersionRecordButton), for: .touchUpInside)
         
-        appDetailView.feedbackSummaryAllButton.addTarget(self, action: #selector (tappedFeedbackSummaryAllButton), for: .touchUpInside)
+        detailView.feedbackSummaryAllButton.addTarget(self, action: #selector (tappedFeedbackSummaryAllButton), for: .touchUpInside)
         
-        appDetailView.feedbackWriteButton.addTarget(self, action: #selector(tappedFeedbackWriteButton), for: .touchUpInside)
+        detailView.feedbackWriteButton.addTarget(self, action: #selector(tappedFeedbackWriteButton), for: .touchUpInside)
         
-        appDetailView.descriptionMoreButton.addTarget(self, action: #selector(tappedDescriptionMoreButton), for: .touchUpInside)
+        detailView.descriptionMoreButton.addTarget(self, action: #selector(tappedDescriptionMoreButton), for: .touchUpInside)
     }
     
     private func setStarStackViewGesture() {
-        let panGesture = UIPanGestureRecognizer(target: appDetailView.tapToRateStarStackView, action: #selector(appDetailView.tapToRateStarStackView.handlePanGesture))
-        appDetailView.tapToRateStarStackView.addGestureRecognizer(panGesture)
+        let panGesture = UIPanGestureRecognizer(target: detailView.tapToRateStarStackView, action: #selector(detailView.tapToRateStarStackView.handlePanGesture))
+        detailView.tapToRateStarStackView.addGestureRecognizer(panGesture)
         
-        let tapGesture = UITapGestureRecognizer(target: appDetailView.tapToRateStarStackView, action: #selector(appDetailView.tapToRateStarStackView.handleTapGesture))
-        appDetailView.tapToRateStarStackView.addGestureRecognizer(tapGesture)
+        let tapGesture = UITapGestureRecognizer(target: detailView.tapToRateStarStackView, action: #selector(detailView.tapToRateStarStackView.handleTapGesture))
+        detailView.tapToRateStarStackView.addGestureRecognizer(tapGesture)
     }
     
     @objc private func tappedVersionRecordButton() {
@@ -87,18 +87,18 @@ class AppDetailViewController: UIViewController {
     }
     
     @objc private func tappedDescriptionMoreButton() {
-        appDetailView.expandDescriptionLabel()
+        detailView.expandDescriptionLabel()
     }
 }
 
 
-extension AppDetailViewController: FeedbackDelegate {
+extension DetailViewController: FeedbackDelegate {
     func dataBind(feedback: Feedback) {
-        appDetailView.dataBind(feedback: feedback)
+        detailView.dataBind(feedback: feedback)
     }
 }
 
-extension AppDetailViewController: UIScrollViewDelegate {
+extension DetailViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
         let triggerOffset: CGFloat = 80

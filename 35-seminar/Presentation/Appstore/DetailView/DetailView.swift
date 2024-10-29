@@ -1,5 +1,5 @@
 //
-//  AppDetailView 2.swift
+//  DetailView 2.swift
 //  35-seminar
 //
 //  Created by 김유림 on 10/25/24.
@@ -13,7 +13,7 @@ protocol FeedbackDelegate: AnyObject {
     func dataBind(feedback: Feedback)
 }
 
-class AppDetailView: UIView {
+class DetailView: UIView {
     
     // MARK: - Properties
     private var feedback: Feedback?
@@ -775,7 +775,7 @@ class AppDetailView: UIView {
     }
 }
 
-extension AppDetailView: StarStackViewDelegate {
+extension DetailView: StarStackViewDelegate {
     func starStackView(_ view: StarStackView, newCount: Int) {
         feedback?.starCount = newCount
         feedbackStarStackView.bind(newCount, .orange)
