@@ -7,14 +7,13 @@
 
 import UIKit
 
-class ChartViewController: UIViewController {
+class ChartViewController: BaseViewController {
     
     // MARK: - Properties
     let chartView = ChartView()
     let appData = App.sampleApps
     
     // MARK: - Methods
-    
     override func loadView() {
         view = chartView
     }
@@ -31,6 +30,7 @@ class ChartViewController: UIViewController {
     }
 }
 
+// MARK: - Extensions
 extension ChartViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return appData.count

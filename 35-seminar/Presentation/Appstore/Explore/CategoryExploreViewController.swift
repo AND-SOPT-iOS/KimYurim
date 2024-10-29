@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CategoryExploreViewController: UIViewController {
+class CategoryExploreViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

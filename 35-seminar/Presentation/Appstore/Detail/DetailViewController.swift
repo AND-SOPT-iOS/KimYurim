@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: BaseViewController {
     
     // MARK: - Properties
     private let detailView = DetailView()
@@ -20,9 +20,21 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
-        setButtonAction()
         setStarStackViewGesture()
+    }
+    
+    override func setDelegate() {
         detailView.scrollView.delegate = self
+    }
+    
+    override func setAddTarget() {
+        detailView.versionRecordButton.addTarget(self, action: #selector (tappedVersionRecordButton), for: .touchUpInside)
+        
+        detailView.feedbackSummaryAllButton.addTarget(self, action: #selector (tappedFeedbackSummaryAllButton), for: .touchUpInside)
+        
+        detailView.feedbackWriteButton.addTarget(self, action: #selector(tappedFeedbackWriteButton), for: .touchUpInside)
+        
+        detailView.descriptionMoreButton.addTarget(self, action: #selector(tappedDescriptionMoreButton), for: .touchUpInside)
     }
     
     private func setNavigationBar() {
@@ -54,16 +66,6 @@ class DetailViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBarButton)
     }
     
-    private func setButtonAction() {
-        detailView.versionRecordButton.addTarget(self, action: #selector (tappedVersionRecordButton), for: .touchUpInside)
-        
-        detailView.feedbackSummaryAllButton.addTarget(self, action: #selector (tappedFeedbackSummaryAllButton), for: .touchUpInside)
-        
-        detailView.feedbackWriteButton.addTarget(self, action: #selector(tappedFeedbackWriteButton), for: .touchUpInside)
-        
-        detailView.descriptionMoreButton.addTarget(self, action: #selector(tappedDescriptionMoreButton), for: .touchUpInside)
-    }
-    
     private func setStarStackViewGesture() {
         let panGesture = UIPanGestureRecognizer(target: detailView.tapToRateStarStackView, action: #selector(detailView.tapToRateStarStackView.handlePanGesture))
         detailView.tapToRateStarStackView.addGestureRecognizer(panGesture)
@@ -72,6 +74,7 @@ class DetailViewController: UIViewController {
         detailView.tapToRateStarStackView.addGestureRecognizer(tapGesture)
     }
     
+    // MARK: - objc functions
     @objc private func tappedVersionRecordButton() {
         self.navigationController?.pushViewController(VersionRecordViewController(), animated: true)
     }
@@ -91,7 +94,7 @@ class DetailViewController: UIViewController {
     }
 }
 
-
+// MARK: - Extensions
 extension DetailViewController: FeedbackDelegate {
     func dataBind(feedback: Feedback) {
         detailView.dataBind(feedback: feedback)

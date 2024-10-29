@@ -7,10 +7,9 @@
 
 import UIKit
 
-class AllFeedbackViewController: UIViewController {
+class AllFeedbackViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
     }
 }

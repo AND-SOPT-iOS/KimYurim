@@ -7,10 +7,9 @@
 
 import UIKit
 
-class VersionRecordViewController: UIViewController {
+class VersionRecordViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
     }
 }
