@@ -13,7 +13,7 @@ protocol FeedbackDelegate: AnyObject {
     func dataBind(feedback: Feedback)
 }
 
-class DetailView: UIView {
+class DetailView: BaseView {
     
     // MARK: - Properties
     private var feedback: Feedback?
@@ -115,21 +115,22 @@ class DetailView: UIView {
     
     // MARK: - Methods
     override init(frame: CGRect) {
-        super.init(frame: frame)
         feedback = initialFeedback
-        setUI()
-        setHierarchy()
-        setConstraints()
-        tapToRateStarStackView.delegate = self
+        super.init(frame: frame)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: UI
-    private func setUI() {
-        self.backgroundColor = .systemBackground
+    // MARK: - Delegate
+    override func setDelegate() {
+        tapToRateStarStackView.delegate = self
+    }
+    
+    // MARK: - UI
+    override func setUI() {
+        super.setUI()
         contentStackView.axis = .vertical
         contentStackView.spacing = 10
         
@@ -330,7 +331,7 @@ class DetailView: UIView {
     }
     
     // MARK: - Hierarchy
-    private func setHierarchy() {
+    override func setHierarchy() {
         setBaseHierarchy()
         setTitleViewHierarchy()
         setSummaryViewHierarchy()
@@ -439,7 +440,7 @@ class DetailView: UIView {
     }
     
     // MARK: - Constraints
-    private func setConstraints() {
+    override func setConstraints() {
         setBaseConstraints()
         setTitleViewConstraints()
         setSummaryViewConstraints()
@@ -750,6 +751,7 @@ class DetailView: UIView {
         }
     }
     
+    // MARK: - Data Binding
     func dataBind(feedback: Feedback) {
         self.feedback = feedback
         feedbackTitleLabel.text = feedback.title
@@ -775,6 +777,7 @@ class DetailView: UIView {
     }
 }
 
+// MARK: - Extensions
 extension DetailView: StarStackViewDelegate {
     func starStackView(_ view: StarStackView, newCount: Int) {
         feedback?.starCount = newCount

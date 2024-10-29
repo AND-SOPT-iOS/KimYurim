@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class FeedbackWriteView: UIView {
+class FeedbackWriteView: BaseView {
     
     // MARK: - Properties
     private var starCount: Int = 0
@@ -26,20 +26,12 @@ class FeedbackWriteView: UIView {
     let feedbackTextView = UITextView()
     
     // MARK: - Methods
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setUI()
-        setHierarchy()
-        setConstraints()
+    override func setDelegate() {
         tapToRateStarStackView.delegate = self
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func setUI() {
-        self.backgroundColor = .systemBackground
+    override func setUI() {
+        super.setUI()
         
         titleLabel.configureLabel(size: 17, weight: .semibold, text: "리뷰 작성하기")
         
@@ -62,7 +54,7 @@ class FeedbackWriteView: UIView {
         setTextViewPlaceholder()
     }
     
-    private func setHierarchy() {
+    override func setHierarchy() {
         [cancelButton, sendButton, titleLabel, tapToRateStarStackView, tapToRateGuideLabel, feedbackStackView].forEach {
             self.addSubview($0)
         }
@@ -79,7 +71,7 @@ class FeedbackWriteView: UIView {
         }
     }
     
-    private func setConstraints() {
+    override func setConstraints() {
         titleLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.top.equalToSuperview().offset(20)

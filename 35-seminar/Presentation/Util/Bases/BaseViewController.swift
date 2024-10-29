@@ -8,8 +8,8 @@
 import UIKit
 
 protocol BaseViewControllerProtocol: AnyObject {
-    func setStyle()
     func setDelegate()
+    func setStyle()
     func setAddTarget()
     func bind()
 }
@@ -19,15 +19,15 @@ class BaseViewController: UIViewController, BaseViewControllerProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setStyle()
         setDelegate()
+        setStyle()
         setAddTarget()
         bind()
     }
     
-    func setStyle() { }
-    
     func setDelegate() { }
+    
+    func setStyle() { }
     
     func setAddTarget() { }
     

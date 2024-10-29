@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ChartView: UIView {
+class ChartView: BaseView {
     
     // MARK: - Properties
     let headerView = UITableViewHeaderFooterView()
@@ -27,16 +27,15 @@ class ChartView: UIView {
     
     // MARK: - UI
     
-    private func setUI() {
-        tableView.backgroundColor = .yellow
-        
+    override func setUI() {
+        super.setUI()
     }
     
-    private func setHierarchy() {
+    override func setHierarchy() {
         self.addSubview(tableView)
     }
     
-    private func setConstraints() {
+    override func setConstraints() {
         tableView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
