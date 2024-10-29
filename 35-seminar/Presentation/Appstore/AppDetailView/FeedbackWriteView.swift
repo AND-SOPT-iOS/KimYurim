@@ -11,8 +11,8 @@ import SnapKit
 class FeedbackWriteView: UIView {
     
     // MARK: - Properties
-    var starCount: Int = 0
-    let textViewPlaceHolder = "리뷰(선택사항)"
+    private var starCount: Int = 0
+    private let textViewPlaceHolder = "리뷰(선택사항)"
     
     private let titleLabel = UILabel()
     let cancelButton = UIButton()
