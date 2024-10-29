@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIImage {
-    class func configureImage(systemName: String, pointSize: CGFloat? = nil, symbolWeight: UIImage.SymbolWeight) -> UIImage? {
+    static func configureImage(systemName: String, pointSize: CGFloat? = nil, symbolWeight: UIImage.SymbolWeight) -> UIImage? {
         if let pointSize = pointSize {
             let symbolConfig = UIImage.SymbolConfiguration(pointSize: pointSize, weight: symbolWeight)
             return UIImage(systemName: systemName, withConfiguration: symbolConfig)
