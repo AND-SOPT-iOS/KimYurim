@@ -14,7 +14,7 @@ class ChartTableViewCell: UITableViewCell {
     static let identifier = String(describing: ChartTableViewCell.self)
     private var appData: App?
     
-    private let horizontalStackView = UIStackView()
+    private let labelHorizontalStackView = UIStackView()
     private let titleStackView = UIStackView()
     private let infoStackView = UIStackView()
     
@@ -46,49 +46,36 @@ class ChartTableViewCell: UITableViewCell {
     }
     
     private func setUI() {
-        horizontalStackView.axis = .horizontal
-        horizontalStackView.spacing = 15
-        horizontalStackView.alignment = .center
-//        horizontalStackView.distribution = .fillProportionally
+        labelHorizontalStackView.axis = .horizontal
+        labelHorizontalStackView.alignment = .top
+        labelHorizontalStackView.spacing = 10
         
         titleStackView.axis = .vertical
-        titleStackView.spacing = 5
+        titleStackView.alignment = .leading
+        titleStackView.spacing = 2
         
         iconImageView.contentMode = .scaleAspectFit
         iconImageView.clipsToBounds = true
         iconImageView.layer.cornerRadius = 10
         iconImageView.layer.borderColor = UIColor.systemGray5.cgColor
         iconImageView.layer.borderWidth = 1
-        iconImageView.image = appData?.iconImage
         
-        rankingLabel.configureLabel(size: 16, weight: .bold, text: String(appData?.ranking ?? 0))
+        rankingLabel.configureLabel(size: 17, weight: .bold)
         rankingLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         
-        titleLabel.configureLabel(size: 16, weight: .regular, text: appData?.title, numberOfLines: 2)
+        titleLabel.configureLabel(color: .label, size: 17, weight: .regular, numberOfLines: 2)
         titleLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
         
-        subtitleLabel.configureLabel(size: 14, weight: .regular, text: appData?.subtitle, numberOfLines: 2)
-        
-        switch appData?.downloadState {
-        case .installed:
-            downloadButton.configureButton(configType: .gray, title: "열기", fontSize: 17, fontWeight: .semibold, cornerStyle: .capsule)
-        case .download:
-            downloadButton.configureButton(configType: .gray, title: "받기", fontSize: 17, fontWeight: .semibold, cornerStyle: .capsule)
-        case .redownload:
-            downloadButton.configureButton(configType: .plain, systemName: "icloud.and.arrow.down", pointSize: 17, symbolWeight: .semibold)
-        case .update:
-            downloadButton.configureButton(configType: .gray, title: "업데이트", fontSize: 17, fontWeight: .semibold, cornerStyle: .capsule)
-        case nil:
-            return
-        }
-        downloadButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        subtitleLabel.configureLabel(color: .secondaryLabel, size: 14, weight: .regular, numberOfLines: 2)
     }
     
     private func setHierarchy() {
-        self.addSubview(horizontalStackView)
+        [iconImageView, labelHorizontalStackView, downloadButton].forEach {
+            self.addSubview($0)
+        }
         
-        [iconImageView, rankingLabel, titleStackView, downloadButton].forEach {
-            horizontalStackView.addArrangedSubview($0)
+        [rankingLabel, titleStackView].forEach {
+            labelHorizontalStackView.addArrangedSubview($0)
         }
         
         [titleLabel, subtitleLabel].forEach {
@@ -97,30 +84,47 @@ class ChartTableViewCell: UITableViewCell {
     }
     
     private func setConstraints() {
-        horizontalStackView.snp.makeConstraints {
-            $0.edges.equalToSuperview().inset(20)
-            $0.height.equalTo(70)
-        }
-        
-        titleStackView.snp.makeConstraints {
-            $0.height.lessThanOrEqualTo(iconImageView)
-            $0.centerY.equalToSuperview()
-        }
-        
         iconImageView.snp.makeConstraints {
-            $0.size.equalTo(horizontalStackView.snp.height)
+            $0.leading.equalToSuperview().offset(20)
+            $0.verticalEdges.equalToSuperview().inset(10)
+            $0.size.equalTo(60)
+        }
+        
+        labelHorizontalStackView.snp.makeConstraints {
+            $0.leading.equalTo(iconImageView.snp.trailing).offset(10)
+            $0.trailing.equalTo(downloadButton.snp.leading).offset(-10)
+            $0.centerY.equalToSuperview()
         }
         
         downloadButton.snp.makeConstraints {
+            $0.trailing.equalToSuperview().offset(-20)
+            $0.centerY.equalToSuperview()
             $0.width.greaterThanOrEqualTo(76)
             $0.height.equalTo(32)
-            $0.centerY.equalToSuperview()
         }
     }
     
     func bind(appData: App) {
         self.appData = appData
-        setUI()
+        iconImageView.image = appData.iconImage
+        rankingLabel.text = String(appData.ranking)
+        titleLabel.text = appData.title
+        subtitleLabel.text = appData.subtitle
+        
+        switch appData.downloadState {
+        case .installed:
+            downloadButton.configureButton(configType: .gray, title: "열기", fontSize: 17, fontWeight: .semibold, cornerStyle: .capsule)
+        case .download:
+            if appData.price == 0 {
+                downloadButton.configureButton(configType: .gray, title: "받기", fontSize: 17, fontWeight: .semibold, cornerStyle: .capsule)
+            } else {
+                downloadButton.configureButton(configType: .gray, title: appData.price.toWonString(), fontSize: 17, fontWeight: .semibold, cornerStyle: .capsule)
+            }
+        case .redownload:
+            downloadButton.configureButton(configType: .plain, systemName: "icloud.and.arrow.down", pointSize: 17, symbolWeight: .semibold)
+        case .update:
+            downloadButton.configureButton(configType: .gray, title: "업데이트", fontSize: 17, fontWeight: .semibold, cornerStyle: .capsule)
+        }
     }
 }
 
