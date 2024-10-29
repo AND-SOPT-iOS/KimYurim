@@ -8,22 +8,39 @@
 import UIKit
 
 class Week3PhotoViewController: UIViewController {
-
+    
+    // MARK: - Properties
+    let appData = App.sampleApps
+    
+    let collectionView = UICollectionView()
+    
+    //    private var dataSource = UICollectionViewDiffableDataSource<PhotoSection, Photo>
+    
+    // MARK: - Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setTableView()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func setTableView() {
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.register(Week3PhotoCollectionViewCell.self, forCellWithReuseIdentifier: Week3PhotoCollectionViewCell.identifier)
     }
-    */
+}
 
+extension Week3PhotoViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        <#code#>
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        <#code#>
+    }
+    
+    
+}
+
+extension Week3PhotoViewController: UICollectionViewDelegate {
+    
 }

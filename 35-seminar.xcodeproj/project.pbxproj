@@ -21,6 +21,9 @@
 		15769B552CD11D99000DBAD3 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15769B542CD11D99000DBAD3 /* App.swift */; };
 		15769B572CD11DAE000DBAD3 /* DownloadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15769B562CD11DAE000DBAD3 /* DownloadState.swift */; };
 		15769B592CD1362D000DBAD3 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15769B582CD1362D000DBAD3 /* Category.swift */; };
+		15769B5C2CD13A25000DBAD3 /* Week3PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15769B5B2CD13A25000DBAD3 /* Week3PhotoViewController.swift */; };
+		15769B5E2CD13A51000DBAD3 /* Week3PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15769B5D2CD13A51000DBAD3 /* Week3PhotoCollectionViewCell.swift */; };
+		15769B602CD13BB8000DBAD3 /* Week3Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15769B5F2CD13BB8000DBAD3 /* Week3Photo.swift */; };
 		1590A63D2CBE6C6A00FB32AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1590A6352CBE6C6A00FB32AE /* Assets.xcassets */; };
 		1590A63F2CBE6C6A00FB32AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1590A6392CBE6C6A00FB32AE /* LaunchScreen.storyboard */; };
 		1590A6402CBE6C6A00FB32AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1590A62A2CBE6C6A00FB32AE /* AppDelegate.swift */; };
@@ -58,6 +61,9 @@
 		15769B542CD11D99000DBAD3 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		15769B562CD11DAE000DBAD3 /* DownloadState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadState.swift; sourceTree = "<group>"; };
 		15769B582CD1362D000DBAD3 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		15769B5B2CD13A25000DBAD3 /* Week3PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week3PhotoViewController.swift; sourceTree = "<group>"; };
+		15769B5D2CD13A51000DBAD3 /* Week3PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week3PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		15769B5F2CD13BB8000DBAD3 /* Week3Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week3Photo.swift; sourceTree = "<group>"; };
 		1590A62A2CBE6C6A00FB32AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1590A62B2CBE6C6A00FB32AE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1590A62D2CBE6C6A00FB32AE /* Week1DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week1DetailView.swift; sourceTree = "<group>"; };
@@ -150,6 +156,7 @@
 			children = (
 				1590A6332CBE6C6A00FB32AE /* Week1 */,
 				1590A69F2CBE719000FB32AE /* Week2 */,
+				15769B5A2CD139F0000DBAD3 /* Week3 */,
 			);
 			path = Practice;
 			sourceTree = "<group>";
@@ -180,6 +187,16 @@
 				15769B522CD1123B000DBAD3 /* ChartTableViewCell.swift */,
 			);
 			path = Chart;
+			sourceTree = "<group>";
+		};
+		15769B5A2CD139F0000DBAD3 /* Week3 */ = {
+			isa = PBXGroup;
+			children = (
+				15769B5F2CD13BB8000DBAD3 /* Week3Photo.swift */,
+				15769B5B2CD13A25000DBAD3 /* Week3PhotoViewController.swift */,
+				15769B5D2CD13A51000DBAD3 /* Week3PhotoCollectionViewCell.swift */,
+			);
+			path = Week3;
 			sourceTree = "<group>";
 		};
 		1590A62C2CBE6C6A00FB32AE /* Application */ = {
@@ -333,6 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15EC30592CCB727300A0480B /* VersionRecordViewController.swift in Sources */,
+				15769B5E2CD13A51000DBAD3 /* Week3PhotoCollectionViewCell.swift in Sources */,
 				15EC30612CCB8E9C00A0480B /* Date+Extension.swift in Sources */,
 				1590A6A12CBE737600FB32AE /* Week2ScrollViewController.swift in Sources */,
 				15728FC72CCCAF3100E1E151 /* StarColor.swift in Sources */,
@@ -349,8 +367,10 @@
 				1590A6422CBE6C6A00FB32AE /* Week1DetailView.swift in Sources */,
 				157119DA2CBE96BB00362252 /* ContentLabel.swift in Sources */,
 				1590A6432CBE6C6A00FB32AE /* Week1DetailViewController.swift in Sources */,
+				15769B602CD13BB8000DBAD3 /* Week3Photo.swift in Sources */,
 				1590A6442CBE6C6A00FB32AE /* Week1MainView.swift in Sources */,
 				15EC305D2CCB792300A0480B /* FeedbackWriteViewController.swift in Sources */,
+				15769B5C2CD13A25000DBAD3 /* Week3PhotoViewController.swift in Sources */,
 				15F4FD072CC73D0A00C99A20 /* StarStackView.swift in Sources */,
 				15769B512CD1121C000DBAD3 /* ChartViewController.swift in Sources */,
 				15769B532CD1123B000DBAD3 /* ChartTableViewCell.swift in Sources */,
