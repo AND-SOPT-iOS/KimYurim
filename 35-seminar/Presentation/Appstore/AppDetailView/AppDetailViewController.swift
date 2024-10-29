@@ -68,7 +68,7 @@ class AppDetailViewController: UIViewController {
         let panGesture = UIPanGestureRecognizer(target: appDetailView.tapToRateStarStackView, action: #selector(appDetailView.tapToRateStarStackView.handlePangesture))
         appDetailView.tapToRateStarStackView.addGestureRecognizer(panGesture)
         
-        let tapGesture = UITapGestureRecognizer(target: appDetailView.tapToRateStarStackView, action: #selector(appDetailView.tapToRateStarStackView.handlePangesture))
+        let tapGesture = UITapGestureRecognizer(target: appDetailView.tapToRateStarStackView, action: #selector(appDetailView.tapToRateStarStackView.handleTapGesture))
         appDetailView.tapToRateStarStackView.addGestureRecognizer(tapGesture)
     }
     
