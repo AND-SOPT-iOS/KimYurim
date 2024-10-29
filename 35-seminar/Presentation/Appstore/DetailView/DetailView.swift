@@ -1,5 +1,5 @@
 //
-//  DetailView 2.swift
+//  DetailView.swift
 //  35-seminar
 //
 //  Created by 김유림 on 10/25/24.
