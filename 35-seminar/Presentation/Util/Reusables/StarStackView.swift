@@ -87,7 +87,7 @@ class StarStackView: UIStackView {
     }
     
     // 드래그 제스처 핸들러
-    @objc func handlePangesture(_ gesture: UIPanGestureRecognizer) {
+    @objc func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
         let location = gesture.location(in: self)
         let starWidth = bounds.width / 5
         let selectedStarIndex = Int(location.x / starWidth)

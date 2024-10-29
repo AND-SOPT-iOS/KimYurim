@@ -32,10 +32,10 @@ class FeedbackWriteViewController: UIViewController {
     }
     
     private func setStarStackViewGesture() {
-        let panGesture = UIPanGestureRecognizer(target: feedbackWriteView.tapToRateStarStackView, action: #selector(feedbackWriteView.tapToRateStarStackView.handlePangesture))
+        let panGesture = UIPanGestureRecognizer(target: feedbackWriteView.tapToRateStarStackView, action: #selector(feedbackWriteView.tapToRateStarStackView.handlePanGesture))
         feedbackWriteView.tapToRateStarStackView.addGestureRecognizer(panGesture)
         
-        let tapGesture = UITapGestureRecognizer(target: feedbackWriteView.tapToRateStarStackView, action: #selector(feedbackWriteView.tapToRateStarStackView.handlePangesture))
+        let tapGesture = UITapGestureRecognizer(target: feedbackWriteView.tapToRateStarStackView, action: #selector(feedbackWriteView.tapToRateStarStackView.handlePanGesture))
         feedbackWriteView.tapToRateStarStackView.addGestureRecognizer(tapGesture)
     }
     
