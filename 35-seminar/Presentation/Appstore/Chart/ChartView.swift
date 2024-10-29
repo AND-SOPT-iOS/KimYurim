@@ -16,19 +16,16 @@ class ChartView: BaseView {
     // MARK: - Methods
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setUI()
-        setHierarchy()
-        setConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - UI
-    
     override func setUI() {
         super.setUI()
+        tableView.rowHeight = 88
+        tableView.separatorInset = .init(top: 0, left: 90, bottom: 0, right: 20)
     }
     
     override func setHierarchy() {
