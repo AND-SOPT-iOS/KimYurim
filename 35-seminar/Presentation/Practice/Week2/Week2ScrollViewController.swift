@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class PractScrollViewController: UIViewController {
+class Week2ScrollViewController: UIViewController {
     
     // MARK: - Properties
     private let scrollView = UIScrollView()
