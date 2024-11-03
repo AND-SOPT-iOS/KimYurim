@@ -38,6 +38,13 @@
 		15F9EDFB2CD5F12500172E82 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 15F9EDFA2CD5F12500172E82 /* Alamofire */; };
 		15F9EDFE2CD5F28700172E82 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 15F9EDFD2CD5F28700172E82 /* Config.xcconfig */; };
 		15F9EE002CD5F38700172E82 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F9EDFF2CD5F38700172E82 /* Environment.swift */; };
+		15F9EE042CD5F8D200172E82 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F9EE032CD5F8D200172E82 /* NetworkError.swift */; };
+		15F9EE082CD5F93A00172E82 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F9EE072CD5F93A00172E82 /* UserService.swift */; };
+		15F9EE0A2CD5FBC300172E82 /* RegisterRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F9EE092CD5FBC300172E82 /* RegisterRequestDTO.swift */; };
+		15F9EE0C2CD5FEEA00172E82 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F9EE0B2CD5FEEA00172E82 /* LoginService.swift */; };
+		15F9EE0E2CD602D200172E82 /* LoginDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F9EE0D2CD602D200172E82 /* LoginDTO.swift */; };
+		15F9EE102CD6063E00172E82 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F9EE0F2CD6063E00172E82 /* Network.swift */; };
+		15F9EE132CD6072B00172E82 /* Week3LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F9EE122CD6072B00172E82 /* Week3LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +79,13 @@
 		15F4FD0E2CC7649A00C99A20 /* BorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderView.swift; sourceTree = "<group>"; };
 		15F9EDFD2CD5F28700172E82 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		15F9EDFF2CD5F38700172E82 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		15F9EE032CD5F8D200172E82 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		15F9EE072CD5F93A00172E82 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		15F9EE092CD5FBC300172E82 /* RegisterRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRequestDTO.swift; sourceTree = "<group>"; };
+		15F9EE0B2CD5FEEA00172E82 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		15F9EE0D2CD602D200172E82 /* LoginDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDTO.swift; sourceTree = "<group>"; };
+		15F9EE0F2CD6063E00172E82 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		15F9EE122CD6072B00172E82 /* Week3LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week3LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +118,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		156CD7F42CD7650F00F47DA0 /* UserDTO */ = {
+			isa = PBXGroup;
+			children = (
+				15F9EE092CD5FBC300172E82 /* RegisterRequestDTO.swift */,
+				15F9EE0D2CD602D200172E82 /* LoginDTO.swift */,
+			);
+			path = UserDTO;
+			sourceTree = "<group>";
+		};
 		157119D42CBE8FB700362252 /* Reusables */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +153,7 @@
 		15728FC32CCCAEE000E1E151 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				156CD7F42CD7650F00F47DA0 /* UserDTO */,
 				15728FC42CCCAF0100E1E151 /* Feedback.swift */,
 				15728FC62CCCAF3100E1E151 /* StarColor.swift */,
 			);
@@ -141,6 +165,7 @@
 			children = (
 				1590A6332CBE6C6A00FB32AE /* Week1 */,
 				1590A69F2CBE719000FB32AE /* Week2 */,
+				15F9EE112CD6070800172E82 /* Week3 */,
 			);
 			path = Practice;
 			sourceTree = "<group>";
@@ -198,7 +223,7 @@
 			children = (
 				1590A62C2CBE6C6A00FB32AE /* Application */,
 				15728FC32CCCAEE000E1E151 /* Entity */,
-				15F9EE012CD5F6B300172E82 /* Network */,
+				15F9EE012CD5F6B300172E82 /* Server */,
 				1590A6342CBE6C6A00FB32AE /* Presentation */,
 				1590A6492CBE6C7700FB32AE /* Resource */,
 			);
@@ -236,12 +261,24 @@
 			path = AppDetailView;
 			sourceTree = "<group>";
 		};
-		15F9EE012CD5F6B300172E82 /* Network */ = {
+		15F9EE012CD5F6B300172E82 /* Server */ = {
 			isa = PBXGroup;
 			children = (
 				15F9EDFF2CD5F38700172E82 /* Environment.swift */,
+				15F9EE0F2CD6063E00172E82 /* Network.swift */,
+				15F9EE032CD5F8D200172E82 /* NetworkError.swift */,
+				15F9EE072CD5F93A00172E82 /* UserService.swift */,
+				15F9EE0B2CD5FEEA00172E82 /* LoginService.swift */,
 			);
-			path = Network;
+			path = Server;
+			sourceTree = "<group>";
+		};
+		15F9EE112CD6070800172E82 /* Week3 */ = {
+			isa = PBXGroup;
+			children = (
+				15F9EE122CD6072B00172E82 /* Week3LoginViewController.swift */,
+			);
+			path = Week3;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -330,17 +367,24 @@
 				1590A6A12CBE737600FB32AE /* Week2ScrollViewController.swift in Sources */,
 				15728FC72CCCAF3100E1E151 /* StarColor.swift in Sources */,
 				157119D82CBE965700362252 /* SubtitleLabel.swift in Sources */,
+				15F9EE082CD5F93A00172E82 /* UserService.swift in Sources */,
 				15EC30552CCAB69000A0480B /* AppDetailView.swift in Sources */,
 				1590A6402CBE6C6A00FB32AE /* AppDelegate.swift in Sources */,
+				15F9EE102CD6063E00172E82 /* Network.swift in Sources */,
 				1590A6412CBE6C6A00FB32AE /* SceneDelegate.swift in Sources */,
+				15F9EE0C2CD5FEEA00172E82 /* LoginService.swift in Sources */,
 				157119D62CBE962F00362252 /* TitleLabel.swift in Sources */,
 				15EC30532CCA434700A0480B /* UIButton+Extension.swift in Sources */,
 				1590A6A42CBE8A9200FB32AE /* AppDetailViewController.swift in Sources */,
+				15F9EE0E2CD602D200172E82 /* LoginDTO.swift in Sources */,
 				1590A6422CBE6C6A00FB32AE /* Week1DetailView.swift in Sources */,
+				15F9EE132CD6072B00172E82 /* Week3LoginViewController.swift in Sources */,
 				157119DA2CBE96BB00362252 /* ContentLabel.swift in Sources */,
 				1590A6432CBE6C6A00FB32AE /* Week1DetailViewController.swift in Sources */,
 				1590A6442CBE6C6A00FB32AE /* Week1MainView.swift in Sources */,
 				15EC305D2CCB792300A0480B /* FeedbackWriteViewController.swift in Sources */,
+				15F9EE042CD5F8D200172E82 /* NetworkError.swift in Sources */,
+				15F9EE0A2CD5FBC300172E82 /* RegisterRequestDTO.swift in Sources */,
 				15F4FD072CC73D0A00C99A20 /* StarStackView.swift in Sources */,
 				157119DD2CBE96F500362252 /* UILabel+Extension.swift in Sources */,
 				15F4FD0F2CC7649A00C99A20 /* BorderView.swift in Sources */,
