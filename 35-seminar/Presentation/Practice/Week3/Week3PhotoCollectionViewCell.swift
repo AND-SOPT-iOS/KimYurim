@@ -33,6 +33,7 @@ class Week3PhotoCollectionViewCell: UICollectionViewCell {
     }
     
     private func setUI() {
+        imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
         imageView.image = photo?.image
         
@@ -45,11 +46,13 @@ class Week3PhotoCollectionViewCell: UICollectionViewCell {
     }
     
     private func setHierarchy() {
-        
+        self.addSubview(imageView)
     }
     
     private func setConstraints() {
-        
+        imageView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
     
     func bind(photo: Week3Photo) {
