@@ -118,10 +118,10 @@ extension CategoryExploreViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
-            return CGFloat(ExploreBannerTableViewCell.height)
+            return CGFloat(ExploreBannerCollectionViewCell.height)
             
         default :
-            return CGFloat(ExploreListTableViewCell.height)
+            return CGFloat(ExploreListCollectionViewCell.height)
         }
     }
 }

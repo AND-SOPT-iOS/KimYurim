@@ -12,6 +12,8 @@ class ExploreListCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     static let identifier = String(describing: ExploreListCollectionViewCell.self)
+    static let height = 266
+    
     private var apps: [App] = []
     
     private let stackView = UIStackView()
@@ -66,7 +68,7 @@ class ExploreListCollectionViewCell: UICollectionViewCell {
         [border1, border2].forEach {
             $0.snp.makeConstraints {
                 $0.height.equalTo(1)
-                $0.width.equalToSuperview().offset(-64)
+                $0.width.equalToSuperview().offset(-76)
             }
         }
     }

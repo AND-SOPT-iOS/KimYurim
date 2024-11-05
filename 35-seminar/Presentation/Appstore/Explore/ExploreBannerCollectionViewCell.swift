@@ -11,6 +11,8 @@ class ExploreBannerCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     static let identifier = String(describing: ExploreBannerCollectionViewCell.self)
+    static let height = 200
+    
     private var app: App?
     private let veryLightGray = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
     

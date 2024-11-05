@@ -11,7 +11,6 @@ class ExploreListTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     static let identifier = String(describing: ExploreListTableViewCell.self)
-    static let height = 266
     
     private var apps: [App] = []
     
@@ -31,7 +30,7 @@ class ExploreListTableViewCell: UITableViewCell {
     
     private func setCollectionView() {
         let collectionViewLayout = UICollectionViewFlowLayout()
-        collectionViewLayout.itemSize = .init(width: 100, height: ExploreListTableViewCell.height) // 임시 크기. width는 현 시점에서 알 수 없으므로 delegate에서 다시 결정
+        collectionViewLayout.itemSize = .init(width: 100, height: ExploreListCollectionViewCell.height) // 임시 크기. width는 현 시점에서 알 수 없으므로 delegate에서 다시 결정
         collectionViewLayout.scrollDirection = .horizontal
         collectionViewLayout.minimumLineSpacing = 10
         collectionView.setCollectionViewLayout(collectionViewLayout, animated: true)
@@ -88,7 +87,7 @@ extension ExploreListTableViewCell: UICollectionViewDelegateFlowLayout {
         /// 한편, 위에서 collectionView.itemSize로 지정하기에는 너비를 구할 수 없으므로,
         /// TableViewCell이 init된 이후에 실행되는 Delegate에서 컬렉션뷰의 크기를 결정함.
         let itemWidth = self.contentView.layer.bounds.width - 40
-        let itemHeight = CGFloat(ExploreListTableViewCell.height)
+        let itemHeight = CGFloat(ExploreListCollectionViewCell.height)
         adjustOffsetToCenter(collectionView, targetContentOffset: nil)
         return CGSize(width: itemWidth, height: itemHeight)
     }
