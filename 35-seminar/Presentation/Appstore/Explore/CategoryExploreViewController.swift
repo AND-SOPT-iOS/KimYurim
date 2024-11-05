@@ -148,7 +148,7 @@ extension CategoryExploreViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
         case 0:
-            return 70
+            return 0
         case 1:
             return 70
         default:
