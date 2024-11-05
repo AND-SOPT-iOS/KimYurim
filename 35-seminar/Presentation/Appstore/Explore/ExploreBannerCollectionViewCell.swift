@@ -11,10 +11,14 @@ class ExploreBannerCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     static let identifier = String(describing: ExploreBannerCollectionViewCell.self)
-    static let height = 200
+    static let height = 300
     
     private var app: App?
     private let veryLightGray = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
+    
+    private let tagLabel = UILabel()
+    private let bigTitleLabel = UILabel()
+    private let bigSubTitleLabel = UILabel()
     
     private let bgImageView = UIImageView()
     private let titleStackView = UIStackView()
@@ -39,9 +43,13 @@ class ExploreBannerCollectionViewCell: UICollectionViewCell {
     }
     
     private func setUI() {
+        tagLabel.configureLabel(color: .tintColor, size: 12, weight: .medium)
+        bigTitleLabel.configureLabel(color: .label, size: 22, weight: .regular)
+        bigSubTitleLabel.configureLabel(color: .secondaryLabel, size: 19, weight: .regular)
+        
         bgImageView.contentMode = .scaleAspectFill
         bgImageView.clipsToBounds = true
-        bgImageView.layer.cornerRadius = 16
+        bgImageView.layer.cornerRadius = 8
         bgImageView.backgroundColor = .orange
         bgImageView.tintColor = .gray
         
@@ -68,7 +76,7 @@ class ExploreBannerCollectionViewCell: UICollectionViewCell {
     }
     
     private func setHierarchy() {
-        [bgImageView, iconImageView, titleStackView, downloadButton].forEach {
+        [tagLabel, bigTitleLabel, bigSubTitleLabel, bgImageView, iconImageView, titleStackView, downloadButton].forEach {
             self.contentView.addSubview($0)
         }
         
@@ -78,8 +86,24 @@ class ExploreBannerCollectionViewCell: UICollectionViewCell {
     }
     
     private func setConstraints() {
+        tagLabel.snp.makeConstraints {
+            $0.top.horizontalEdges.equalToSuperview()
+        }
+        bigTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(tagLabel.snp.bottom).offset(2)
+            $0.horizontalEdges.equalTo(tagLabel)
+        }
+        
+        bigSubTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(bigTitleLabel.snp.bottom).offset(2)
+            $0.horizontalEdges.equalTo(tagLabel)
+        }
+        
         bgImageView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.equalTo(bigSubTitleLabel.snp.bottom).offset(4)
+            $0.horizontalEdges.equalToSuperview()
+            $0.height.greaterThanOrEqualTo(200)
+            $0.bottom.equalToSuperview()
         }
         
         iconImageView.snp.makeConstraints {
@@ -104,6 +128,9 @@ class ExploreBannerCollectionViewCell: UICollectionViewCell {
     
     func bind(appData: App) {
         self.app = appData
+        tagLabel.text = appData.tag
+        bigTitleLabel.text = appData.title
+        bigSubTitleLabel.text = appData.subtitle
         bgImageView.image = appData.bannerImage
         iconImageView.image = appData.iconImage
         titleLabel.text = appData.title
