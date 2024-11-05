@@ -45,6 +45,8 @@
 		1590A6A42CBE8A9200FB32AE /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1590A6A32CBE8A9200FB32AE /* DetailViewController.swift */; };
 		159987512CD9DF6900692C78 /* ExploreBannerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159987502CD9DF6900692C78 /* ExploreBannerTableViewCell.swift */; };
 		159987532CDA234E00692C78 /* ExploreBannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159987522CDA234E00692C78 /* ExploreBannerCollectionViewCell.swift */; };
+		159987552CDAA5E200692C78 /* ExploreTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159987542CDAA5E200692C78 /* ExploreTableViewHeader.swift */; };
+		159987572CDAA92F00692C78 /* ExploreSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159987562CDAA92F00692C78 /* ExploreSection.swift */; };
 		15EC30532CCA434700A0480B /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC30522CCA434700A0480B /* UIButton+Extension.swift */; };
 		15EC30552CCAB69000A0480B /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC30542CCAB69000A0480B /* DetailView.swift */; };
 		15EC30572CCAC33700A0480B /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC30562CCAC33700A0480B /* UIImage+Extension.swift */; };
@@ -97,6 +99,8 @@
 		1590A6A32CBE8A9200FB32AE /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		159987502CD9DF6900692C78 /* ExploreBannerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreBannerTableViewCell.swift; sourceTree = "<group>"; };
 		159987522CDA234E00692C78 /* ExploreBannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreBannerCollectionViewCell.swift; sourceTree = "<group>"; };
+		159987542CDAA5E200692C78 /* ExploreTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreTableViewHeader.swift; sourceTree = "<group>"; };
+		159987562CDAA92F00692C78 /* ExploreSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreSection.swift; sourceTree = "<group>"; };
 		15EC30522CCA434700A0480B /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		15EC30542CCAB69000A0480B /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		15EC30562CCAC33700A0480B /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
@@ -168,6 +172,7 @@
 			children = (
 				15769B542CD11D99000DBAD3 /* App.swift */,
 				15769B582CD1362D000DBAD3 /* Category.swift */,
+				159987562CDAA92F00692C78 /* ExploreSection.swift */,
 				15769B562CD11DAE000DBAD3 /* DownloadState.swift */,
 				15728FC42CCCAF0100E1E151 /* Feedback.swift */,
 				15728FC62CCCAF3100E1E151 /* StarColor.swift */,
@@ -228,6 +233,7 @@
 		15769B612CD13D5B000DBAD3 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
+				159987542CDAA5E200692C78 /* ExploreTableViewHeader.swift */,
 				156CD7FB2CD791A000F47DA0 /* ExploreListTableViewCell.swift */,
 				156CD7F72CD77FC800F47DA0 /* ExploreListCollectionViewCell.swift */,
 				159987502CD9DF6900692C78 /* ExploreBannerTableViewCell.swift */,
@@ -425,6 +431,7 @@
 				15769B602CD13BB8000DBAD3 /* Week3Photo.swift in Sources */,
 				1590A6442CBE6C6A00FB32AE /* Week1MainView.swift in Sources */,
 				15769B6E2CD155F9000DBAD3 /* Int+Extension.swift in Sources */,
+				159987552CDAA5E200692C78 /* ExploreTableViewHeader.swift in Sources */,
 				15EC305D2CCB792300A0480B /* FeedbackWriteViewController.swift in Sources */,
 				15769B5C2CD13A25000DBAD3 /* Week3PhotoViewController.swift in Sources */,
 				15F4FD072CC73D0A00C99A20 /* StarStackView.swift in Sources */,
@@ -432,6 +439,7 @@
 				15769B532CD1123B000DBAD3 /* ChartTableViewCell.swift in Sources */,
 				159987532CDA234E00692C78 /* ExploreBannerCollectionViewCell.swift in Sources */,
 				157119DD2CBE96F500362252 /* UILabel+Extension.swift in Sources */,
+				159987572CDAA92F00692C78 /* ExploreSection.swift in Sources */,
 				15F4FD0F2CC7649A00C99A20 /* BorderView.swift in Sources */,
 				15769B652CD13DF1000DBAD3 /* MainExploreViewController.swift in Sources */,
 				15EC305F2CCB793500A0480B /* FeedbackWriteView.swift in Sources */,
