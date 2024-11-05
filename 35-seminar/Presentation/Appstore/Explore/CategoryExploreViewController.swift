@@ -33,6 +33,7 @@ class CategoryExploreViewController: BaseViewController {
         categoryExploreView.tableView.delegate = self
         categoryExploreView.tableView.register(ExploreListTableViewCell.self, forCellReuseIdentifier: ExploreListTableViewCell.identifier)
         categoryExploreView.tableView.register(ExploreBannerTableViewCell.self, forCellReuseIdentifier: ExploreBannerTableViewCell.identifier)
+        categoryExploreView.tableView.register(ExploreTableViewHeader.self, forHeaderFooterViewReuseIdentifier: ExploreTableViewHeader.identifier)
     }
     
     private func setListApps() {
@@ -71,7 +72,7 @@ class CategoryExploreViewController: BaseViewController {
 extension CategoryExploreViewController: UITableViewDataSource {
     // section
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     
     // cell
@@ -115,6 +116,7 @@ extension CategoryExploreViewController: UITableViewDataSource {
 
 
 extension CategoryExploreViewController: UITableViewDelegate {
+    // cell
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
@@ -124,4 +126,35 @@ extension CategoryExploreViewController: UITableViewDelegate {
             return CGFloat(ExploreListCollectionViewCell.height)
         }
     }
+    
+    // header
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = ExploreTableViewHeader()
+        switch section {
+        case 0:
+            return UIView()
+        case 1:
+            header.bind(section: .essential)
+        case 2:
+            header.bind(section: .paid)
+        case 3:
+            header.bind(section: .free)
+        default:
+            return UIView()
+        }
+        return header
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch section {
+        case 0:
+            return 70
+        case 1:
+            return 70
+        default:
+            return 44
+        }
+    }
+    
+    
 }
