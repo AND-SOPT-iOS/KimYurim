@@ -24,7 +24,6 @@ class CategoryExploreViewController: BaseViewController {
     override func viewDidLoad() {
         setListApps()
         setBannerApps()
-        
         super.viewDidLoad()
     }
     
@@ -102,11 +101,11 @@ extension CategoryExploreViewController: UITableViewDataSource {
             
             switch indexPath.section {
             case 1:
-                cell.bind(apps: essentialApps)
+                cell.bind(apps: essentialApps, exploreVC: self)
             case 2:
-                cell.bind(apps: paidApps)
+                cell.bind(apps: paidApps, exploreVC: self)
             default:
-                cell.bind(apps: freeApps)
+                cell.bind(apps: freeApps, exploreVC: self)
             }
             
             return cell
@@ -155,6 +154,4 @@ extension CategoryExploreViewController: UITableViewDelegate {
             return 44
         }
     }
-    
-    
 }

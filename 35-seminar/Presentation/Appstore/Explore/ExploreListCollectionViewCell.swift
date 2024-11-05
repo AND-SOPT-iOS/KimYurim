@@ -15,6 +15,7 @@ class ExploreListCollectionViewCell: UICollectionViewCell {
     static let height = 265
     
     private var apps: [App] = []
+    private var exploreVC: UIViewController? = nil
     
     private let stackView = UIStackView()
     private let cell1 = AppListCellView()
@@ -26,18 +27,15 @@ class ExploreListCollectionViewCell: UICollectionViewCell {
     // MARK: - Methods
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        setDelegate()
         setUI()
         setHierarchy()
         setConstraints()
+        setAddTarget()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func setDelegate() { }
     
     private func setUI() {
         self.backgroundColor = .systemBackground
@@ -73,8 +71,16 @@ class ExploreListCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func bind(apps: [App]) {
+    private func setAddTarget() {
+        let cells = [cell1, cell2, cell3]
+        for cell in cells {
+            cell.coverButton.addTarget(self, action: #selector(tappedDownloadButton), for: .touchUpInside)
+        }
+    }
+    
+    func bind(apps: [App], exploreVC: UIViewController) {
         self.apps = apps
+        self.exploreVC = exploreVC
         
         let cells = [cell1, cell2, cell3]
         for (i, cell) in cells.enumerated() {
@@ -89,6 +95,13 @@ class ExploreListCollectionViewCell: UICollectionViewCell {
             border2.backgroundColor = .systemBackground
         } else if apps.count == 2 {
             border2.backgroundColor = .systemBackground
+        }
+    }
+    
+    @objc func tappedDownloadButton(_ gesture: UITapGestureRecognizer) {
+        let detailVC = DetailViewController()
+        if let exploreVC = exploreVC {
+            exploreVC.navigationController?.pushViewController(detailVC, animated: true)
         }
     }
 }

@@ -21,9 +21,10 @@ class AppListCellView: BaseView {
     private let titleLabel = UILabel()
     private let subtitleLabel = UILabel()
     private let categoryLabel = UILabel()
-    private let downloadButton = UIButton()
+    let downloadButton = UIButton()
     
     private let coverView = UIView()
+    let coverButton = UIButton()
     
     // MARK: - Methods
     override func setUI() {
@@ -56,7 +57,7 @@ class AppListCellView: BaseView {
     }
     
     override func setHierarchy() {
-        [iconImageView, labelHorizontalStackView, downloadButton, coverView].forEach {
+        [iconImageView, labelHorizontalStackView, downloadButton, coverView, coverButton].forEach {
             self.addSubview($0)
         }
         
@@ -94,6 +95,10 @@ class AppListCellView: BaseView {
         }
         
         coverView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        coverButton.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
     }
@@ -134,6 +139,4 @@ class AppListCellView: BaseView {
     func hideContents(hidden: Bool) {
         coverView.isHidden = !hidden
     }
-    
-    // TODO: Tap Gesture 추가하기
 }

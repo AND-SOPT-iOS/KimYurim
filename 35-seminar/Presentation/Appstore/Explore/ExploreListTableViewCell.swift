@@ -13,6 +13,7 @@ class ExploreListTableViewCell: UITableViewCell {
     static let identifier = String(describing: ExploreListTableViewCell.self)
     
     private var apps: [App] = []
+    private var exploreVC: UIViewController? = nil
     
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
@@ -51,8 +52,9 @@ class ExploreListTableViewCell: UITableViewCell {
         }
     }
     
-    func bind(apps: [App]) {
+    func bind(apps: [App], exploreVC: UIViewController) {
         self.apps = apps
+        self.exploreVC = exploreVC
         setConstraints()
     }
 }
@@ -73,8 +75,9 @@ extension ExploreListTableViewCell: UICollectionViewDataSource {
         let startIndex = indexPath.item * 3
         let endIndex = min(startIndex + 3, apps.count)
         
-        if startIndex < apps.count {
-            item.bind(apps: Array(apps[startIndex..<endIndex]))
+        if let exploreVC = self.exploreVC,
+           startIndex < apps.count {
+            item.bind(apps: Array(apps[startIndex..<endIndex]), exploreVC: exploreVC)
         }
         
         return item
