@@ -51,4 +51,10 @@ extension ChartViewController: UITableViewDelegate {
         let header = ChartTableViewHeader()
         return header
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailVC = DetailViewController()
+        self.navigationController?.pushViewController(detailVC, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
