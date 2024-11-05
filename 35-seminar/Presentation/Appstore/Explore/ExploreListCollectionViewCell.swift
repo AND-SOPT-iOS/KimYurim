@@ -15,9 +15,9 @@ class ExploreListCollectionViewCell: UICollectionViewCell {
     private var apps: [App] = []
     
     private let stackView = UIStackView()
-    private let cell1 = AppCellView()
-    private let cell2 = AppCellView()
-    private let cell3 = AppCellView()
+    private let cell1 = AppListCellView()
+    private let cell2 = AppListCellView()
+    private let cell3 = AppListCellView()
     private let border1 = BorderView()
     private let border2 = BorderView()
     
@@ -41,11 +41,11 @@ class ExploreListCollectionViewCell: UICollectionViewCell {
         self.backgroundColor = .systemBackground
         stackView.axis = .vertical
         stackView.alignment = .trailing
-        stackView.spacing = 5
+        stackView.spacing = 0
     }
     
     private func setHierarchy() {
-        self.addSubview(stackView)
+        contentView.addSubview(stackView)
         
         [cell1, border1, cell2, border2, cell3].forEach {
             stackView.addArrangedSubview($0)
