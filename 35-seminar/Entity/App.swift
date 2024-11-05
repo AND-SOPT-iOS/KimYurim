@@ -21,7 +21,7 @@ struct App {
 
 extension App {
     static let sampleApps: [App] = [
-        App(iconImage: UIImage(systemName: "banknote")!, bannerImage: UIImage(systemName: "banknote"), ranking: 1, title: "Fin - 가계부 및 예산 추적기", subtitle: "당신의 돈은 어디로 가고 있을까요?", tag: "새로운 경험", category: .finance, price: 0, downloadState: .installed),
+        App(iconImage: UIImage.tossIcon, bannerImage: UIImage.tossBanner, ranking: 1, title: "토스", subtitle: "금융이 쉬워진다", tag: "새로운 경험", category: .finance, price: 0, downloadState: .installed),
         App(iconImage: UIImage(systemName: "chart.bar")!, bannerImage: UIImage(systemName: "banknote"), ranking: 2, title: "Spendee Money & Budget Planner", subtitle: "금융", tag: "추천", category: .finance, price: 0, downloadState: .download),
         App(iconImage: UIImage(systemName: "creditcard")!, bannerImage: UIImage(systemName: "banknote"), ranking: 3, title: "위플 가계부 Pro", subtitle: "아이폰 사용자 수 1위 가계부", tag: "새로운 경험", category: .finance, price: 0, downloadState: .redownload),
         App(iconImage: UIImage(systemName: "dollarsign.circle")!, bannerImage: UIImage(systemName: "banknote"), ranking: 4, title: "내돈내산", subtitle: "가계부 관리 앱", tag: "새로운 앱", category: .finance, price: 0, downloadState: .update),
