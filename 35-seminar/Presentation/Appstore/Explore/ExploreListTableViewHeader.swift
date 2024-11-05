@@ -7,10 +7,10 @@
 
 import UIKit
 
-class ExploreTableViewHeader: UITableViewHeaderFooterView {
+class ExploreListTableViewHeader: UITableViewHeaderFooterView {
     
     // MARK: - Properties
-    static let identifier = String(describing: ExploreTableViewHeader.self)
+    static let identifier = String(describing: ExploreListTableViewHeader.self)
     
     private let titlelabel = TitleLabel()
     private let subTItlelabel = SubtitleLabel()

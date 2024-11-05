@@ -33,7 +33,7 @@ class CategoryExploreViewController: BaseViewController {
         categoryExploreView.tableView.delegate = self
         categoryExploreView.tableView.register(ExploreListTableViewCell.self, forCellReuseIdentifier: ExploreListTableViewCell.identifier)
         categoryExploreView.tableView.register(ExploreBannerTableViewCell.self, forCellReuseIdentifier: ExploreBannerTableViewCell.identifier)
-        categoryExploreView.tableView.register(ExploreTableViewHeader.self, forHeaderFooterViewReuseIdentifier: ExploreTableViewHeader.identifier)
+        categoryExploreView.tableView.register(ExploreListTableViewHeader.self, forHeaderFooterViewReuseIdentifier: ExploreListTableViewHeader.identifier)
     }
     
     private func setListApps() {
@@ -129,7 +129,7 @@ extension CategoryExploreViewController: UITableViewDelegate {
     
     // header
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = ExploreTableViewHeader()
+        let header = ExploreListTableViewHeader()
         switch section {
         case 0:
             return UIView()
