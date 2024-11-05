@@ -83,7 +83,39 @@ extension ExploreBannerTableViewCell: UICollectionViewDelegateFlowLayout {
         /// TableViewCell이 init된 이후에 실행되는 Delegate에서 컬렉션뷰의 크기를 결정함.
         let itemWidth = self.contentView.layer.bounds.width - 40
         let itemHeight = CGFloat(ExploreBannerCollectionViewCell.height)
+        adjustOffsetToCenter(collectionView, targetContentOffset: nil)
         return CGSize(width: itemWidth, height: itemHeight)
     }
     
+    // TODO: 셀을 자동으로 가운데로 위치시키는 작업 수정 필요
+    // 동작이 매끄럽지 못하고, 스크롤을 계속 하다 보면 셀 구조가 이상해짐(3,3,1 -> 3,1,3)
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        adjustOffsetToCenter(scrollView, targetContentOffset: targetContentOffset)
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        adjustOffsetToCenter(scrollView, targetContentOffset: nil)
+    }
+    
+    private func adjustOffsetToCenter(_ scrollView: UIScrollView, targetContentOffset: UnsafeMutablePointer<CGPoint>?) {
+        // 셀의 크기 및 컬렉션뷰 가운데 위치 계산
+        let itemWidth = self.contentView.bounds.width - 40
+        let itemSpacing: CGFloat = 10
+        let itemPlusSpacing = itemWidth + itemSpacing
+        
+        // 현재의 오프셋을 기준으로 가장 가까운 셀의 위치 계산
+        let centerX = scrollView.contentOffset.x + scrollView.bounds.width / 2
+        let page = round((centerX - itemWidth / 2) / itemPlusSpacing)
+        
+        // 목표 위치 계산
+        let adjustedX = page * itemPlusSpacing + itemWidth / 2 - scrollView.bounds.width / 2
+        
+        
+        // targetContentOffset이 nil이면, 스크롤 위치를 애니메이션으로 강제 이동
+        if let targetContentOffset = targetContentOffset {
+            targetContentOffset.pointee.x = adjustedX
+        } else {
+            scrollView.setContentOffset(CGPoint(x: adjustedX, y: scrollView.contentOffset.y), animated: true)
+        }
+    }
 }
