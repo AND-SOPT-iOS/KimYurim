@@ -47,6 +47,8 @@ extension ChartViewController: UITableViewDataSource {
 }
 
 extension ChartViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = ChartTableViewHeader()
+        return header
+    }
 }
-

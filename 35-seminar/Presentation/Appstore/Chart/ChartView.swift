@@ -10,7 +10,6 @@ import UIKit
 class ChartView: BaseView {
     
     // MARK: - Properties
-    let headerView = UITableViewHeaderFooterView()
     let tableView = UITableView()
     
     // MARK: - Methods
