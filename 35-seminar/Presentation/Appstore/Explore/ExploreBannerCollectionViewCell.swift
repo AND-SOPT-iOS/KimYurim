@@ -11,11 +11,13 @@ class ExploreBannerCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     static let identifier = String(describing: ExploreBannerCollectionViewCell.self)
-    static let height = 300
+    static let height = 290
     
     private var app: App?
     private let veryLightGray = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
     
+    private let stackView = UIStackView()
+    private let bigLabelStackView = UIStackView()
     private let tagLabel = UILabel()
     private let bigTitleLabel = UILabel()
     private let bigSubTitleLabel = UILabel()
@@ -43,6 +45,12 @@ class ExploreBannerCollectionViewCell: UICollectionViewCell {
     }
     
     private func setUI() {
+        stackView.axis = .vertical
+        stackView.distribution = .equalSpacing
+        
+        bigLabelStackView.axis = .vertical
+        bigLabelStackView.spacing = 1
+        
         tagLabel.configureLabel(color: .tintColor, size: 12, weight: .medium)
         bigTitleLabel.configureLabel(color: .label, size: 22, weight: .regular)
         bigSubTitleLabel.configureLabel(color: .secondaryLabel, size: 19, weight: .regular)
@@ -76,8 +84,16 @@ class ExploreBannerCollectionViewCell: UICollectionViewCell {
     }
     
     private func setHierarchy() {
-        [tagLabel, bigTitleLabel, bigSubTitleLabel, bgImageView, iconImageView, titleStackView, downloadButton].forEach {
+        [stackView, iconImageView, titleStackView, downloadButton].forEach {
             self.contentView.addSubview($0)
+        }
+        
+        [bigLabelStackView, bgImageView].forEach {
+            stackView.addArrangedSubview($0)
+        }
+        
+        [tagLabel, bigTitleLabel, bigSubTitleLabel].forEach {
+            bigLabelStackView.addArrangedSubview($0)
         }
         
         [titleLabel, subtitleLabel].forEach {
@@ -86,24 +102,12 @@ class ExploreBannerCollectionViewCell: UICollectionViewCell {
     }
     
     private func setConstraints() {
-        tagLabel.snp.makeConstraints {
-            $0.top.horizontalEdges.equalToSuperview()
-        }
-        bigTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(tagLabel.snp.bottom).offset(2)
-            $0.horizontalEdges.equalTo(tagLabel)
-        }
-        
-        bigSubTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(bigTitleLabel.snp.bottom).offset(2)
-            $0.horizontalEdges.equalTo(tagLabel)
+        stackView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
         
         bgImageView.snp.makeConstraints {
-            $0.top.equalTo(bigSubTitleLabel.snp.bottom).offset(4)
-            $0.horizontalEdges.equalToSuperview()
-            $0.height.greaterThanOrEqualTo(200)
-            $0.bottom.equalToSuperview()
+            $0.height.equalTo(216)
         }
         
         iconImageView.snp.makeConstraints {
