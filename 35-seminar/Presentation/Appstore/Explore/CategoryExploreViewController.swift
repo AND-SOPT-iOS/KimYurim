@@ -136,8 +136,10 @@ extension CategoryExploreViewController: UITableViewDelegate {
             header.bind(section: .essential)
         case 2:
             header.bind(section: .paid)
+            header.allButton.addTarget(self, action: #selector(tappedAllButton), for: .touchUpInside)
         case 3:
             header.bind(section: .free)
+            header.allButton.addTarget(self, action: #selector(tappedAllButton), for: .touchUpInside)
         default:
             return UIView()
         }
@@ -153,5 +155,10 @@ extension CategoryExploreViewController: UITableViewDelegate {
         default:
             return 44
         }
+    }
+    
+    @objc func tappedAllButton() {
+        let chartVC = ChartViewController()
+        self.navigationController?.pushViewController(chartVC, animated: true)
     }
 }

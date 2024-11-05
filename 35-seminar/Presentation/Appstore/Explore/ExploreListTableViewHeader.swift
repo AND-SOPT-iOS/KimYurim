@@ -14,7 +14,7 @@ class ExploreListTableViewHeader: UITableViewHeaderFooterView {
     
     private let titleLabel = TitleLabel()
     private let subTItleLabel = SubtitleLabel()
-    private let allButton = UIButton()
+    let allButton = UIButton()
     
     // MARK: - Methods
     override init(reuseIdentifier: String?) {
