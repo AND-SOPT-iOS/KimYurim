@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+enum ExploreSection {
+    case essential
+    case paid
+    case free
+}
