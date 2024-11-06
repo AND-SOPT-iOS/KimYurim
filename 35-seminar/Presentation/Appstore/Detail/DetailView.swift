@@ -62,7 +62,7 @@ class DetailView: BaseView {
     // 미리보기뷰
     private let previewView = UIView()
     private let previewTitleLabel = TitleLabel()
-    private let previewImageView = UIImageView()
+    let previewCollectionView = UICollectionView()
     private let previewDeviceImageView = UIImageView()
     private let previewDeviceLabel = SubtitleLabel()
     
@@ -221,12 +221,13 @@ class DetailView: BaseView {
     private func setPreviewViewUI() {
         previewTitleLabel.text = "미리 보기"
         
-        previewImageView.image = UIImage(named: "toss_preview") // NSBundle 오류 발생
-        previewImageView.contentMode = .scaleAspectFill
-        previewImageView.clipsToBounds = true
-        previewImageView.layer.cornerRadius = 20
-        previewImageView.layer.borderColor = UIColor.systemGray5.cgColor
-        previewImageView.layer.borderWidth = 1
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 10
+        layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width: 250, height: 500)
+        previewCollectionView.setCollectionViewLayout(layout, animated: true)
+        previewCollectionView.isPagingEnabled = true
+        previewCollectionView.showsHorizontalScrollIndicator = false
         
         previewDeviceImageView.image = UIImage.configureImage(systemName: "iphone", symbolWeight: .regular)?.withTintColor(.secondaryLabel)
         previewDeviceImageView.contentMode = .scaleAspectFit
@@ -388,7 +389,7 @@ class DetailView: BaseView {
     }
     
     private func setPreviewViewHierarchy() {
-        [previewTitleLabel, previewImageView, previewDeviceImageView, previewDeviceLabel].forEach {
+        [previewTitleLabel, previewCollectionView, previewDeviceImageView, previewDeviceLabel].forEach {
             previewView.addSubview($0)
         }
     }
@@ -592,15 +593,14 @@ class DetailView: BaseView {
             $0.top.leading.equalToSuperview()
         }
         
-        previewImageView.snp.makeConstraints {
+        previewCollectionView.snp.makeConstraints {
             $0.top.equalTo(previewTitleLabel.snp.bottom).offset(5)
-            $0.centerX.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(500)
-            $0.width.equalTo(240)
         }
         
         previewDeviceImageView.snp.makeConstraints {
-            $0.top.equalTo(previewImageView.snp.bottom).offset(10)
+            $0.top.equalTo(previewCollectionView.snp.bottom).offset(10)
             $0.leading.equalToSuperview()
             $0.size.equalTo(18)
             $0.bottom.equalToSuperview().offset(-10)
