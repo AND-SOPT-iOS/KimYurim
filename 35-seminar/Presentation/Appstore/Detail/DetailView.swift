@@ -16,9 +16,6 @@ protocol FeedbackDelegate: AnyObject {
 class DetailView: BaseView {
     
     // MARK: - Properties
-    private var feedback: Feedback?
-    private let initialFeedback = Feedback(title: "김유림", author: "ISTJ", starCount: 5, authorDate: Date(year: 2023, month: 12, day: 20), content: "동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세", developerContent: "안녕하세요, 토스팀입니다. 소중한 의견을 주셔서 너무나 감사합니다.", developerDate: Date(year: 2024, month: 5, day: 30))
-    
     let scrollView = UIScrollView()
     private let contentStackView = UIStackView()
     
@@ -91,41 +88,18 @@ class DetailView: BaseView {
     private let feedbackTapToRateStackView = UIStackView()
     private let tapToRateLabel = SubtitleLabel()
     let tapToRateStarStackView = StarStackView()
-    
-    private let feedbackBoxStackView = UIStackView()
-    private let feedbackTitleStackView = UIStackView()
-    private let feedbackTitleLabel = ContentLabel()
-    private let feedbackDateLabel = SubtitleLabel()
-    
-    private let feedbackSubtitleStackView = UIStackView()
-    private let feedbackStarStackView = StarStackView()
-    private let feedbackAuthorLabel = SubtitleLabel()
-    
-    private let feedbackContentView = UIView()
-    private let feedbackContentLabel = ContentLabel()
-    private let feedbackDeveloperTitleLabel = ContentLabel()
-    private let feedbackDeveloperContentView = UIView()
-    private let feedbackDeveloperContentLabel = ContentLabel()
-    private let feedbackDeveloperDateLabel = SubtitleLabel()
-    let feedbackMoreButton1 = UIButton()
-    let feedbackMoreButton2 = UIButton()
+    let feedbackCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
     let feedbackWriteButton = UIButton()
     let appSupportButton = UIButton()
     
     // MARK: - Methods
     override init(frame: CGRect) {
-        feedback = initialFeedback
         super.init(frame: frame)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    // MARK: - Delegate
-    override func setDelegate() {
-        tapToRateStarStackView.delegate = self
     }
     
     // MARK: - UI
@@ -229,6 +203,7 @@ class DetailView: BaseView {
         previewCollectionView.setCollectionViewLayout(layout, animated: true)
         previewCollectionView.isPagingEnabled = true
         previewCollectionView.showsHorizontalScrollIndicator = false
+        previewCollectionView.tag = 0
         
         previewDeviceImageView.image = UIImage.configureImage(systemName: "iphone", symbolWeight: .regular)?.withTintColor(.secondaryLabel)
         previewDeviceImageView.contentMode = .scaleAspectFit
@@ -288,44 +263,16 @@ class DetailView: BaseView {
         tapToRateLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         
         tapToRateStarStackView.setContentHuggingPriority(.defaultLow, for: .horizontal)
-        tapToRateStarStackView.bind(feedback?.starCount ?? 0, .tint)
-        
-        feedbackBoxStackView.axis = .vertical
-        feedbackBoxStackView.backgroundColor = .systemGray6
-        feedbackBoxStackView.layer.cornerRadius = 10
-        feedbackBoxStackView.spacing = 3
-        feedbackBoxStackView.isLayoutMarginsRelativeArrangement = true
-        feedbackBoxStackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 18, leading: 20, bottom: 18, trailing: 20)
         
         
-        [feedbackTitleStackView, feedbackSubtitleStackView].forEach {
-            $0.axis = .horizontal
-            $0.spacing = 10
-        }
-        
-        feedbackTitleLabel.configureLabel(size: 15, weight: .bold, text: feedback?.title)
-        
-        feedbackDateLabel.configureLabel(alignment: .right, color: .secondaryLabel, size: 15, weight: .regular, text: feedback?.authorDate?.formattedDateToString())
-        feedbackDateLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        
-        feedbackStarStackView.bind(feedback?.starCount ?? 0, .orange)
-        feedbackStarStackView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        
-        feedbackAuthorLabel.configureLabel(alignment: .right, color: .secondaryLabel, size: 14, weight: .regular, text: feedback?.author)
-        
-        feedbackContentLabel.text = feedback?.content
-        feedbackContentLabel.setLineSpacing(4)
-        
-        feedbackDeveloperTitleLabel.configureLabel(size: 15, weight: .semibold, text: "개발자 답변")
-        
-        feedbackDeveloperContentLabel.text = feedback?.developerContent
-        feedbackDeveloperContentLabel.setLineSpacing(4)
-        
-        feedbackDeveloperDateLabel.configureLabel(color: .secondaryLabel, size: 15, weight: .regular, text: feedback?.developerDate?.formattedDateToString())
-        
-        [feedbackMoreButton1, feedbackMoreButton2].forEach {
-            $0.configureButton(title: "더 보기", removeContentInsets: true)
-        }
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 10
+        layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width: 250, height: 250) // 임시 값. delegate에서 화면 너비 참조하여 다시 정해짐.
+        feedbackCollectionView.setCollectionViewLayout(layout, animated: true)
+        feedbackCollectionView.isPagingEnabled = true
+        feedbackCollectionView.showsHorizontalScrollIndicator = false
+        feedbackCollectionView.tag = 1
         
         feedbackWriteButton.configureButton(title: " 리뷰 작성", fontSize: 17, systemName: "square.and.pencil")
         
@@ -412,32 +359,12 @@ class DetailView: BaseView {
     }
     
     private func setFeedbackViewHierarchy() {
-        [feedbackTapToRateStackView, feedbackBoxStackView, feedbackWriteButton, appSupportButton].forEach {
+        [feedbackTapToRateStackView, feedbackCollectionView, feedbackWriteButton, appSupportButton].forEach {
             feedbackView.addSubview($0)
         }
         
         [tapToRateLabel, tapToRateStarStackView].forEach {
             feedbackTapToRateStackView.addArrangedSubview($0)
-        }
-        
-        [feedbackTitleStackView, feedbackSubtitleStackView, feedbackContentView, feedbackDeveloperContentView].forEach {
-            feedbackBoxStackView.addArrangedSubview($0)
-        }
-        
-        [feedbackTitleLabel, feedbackDateLabel].forEach {
-            feedbackTitleStackView.addArrangedSubview($0)
-        }
-        
-        [feedbackStarStackView, feedbackAuthorLabel].forEach {
-            feedbackSubtitleStackView.addArrangedSubview($0)
-        }
-        
-        [feedbackContentLabel, feedbackMoreButton1].forEach {
-            feedbackContentView.addSubview($0)
-        }
-        
-        [feedbackDeveloperTitleLabel, feedbackDeveloperDateLabel, feedbackDeveloperContentLabel, feedbackMoreButton2].forEach {
-            feedbackDeveloperContentView.addSubview($0)
         }
     }
     
@@ -691,97 +618,40 @@ class DetailView: BaseView {
     
     private func setFeedbackViewConstraints() {
         feedbackView.snp.makeConstraints {
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.horizontalEdges.equalToSuperview()
         }
         
         feedbackTapToRateStackView.snp.makeConstraints {
-            $0.top.horizontalEdges.equalToSuperview()
+            $0.top.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview().inset(20)
             $0.height.equalTo(28)
         }
         
-        feedbackBoxStackView.snp.makeConstraints {
+        feedbackCollectionView.snp.makeConstraints {
             $0.top.equalTo(feedbackTapToRateStackView.snp.bottom).offset(20)
             $0.horizontalEdges.equalToSuperview()
-        }
-        
-        feedbackStarStackView.snp.makeConstraints {
-            $0.height.equalTo(16)
-            $0.width.equalTo(80)
-        }
-        
-        feedbackContentLabel.snp.makeConstraints {
-            $0.horizontalEdges.equalToSuperview()
-            $0.verticalEdges.equalToSuperview().inset(10)
-        }
-        
-        feedbackMoreButton1.snp.makeConstraints {
-            $0.trailing.equalToSuperview()
-            $0.bottom.equalTo(feedbackContentLabel)
-        }
-        
-        feedbackDeveloperTitleLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview()
-            $0.top.equalToSuperview().offset(5)
-        }
-        
-        feedbackDeveloperDateLabel.snp.makeConstraints {
-            $0.trailing.equalToSuperview()
-            $0.centerY.equalTo(feedbackDeveloperTitleLabel)
-        }
-        
-        feedbackDeveloperContentLabel.snp.makeConstraints {
-            $0.horizontalEdges.equalToSuperview()
-            $0.top.equalTo(feedbackDeveloperTitleLabel.snp.bottom).offset(5)
-            $0.bottom.equalToSuperview()
-        }
-        
-        feedbackMoreButton2.snp.makeConstraints {
-            $0.trailing.equalToSuperview()
-            $0.bottom.equalTo(feedbackDeveloperContentLabel)
+            $0.height.equalTo(250)
         }
         
         feedbackWriteButton.snp.makeConstraints {
-            $0.top.equalTo(feedbackBoxStackView.snp.bottom).offset(20)
-            $0.leading.equalTo(feedbackBoxStackView)
+            $0.top.equalTo(feedbackCollectionView.snp.bottom).offset(20)
+            $0.leading.equalTo(feedbackCollectionView).offset(20)
             $0.bottom.equalToSuperview().offset(-10)
         }
         
         appSupportButton.snp.makeConstraints {
-            $0.top.equalTo(feedbackBoxStackView.snp.bottom).offset(20)
-            $0.trailing.equalTo(feedbackBoxStackView)
+            $0.top.equalTo(feedbackCollectionView.snp.bottom).offset(20)
+            $0.trailing.equalTo(feedbackCollectionView).offset(-20)
         }
     }
     
     // MARK: - Data Binding
     func dataBind(feedback: Feedback) {
-        self.feedback = feedback
-        feedbackTitleLabel.text = feedback.title
-        feedbackAuthorLabel.text = feedback.author
-        feedbackStarStackView.bind(feedback.starCount ?? 0, .orange)
-        feedbackDateLabel.text = feedback.authorDate?.formattedDateToString()
-        feedbackContentLabel.text = feedback.content
-        feedbackDeveloperContentLabel.text = feedback.developerContent
-        feedbackDeveloperDateLabel.text = feedback.developerDate?.formattedDateToString()
-        tapToRateStarStackView.bind(feedback.starCount ?? 0, .tint)
-        
-        // 개발자 답변 있는지 확인
-        if feedback.developerContent == nil {
-            feedbackDeveloperContentView.isHidden = true
-        } else {
-            feedbackDeveloperContentView.isHidden = false
-        }
+        tapToRateStarStackView.bind(feedback.starCount, .tint)
     }
     
     func expandDescriptionLabel() {
         descriptionLabel.numberOfLines = 0
         descriptionMoreButton.isHidden = true
-    }
-}
-
-// MARK: - Extensions
-extension DetailView: StarStackViewDelegate {
-    func starStackView(_ view: StarStackView, newCount: Int) {
-        feedback?.starCount = newCount
-        feedbackStarStackView.bind(newCount, .orange)
     }
 }
