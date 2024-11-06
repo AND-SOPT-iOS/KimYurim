@@ -48,6 +48,7 @@
 		159987552CDAA5E200692C78 /* ExploreListTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159987542CDAA5E200692C78 /* ExploreListTableViewHeader.swift */; };
 		159987572CDAA92F00692C78 /* ExploreSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159987562CDAA92F00692C78 /* ExploreSection.swift */; };
 		1599875B2CDAD9EE00692C78 /* ChartTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1599875A2CDAD9EE00692C78 /* ChartTableViewHeader.swift */; };
+		1599875D2CDAE72F00692C78 /* DetailPreviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1599875C2CDAE72F00692C78 /* DetailPreviewCollectionViewCell.swift */; };
 		15EC30532CCA434700A0480B /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC30522CCA434700A0480B /* UIButton+Extension.swift */; };
 		15EC30552CCAB69000A0480B /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC30542CCAB69000A0480B /* DetailView.swift */; };
 		15EC30572CCAC33700A0480B /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC30562CCAC33700A0480B /* UIImage+Extension.swift */; };
@@ -103,6 +104,7 @@
 		159987542CDAA5E200692C78 /* ExploreListTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreListTableViewHeader.swift; sourceTree = "<group>"; };
 		159987562CDAA92F00692C78 /* ExploreSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreSection.swift; sourceTree = "<group>"; };
 		1599875A2CDAD9EE00692C78 /* ChartTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTableViewHeader.swift; sourceTree = "<group>"; };
+		1599875C2CDAE72F00692C78 /* DetailPreviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPreviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		15EC30522CCA434700A0480B /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		15EC30542CCAB69000A0480B /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		15EC30562CCAC33700A0480B /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 				15EC305E2CCB793500A0480B /* FeedbackWriteView.swift */,
 				15EC305C2CCB792300A0480B /* FeedbackWriteViewController.swift */,
 				15EC30582CCB727300A0480B /* VersionRecordViewController.swift */,
+				1599875C2CDAE72F00692C78 /* DetailPreviewCollectionViewCell.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 				15769B572CD11DAE000DBAD3 /* DownloadState.swift in Sources */,
 				15769B552CD11D99000DBAD3 /* App.swift in Sources */,
 				15EC30552CCAB69000A0480B /* DetailView.swift in Sources */,
+				1599875D2CDAE72F00692C78 /* DetailPreviewCollectionViewCell.swift in Sources */,
 				1590A6402CBE6C6A00FB32AE /* AppDelegate.swift in Sources */,
 				159987512CD9DF6900692C78 /* ExploreBannerTableViewCell.swift in Sources */,
 				1590A6412CBE6C6A00FB32AE /* SceneDelegate.swift in Sources */,
