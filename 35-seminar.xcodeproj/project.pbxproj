@@ -151,11 +151,11 @@
 		1502973E2CDB2C0C00281377 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				159987502CD9DF6900692C78 /* ExploreBannerTableViewCell.swift */,
+				159987522CDA234E00692C78 /* ExploreBannerCollectionViewCell.swift */,
 				156CD7FB2CD791A000F47DA0 /* ExploreListTableViewCell.swift */,
 				159987542CDAA5E200692C78 /* ExploreListTableViewHeader.swift */,
 				156CD7F72CD77FC800F47DA0 /* ExploreListCollectionViewCell.swift */,
-				159987502CD9DF6900692C78 /* ExploreBannerTableViewCell.swift */,
-				159987522CDA234E00692C78 /* ExploreBannerCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
