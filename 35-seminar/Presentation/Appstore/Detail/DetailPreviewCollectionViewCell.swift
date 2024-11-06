@@ -27,7 +27,6 @@ class DetailPreviewCollectionViewCell: UICollectionViewCell {
     }
     
     private func setUI() {
-        self.backgroundColor = .systemGray5
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 20
