@@ -11,6 +11,7 @@ class DetailViewController: BaseViewController {
     
     // MARK: - Properties
     private let detailView = DetailView()
+    private var previewImages: [UIImage?] = [UIImage.tossPreview1, UIImage.tossPreview2, UIImage.tossPreview3, UIImage.tossPreview4, UIImage.tossPreview5, UIImage.tossPreview6]
     
     // MARK: - Methods
     override func loadView() {
@@ -25,6 +26,8 @@ class DetailViewController: BaseViewController {
     
     override func setDelegate() {
         detailView.scrollView.delegate = self
+        detailView.previewCollectionView.dataSource = self
+        detailView.previewCollectionView.register(DetailPreviewCollectionViewCell.self, forCellWithReuseIdentifier: DetailPreviewCollectionViewCell.identifier)
     }
     
     override func setAddTarget() {
@@ -113,5 +116,18 @@ extension DetailViewController: UIScrollViewDelegate {
             navigationItem.titleView?.isHidden = true
             navigationItem.rightBarButtonItem?.isHidden = true
         }
+    }
+}
+
+extension DetailViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return previewImages.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let item = collectionView.dequeueReusableCell(withReuseIdentifier: DetailPreviewCollectionViewCell.identifier, for: indexPath) as? DetailPreviewCollectionViewCell else { return UICollectionViewCell() }
+        item.bind(image: previewImages[indexPath.item])
+        collectionView.reloadData()
+        return item
     }
 }

@@ -62,7 +62,7 @@ class DetailView: BaseView {
     // 미리보기뷰
     private let previewView = UIView()
     private let previewTitleLabel = TitleLabel()
-    let previewCollectionView = UICollectionView()
+    let previewCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     private let previewDeviceImageView = UIImageView()
     private let previewDeviceLabel = SubtitleLabel()
     
@@ -133,6 +133,7 @@ class DetailView: BaseView {
         super.setUI()
         contentStackView.axis = .vertical
         contentStackView.spacing = 10
+        contentStackView.distribution = .equalSpacing
         
         setTitleViewUI()
         setSummaryViewUI()
