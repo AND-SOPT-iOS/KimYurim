@@ -30,6 +30,7 @@ class DetailFeedbackCollectionViewCell: UICollectionViewCell {
     private let feedbackDeveloperDateLabel = SubtitleLabel()
     let feedbackMoreButton1 = UIButton()
     let feedbackMoreButton2 = UIButton()
+    private let spareView = UIView()
 
     
     // MARK: - Methods
@@ -47,6 +48,7 @@ class DetailFeedbackCollectionViewCell: UICollectionViewCell {
     private func setUI() {
         feedbackBoxStackView.axis = .vertical
         feedbackBoxStackView.backgroundColor = .systemGray6
+        feedbackBoxStackView.distribution = .fill
         feedbackBoxStackView.layer.cornerRadius = 10
         feedbackBoxStackView.spacing = 3
         feedbackBoxStackView.isLayoutMarginsRelativeArrangement = true
@@ -79,12 +81,14 @@ class DetailFeedbackCollectionViewCell: UICollectionViewCell {
         [feedbackMoreButton1, feedbackMoreButton2].forEach {
             $0.configureButton(title: "더 보기", removeContentInsets: true)
         }
+        
+        spareView.setContentHuggingPriority(.defaultLow, for: .vertical)
     }
     
     private func setHierarchy() {
         contentView.addSubview(feedbackBoxStackView)
         
-        [feedbackTitleStackView, feedbackSubtitleStackView, feedbackContentView, feedbackDeveloperContentView].forEach {
+        [feedbackTitleStackView, feedbackSubtitleStackView, feedbackContentView, feedbackDeveloperContentView, spareView].forEach {
             feedbackBoxStackView.addArrangedSubview($0)
         }
         
@@ -145,6 +149,10 @@ class DetailFeedbackCollectionViewCell: UICollectionViewCell {
         feedbackMoreButton2.snp.makeConstraints {
             $0.trailing.equalToSuperview()
             $0.bottom.equalTo(feedbackDeveloperContentLabel)
+        }
+        
+        spareView.snp.makeConstraints {
+            $0.height.greaterThanOrEqualTo(0)
         }
     }
     
