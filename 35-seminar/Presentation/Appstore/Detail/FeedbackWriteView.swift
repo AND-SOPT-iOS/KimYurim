@@ -132,7 +132,7 @@ class FeedbackWriteView: BaseView {
             content = nil
         }
         
-        let feedback = Feedback(title: feedbackTitleTextField.text,
+        let feedback = Feedback(title: feedbackTitleTextField.text!,
                                 author: "김유림",
                                 starCount: starCount,
                                 authorDate: Date(),
