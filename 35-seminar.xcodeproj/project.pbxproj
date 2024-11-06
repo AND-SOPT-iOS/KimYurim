@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1502973B2CDB0C9700281377 /* DetailFeedbackCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1502973A2CDB0C9700281377 /* DetailFeedbackCollectionViewCell.swift */; };
 		152919B72CB10FE200438E2B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 152919B62CB10FE200438E2B /* SnapKit */; };
 		156CD7F62CD77D4800F47DA0 /* CategoryExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156CD7F52CD77D4800F47DA0 /* CategoryExploreView.swift */; };
 		156CD7F82CD77FC800F47DA0 /* ExploreListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156CD7F72CD77FC800F47DA0 /* ExploreListCollectionViewCell.swift */; };
@@ -62,6 +63,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1502973A2CDB0C9700281377 /* DetailFeedbackCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFeedbackCollectionViewCell.swift; sourceTree = "<group>"; };
 		152919992CB101BA00438E2B /* 35-seminar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "35-seminar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		156CD7F52CD77D4800F47DA0 /* CategoryExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryExploreView.swift; sourceTree = "<group>"; };
 		156CD7F72CD77FC800F47DA0 /* ExploreListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreListCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -328,6 +330,7 @@
 				15EC305C2CCB792300A0480B /* FeedbackWriteViewController.swift */,
 				15EC30582CCB727300A0480B /* VersionRecordViewController.swift */,
 				1599875C2CDAE72F00692C78 /* DetailPreviewCollectionViewCell.swift */,
+				1502973A2CDB0C9700281377 /* DetailFeedbackCollectionViewCell.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -450,6 +453,7 @@
 				159987572CDAA92F00692C78 /* ExploreSection.swift in Sources */,
 				15F4FD0F2CC7649A00C99A20 /* BorderView.swift in Sources */,
 				15769B652CD13DF1000DBAD3 /* MainExploreViewController.swift in Sources */,
+				1502973B2CDB0C9700281377 /* DetailFeedbackCollectionViewCell.swift in Sources */,
 				15EC305F2CCB793500A0480B /* FeedbackWriteView.swift in Sources */,
 				15EC305B2CCB76F500A0480B /* AllFeedbackViewController.swift in Sources */,
 				15EC30572CCAC33700A0480B /* UIImage+Extension.swift in Sources */,
