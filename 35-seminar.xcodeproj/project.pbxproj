@@ -53,6 +53,8 @@
 		15EAC45A2CDD32CA00419E14 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EAC4592CDD32CA00419E14 /* UITableViewCell+Extension.swift */; };
 		15EAC45C2CDD32FF00419E14 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EAC45B2CDD32FF00419E14 /* UICollectionView+Extension.swift */; };
 		15EAC45E2CDD336700419E14 /* UITableViewHeaderFooterView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EAC45D2CDD336700419E14 /* UITableViewHeaderFooterView+Extension.swift */; };
+		15EAC4612CDD4FB500419E14 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EAC4602CDD4FB500419E14 /* UserView.swift */; };
+		15EAC4632CDD500600419E14 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EAC4622CDD500600419E14 /* UserViewController.swift */; };
 		15EC30532CCA434700A0480B /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC30522CCA434700A0480B /* UIButton+Extension.swift */; };
 		15EC30552CCAB69000A0480B /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC30542CCAB69000A0480B /* DetailView.swift */; };
 		15EC30572CCAC33700A0480B /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC30562CCAC33700A0480B /* UIImage+Extension.swift */; };
@@ -123,6 +125,8 @@
 		15EAC4592CDD32CA00419E14 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 		15EAC45B2CDD32FF00419E14 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		15EAC45D2CDD336700419E14 /* UITableViewHeaderFooterView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewHeaderFooterView+Extension.swift"; sourceTree = "<group>"; };
+		15EAC4602CDD4FB500419E14 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		15EAC4622CDD500600419E14 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		15EC30522CCA434700A0480B /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		15EC30542CCAB69000A0480B /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		15EC30562CCAC33700A0480B /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
@@ -335,6 +339,7 @@
 				15769B612CD13D5B000DBAD3 /* Explore */,
 				15769B4D2CD111A3000DBAD3 /* Chart */,
 				15F4FD082CC73E1D00C99A20 /* Detail */,
+				15EAC45F2CDD4F6200419E14 /* User */,
 			);
 			path = Appstore;
 			sourceTree = "<group>";
@@ -437,6 +442,31 @@
 				1590A6A02CBE737600FB32AE /* Week2ScrollViewController.swift */,
 			);
 			path = Week2;
+			sourceTree = "<group>";
+		};
+		15EAC45F2CDD4F6200419E14 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				15EAC4652CDD501700419E14 /* View */,
+				15EAC4642CDD501000419E14 /* ViewController */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		15EAC4642CDD501000419E14 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				15EAC4622CDD500600419E14 /* UserViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		15EAC4652CDD501700419E14 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				15EAC4602CDD4FB500419E14 /* UserView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		15F4FD082CC73E1D00C99A20 /* Detail */ = {
@@ -565,6 +595,7 @@
 				15769B572CD11DAE000DBAD3 /* DownloadButtonFactory.swift in Sources */,
 				15769B552CD11D99000DBAD3 /* App.swift in Sources */,
 				15EC30552CCAB69000A0480B /* DetailView.swift in Sources */,
+				15EAC4632CDD500600419E14 /* UserViewController.swift in Sources */,
 				1599875D2CDAE72F00692C78 /* DetailPreviewCollectionViewCell.swift in Sources */,
 				1590A6402CBE6C6A00FB32AE /* AppDelegate.swift in Sources */,
 				159987512CD9DF6900692C78 /* ExploreBannerTableViewCell.swift in Sources */,
@@ -607,6 +638,7 @@
 				15EC30572CCAC33700A0480B /* UIImage+Extension.swift in Sources */,
 				15769B632CD13D79000DBAD3 /* CategoryExploreViewController.swift in Sources */,
 				1590A6452CBE6C6A00FB32AE /* Week1MainViewController.swift in Sources */,
+				15EAC4612CDD4FB500419E14 /* UserView.swift in Sources */,
 				156CD7FC2CD791A100F47DA0 /* ExploreListTableViewCell.swift in Sources */,
 				15769B4F2CD11202000DBAD3 /* ChartView.swift in Sources */,
 				15728FC52CCCAF0100E1E151 /* Feedback.swift in Sources */,
