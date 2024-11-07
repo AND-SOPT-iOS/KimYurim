@@ -27,7 +27,7 @@ class LoginService {
         .responseDecodable(of: LoginResponse.self) { [weak self] response in
             guard let statusCode = response.response?.statusCode,
                   let data = response.data,
-                  let self = self else {
+                  let _ = self else {
                 completion(.failure(.unknownError))
                 return
             }

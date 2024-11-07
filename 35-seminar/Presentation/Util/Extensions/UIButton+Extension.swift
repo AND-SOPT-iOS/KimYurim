@@ -10,6 +10,7 @@ import UIKit
 enum ConfigurationType {
     case plain
     case filled
+    case gray
 }
 
 extension UIButton {
@@ -32,6 +33,8 @@ extension UIButton {
                 return UIButton.Configuration.plain()
             case .filled:
                 return UIButton.Configuration.filled()
+            case .gray:
+                return UIButton.Configuration.gray()
             }
         }()
         
@@ -48,7 +51,10 @@ extension UIButton {
         }
         
         config.baseForegroundColor = foregroundColor
-        config.baseBackgroundColor = backgroundColor
+        
+        if configType == .filled {
+            config.baseBackgroundColor = backgroundColor
+        }
         
         if removeContentInsets {
             config.contentInsets = .zero
