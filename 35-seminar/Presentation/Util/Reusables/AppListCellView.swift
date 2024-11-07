@@ -109,31 +109,9 @@ class AppListCellView: BaseView {
         rankingLabel.text = String(appData.ranking)
         titleLabel.text = appData.title
         subtitleLabel.text = appData.subtitle
-        
-        let price = appData.price
-        switch appData.downloadState {
-        case .installed:
-            downloadButton.configureButton(configType: .gray, title: "열기", fontSize: 16, fontWeight: .bold, cornerStyle: .capsule)
-            
-        case .download:
-            if appData.price == 0 {
-                downloadButton.configureButton(configType: .gray, title: "받기", fontSize: 16, fontWeight: .bold, cornerStyle: .capsule)
-            } else {
-                let size: CGFloat = {
-                    if price < 10000 { return 16 }
-                    else if price < 100000 { return 14 }
-                    else { return 11 }
-                }()
-                
-                downloadButton.configureButton(configType: .gray, title: price.toWonString(), fontSize: size, fontWeight: .bold, cornerStyle: .capsule)
-            }
-            
-        case .redownload:
-            downloadButton.configureButton(configType: .plain, systemName: "icloud.and.arrow.down", pointSize: 16, symbolWeight: .semibold)
-            
-        case .update:
-            downloadButton.configureButton(configType: .gray, title: "업데이트", fontSize: 16, fontWeight: .bold, cornerStyle: .capsule)
-        }
+        DownloadButtonFactory.shapeButton(button: downloadButton,
+                                          type: appData.downloadState,
+                                          price: appData.price)
     }
     
     func hideContents(hidden: Bool) {

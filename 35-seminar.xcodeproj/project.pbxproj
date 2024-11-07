@@ -24,7 +24,7 @@
 		15769B512CD1121C000DBAD3 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15769B502CD1121C000DBAD3 /* ChartViewController.swift */; };
 		15769B532CD1123B000DBAD3 /* ChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15769B522CD1123B000DBAD3 /* ChartTableViewCell.swift */; };
 		15769B552CD11D99000DBAD3 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15769B542CD11D99000DBAD3 /* App.swift */; };
-		15769B572CD11DAE000DBAD3 /* DownloadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15769B562CD11DAE000DBAD3 /* DownloadState.swift */; };
+		15769B572CD11DAE000DBAD3 /* DownloadButtonFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15769B562CD11DAE000DBAD3 /* DownloadButtonFactory.swift */; };
 		15769B592CD1362D000DBAD3 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15769B582CD1362D000DBAD3 /* Category.swift */; };
 		15769B5C2CD13A25000DBAD3 /* Week3PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15769B5B2CD13A25000DBAD3 /* Week3PhotoViewController.swift */; };
 		15769B5E2CD13A51000DBAD3 /* Week3PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15769B5D2CD13A51000DBAD3 /* Week3PhotoCollectionViewCell.swift */; };
@@ -80,7 +80,7 @@
 		15769B502CD1121C000DBAD3 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		15769B522CD1123B000DBAD3 /* ChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTableViewCell.swift; sourceTree = "<group>"; };
 		15769B542CD11D99000DBAD3 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
-		15769B562CD11DAE000DBAD3 /* DownloadState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadState.swift; sourceTree = "<group>"; };
+		15769B562CD11DAE000DBAD3 /* DownloadButtonFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadButtonFactory.swift; sourceTree = "<group>"; };
 		15769B582CD1362D000DBAD3 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		15769B5B2CD13A25000DBAD3 /* Week3PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week3PhotoViewController.swift; sourceTree = "<group>"; };
 		15769B5D2CD13A51000DBAD3 /* Week3PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week3PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -262,7 +262,7 @@
 				15769B542CD11D99000DBAD3 /* App.swift */,
 				15769B582CD1362D000DBAD3 /* Category.swift */,
 				159987562CDAA92F00692C78 /* ExploreSection.swift */,
-				15769B562CD11DAE000DBAD3 /* DownloadState.swift */,
+				15769B562CD11DAE000DBAD3 /* DownloadButtonFactory.swift */,
 				15728FC42CCCAF0100E1E151 /* Feedback.swift */,
 				15728FC62CCCAF3100E1E151 /* StarColor.swift */,
 			);
@@ -494,7 +494,7 @@
 				15728FC72CCCAF3100E1E151 /* StarColor.swift in Sources */,
 				15769B682CD14916000DBAD3 /* BaseViewController.swift in Sources */,
 				157119D82CBE965700362252 /* SubtitleLabel.swift in Sources */,
-				15769B572CD11DAE000DBAD3 /* DownloadState.swift in Sources */,
+				15769B572CD11DAE000DBAD3 /* DownloadButtonFactory.swift in Sources */,
 				15769B552CD11D99000DBAD3 /* App.swift in Sources */,
 				15EC30552CCAB69000A0480B /* DetailView.swift in Sources */,
 				1599875D2CDAE72F00692C78 /* DetailPreviewCollectionViewCell.swift in Sources */,
