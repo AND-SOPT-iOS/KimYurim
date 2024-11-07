@@ -107,7 +107,7 @@ class DetailView: BaseView {
         super.setUI()
         contentStackView.axis = .vertical
         contentStackView.spacing = 10
-        contentStackView.distribution = .equalSpacing
+        contentStackView.alignment = .center
         
         setTitleViewUI()
         setSummaryViewUI()
