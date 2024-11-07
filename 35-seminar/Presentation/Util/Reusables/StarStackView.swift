@@ -11,7 +11,7 @@ protocol StarStackViewDelegate: AnyObject {
     func starStackView(_ view: StarStackView, newCount: Int)
 }
 
-class StarStackView: UIStackView {
+final class StarStackView: UIStackView {
     
     // MARK: - Properties
     weak var delegate: StarStackViewDelegate?

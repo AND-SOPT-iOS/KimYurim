@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FeedbackWriteViewController: UIViewController {
+final class FeedbackWriteViewController: BaseViewController {
     
     // MARK: - Properties
     private let feedbackWriteView = FeedbackWriteView()
@@ -20,12 +20,14 @@ class FeedbackWriteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setButtonAction()
         setStarStackViewGesture()
+    }
+    
+    override func setDelegate() {
         feedbackWriteView.feedbackTextView.delegate = self
     }
     
-    private func setButtonAction() {
+    override func setAddTarget() {
         feedbackWriteView.cancelButton.addTarget(self, action: #selector(tappedCancelButton), for: .touchUpInside)
         
         feedbackWriteView.sendButton.addTarget(self, action: #selector(tappedSendButton), for: .touchUpInside)
@@ -39,6 +41,7 @@ class FeedbackWriteViewController: UIViewController {
         feedbackWriteView.tapToRateStarStackView.addGestureRecognizer(tapGesture)
     }
     
+    // MARK: - objc functions
     @objc private func tappedCancelButton() {
         self.dismiss(animated: true)
     }
@@ -49,6 +52,7 @@ class FeedbackWriteViewController: UIViewController {
     }
 }
 
+// MARK: - Extensions
 extension FeedbackWriteViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         feedbackWriteView.setTextViewToWrite()
