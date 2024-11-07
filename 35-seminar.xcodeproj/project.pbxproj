@@ -55,6 +55,7 @@
 		15EAC45E2CDD336700419E14 /* UITableViewHeaderFooterView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EAC45D2CDD336700419E14 /* UITableViewHeaderFooterView+Extension.swift */; };
 		15EAC4612CDD4FB500419E14 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EAC4602CDD4FB500419E14 /* UserView.swift */; };
 		15EAC4632CDD500600419E14 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EAC4622CDD500600419E14 /* UserViewController.swift */; };
+		15EAC4682CDD539700419E14 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EAC4672CDD539700419E14 /* TabBarController.swift */; };
 		15EC30532CCA434700A0480B /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC30522CCA434700A0480B /* UIButton+Extension.swift */; };
 		15EC30552CCAB69000A0480B /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC30542CCAB69000A0480B /* DetailView.swift */; };
 		15EC30572CCAC33700A0480B /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC30562CCAC33700A0480B /* UIImage+Extension.swift */; };
@@ -127,6 +128,7 @@
 		15EAC45D2CDD336700419E14 /* UITableViewHeaderFooterView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewHeaderFooterView+Extension.swift"; sourceTree = "<group>"; };
 		15EAC4602CDD4FB500419E14 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		15EAC4622CDD500600419E14 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		15EAC4672CDD539700419E14 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		15EC30522CCA434700A0480B /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		15EC30542CCAB69000A0480B /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		15EC30562CCAC33700A0480B /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 		15769B4A2CD0ECE9000DBAD3 /* Appstore */ = {
 			isa = PBXGroup;
 			children = (
+				15EAC4662CDD537700419E14 /* TabBar */,
 				15769B612CD13D5B000DBAD3 /* Explore */,
 				15769B4D2CD111A3000DBAD3 /* Chart */,
 				15F4FD082CC73E1D00C99A20 /* Detail */,
@@ -469,6 +472,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		15EAC4662CDD537700419E14 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				15EAC4672CDD539700419E14 /* TabBarController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
 		15F4FD082CC73E1D00C99A20 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -584,6 +595,7 @@
 				15EAC45A2CDD32CA00419E14 /* UITableViewCell+Extension.swift in Sources */,
 				156CD7F62CD77D4800F47DA0 /* CategoryExploreView.swift in Sources */,
 				15EC30592CCB727300A0480B /* VersionRecordViewController.swift in Sources */,
+				15EAC4682CDD539700419E14 /* TabBarController.swift in Sources */,
 				15769B5E2CD13A51000DBAD3 /* Week3PhotoCollectionViewCell.swift in Sources */,
 				15EC30612CCB8E9C00A0480B /* Date+Extension.swift in Sources */,
 				1590A6A12CBE737600FB32AE /* Week2ScrollViewController.swift in Sources */,
