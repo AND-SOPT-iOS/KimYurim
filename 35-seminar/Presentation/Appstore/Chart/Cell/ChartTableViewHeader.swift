@@ -19,7 +19,6 @@ class ChartTableViewHeader: UITableViewHeaderFooterView {
         return control
     }()
     
-    
     // MARK: - Methods
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
@@ -33,8 +32,7 @@ class ChartTableViewHeader: UITableViewHeaderFooterView {
     }
     
     private func setUI() {
-        self.backgroundColor = .systemGray5
-        titleLabel.configureLabel(color: .label, size: 30, weight: .heavy, text: "인기 차트")
+        titleLabel.configureLabel(color: .label, size: 34, weight: .heavy, text: "인기 차트")
         
         segmentControl.backgroundColor = .secondarySystemBackground
         segmentControl.selectedSegmentIndex = 0
@@ -49,7 +47,7 @@ class ChartTableViewHeader: UITableViewHeaderFooterView {
     
     private func setConstraints() {
         titleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(10)
+            $0.top.equalToSuperview()
             $0.leading.equalToSuperview().offset(20)
         }
         

@@ -25,6 +25,7 @@ class ChartView: BaseView {
         super.setUI()
         tableView.rowHeight = 88
         tableView.separatorInset = .init(top: 0, left: 90, bottom: 0, right: 20)
+        tableView.backgroundColor = .systemGray6
     }
     
     override func setHierarchy() {
