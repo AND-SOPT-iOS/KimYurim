@@ -16,7 +16,7 @@ struct App {
     let tag: String?
     let category: Category
     let price: Int
-    var downloadState: DownloadState
+    var downloadState: DownloadButtonFactory.DownloadState
 }
 
 extension App {
