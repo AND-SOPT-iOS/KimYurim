@@ -8,6 +8,8 @@
 import UIKit
 
 class UserView: BaseView {
+    
+    
     override func setDelegate() { }
     
     override func setUI() {
