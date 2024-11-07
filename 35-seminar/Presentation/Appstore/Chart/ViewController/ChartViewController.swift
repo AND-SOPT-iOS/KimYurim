@@ -10,8 +10,8 @@ import UIKit
 class ChartViewController: BaseViewController {
     
     // MARK: - Properties
-    let chartView = ChartView()
-    let appData = App.sampleApps
+    private let chartView = ChartView()
+    private let appData = App.sampleApps
     
     // MARK: - Methods
     override func loadView() {
