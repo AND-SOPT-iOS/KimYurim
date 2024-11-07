@@ -12,13 +12,15 @@ class ChartTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     static let identifier = String(describing: ChartTableViewCell.self)
-    private let appListCellView = AppListCellView()
+    private var appListCellView = AppListCellView()
+    private var rootVC: UIViewController? = nil
     
     // MARK: - Methods
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setHierarchy()
         setConstraints()
+        setAddTarget()
     }
     
     required init?(coder: NSCoder) {
@@ -36,8 +38,18 @@ class ChartTableViewCell: UITableViewCell {
         }
     }
     
-    func bind(appData: App) {
+    private func setAddTarget() {
+        appListCellView.coverButton.addTarget(self, action: #selector(tappedCell), for: .touchUpInside)
+    }
+    
+    func bind(appData: App, rootVC: UIViewController) {
         appListCellView.bind(appData: appData)
+        self.rootVC = rootVC
+    }
+    
+    @objc func tappedCell() {
+        let detailVC = DetailViewController()
+        rootVC?.navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 

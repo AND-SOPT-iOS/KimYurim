@@ -41,7 +41,7 @@ extension ChartViewController: UITableViewDataSource {
             withIdentifier: ChartTableViewCell.identifier,
             for: indexPath
         ) as? ChartTableViewCell else { return UITableViewCell() }
-        cell.bind(appData: appData[indexPath.row])
+        cell.bind(appData: appData[indexPath.row], rootVC: self)
         return cell
     }
 }
@@ -50,11 +50,5 @@ extension ChartViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = ChartTableViewHeader()
         return header
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailVC = DetailViewController()
-        self.navigationController?.pushViewController(detailVC, animated: true)
-        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
