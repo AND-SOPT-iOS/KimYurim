@@ -10,8 +10,6 @@ import UIKit
 final class ChartTableViewHeader: UITableViewHeaderFooterView {
     
     // MARK: - Properties
-    static let identifier = String(describing: ChartTableViewHeader.self)
-    
     private let titleLabel = UILabel()
     private let segmentControl: UISegmentedControl = {
         let segmentItems = ["유료 앱", "무료 앱"]

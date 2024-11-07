@@ -11,7 +11,6 @@ import SnapKit
 final class ChartTableViewCell: UITableViewCell {
     
     // MARK: - Properties
-    static let identifier = String(describing: ChartTableViewCell.self)
     private var appListCellView = AppListCellView()
     private var rootVC: UIViewController? = nil
     

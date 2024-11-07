@@ -10,7 +10,6 @@ import UIKit
 class Week3PhotoCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
-    static let identifier = String(describing: Week3PhotoCollectionViewCell.self)
     private var photo: Week3Photo?
     
     private let imageView = UIImageView()

@@ -10,8 +10,6 @@ import UIKit
 final class ExploreListTableViewCell: UITableViewCell {
     
     // MARK: - Properties
-    static let identifier = String(describing: ExploreListTableViewCell.self)
-    
     private var apps: [App] = []
     private var exploreVC: UIViewController? = nil
     

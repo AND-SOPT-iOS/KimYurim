@@ -10,7 +10,6 @@ import UIKit
 final class ExploreBannerCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
-    static let identifier = String(describing: ExploreBannerCollectionViewCell.self)
     static let height = 290
     
     private var app: App?

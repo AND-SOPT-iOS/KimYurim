@@ -10,9 +10,6 @@ import UIKit
 final class DetailFeedbackCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
-    static let identifier = String(describing: DetailFeedbackCollectionViewCell.self)
-    
-    
     private let feedbackBoxStackView = UIStackView()
     private let feedbackTitleStackView = UIStackView()
     private let feedbackTitleLabel = ContentLabel()

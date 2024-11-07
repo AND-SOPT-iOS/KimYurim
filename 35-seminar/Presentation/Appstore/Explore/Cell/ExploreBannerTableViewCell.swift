@@ -10,8 +10,6 @@ import UIKit
 final class ExploreBannerTableViewCell: UITableViewCell {
     
     // MARK: - Properties
-    static let identifier = String(describing: ExploreBannerTableViewCell.self)
-    
     private var apps: [App] = []
     
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())

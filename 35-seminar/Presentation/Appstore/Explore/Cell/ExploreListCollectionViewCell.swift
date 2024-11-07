@@ -11,7 +11,6 @@ import SnapKit
 final class ExploreListCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
-    static let identifier = String(describing: ExploreListCollectionViewCell.self)
     static let height = 265
     
     private var apps: [App] = []

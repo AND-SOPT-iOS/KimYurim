@@ -10,8 +10,6 @@ import UIKit
 final class DetailPreviewCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
-    static let identifier = String(describing: DetailPreviewCollectionViewCell.self)
-    
     private let imageView = UIImageView()
     
     // MARK: - Methods

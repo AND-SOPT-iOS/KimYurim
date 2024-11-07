@@ -10,8 +10,6 @@ import UIKit
 final class ExploreListTableViewHeader: UITableViewHeaderFooterView {
     
     // MARK: - Properties
-    static let identifier = String(describing: ExploreListTableViewHeader.self)
-    
     private let titleLabel = TitleLabel()
     private let subTItleLabel = SubtitleLabel()
     let allButton = UIButton()
