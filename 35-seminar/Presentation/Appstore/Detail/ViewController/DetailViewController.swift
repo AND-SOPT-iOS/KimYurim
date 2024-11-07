@@ -49,7 +49,7 @@ final class DetailViewController: BaseViewController {
         detailView.descriptionMoreButton.addTarget(self, action: #selector(tappedDescriptionMoreButton), for: .touchUpInside)
     }
     
-    private func setNavigationBar() {
+    override func setNavigationBar() {
         let iconImageView = UIImageView()
         iconImageView.clipsToBounds = true
         iconImageView.contentMode = .scaleAspectFit
