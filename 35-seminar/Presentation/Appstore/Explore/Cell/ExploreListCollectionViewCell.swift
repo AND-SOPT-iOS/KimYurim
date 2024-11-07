@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class ExploreListCollectionViewCell: UICollectionViewCell {
+final class ExploreListCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     static let identifier = String(describing: ExploreListCollectionViewCell.self)

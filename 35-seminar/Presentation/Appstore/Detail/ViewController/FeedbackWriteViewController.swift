@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FeedbackWriteViewController: BaseViewController {
+final class FeedbackWriteViewController: BaseViewController {
     
     // MARK: - Properties
     private let feedbackWriteView = FeedbackWriteView()

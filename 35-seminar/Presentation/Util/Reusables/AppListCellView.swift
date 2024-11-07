@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AppListCellView: BaseView {
+final class AppListCellView: BaseView {
     
     // MARK: - Properties
     private var appData: App?

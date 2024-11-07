@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AllFeedbackViewController: BaseViewController {
+final class AllFeedbackViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

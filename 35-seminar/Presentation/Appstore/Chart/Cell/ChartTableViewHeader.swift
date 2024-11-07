@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ChartTableViewHeader: UITableViewHeaderFooterView {
+final class ChartTableViewHeader: UITableViewHeaderFooterView {
     
     // MARK: - Properties
     static let identifier = String(describing: ChartTableViewHeader.self)

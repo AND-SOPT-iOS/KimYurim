@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailFeedbackCollectionViewCell: UICollectionViewCell {
+final class DetailFeedbackCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     static let identifier = String(describing: DetailFeedbackCollectionViewCell.self)

@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class ChartTableViewCell: UITableViewCell {
+final class ChartTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     static let identifier = String(describing: ChartTableViewCell.self)

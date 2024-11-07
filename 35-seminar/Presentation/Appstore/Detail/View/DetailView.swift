@@ -13,7 +13,7 @@ protocol FeedbackDelegate: AnyObject {
     func dataBind(feedback: Feedback)
 }
 
-class DetailView: BaseView {
+final class DetailView: BaseView {
     
     // MARK: - Properties
     let scrollView = UIScrollView()

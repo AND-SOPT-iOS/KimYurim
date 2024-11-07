@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainExploreViewController: BaseViewController {
+final class MainExploreViewController: BaseViewController {
     
     private let financeButton = UIButton()
     

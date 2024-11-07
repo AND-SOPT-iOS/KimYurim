@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CategoryExploreView: BaseView {
+final class CategoryExploreView: BaseView {
     // MARK: - Properties
     let tableView = UITableView(frame: .zero, style: .grouped)
     

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CategoryExploreViewController: BaseViewController {
+final class CategoryExploreViewController: BaseViewController {
     // MARK: - Properties
     private var bannerApps: [App] = []
     private var essentialApps: [App] = []

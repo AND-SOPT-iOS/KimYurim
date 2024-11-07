@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ExploreListTableViewHeader: UITableViewHeaderFooterView {
+final class ExploreListTableViewHeader: UITableViewHeaderFooterView {
     
     // MARK: - Properties
     static let identifier = String(describing: ExploreListTableViewHeader.self)

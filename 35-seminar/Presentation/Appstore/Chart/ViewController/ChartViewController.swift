@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ChartViewController: BaseViewController {
+final class ChartViewController: BaseViewController {
     
     // MARK: - Properties
     private let chartView = ChartView()

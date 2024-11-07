@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailPreviewCollectionViewCell: UICollectionViewCell {
+final class DetailPreviewCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     static let identifier = String(describing: DetailPreviewCollectionViewCell.self)

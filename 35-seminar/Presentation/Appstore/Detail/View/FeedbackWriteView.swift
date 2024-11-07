@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class FeedbackWriteView: BaseView {
+final class FeedbackWriteView: BaseView {
     
     // MARK: - Properties
     private var starCount: Int = 0

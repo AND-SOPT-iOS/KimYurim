@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class BorderView: UIView {
+final class BorderView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

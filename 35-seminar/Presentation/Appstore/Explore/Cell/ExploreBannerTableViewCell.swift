@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ExploreBannerTableViewCell: UITableViewCell {
+final class ExploreBannerTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     static let identifier = String(describing: ExploreBannerTableViewCell.self)

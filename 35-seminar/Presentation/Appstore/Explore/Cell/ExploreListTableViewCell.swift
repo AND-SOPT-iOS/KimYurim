@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ExploreListTableViewCell: UITableViewCell {
+final class ExploreListTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     static let identifier = String(describing: ExploreListTableViewCell.self)
