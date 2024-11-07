@@ -74,7 +74,7 @@ class ExploreListCollectionViewCell: UICollectionViewCell {
     private func setAddTarget() {
         let cells = [cell1, cell2, cell3]
         for cell in cells {
-            cell.coverButton.addTarget(self, action: #selector(tappedDownloadButton), for: .touchUpInside)
+            cell.coverButton.addTarget(self, action: #selector(tappedCell), for: .touchUpInside)
         }
     }
     
@@ -98,7 +98,7 @@ class ExploreListCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    @objc func tappedDownloadButton(_ gesture: UITapGestureRecognizer) {
+    @objc func tappedCell(_ gesture: UITapGestureRecognizer) {
         let detailVC = DetailViewController()
         if let exploreVC = exploreVC {
             exploreVC.navigationController?.pushViewController(detailVC, animated: true)
