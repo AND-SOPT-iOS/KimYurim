@@ -21,21 +21,25 @@ class UserViewController: BaseViewController {
     
     override func setNavigationBar() {
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .semibold)]
-        self.navigationItem.title = "계정"
+        self.navigationItem.title = "소셜"
     }
     
     override func setDelegate() { }
     
     override func setStyle() { }
     
-    override func setAddTarget() { }
+    override func setAddTarget() {
+        
+        
+        userView.hobbyButton.addTarget(self, action: #selector(tappedHobbyButton), for: .touchUpInside)
+    }
     
     override func bind() {
         let username = UserDefaults.standard.string(forKey: "username") ?? ""
         let password = UserDefaults.standard.string(forKey: "password") ?? ""
         let token = UserDefaults.standard.string(forKey: "token") ?? ""
         
-        MyHobbyService.shared.getHobby(token: token) { [weak self] result in
+        UserService.shared.fetchUserHobby(token: token) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let hobby):
@@ -44,6 +48,11 @@ class UserViewController: BaseViewController {
                 print("hobby 조회 에러: \(error.errorMessage)")
             }
         }
+    }
+    
+    @objc func tappedHobbyButton() {
+        let hobbyVC = HobbyViewController()
+        self.navigationController?.pushViewController(hobbyVC, animated: true)
     }
 }
 

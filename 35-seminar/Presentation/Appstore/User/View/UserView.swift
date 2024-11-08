@@ -16,14 +16,14 @@ class UserView: BaseView {
     private let userNameLabel = UILabel()
     private let userHobbyLabel = UILabel()
     private let profileChevronImageView = UIImageView()
-    private let profileButton = UIButton()
+    let profileButton = UIButton()
     
     // hobby
     private let hobbyStackView = UIStackView()
     private let hobbyImageView = UIImageView()
     private let hobbyLabel = UILabel()
     private let hobbyChevronImageView = UIImageView()
-    private let hobbyButton = UIButton()
+    let hobbyButton = UIButton()
     
     override func setDelegate() { }
     
@@ -83,10 +83,9 @@ class UserView: BaseView {
     }
     
     override func setHierarchy() {
-        [profileStackView, profileButton, hobbyStackView].forEach {
+        [profileStackView, profileButton, hobbyStackView, hobbyButton].forEach {
             self.addSubview($0)
         }
-        
         
         [profileImageView, userLabelStackView, profileChevronImageView].forEach {
             profileStackView.addArrangedSubview($0)
@@ -135,6 +134,9 @@ class UserView: BaseView {
             $0.size.equalTo(20)
         }
         
+        hobbyButton.snp.makeConstraints {
+            $0.edges.equalTo(hobbyStackView)
+        }
     }
     
     func bind(user: RegisterDTO) {
