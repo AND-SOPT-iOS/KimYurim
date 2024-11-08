@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+struct MyHobbyDTO: Encodable {
+    let token: String
+}
+
+struct MyHobbyResponse: Decodable {
+    struct Result: Decodable {
+        let hobby: String
+    }
+    let result: Result
+}
