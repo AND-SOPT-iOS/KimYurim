@@ -60,6 +60,8 @@ class LoginViewController: BaseViewController {
                 guard let self = self else { return }
                 switch result {
                 case .success(let token):
+                    UserDefaults.standard.set(loginData.username, forKey: "username")
+                    UserDefaults.standard.set(loginData.password, forKey: "password")
                     UserDefaults.standard.set(token, forKey: "token")
                     let tabBarController = TabBarController()
                     tabBarController.modalPresentationStyle = .fullScreen
