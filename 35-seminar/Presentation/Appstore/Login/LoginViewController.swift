@@ -67,6 +67,9 @@ class LoginViewController: BaseViewController {
                 switch result {
                 case .success(let token):
                     UserDefaults.standard.set(token, forKey: "token")
+                    let tabBarController = TabBarController()
+                    tabBarController.modalPresentationStyle = .fullScreen
+                    self.present(tabBarController, animated: true)
                 case .failure(let error):
                     EasyAlert.showAlert(title: "로그인 실패", message: error.errorMessage, vc: self)
                 }
