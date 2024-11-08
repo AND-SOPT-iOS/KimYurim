@@ -7,8 +7,15 @@
 
 import Foundation
 
-struct RegisterRequestDTO: Codable {
+struct RegisterDTO: Codable {
   let username: String
   let password: String
   let hobby: String
+}
+
+struct RegisterRequestResponse: Decodable {
+    struct Result: Decodable {
+        let no: String
+    }
+    let result: Result
 }
