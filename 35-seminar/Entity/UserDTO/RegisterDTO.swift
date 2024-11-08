@@ -13,9 +13,9 @@ struct RegisterDTO: Codable {
   let hobby: String
 }
 
-struct RegisterRequestResponse: Decodable {
+struct RegisterResponse: Decodable {
     struct Result: Decodable {
-        let no: String
+        let no: Int
     }
     let result: Result
 }
