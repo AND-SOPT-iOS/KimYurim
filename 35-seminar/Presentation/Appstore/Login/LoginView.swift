@@ -151,4 +151,9 @@ class LoginView: BaseView {
         }
         return LoginDTO(username: username, password: password)
     }
+    
+    func bind(username: String, password: String) {
+        usernameTextField.text = username
+        passwordTextField.text = password
+    }
 }

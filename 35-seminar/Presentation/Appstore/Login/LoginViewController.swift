@@ -20,7 +20,6 @@ class LoginViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setAutoLogin()
     }
     
     override func setNavigationBar() { }
@@ -38,19 +37,14 @@ class LoginViewController: BaseViewController {
     }
     
     override func bind() {
+        let username = UserDefaults.standard.string(forKey: "username") ?? ""
+        let password = UserDefaults.standard.string(forKey: "password") ?? ""
+        loginView.bind(username: username, password: password)
         
-    }
-    // Auto Login
-    private func setAutoLogin() {
-        // autoLoginStatus 체크
-        if LoginStatus.autoLogin == true {
-            // 1. text에 userDefaults 정보 넣기
-            loginView.usernameTextField.text = UserDefaults.standard.string(forKey: "userID")
-            loginView.passwordTextField.text = UserDefaults.standard.string(forKey: "userPW")
-            
-            // 로그인 상태가 true일 경우에만 로그인
-            if LoginStatus.login == true {
-                conductLogin()
+        // auto login
+        if LoginStatus.login == true {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.conductLogin()
             }
         }
     }
