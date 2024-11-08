@@ -47,7 +47,6 @@ class RegisterViewController: BaseViewController {
                 case .success(let no):
                     UserDefaults.standard.set(userData.username, forKey: "username")
                     UserDefaults.standard.set(userData.password, forKey: "password")
-                    UserDefaults.standard.set(userData.hobby, forKey: "hobby")
                     EasyAlert.dismissModalAlert(title: "회원가입 성공", message: "회원가입이 완료되었습니다(no.\(no))", vc: self)
                     
                 case .failure(let error):

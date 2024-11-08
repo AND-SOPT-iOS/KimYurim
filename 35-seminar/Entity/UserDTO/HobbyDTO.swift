@@ -11,7 +11,7 @@ struct HobbyDTO: Encodable {
     let token: String
 }
 
-struct MyHobbyResponse: Decodable {
+struct HobbyResponse: Decodable {
     struct Result: Decodable {
         let hobby: String
     }
