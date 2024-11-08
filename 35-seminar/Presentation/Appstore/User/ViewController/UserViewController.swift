@@ -42,7 +42,7 @@ class UserViewController: BaseViewController {
                     guard let self = self else { return }
                     switch result {
                     case .success(let hobby):
-                        userView.bind(user: RegisterRequestDTO(username: username, password: password, hobby: hobby))
+                        userView.bind(user: RegisterDTO(username: username, password: password, hobby: hobby))
                     case .failure(let error):
                         print("hobby 조회 에러: \(error.errorMessage)")
                     }

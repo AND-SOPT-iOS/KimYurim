@@ -137,7 +137,7 @@ class UserView: BaseView {
         
     }
     
-    func bind(user: RegisterRequestDTO) {
+    func bind(user: RegisterDTO) {
         userNameLabel.text = user.username
         userHobbyLabel.text = "취미: \(user.hobby)"
     }
