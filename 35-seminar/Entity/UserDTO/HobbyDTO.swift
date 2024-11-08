@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MyHobbyDTO: Encodable {
+struct HobbyDTO: Encodable {
     let token: String
 }
 
