@@ -21,9 +21,7 @@ class UserService {
         hobby: String,
         completion: @escaping (Result<Int, NetworkError>) -> Void
     ) {
-        
         let url = Environment.baseURL + "/user"
-        
         let parameters = RegisterDTO(
             username: username,
             password: password,
@@ -48,6 +46,69 @@ class UserService {
             switch response.result {
             case .success(let registerResponse):
                 completion(.success(registerResponse.result.no))
+            case .failure:
+                let error = Network.shared.handleStatusCode(statusCode, data: data)
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func fetchUserHobby(token: String,
+                        completion: @escaping (Result<String, NetworkError>) -> Void) {
+        
+        let url = Environment.baseURL + "/user/my-hobby"
+        
+        let headers: HTTPHeaders = [
+            "token": token
+        ]
+        
+        AF.request(url,
+                   method: .get,
+                   headers: headers)
+        .validate()
+        .responseDecodable(of: HobbyResponse.self) { [weak self] response in
+            guard let statusCode = response.response?.statusCode,
+                  let data = response.data,
+                  let _ = self else {
+                completion(.failure(.unknownError))
+                return
+            }
+            
+            switch response.result {
+            case .success(let hobbyResponse):
+                completion(.success(hobbyResponse.result.hobby))
+            case .failure:
+                let error = Network.shared.handleStatusCode(statusCode, data: data)
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func fetchOtherHobby(token: String,
+                         no: Int,
+                         completion: @escaping (Result<String, NetworkError>) -> Void
+    ) {
+        let url = Environment.baseURL + "/user/" + String(no) + "/hobby"
+        print("url: \(url)")
+        let headers: HTTPHeaders = [
+            "token": token
+        ]
+        
+        AF.request(
+            url,
+            method: .get,
+            headers: headers
+        )
+        .validate()
+        .responseDecodable(of: HobbyResponse.self) { response in
+            guard let statusCode = response.response?.statusCode,
+                  let data = response.data else {
+                completion(.failure(.unknownError))
+                return
+            }
+            switch response.result {
+            case .success(let hobbyResponse):
+                completion(.success(hobbyResponse.result.hobby))
             case .failure:
                 let error = Network.shared.handleStatusCode(statusCode, data: data)
                 completion(.failure(error))
