@@ -56,14 +56,16 @@
 		15EAC4612CDD4FB500419E14 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EAC4602CDD4FB500419E14 /* UserView.swift */; };
 		15EAC4632CDD500600419E14 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EAC4622CDD500600419E14 /* UserViewController.swift */; };
 		15EAC4682CDD539700419E14 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EAC4672CDD539700419E14 /* TabBarController.swift */; };
-		15EAC46E2CDDD4E600419E14 /* MyHobbyDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EAC46D2CDDD4E600419E14 /* MyHobbyDTO.swift */; };
-		15EAC4702CDDD54C00419E14 /* MyHobbyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EAC46F2CDDD54C00419E14 /* MyHobbyService.swift */; };
+		15EAC46E2CDDD4E600419E14 /* HobbyDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EAC46D2CDDD4E600419E14 /* HobbyDTO.swift */; };
 		15EAC4732CDDDB7D00419E14 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EAC4722CDDDB7D00419E14 /* LoginViewController.swift */; };
 		15EAC4752CDDDB8A00419E14 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EAC4742CDDDB8A00419E14 /* LoginView.swift */; };
 		15EAC4772CDDEFB800419E14 /* EasyAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EAC4762CDDEFB800419E14 /* EasyAlert.swift */; };
 		15EAC4792CDDF0E400419E14 /* LoginStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EAC4782CDDF0E400419E14 /* LoginStatus.swift */; };
 		15EAC47C2CDE282A00419E14 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EAC47B2CDE282A00419E14 /* RegisterView.swift */; };
 		15EAC47E2CDE283300419E14 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EAC47D2CDE283300419E14 /* RegisterViewController.swift */; };
+		15EAC4832CDE603E00419E14 /* HobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EAC4822CDE603E00419E14 /* HobbyViewController.swift */; };
+		15EAC4852CDE605500419E14 /* HobbyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EAC4842CDE605500419E14 /* HobbyTableViewCell.swift */; };
+		15EAC4872CDE6A5A00419E14 /* HobbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EAC4862CDE6A5A00419E14 /* HobbyView.swift */; };
 		15EC30532CCA434700A0480B /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC30522CCA434700A0480B /* UIButton+Extension.swift */; };
 		15EC30552CCAB69000A0480B /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC30542CCAB69000A0480B /* DetailView.swift */; };
 		15EC30572CCAC33700A0480B /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC30562CCAC33700A0480B /* UIImage+Extension.swift */; };
@@ -137,14 +139,16 @@
 		15EAC4602CDD4FB500419E14 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		15EAC4622CDD500600419E14 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		15EAC4672CDD539700419E14 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		15EAC46D2CDDD4E600419E14 /* MyHobbyDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHobbyDTO.swift; sourceTree = "<group>"; };
-		15EAC46F2CDDD54C00419E14 /* MyHobbyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHobbyService.swift; sourceTree = "<group>"; };
+		15EAC46D2CDDD4E600419E14 /* HobbyDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbyDTO.swift; sourceTree = "<group>"; };
 		15EAC4722CDDDB7D00419E14 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		15EAC4742CDDDB8A00419E14 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		15EAC4762CDDEFB800419E14 /* EasyAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyAlert.swift; sourceTree = "<group>"; };
 		15EAC4782CDDF0E400419E14 /* LoginStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStatus.swift; sourceTree = "<group>"; };
 		15EAC47B2CDE282A00419E14 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		15EAC47D2CDE283300419E14 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		15EAC4822CDE603E00419E14 /* HobbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbyViewController.swift; sourceTree = "<group>"; };
+		15EAC4842CDE605500419E14 /* HobbyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbyTableViewCell.swift; sourceTree = "<group>"; };
+		15EAC4862CDE6A5A00419E14 /* HobbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbyView.swift; sourceTree = "<group>"; };
 		15EC30522CCA434700A0480B /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		15EC30542CCAB69000A0480B /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		15EC30562CCAC33700A0480B /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
@@ -284,7 +288,7 @@
 			children = (
 				15F9EE092CD5FBC300172E82 /* RegisterDTO.swift */,
 				15F9EE0D2CD602D200172E82 /* LoginDTO.swift */,
-				15EAC46D2CDDD4E600419E14 /* MyHobbyDTO.swift */,
+				15EAC46D2CDDD4E600419E14 /* HobbyDTO.swift */,
 			);
 			path = UserDTO;
 			sourceTree = "<group>";
@@ -480,6 +484,7 @@
 			isa = PBXGroup;
 			children = (
 				15EAC4622CDD500600419E14 /* UserViewController.swift */,
+				15EAC4822CDE603E00419E14 /* HobbyViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -488,6 +493,8 @@
 			isa = PBXGroup;
 			children = (
 				15EAC4602CDD4FB500419E14 /* UserView.swift */,
+				15EAC4862CDE6A5A00419E14 /* HobbyView.swift */,
+				15EAC4842CDE605500419E14 /* HobbyTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -545,7 +552,6 @@
 				15F9EE032CD5F8D200172E82 /* NetworkError.swift */,
 				15F9EE072CD5F93A00172E82 /* UserService.swift */,
 				15F9EE0B2CD5FEEA00172E82 /* LoginService.swift */,
-				15EAC46F2CDDD54C00419E14 /* MyHobbyService.swift */,
 			);
 			path = Server;
 			sourceTree = "<group>";
@@ -652,7 +658,7 @@
 				15769B682CD14916000DBAD3 /* BaseViewController.swift in Sources */,
 				157119D82CBE965700362252 /* SubtitleLabel.swift in Sources */,
 				15F9EE082CD5F93A00172E82 /* UserService.swift in Sources */,
-				15EAC46E2CDDD4E600419E14 /* MyHobbyDTO.swift in Sources */,
+				15EAC46E2CDDD4E600419E14 /* HobbyDTO.swift in Sources */,
 				15F9EE102CD6063E00172E82 /* Network.swift in Sources */,
 				15769B572CD11DAE000DBAD3 /* DownloadButtonFactory.swift in Sources */,
 				15769B552CD11D99000DBAD3 /* App.swift in Sources */,
@@ -674,10 +680,11 @@
 				15EAC47C2CDE282A00419E14 /* RegisterView.swift in Sources */,
 				15F9EE132CD6072B00172E82 /* Week3LoginViewController.swift in Sources */,
 				157119DA2CBE96BB00362252 /* ContentLabel.swift in Sources */,
-				15EAC4702CDDD54C00419E14 /* MyHobbyService.swift in Sources */,
 				15EAC4792CDDF0E400419E14 /* LoginStatus.swift in Sources */,
+				15EAC4852CDE605500419E14 /* HobbyTableViewCell.swift in Sources */,
 				1590A6432CBE6C6A00FB32AE /* Week1DetailViewController.swift in Sources */,
 				15769B602CD13BB8000DBAD3 /* Week3Photo.swift in Sources */,
+				15EAC4832CDE603E00419E14 /* HobbyViewController.swift in Sources */,
 				1599875B2CDAD9EE00692C78 /* ChartTableViewHeader.swift in Sources */,
 				1590A6442CBE6C6A00FB32AE /* Week1MainView.swift in Sources */,
 				15769B6E2CD155F9000DBAD3 /* Int+Extension.swift in Sources */,
@@ -694,6 +701,7 @@
 				15EAC4752CDDDB8A00419E14 /* LoginView.swift in Sources */,
 				159987532CDA234E00692C78 /* ExploreBannerCollectionViewCell.swift in Sources */,
 				157119DD2CBE96F500362252 /* UILabel+Extension.swift in Sources */,
+				15EAC4872CDE6A5A00419E14 /* HobbyView.swift in Sources */,
 				159987572CDAA92F00692C78 /* ExploreSection.swift in Sources */,
 				15F4FD0F2CC7649A00C99A20 /* BorderView.swift in Sources */,
 				15F9EE002CD5F38700172E82 /* Environment.swift in Sources */,
