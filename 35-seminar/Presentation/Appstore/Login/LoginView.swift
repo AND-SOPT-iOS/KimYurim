@@ -152,8 +152,9 @@ class LoginView: BaseView {
         return LoginDTO(username: username, password: password)
     }
     
-    func bind(username: String, password: String) {
+    func bind(username: String, password: String, autoLogin: Bool) {
         usernameTextField.text = username
         passwordTextField.text = password
+        updateAutoLoginCheckButton(autoLogin: autoLogin)
     }
 }

@@ -11,9 +11,6 @@ class LoginViewController: BaseViewController {
     
     private let loginView = LoginView()
     
-    var id: String? = nil
-    var pw: String? = nil
-    
     override func loadView() {
         view = loginView
     }
@@ -22,13 +19,9 @@ class LoginViewController: BaseViewController {
         super.viewDidLoad()
     }
     
-    override func setNavigationBar() { }
-    
     override func setDelegate() {
         loginView.usernameTextField.delegate = self
     }
-    
-    override func setStyle() { }
     
     override func setAddTarget() {
         loginView.autoLoginCheckButton.addTarget(self, action: #selector(tappedAutoLoginButton), for: .touchUpInside)
@@ -39,10 +32,12 @@ class LoginViewController: BaseViewController {
     override func bind() {
         let username = UserDefaults.standard.string(forKey: "username") ?? ""
         let password = UserDefaults.standard.string(forKey: "password") ?? ""
-        loginView.bind(username: username, password: password)
+        let autoLogin = UserDefaults.standard.bool(forKey: "autoLogin")
+        loginView.bind(username: username, password: password, autoLogin: autoLogin)
         
         // auto login
-        if LoginStatus.login == true {
+//        if LoginStatus.autoLogin == true {
+        if autoLogin {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.conductLogin()
             }
@@ -63,6 +58,7 @@ class LoginViewController: BaseViewController {
                     UserDefaults.standard.set(loginData.username, forKey: "username")
                     UserDefaults.standard.set(loginData.password, forKey: "password")
                     UserDefaults.standard.set(token, forKey: "token")
+                    
                     let tabBarController = TabBarController()
                     tabBarController.modalPresentationStyle = .fullScreen
                     self.present(tabBarController, animated: true)
@@ -73,13 +69,13 @@ class LoginViewController: BaseViewController {
     }
     
     @objc func tappedAutoLoginButton() {
-        LoginStatus.autoLogin = !LoginStatus.autoLogin
-        loginView.updateAutoLoginCheckButton(autoLogin: LoginStatus.autoLogin)
+        let autoLogin = UserDefaults.standard.bool(forKey: "autoLogin")
+        UserDefaults.standard.set(!autoLogin, forKey: "autoLogin")
+        loginView.updateAutoLoginCheckButton(autoLogin: !autoLogin)
     }
     
     @objc func tappedLoginButton() {
         LoginStatus.login = true
-        print("loginStatus: \(LoginStatus.login)")
         conductLogin()
     }
     
