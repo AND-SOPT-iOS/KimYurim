@@ -31,24 +31,17 @@ class UserViewController: BaseViewController {
     override func setAddTarget() { }
     
     override func bind() {
-        let username = "yurim"
-        let password = "abc"
+        let username = UserDefaults.standard.string(forKey: "username") ?? ""
+        let password = UserDefaults.standard.string(forKey: "password") ?? ""
+        let token = UserDefaults.standard.string(forKey: "token") ?? ""
         
-        LoginService.shared.login(username: username, password: password) { [weak self] result in
+        MyHobbyService.shared.getHobby(token: token) { [weak self] result in
             guard let self = self else { return }
             switch result {
-            case .success(let token):
-                MyHobbyService.shared.getHobby(token: token) { [weak self] result in
-                    guard let self = self else { return }
-                    switch result {
-                    case .success(let hobby):
-                        userView.bind(user: RegisterDTO(username: username, password: password, hobby: hobby))
-                    case .failure(let error):
-                        print("hobby 조회 에러: \(error.errorMessage)")
-                    }
-                }
+            case .success(let hobby):
+                userView.bind(user: RegisterDTO(username: username, password: password, hobby: hobby))
             case .failure(let error):
-                print("token 조회 에러: \(error.errorMessage)")
+                print("hobby 조회 에러: \(error.errorMessage)")
             }
         }
     }
