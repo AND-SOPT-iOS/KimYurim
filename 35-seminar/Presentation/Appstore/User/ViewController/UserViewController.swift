@@ -35,15 +35,17 @@ class UserViewController: BaseViewController {
     }
     
     override func bind() {
-        let username = UserDefaults.standard.string(forKey: UserDefaultsKeys.username) ?? ""
-        let password = UserDefaults.standard.string(forKey: UserDefaultsKeys.password) ?? ""
-        let token = UserDefaults.standard.string(forKey: UserDefaultsKeys.token) ?? ""
+        let userData = UserDefaultsManager.fetchUserData()
         
-        UserService.shared.fetchUserHobby(token: token) { [weak self] result in
+        UserService.shared.fetchUserHobby(token: userData.token) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let hobby):
-                userView.bind(user: RegisterDTO(username: username, password: password, hobby: hobby))
+                userView.bind(
+                    user: RegisterDTO(
+                        username: userData.username,
+                        password: userData.password, hobby: hobby))
+                
             case .failure(let error):
                 print("hobby 조회 에러: \(error.errorMessage)")
             }

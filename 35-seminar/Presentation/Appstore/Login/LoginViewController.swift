@@ -30,13 +30,13 @@ class LoginViewController: BaseViewController {
     }
     
     override func bind() {
-        let username = UserDefaults.standard.string(forKey: UserDefaultsKeys.username) ?? ""
-        let password = UserDefaults.standard.string(forKey: UserDefaultsKeys.password) ?? ""
-        let autoLogin = UserDefaults.standard.bool(forKey: UserDefaultsKeys.autoLogin)
-        loginView.bind(username: username, password: password, autoLogin: autoLogin)
+        let userData = UserDefaultsManager.fetchUserData()
+        loginView.bind(username: userData.username,
+                       password: userData.password,
+                       autoLogin: userData.autoLogin)
         
         // auto login
-        if autoLogin {
+        if userData.autoLogin {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.conductLogin()
             }
@@ -64,11 +64,9 @@ class LoginViewController: BaseViewController {
                                    loginData: LoginDTO) {
         switch result {
         case .success(let token):
-            UserDefaults.standard.set(loginData.username, forKey: UserDefaultsKeys.username)
-            UserDefaults.standard.set(loginData.password, forKey: UserDefaultsKeys.password)
-            UserDefaults.standard.set(token, forKey: UserDefaultsKeys.token)
+            UserDefaultsManager
+                .registerLoginData(loginData: loginData, token: token)
             navigateToMainScreen()
-            
             case .failure(let error):
             showLoginError(message: error.errorMessage)
             }
@@ -86,9 +84,8 @@ class LoginViewController: BaseViewController {
     
     
     @objc func tappedAutoLoginButton() {
-        let autoLogin = UserDefaults.standard.bool(forKey: UserDefaultsKeys.autoLogin)
-        UserDefaults.standard.set(!autoLogin, forKey: UserDefaultsKeys.autoLogin)
-        loginView.updateAutoLoginCheckButton(autoLogin: !autoLogin)
+        let newAutoLogin = UserDefaultsManager.updateAutoLogin()
+        loginView.updateAutoLoginCheckButton(autoLogin: newAutoLogin)
     }
     
     @objc func tappedLoginButton() {

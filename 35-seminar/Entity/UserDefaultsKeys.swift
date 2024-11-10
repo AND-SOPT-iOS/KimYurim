@@ -7,9 +7,3 @@
 
 import Foundation
 
-enum UserDefaultsKeys {
-    static let username = "username"
-    static let password = "password"
-    static let token = "token"
-    static let autoLogin = "autoLogin"
-}

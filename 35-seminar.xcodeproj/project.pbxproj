@@ -51,6 +51,7 @@
 		1599875B2CDAD9EE00692C78 /* ChartTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1599875A2CDAD9EE00692C78 /* ChartTableViewHeader.swift */; };
 		1599875D2CDAE72F00692C78 /* DetailPreviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1599875C2CDAE72F00692C78 /* DetailPreviewCollectionViewCell.swift */; };
 		15B576FB2CE0A4E6001E6F9F /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B576FA2CE0A4E6001E6F9F /* UserDefaultsKeys.swift */; };
+		15B576FE2CE0A8D7001E6F9F /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B576FD2CE0A8D7001E6F9F /* UserDefaultsManager.swift */; };
 		15EAC45A2CDD32CA00419E14 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EAC4592CDD32CA00419E14 /* UITableViewCell+Extension.swift */; };
 		15EAC45C2CDD32FF00419E14 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EAC45B2CDD32FF00419E14 /* UICollectionView+Extension.swift */; };
 		15EAC45E2CDD336700419E14 /* UITableViewHeaderFooterView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EAC45D2CDD336700419E14 /* UITableViewHeaderFooterView+Extension.swift */; };
@@ -135,6 +136,7 @@
 		1599875A2CDAD9EE00692C78 /* ChartTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTableViewHeader.swift; sourceTree = "<group>"; };
 		1599875C2CDAE72F00692C78 /* DetailPreviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPreviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		15B576FA2CE0A4E6001E6F9F /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
+		15B576FD2CE0A8D7001E6F9F /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		15EAC4592CDD32CA00419E14 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 		15EAC45B2CDD32FF00419E14 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		15EAC45D2CDD336700419E14 /* UITableViewHeaderFooterView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewHeaderFooterView+Extension.swift"; sourceTree = "<group>"; };
@@ -447,6 +449,7 @@
 		1590A63C2CBE6C6A00FB32AE /* 35-seminar */ = {
 			isa = PBXGroup;
 			children = (
+				15B576FC2CE0A8C9001E6F9F /* Data */,
 				1590A62C2CBE6C6A00FB32AE /* Application */,
 				15728FC32CCCAEE000E1E151 /* Entity */,
 				15F9EE012CD5F6B300172E82 /* Server */,
@@ -472,6 +475,14 @@
 				1590A6A02CBE737600FB32AE /* Week2ScrollViewController.swift */,
 			);
 			path = Week2;
+			sourceTree = "<group>";
+		};
+		15B576FC2CE0A8C9001E6F9F /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				15B576FD2CE0A8D7001E6F9F /* UserDefaultsManager.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		15EAC45F2CDD4F6200419E14 /* User */ = {
@@ -659,6 +670,7 @@
 				1590A6A12CBE737600FB32AE /* Week2ScrollViewController.swift in Sources */,
 				15728FC72CCCAF3100E1E151 /* StarColor.swift in Sources */,
 				15769B682CD14916000DBAD3 /* BaseViewController.swift in Sources */,
+				15B576FE2CE0A8D7001E6F9F /* UserDefaultsManager.swift in Sources */,
 				157119D82CBE965700362252 /* SubtitleLabel.swift in Sources */,
 				15F9EE082CD5F93A00172E82 /* UserService.swift in Sources */,
 				15EAC46E2CDDD4E600419E14 /* HobbyDTO.swift in Sources */,
