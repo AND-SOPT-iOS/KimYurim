@@ -30,9 +30,9 @@ class LoginViewController: BaseViewController {
     }
     
     override func bind() {
-        let username = UserDefaults.standard.string(forKey: "username") ?? ""
-        let password = UserDefaults.standard.string(forKey: "password") ?? ""
-        let autoLogin = UserDefaults.standard.bool(forKey: "autoLogin")
+        let username = UserDefaults.standard.string(forKey: UserDefaultsKeys.username) ?? ""
+        let password = UserDefaults.standard.string(forKey: UserDefaultsKeys.password) ?? ""
+        let autoLogin = UserDefaults.standard.bool(forKey: UserDefaultsKeys.autoLogin)
         loginView.bind(username: username, password: password, autoLogin: autoLogin)
         
         // auto login
@@ -64,9 +64,9 @@ class LoginViewController: BaseViewController {
                                    loginData: LoginDTO) {
         switch result {
         case .success(let token):
-            UserDefaults.standard.set(loginData.username, forKey: "username")
-            UserDefaults.standard.set(loginData.password, forKey: "password")
-            UserDefaults.standard.set(token, forKey: "token")
+            UserDefaults.standard.set(loginData.username, forKey: UserDefaultsKeys.username)
+            UserDefaults.standard.set(loginData.password, forKey: UserDefaultsKeys.password)
+            UserDefaults.standard.set(token, forKey: UserDefaultsKeys.token)
             navigateToMainScreen()
             
             case .failure(let error):
@@ -86,8 +86,8 @@ class LoginViewController: BaseViewController {
     
     
     @objc func tappedAutoLoginButton() {
-        let autoLogin = UserDefaults.standard.bool(forKey: "autoLogin")
-        UserDefaults.standard.set(!autoLogin, forKey: "autoLogin")
+        let autoLogin = UserDefaults.standard.bool(forKey: UserDefaultsKeys.autoLogin)
+        UserDefaults.standard.set(!autoLogin, forKey: UserDefaultsKeys.autoLogin)
         loginView.updateAutoLoginCheckButton(autoLogin: !autoLogin)
     }
     

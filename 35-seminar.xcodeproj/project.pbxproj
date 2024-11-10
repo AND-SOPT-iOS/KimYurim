@@ -50,6 +50,7 @@
 		159987572CDAA92F00692C78 /* ExploreSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159987562CDAA92F00692C78 /* ExploreSection.swift */; };
 		1599875B2CDAD9EE00692C78 /* ChartTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1599875A2CDAD9EE00692C78 /* ChartTableViewHeader.swift */; };
 		1599875D2CDAE72F00692C78 /* DetailPreviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1599875C2CDAE72F00692C78 /* DetailPreviewCollectionViewCell.swift */; };
+		15B576FB2CE0A4E6001E6F9F /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B576FA2CE0A4E6001E6F9F /* UserDefaultsKeys.swift */; };
 		15EAC45A2CDD32CA00419E14 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EAC4592CDD32CA00419E14 /* UITableViewCell+Extension.swift */; };
 		15EAC45C2CDD32FF00419E14 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EAC45B2CDD32FF00419E14 /* UICollectionView+Extension.swift */; };
 		15EAC45E2CDD336700419E14 /* UITableViewHeaderFooterView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EAC45D2CDD336700419E14 /* UITableViewHeaderFooterView+Extension.swift */; };
@@ -133,6 +134,7 @@
 		159987562CDAA92F00692C78 /* ExploreSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreSection.swift; sourceTree = "<group>"; };
 		1599875A2CDAD9EE00692C78 /* ChartTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTableViewHeader.swift; sourceTree = "<group>"; };
 		1599875C2CDAE72F00692C78 /* DetailPreviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPreviewCollectionViewCell.swift; sourceTree = "<group>"; };
+		15B576FA2CE0A4E6001E6F9F /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 		15EAC4592CDD32CA00419E14 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 		15EAC45B2CDD32FF00419E14 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		15EAC45D2CDD336700419E14 /* UITableViewHeaderFooterView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewHeaderFooterView+Extension.swift"; sourceTree = "<group>"; };
@@ -331,6 +333,7 @@
 				15769B562CD11DAE000DBAD3 /* DownloadButtonFactory.swift */,
 				15728FC42CCCAF0100E1E151 /* Feedback.swift */,
 				15728FC62CCCAF3100E1E151 /* StarColor.swift */,
+				15B576FA2CE0A4E6001E6F9F /* UserDefaultsKeys.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -703,6 +706,7 @@
 				157119DD2CBE96F500362252 /* UILabel+Extension.swift in Sources */,
 				15EAC4872CDE6A5A00419E14 /* HobbyView.swift in Sources */,
 				159987572CDAA92F00692C78 /* ExploreSection.swift in Sources */,
+				15B576FB2CE0A4E6001E6F9F /* UserDefaultsKeys.swift in Sources */,
 				15F4FD0F2CC7649A00C99A20 /* BorderView.swift in Sources */,
 				15F9EE002CD5F38700172E82 /* Environment.swift in Sources */,
 				15769B652CD13DF1000DBAD3 /* MainExploreViewController.swift in Sources */,

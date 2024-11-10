@@ -13,7 +13,7 @@ class HobbyViewController: BaseViewController {
     private let hobbyView = HobbyView()
     private let appData = App.sampleApps
     
-    private let token = UserDefaults.standard.string(forKey: "token") ?? "(nil)"
+    private let token = UserDefaults.standard.string(forKey: UserDefaultsKeys.token) ?? "(nil)"
     private var userHobby: String = ""
     
     private var hobbies: [String] = []

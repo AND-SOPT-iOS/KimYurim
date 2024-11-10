@@ -35,9 +35,9 @@ class UserViewController: BaseViewController {
     }
     
     override func bind() {
-        let username = UserDefaults.standard.string(forKey: "username") ?? ""
-        let password = UserDefaults.standard.string(forKey: "password") ?? ""
-        let token = UserDefaults.standard.string(forKey: "token") ?? ""
+        let username = UserDefaults.standard.string(forKey: UserDefaultsKeys.username) ?? ""
+        let password = UserDefaults.standard.string(forKey: UserDefaultsKeys.password) ?? ""
+        let token = UserDefaults.standard.string(forKey: UserDefaultsKeys.token) ?? ""
         
         UserService.shared.fetchUserHobby(token: token) { [weak self] result in
             guard let self = self else { return }
