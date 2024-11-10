@@ -36,7 +36,6 @@ class LoginViewController: BaseViewController {
         loginView.bind(username: username, password: password, autoLogin: autoLogin)
         
         // auto login
-//        if LoginStatus.autoLogin == true {
         if autoLogin {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.conductLogin()
@@ -46,27 +45,45 @@ class LoginViewController: BaseViewController {
     
     private func conductLogin() {
         guard let loginData: LoginDTO = loginView.returnInputs() else {
-            EasyAlert.showAlert(title: "로그인 실패", message: "username과 password를 정확히 입력하세요.", vc: self)
+            EasyAlert.showAlert(
+                title: "로그인 실패",
+                message: "username과 password를 정확히 입력하세요.",
+                vc: self)
             return
         }
         
         LoginService.shared.login(
-            username: loginData.username, password: loginData.password) { [weak self] result in
+            username: loginData.username,
+            password: loginData.password) { [weak self] result in
                 guard let self = self else { return }
-                switch result {
-                case .success(let token):
-                    UserDefaults.standard.set(loginData.username, forKey: "username")
-                    UserDefaults.standard.set(loginData.password, forKey: "password")
-                    UserDefaults.standard.set(token, forKey: "token")
-                    
-                    let tabBarController = TabBarController()
-                    tabBarController.modalPresentationStyle = .fullScreen
-                    self.present(tabBarController, animated: true)
-                case .failure(let error):
-                    EasyAlert.showAlert(title: "로그인 실패", message: error.errorMessage, vc: self)
-                }
+                handleLoginResult(result: result, loginData: loginData)
             }
     }
+    
+    private func handleLoginResult(result: Result<String, NetworkError>,
+                                   loginData: LoginDTO) {
+        switch result {
+        case .success(let token):
+            UserDefaults.standard.set(loginData.username, forKey: "username")
+            UserDefaults.standard.set(loginData.password, forKey: "password")
+            UserDefaults.standard.set(token, forKey: "token")
+            navigateToMainScreen()
+            
+            case .failure(let error):
+            showLoginError(message: error.errorMessage)
+            }
+        }
+    
+    private func navigateToMainScreen() {
+        let tabBarController = TabBarController()
+            tabBarController.modalPresentationStyle = .fullScreen
+            self.present(tabBarController, animated: true)
+    }
+    
+    private func showLoginError(message: String) {
+        EasyAlert.showAlert(title: "로그인 실패", message: message, vc: self)
+    }
+    
     
     @objc func tappedAutoLoginButton() {
         let autoLogin = UserDefaults.standard.bool(forKey: "autoLogin")
