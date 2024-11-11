@@ -41,9 +41,12 @@ class UserDefaultsManager {
         return UserData(username: username, password: password, token: token, autoLogin: autoLogin)
     }
     
-    static func updateAutoLogin() -> Bool {
-        let newAutoLogin = !UserDefaults.standard.bool(forKey: UserDefaultsKeys.autoLogin)
-        UserDefaults.standard.set(newAutoLogin, forKey: UserDefaultsKeys.autoLogin)
-        return newAutoLogin
+    static func fetchAutoLogin() -> Bool {
+        let autoLogin = UserDefaults.standard.bool(forKey: UserDefaultsKeys.autoLogin)
+        return autoLogin
+    }
+    
+    static func updateAutoLogin(autoLogin: Bool) {
+        UserDefaults.standard.set(autoLogin, forKey: UserDefaultsKeys.autoLogin)
     }
 }

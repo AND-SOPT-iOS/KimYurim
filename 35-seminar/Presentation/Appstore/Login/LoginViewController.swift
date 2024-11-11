@@ -84,8 +84,9 @@ class LoginViewController: BaseViewController {
     
     
     @objc func tappedAutoLoginButton() {
-        let newAutoLogin = UserDefaultsManager.updateAutoLogin()
-        loginView.updateAutoLoginCheckButton(autoLogin: newAutoLogin)
+        let autoLogin = UserDefaultsManager.fetchAutoLogin()
+        UserDefaultsManager.updateAutoLogin(autoLogin: !autoLogin)
+        loginView.updateAutoLoginCheckButton(autoLogin: !autoLogin)
     }
     
     @objc func tappedLoginButton() {
