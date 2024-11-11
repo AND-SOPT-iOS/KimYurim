@@ -7,23 +7,51 @@
 
 import UIKit
 
-class UserAccountViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+class UserAccountViewController: BaseViewController {
+    
+    // MARK: - Properties
+    private let userAccountView = UserAccountView()
+    private var userInfo: RegisterDTO? = nil
+    
+    // MARK: - Methods
+    init(userInfo: RegisterDTO?) {
+        super.init(nibName: nil, bundle: nil)
+        self.userInfo = userInfo
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @MainActor required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
-    */
-
+    
+    override func loadView() {
+        view = userAccountView
+    }
+    
+    override func viewDidLoad() {
+        fetchUserData()
+        super.viewDidLoad()
+    }
+    
+    override func setNavigationBar() {
+        self.navigationController?
+            .navigationBar
+            .titleTextAttributes = [
+                NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .semibold)]
+        self.navigationItem.title = "계정"
+    }
+    
+    override func setDelegate() {
+        
+    }
+    
+    override func bind() {
+        userAccountView.bind(editable: false,
+                             name: userInfo?.username ?? "",
+                             hobby: userInfo?.hobby ?? "",
+                             password: userInfo?.password ?? "")
+    }
+    
+    private func fetchUserData() {
+        let userData = UserDefaultsManager.fetchUserData()
+    }
 }

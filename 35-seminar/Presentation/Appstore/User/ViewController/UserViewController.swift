@@ -10,6 +10,7 @@ import UIKit
 class UserViewController: BaseViewController {
     
     private let userView = UserView()
+    private var userInfo: RegisterDTO? = nil
     
     override func loadView() {
         view = userView
@@ -29,7 +30,7 @@ class UserViewController: BaseViewController {
     override func setStyle() { }
     
     override func setAddTarget() {
-        
+        userView.profileButton.addTarget(self, action: #selector(tappedProfileButton), for: .touchUpInside)
         
         userView.hobbyButton.addTarget(self, action: #selector(tappedHobbyButton), for: .touchUpInside)
     }
@@ -41,15 +42,23 @@ class UserViewController: BaseViewController {
             guard let self = self else { return }
             switch result {
             case .success(let hobby):
-                userView.bind(
-                    user: RegisterDTO(
-                        username: userData.username,
-                        password: userData.password, hobby: hobby))
+                let userInfo = RegisterDTO(
+                    username: userData.username,
+                    password: userData.password,
+                    hobby: hobby)
+                
+                userView.bind(user: userInfo)
+                self.userInfo = userInfo
                 
             case .failure(let error):
                 print("hobby 조회 에러: \(error.errorMessage)")
             }
         }
+    }
+    
+    @objc func tappedProfileButton() {
+        let userAccountVC = UserAccountViewController(userInfo: userInfo)
+        self.navigationController?.pushViewController(userAccountVC, animated: true)
     }
     
     @objc func tappedHobbyButton() {

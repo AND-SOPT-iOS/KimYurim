@@ -25,13 +25,10 @@ class UserView: BaseView {
     private let hobbyChevronImageView = UIImageView()
     let hobbyButton = UIButton()
     
-    override func setDelegate() { }
-    
     override func setUI() {
         backgroundColor = .systemGray5
         setProfileUI()
         setHobbyUI()
-        
     }
     
     private func setProfileUI() {
