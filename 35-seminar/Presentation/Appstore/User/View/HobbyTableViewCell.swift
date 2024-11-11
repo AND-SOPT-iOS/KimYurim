@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class HobbyTableViewCell: UITableViewCell {
     
@@ -33,7 +34,9 @@ class HobbyTableViewCell: UITableViewCell {
         stackView.alignment = .top
         stackView.spacing = 10
         
-        noLabel.configureLabel(size: 17, weight: .medium, numberOfLines: 0)
+        noLabel.adjustsFontSizeToFitWidth = true
+        noLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        noLabel.configureLabel(size: 17, weight: .medium)
         
         contentLabel.configureLabel(size: 17, weight: .regular, numberOfLines: 0)
     }
@@ -48,11 +51,12 @@ class HobbyTableViewCell: UITableViewCell {
     
     func setConstraints() {
         stackView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview()
+            $0.centerY.equalToSuperview()
         }
         
         noLabel.snp.makeConstraints {
-            $0.width.greaterThanOrEqualTo(20)
+            $0.width.equalTo(30)
         }
     }
     

@@ -15,8 +15,7 @@ class HobbyView: BaseView {
     // MARK: - Methods
     override func setUI() {
         super.setUI()
-        tableView.rowHeight = 88
-        tableView.separatorInset = .init(top: 0, left: 90, bottom: 0, right: 20)
+        tableView.rowHeight = 40
         tableView.backgroundColor = .systemGray6
     }
     
