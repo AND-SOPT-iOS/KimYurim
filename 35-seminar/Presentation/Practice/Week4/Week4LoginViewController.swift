@@ -7,7 +7,7 @@
 
 import UIKit
 
-class Week3LoginViewController: UIViewController {
+class Week4LoginViewController: UIViewController {
     
     // MARK: - Properties
     private let idTextField = UITextField()
