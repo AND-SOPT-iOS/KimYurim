@@ -295,7 +295,7 @@
 			path = UserDTO;
 			sourceTree = "<group>";
 		};
-		157119D42CBE8FB700362252 /* Reusables */ = {
+		157119D42CBE8FB700362252 /* Reusable */ = {
 			isa = PBXGroup;
 			children = (
 				156CD7F92CD785B000F47DA0 /* AppListCellView.swift */,
@@ -305,10 +305,10 @@
 				157119D72CBE965700362252 /* SubtitleLabel.swift */,
 				157119D92CBE96BB00362252 /* ContentLabel.swift */,
 			);
-			path = Reusables;
+			path = Reusable;
 			sourceTree = "<group>";
 		};
-		157119DB2CBE96DE00362252 /* Extensions */ = {
+		157119DB2CBE96DE00362252 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				15EC30602CCB8E9C00A0480B /* Date+Extension.swift */,
@@ -320,7 +320,7 @@
 				15EAC45B2CDD32FF00419E14 /* UICollectionView+Extension.swift */,
 				15EAC45D2CDD336700419E14 /* UITableViewHeaderFooterView+Extension.swift */,
 			);
-			path = Extensions;
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		15728FC32CCCAEE000E1E151 /* Entity */ = {
@@ -330,7 +330,6 @@
 				15769B542CD11D99000DBAD3 /* App.swift */,
 				15769B582CD1362D000DBAD3 /* Category.swift */,
 				159987562CDAA92F00692C78 /* ExploreSection.swift */,
-				15769B562CD11DAE000DBAD3 /* DownloadButtonFactory.swift */,
 				15728FC42CCCAF0100E1E151 /* Feedback.swift */,
 				15728FC62CCCAF3100E1E151 /* StarColor.swift */,
 			);
@@ -353,8 +352,9 @@
 			children = (
 				15EAC4812CDE55D200419E14 /* Alert */,
 				15769B662CD148F9000DBAD3 /* Bases */,
-				157119DB2CBE96DE00362252 /* Extensions */,
-				157119D42CBE8FB700362252 /* Reusables */,
+				157119DB2CBE96DE00362252 /* Extension */,
+				15B576FF2CE1F4CC001E6F9F /* Factory */,
+				157119D42CBE8FB700362252 /* Reusable */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -480,6 +480,14 @@
 				15B576FD2CE0A8D7001E6F9F /* UserDefaultsManager.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		15B576FF2CE1F4CC001E6F9F /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				15769B562CD11DAE000DBAD3 /* DownloadButtonFactory.swift */,
+			);
+			path = Factory;
 			sourceTree = "<group>";
 		};
 		15EAC45F2CDD4F6200419E14 /* User */ = {
