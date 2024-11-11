@@ -16,7 +16,7 @@ class HobbyViewController: BaseViewController {
     private let token = UserDefaultsManager.fetchUserData().token
     private var userHobby: String = ""
     
-    private var hobbies: [String] = []
+    private var hobbies: [(Int,String)] = []
     private var currentUserNo = 1 // 처음 요청할 유저 번호
     private let pageSize = 30     // 한 번에 요청할 유저 수
     private var isFetching = false // 중복 요청 방지
@@ -49,13 +49,20 @@ class HobbyViewController: BaseViewController {
     }
     
     private func fetchUserHobby() {
-        UserService.shared.fetchUserHobby(token: token) { [weak self] result in
+        DispatchQueue.global().async { [weak self] in
             guard let self = self else { return }
-            switch result {
-            case .success(let hobby):
-                userHobby = hobby
-            case .failure(let error):
-                print("hobby 조회 에러: \(error.errorMessage)")
+            UserService.shared.fetchUserHobby(token: token) { result in
+                switch result {
+                case .success(let hobby):
+                    self.userHobby = hobby
+                    let indexPath = [IndexPath(row: 0, section: 0)]
+                    DispatchQueue.main.async {
+                        self.hobbyView.tableView.reloadRows(at: indexPath, with: .automatic)
+                    }
+                    
+                case .failure(let error):
+                    print("hobby 조회 에러: \(error.errorMessage)")
+                }
             }
         }
     }
@@ -66,18 +73,16 @@ class HobbyViewController: BaseViewController {
         
         let nextUserNos = (currentUserNo..<(currentUserNo + pageSize)).map { $0 }
         let dispatchGroup = DispatchGroup()
-        var newHobbies: [String] = []
+        var newHobbies: [(Int,String)] = []
         var successfulFetches = 0 // 성공적으로 요청한 개수를 기록
         
         for userNo in nextUserNos {
             dispatchGroup.enter()
             
-            UserService.shared.fetchOtherHobby(token: token, no: userNo) { [weak self] result in
-                guard let self = self else { return }
-                
+            UserService.shared.fetchOtherHobby(token: token, no: userNo) { result in
                 switch result {
                 case .success(let hobby):
-                    newHobbies.append(hobby)
+                    newHobbies.append((userNo, hobby))
                     successfulFetches += 1
                     
                 case .failure(let error):
@@ -96,15 +101,18 @@ class HobbyViewController: BaseViewController {
                 self.hasMoreData = false // 현재 페이지에서 모든 요청이 실패하면 추가 로드를 멈춥니다.
                 return
             }
-            
-            let startIndex = self.hobbies.count
-            self.hobbies.append(contentsOf: newHobbies)
-            
-            let indexPaths = (startIndex..<self.hobbies.count).map { IndexPath(row: $0, section: 1) }
-            hobbyView.tableView.insertRows(at: indexPaths, with: .automatic)
-            
-            self.currentUserNo += pageSize
+            appendNewHobbies(newHobbies: newHobbies)
         }
+    }
+    
+    private func appendNewHobbies(newHobbies: [(Int, String)]) {
+        let startIndex = hobbies.count
+        let sortedNewHobbies = newHobbies.sorted { $0.0 < $1.0}
+        hobbies.append(contentsOf: sortedNewHobbies)
+        
+        let indexPaths = (startIndex..<hobbies.count).map { IndexPath(row: $0, section: 1) }
+        hobbyView.tableView.insertRows(at: indexPaths, with: .automatic)
+        currentUserNo += pageSize
     }
 }
 
@@ -136,7 +144,7 @@ extension HobbyViewController: UITableViewDataSource {
             cell.bind(no: nil, content: userHobby)
             print(userHobby, "!!!!!")
         case 1:
-            cell.bind(no: indexPath.row, content: hobbies[indexPath.row])
+            cell.bind(no: hobbies[indexPath.row].0, content: hobbies[indexPath.row].1)
         default:
             return cell
         }
