@@ -21,7 +21,6 @@ class HobbyViewController: BaseViewController {
     private let pageSize = 30     // 한 번에 요청할 유저 수
     private var isFetching = false // 중복 요청 방지
     private var hasMoreData = true // 추가 요청 가능 여부
-    private let hobbyQueue = DispatchQueue(label: "hobbyQueue")
     
     // MARK: - Methods
     override func loadView() {
