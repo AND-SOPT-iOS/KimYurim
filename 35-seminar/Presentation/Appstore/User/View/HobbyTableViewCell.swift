@@ -51,7 +51,7 @@ class HobbyTableViewCell: UITableViewCell {
     
     func setConstraints() {
         stackView.snp.makeConstraints {
-            $0.horizontalEdges.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview().inset(20)
             $0.centerY.equalToSuperview()
         }
         

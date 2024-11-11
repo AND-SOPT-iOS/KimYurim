@@ -46,6 +46,7 @@ class HobbyViewController: BaseViewController {
         hobbyView.tableView.dataSource = self
         hobbyView.tableView.delegate = self
         hobbyView.tableView.register(HobbyTableViewCell.self, forCellReuseIdentifier: HobbyTableViewCell.identifier)
+        hobbyView.tableView.register(HobbyTableViewHeader.self, forHeaderFooterViewReuseIdentifier: HobbyTableViewHeader.identifier)
     }
     
     private func fetchUserHobby() {
@@ -153,14 +154,20 @@ extension HobbyViewController: UITableViewDataSource {
 }
 
 extension HobbyViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: HobbyTableViewHeader.identifier) as? HobbyTableViewHeader else { return nil }
+        
+        headerView.bind(section: section)
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
-        case 0:
-            return "나의 취미"
         case 1:
-            return "친구들의 취미"
+            return 70
+            
         default:
-            return nil
+            return 30
         }
     }
     

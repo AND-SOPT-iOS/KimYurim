@@ -77,6 +77,7 @@
 		15EC30612CCB8E9C00A0480B /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EC30602CCB8E9C00A0480B /* Date+Extension.swift */; };
 		15F4FD072CC73D0A00C99A20 /* StarStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F4FD062CC73D0A00C99A20 /* StarStackView.swift */; };
 		15F4FD0F2CC7649A00C99A20 /* BorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F4FD0E2CC7649A00C99A20 /* BorderView.swift */; };
+		15F923B22CE2088900B6F49A /* HobbyTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F923B12CE2088900B6F49A /* HobbyTableViewHeader.swift */; };
 		15F9EDFB2CD5F12500172E82 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 15F9EDFA2CD5F12500172E82 /* Alamofire */; };
 		15F9EDFE2CD5F28700172E82 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 15F9EDFD2CD5F28700172E82 /* Config.xcconfig */; };
 		15F9EE002CD5F38700172E82 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F9EDFF2CD5F38700172E82 /* Environment.swift */; };
@@ -161,6 +162,7 @@
 		15EC30602CCB8E9C00A0480B /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		15F4FD062CC73D0A00C99A20 /* StarStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarStackView.swift; sourceTree = "<group>"; };
 		15F4FD0E2CC7649A00C99A20 /* BorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderView.swift; sourceTree = "<group>"; };
+		15F923B12CE2088900B6F49A /* HobbyTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbyTableViewHeader.swift; sourceTree = "<group>"; };
 		15F9EDFD2CD5F28700172E82 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		15F9EDFF2CD5F38700172E82 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		15F9EE032CD5F8D200172E82 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -522,6 +524,7 @@
 				15EAC4602CDD4FB500419E14 /* UserView.swift */,
 				15EAC4862CDE6A5A00419E14 /* HobbyView.swift */,
 				15EAC4842CDE605500419E14 /* HobbyTableViewCell.swift */,
+				15F923B12CE2088900B6F49A /* HobbyTableViewHeader.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -677,6 +680,7 @@
 				15769B682CD14916000DBAD3 /* BaseViewController.swift in Sources */,
 				15B576FE2CE0A8D7001E6F9F /* UserDefaultsManager.swift in Sources */,
 				157119D82CBE965700362252 /* SubtitleLabel.swift in Sources */,
+				15F923B22CE2088900B6F49A /* HobbyTableViewHeader.swift in Sources */,
 				15F9EE082CD5F93A00172E82 /* UserService.swift in Sources */,
 				15EAC46E2CDDD4E600419E14 /* HobbyDTO.swift in Sources */,
 				15F9EE102CD6063E00172E82 /* Network.swift in Sources */,
