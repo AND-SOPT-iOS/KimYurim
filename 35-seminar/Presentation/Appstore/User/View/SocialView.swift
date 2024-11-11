@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class UserView: BaseView {
+class SocialView: BaseView {
     // profile
     private let profileStackView = UIStackView()
     private let profileImageView = UIImageView()

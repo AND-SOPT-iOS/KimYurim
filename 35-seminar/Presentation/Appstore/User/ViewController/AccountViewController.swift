@@ -7,10 +7,10 @@
 
 import UIKit
 
-class UserAccountViewController: BaseViewController {
+class AccountViewController: BaseViewController {
     
     // MARK: - Properties
-    private let userAccountView = UserAccountView()
+    private let accountView = AccountView()
     private var userInfo: RegisterDTO? = nil
     
     // MARK: - Methods
@@ -24,7 +24,7 @@ class UserAccountViewController: BaseViewController {
     }
     
     override func loadView() {
-        view = userAccountView
+        view = accountView
     }
     
     override func viewDidLoad() {
@@ -45,7 +45,7 @@ class UserAccountViewController: BaseViewController {
     }
     
     override func bind() {
-        userAccountView.bind(editable: false,
+        accountView.bind(editable: false,
                              name: userInfo?.username ?? "",
                              hobby: userInfo?.hobby ?? "",
                              password: userInfo?.password ?? "")

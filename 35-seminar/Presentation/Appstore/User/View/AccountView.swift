@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UserAccountView: BaseView {
+class AccountView: BaseView {
     // MARK: - Properties
     private let profileImageSize: CGFloat = 140
     

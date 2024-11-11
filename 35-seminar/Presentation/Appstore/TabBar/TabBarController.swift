@@ -18,7 +18,7 @@ class TabBarController: UITabBarController {
     private func setUI() {
         if let items = tabBar.items {
             items[0].title = "앱"
-            items[1].title = "사용자"
+            items[1].title = "소셜"
             
             items[0].image = UIImage(systemName: "square.stack.3d.up.fill")
             items[1].image = UIImage(systemName: "person.fill")
@@ -46,7 +46,7 @@ class TabBarController: UITabBarController {
     
     private func setVCs() {
         let exploreVC = UINavigationController(rootViewController: MainExploreViewController())
-        let userVC = UINavigationController(rootViewController: UserViewController())
+        let userVC = UINavigationController(rootViewController: SocialViewController())
         
         let viewControllers = [exploreVC, userVC]
         setViewControllers(viewControllers, animated: true)

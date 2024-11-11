@@ -7,13 +7,13 @@
 
 import UIKit
 
-class UserViewController: BaseViewController {
+class SocialViewController: BaseViewController {
     
-    private let userView = UserView()
+    private let socialView = SocialView()
     private var userInfo: RegisterDTO? = nil
     
     override func loadView() {
-        view = userView
+        view = socialView
     }
     
     override func viewDidLoad() {
@@ -25,14 +25,10 @@ class UserViewController: BaseViewController {
         self.navigationItem.title = "소셜"
     }
     
-    override func setDelegate() { }
-    
-    override func setStyle() { }
-    
     override func setAddTarget() {
-        userView.profileButton.addTarget(self, action: #selector(tappedProfileButton), for: .touchUpInside)
+        socialView.profileButton.addTarget(self, action: #selector(tappedProfileButton), for: .touchUpInside)
         
-        userView.hobbyButton.addTarget(self, action: #selector(tappedHobbyButton), for: .touchUpInside)
+        socialView.hobbyButton.addTarget(self, action: #selector(tappedHobbyButton), for: .touchUpInside)
     }
     
     override func bind() {
@@ -47,7 +43,7 @@ class UserViewController: BaseViewController {
                     password: userData.password,
                     hobby: hobby)
                 
-                userView.bind(user: userInfo)
+                socialView.bind(user: userInfo)
                 self.userInfo = userInfo
                 
             case .failure(let error):
@@ -57,7 +53,7 @@ class UserViewController: BaseViewController {
     }
     
     @objc func tappedProfileButton() {
-        let userAccountVC = UserAccountViewController(userInfo: userInfo)
+        let userAccountVC = AccountViewController(userInfo: userInfo)
         self.navigationController?.pushViewController(userAccountVC, animated: true)
     }
     
