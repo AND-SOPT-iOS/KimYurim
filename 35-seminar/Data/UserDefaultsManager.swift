@@ -14,13 +14,6 @@ enum UserDefaultsKeys {
     static let autoLogin = "autoLogin"
 }
 
-struct UserData {
-    var username: String
-    var password: String
-    var token: String
-    var autoLogin: Bool
-}
-
 class UserDefaultsManager {
     static func register(username: String, password: String) {
         UserDefaults.standard.set(username, forKey: UserDefaultsKeys.username)
