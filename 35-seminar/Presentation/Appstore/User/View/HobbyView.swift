@@ -17,6 +17,7 @@ class HobbyView: BaseView {
         super.setUI()
         tableView.rowHeight = 40
         tableView.backgroundColor = .systemGray6
+        tableView.allowsSelection = false
     }
     
     override func setHierarchy() {
