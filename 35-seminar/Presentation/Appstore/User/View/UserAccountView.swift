@@ -34,7 +34,7 @@ class UserAccountView: BaseView {
         profileImageView.layer.borderWidth = 1
         profileImageView.layer.cornerRadius = profileImageSize / 2
         
-        editButton.configureButton(title: "수정하기", fontSize: 17)
+        editButton.configureButton(title: "수정하기", fontSize: 17, removeContentInsets: true)
         
         infoView.backgroundColor = .systemBackground
         infoView.layer.cornerRadius = 20
@@ -53,7 +53,7 @@ class UserAccountView: BaseView {
     }
     
     override func setHierarchy() {
-        [profileImageView, nameLabel, infoView].forEach {
+        [profileImageView, nameLabel, editButton, infoView].forEach {
             self.addSubview($0)
         }
         
@@ -64,7 +64,8 @@ class UserAccountView: BaseView {
     
     override func setConstraints() {
         let spacing = 16
-        let infoViewInset = 10
+        let infoViewInset = 20
+        let infoViewVerticalInset = 10
         
         profileImageView.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide)
@@ -77,8 +78,13 @@ class UserAccountView: BaseView {
             $0.centerX.equalToSuperview()
         }
         
-        infoView.snp.makeConstraints {
+        editButton.snp.makeConstraints {
             $0.top.equalTo(nameLabel.snp.bottom).offset(30)
+            $0.trailing.equalTo(infoView)
+        }
+        
+        infoView.snp.makeConstraints {
+            $0.top.equalTo(editButton.snp.bottom).offset(spacing)
             $0.horizontalEdges.equalToSuperview().inset(20)
         }
         
@@ -94,13 +100,13 @@ class UserAccountView: BaseView {
         }
         
         borderView.snp.makeConstraints {
-            $0.top.equalTo(hobbyLabel.snp.bottom).offset(5)
+            $0.top.equalTo(hobbyLabel.snp.bottom).offset(infoViewVerticalInset)
             $0.horizontalEdges.equalToSuperview().inset(10)
             $0.height.equalTo(1)
         }
         
         passwordLabel.snp.makeConstraints {
-            $0.top.equalTo(borderView.snp.bottom).offset(5)
+            $0.top.equalTo(borderView.snp.bottom).offset(infoViewVerticalInset)
             $0.leading.equalTo(hobbyLabel)
             $0.width.equalTo(66)
             $0.bottom.equalToSuperview().offset(-infoViewInset)
