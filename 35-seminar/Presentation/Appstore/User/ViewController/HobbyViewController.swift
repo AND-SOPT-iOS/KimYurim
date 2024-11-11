@@ -21,6 +21,7 @@ class HobbyViewController: BaseViewController {
     private let pageSize = 30     // 한 번에 요청할 유저 수
     private var isFetching = false // 중복 요청 방지
     private var hasMoreData = true // 추가 요청 가능 여부
+    private let hobbyQueue = DispatchQueue(label: "hobbyQueue")
     
     // MARK: - Methods
     override func loadView() {
@@ -34,7 +35,10 @@ class HobbyViewController: BaseViewController {
     }
     
     override func setNavigationBar() {
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .semibold)]
+        self.navigationController?
+            .navigationBar
+            .titleTextAttributes = [
+                NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .semibold)]
         self.navigationItem.title = "취미"
     }
     
@@ -59,15 +63,15 @@ class HobbyViewController: BaseViewController {
     func loadMoreHobbies() {
         guard !isFetching, hasMoreData else { return }
         isFetching = true
-
-        let nextUserNos = (currentUserNo..<(currentUserNo + pageSize)).map { $0 }
         
+        let nextUserNos = (currentUserNo..<(currentUserNo + pageSize)).map { $0 }
         let dispatchGroup = DispatchGroup()
         var newHobbies: [String] = []
         var successfulFetches = 0 // 성공적으로 요청한 개수를 기록
         
         for userNo in nextUserNos {
             dispatchGroup.enter()
+            
             UserService.shared.fetchOtherHobby(token: token, no: userNo) { [weak self] result in
                 guard let self = self else { return }
                 
@@ -75,9 +79,11 @@ class HobbyViewController: BaseViewController {
                 case .success(let hobby):
                     newHobbies.append(hobby)
                     successfulFetches += 1
+                    
                 case .failure(let error):
-                    print("유저 \(userNo)의 취미를 가져오지 못했습니다. error: \(error)") // 실패한 개별 요청을 로그로 남깁니다.
+                    print("유저 \(userNo)의 취미를 가져오지 못했습니다. error: \(error)")
                 }
+                
                 dispatchGroup.leave()
             }
         }
@@ -100,7 +106,6 @@ class HobbyViewController: BaseViewController {
             self.currentUserNo += pageSize
         }
     }
-
 }
 
 // MARK: - Extensions
