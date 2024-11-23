@@ -8,6 +8,7 @@
 import UIKit
 
 protocol BaseViewControllerProtocol: AnyObject {
+    func setNavigationBar()
     func setDelegate()
     func setStyle()
     func setAddTarget()
@@ -18,12 +19,14 @@ class BaseViewController: UIViewController, BaseViewControllerProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setNavigationBar()
         setDelegate()
         setStyle()
         setAddTarget()
         bind()
     }
+    
+    func setNavigationBar() { }
     
     func setDelegate() { }
     

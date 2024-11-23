@@ -11,10 +11,6 @@ final class MainExploreViewController: BaseViewController {
     
     private let financeButton = UIButton()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     override func setStyle() {
         view.backgroundColor = .systemBackground
         
