@@ -5,6 +5,7 @@
 //  Created by 김유림 on 11/8/24.
 //
 
+import SwiftUI
 import UIKit
 
 class SocialViewController: BaseViewController {
@@ -58,8 +59,11 @@ class SocialViewController: BaseViewController {
     }
     
     @objc func tappedHobbyButton() {
-        let hobbyVC = HobbyViewController()
-        self.navigationController?.pushViewController(hobbyVC, animated: true)
+//        let hobbyVC = HobbyViewController()
+//        self.navigationController?.pushViewController(hobbyVC, animated: true)
+        
+        let vc = UIHostingController(rootView: SUHobbyView())
+        self.present(vc, animated: true)
     }
 }
 
