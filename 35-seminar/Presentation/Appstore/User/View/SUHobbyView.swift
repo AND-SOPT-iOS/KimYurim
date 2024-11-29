@@ -79,7 +79,7 @@ struct SUHobbyView: View {
         }
     }
     
-    // 더 많은 취미 데이터를 로드하는 함수
+    // 친구들의 취미 데이터를 로드하는 함수
     private func loadMoreHobbies() {
         guard !isFetching, hasMoreData else { return }
         isFetching = true
