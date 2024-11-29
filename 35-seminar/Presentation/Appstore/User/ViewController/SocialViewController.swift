@@ -63,7 +63,7 @@ class SocialViewController: BaseViewController {
 //        self.navigationController?.pushViewController(hobbyVC, animated: true)
         
         let vc = UIHostingController(rootView: SUHobbyView())
-        self.present(vc, animated: true)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
