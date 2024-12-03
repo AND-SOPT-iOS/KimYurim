@@ -19,45 +19,47 @@ struct SUHobbyView: View {
     private let pageSize = 30
 
     var body: some View {
-        List {
-            // 나의 취미 섹션
-            Section(
-                header: SUHobbyHeaderView(
-                    sectionTitle: "나의 취미",
-                    columnTitles: nil)
-            ) {
-                if userHobby.isEmpty {
-                    Text("취미 정보를 불러오는 중...")
-                        .foregroundColor(.gray)
-                } else {
-                    Text(userHobby)
-                }
-            }
-            
-            // 친구들의 취미 섹션
-            Section(header: SUHobbyHeaderView(
-                sectionTitle: "친구들의 취미",
-                columnTitles: ["id", "취미"])
-            ) {
-                ForEach(hobbies, id: \.0) { (no, hobby) in
-                    HStack {
-                        Text("\(no)").frame(width: 30)
-                        Text(hobby)
+        ScrollViewReader { proxy in
+            List {
+                // 나의 취미 섹션
+                Section(
+                    header: SUHobbyHeaderView(
+                        sectionTitle: "나의 취미",
+                        columnTitles: nil)
+                ) {
+                    if userHobby.isEmpty {
+                        Text("취미 정보를 불러오는 중...")
+                            .foregroundColor(.gray)
+                    } else {
+                        Text(userHobby)
                     }
                 }
                 
-                if hasMoreData {
-                    HStack {
-                        Spacer()
-                        ProgressView()
-                            .onAppear {
-                                loadMoreHobbies()
-                            }
-                        Spacer()
+                // 친구들의 취미 섹션
+                Section(header: SUHobbyHeaderView(
+                    sectionTitle: "친구들의 취미",
+                    columnTitles: ["id", "취미"])
+                ) {
+                    ForEach(hobbies, id: \.0) { (no, hobby) in
+                        HStack {
+                            Text("\(no)").frame(width: 30)
+                            Text(hobby)
+                        }
+                    }
+                    
+                    // TODO: onChange 메소드에 넣기
+                    if hasMoreData {
+                        HStack {
+                            Spacer()
+                            ProgressView()
+                                .onAppear {
+                                    loadMoreHobbies()
+                                }
+                            Spacer()
+                        }
                     }
                 }
             }
-            
         }
         .onAppear {
             fetchUserHobby()
