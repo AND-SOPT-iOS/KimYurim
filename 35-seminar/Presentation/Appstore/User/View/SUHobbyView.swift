@@ -22,22 +22,23 @@ struct SUHobbyView: View {
         List {
             // 나의 취미 섹션
             Section(
-                header: Text("나의 취미")
-                    .font(.caption)
-                    .foregroundColor(.secondary)) {
-                        if userHobby.isEmpty {
-                            Text("취미 정보를 불러오는 중...")
-                                .foregroundColor(.gray)
-                        } else {
-                            Text(userHobby)
-                        }
-                    }
+                header: SUHobbyHeaderView(
+                    sectionTitle: "나의 취미",
+                    columnTitles: nil)
+            ) {
+                if userHobby.isEmpty {
+                    Text("취미 정보를 불러오는 중...")
+                        .foregroundColor(.gray)
+                } else {
+                    Text(userHobby)
+                }
+            }
             
             // 친구들의 취미 섹션
-            Section(header: HStack {
-                Text("no").frame(width: 30)
-                Text("취미").fontWeight(.medium)
-            }) {
+            Section(header: SUHobbyHeaderView(
+                sectionTitle: "친구들의 취미",
+                columnTitles: ["id", "취미"])
+            ) {
                 ForEach(hobbies, id: \.0) { (no, hobby) in
                     HStack {
                         Text("\(no)").frame(width: 30)
@@ -56,8 +57,8 @@ struct SUHobbyView: View {
                     }
                 }
             }
+            
         }
-        .listStyle(InsetGroupedListStyle())
         .onAppear {
             fetchUserHobby()
         }
@@ -113,6 +114,28 @@ struct SUHobbyView: View {
         }
     }
 }
+
+struct SUHobbyHeaderView: View {
+    let sectionTitle: String
+    let columnTitles: [String]?
+    
+    var body: some View {
+        VStack {
+            Text(sectionTitle)
+                .font(.system(size: 17, weight: .semibold))
+            
+            HStack {
+                if let titles = columnTitles {
+                    ForEach(titles, id: \.self) { column in
+                        Text(column)
+                            .frame(width: 30, alignment: .leading)
+                    }
+                }
+            }
+        }
+    }
+}
+
 
 #Preview {
     SUHobbyView()
