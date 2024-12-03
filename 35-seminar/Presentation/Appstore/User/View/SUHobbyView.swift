@@ -19,49 +19,47 @@ struct SUHobbyView: View {
     private let pageSize = 30
 
     var body: some View {
-        ScrollViewReader { scrollProxy in
-            List {
-                // 나의 취미 섹션
-                Section(
-                    header: Text("나의 취미")
-                        .font(.caption)
-                        .foregroundColor(.secondary)) {
-                            if userHobby.isEmpty {
-                                Text("취미 정보를 불러오는 중...")
-                                    .foregroundColor(.gray)
-                            } else {
-                                Text(userHobby)
-                            }
-                        }
-                
-                // 친구들의 취미 섹션
-                Section(header: HStack {
-                    Text("no").frame(width: 30)
-                    Text("취미").fontWeight(.medium)
-                }) {
-                    ForEach(hobbies, id: \.0) { (no, hobby) in
-                        HStack {
-                            Text("\(no)").frame(width: 30)
-                            Text(hobby)
+        List {
+            // 나의 취미 섹션
+            Section(
+                header: Text("나의 취미")
+                    .font(.caption)
+                    .foregroundColor(.secondary)) {
+                        if userHobby.isEmpty {
+                            Text("취미 정보를 불러오는 중...")
+                                .foregroundColor(.gray)
+                        } else {
+                            Text(userHobby)
                         }
                     }
-                    
-                    if hasMoreData {
-                        HStack {
-                            Spacer()
-                            ProgressView()
-                                .onAppear {
-                                    loadMoreHobbies()
-                                }
-                            Spacer()
-                        }
+            
+            // 친구들의 취미 섹션
+            Section(header: HStack {
+                Text("no").frame(width: 30)
+                Text("취미").fontWeight(.medium)
+            }) {
+                ForEach(hobbies, id: \.0) { (no, hobby) in
+                    HStack {
+                        Text("\(no)").frame(width: 30)
+                        Text(hobby)
+                    }
+                }
+                
+                if hasMoreData {
+                    HStack {
+                        Spacer()
+                        ProgressView()
+                            .onAppear {
+                                loadMoreHobbies()
+                            }
+                        Spacer()
                     }
                 }
             }
-            .listStyle(InsetGroupedListStyle())
-            .onAppear {
-                fetchUserHobby()
-            }
+        }
+        .listStyle(InsetGroupedListStyle())
+        .onAppear {
+            fetchUserHobby()
         }
     }
     
