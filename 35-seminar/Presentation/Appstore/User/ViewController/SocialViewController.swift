@@ -59,12 +59,13 @@ class SocialViewController: BaseViewController {
     }
     
     @objc func tappedHobbyButton() {
-//        let hobbyVC = HobbyViewController()
-//        self.navigationController?.pushViewController(hobbyVC, animated: true)
+        // UIKit으로 작성한 뷰컨
+        let hobbyVC = HobbyViewController()
+        self.navigationController?.pushViewController(hobbyVC, animated: true)
         
-        // SwiftUI로 작성한 뷰를 push
-        let vc = UIHostingController(rootView: SUHobbyView())
-        self.navigationController?.pushViewController(vc, animated: true)
+        // SwiftUI로 작성한 뷰
+//        let vc = UIHostingController(rootView: SUHobbyView())
+//        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

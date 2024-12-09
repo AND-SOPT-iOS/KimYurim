@@ -5,8 +5,8 @@
 //  Created by 김유림 on 11/2/24.
 //
 
-import Foundation
 import Alamofire
+import RxSwift
 
 /// 클래스는 라우터 별로 나눠줄 수 있음!
 /// 라우터란 URL의 분기점. 이 클래스의 분기점은 /user 임
@@ -113,6 +113,38 @@ class UserService {
                 let error = Network.shared.handleStatusCode(statusCode, data: data)
                 completion(.failure(error))
             }
+        }
+    }
+    
+    // MARK: - RxSwift 리팩토링
+    func fetchUserHobby(token: String) -> Single<String> {
+        return Single.create { single in
+            // 네트워크 요청 수행
+            UserService.shared.fetchUserHobby(token: token) { result in
+                switch result {
+                case .success(let hobby):
+                    single(.success(hobby))
+                case .failure(let error):
+                    single(.failure(error))
+                }
+            }
+            return Disposables.create()
+        }
+    }
+    
+    func fetchOtherHobby(token: String,
+                              no: Int) -> Single<String> {
+        return Single.create { single in
+            // 네트워크 요청 수행
+            UserService.shared.fetchOtherHobby(token: token, no: no) { result in
+                switch result {
+                case .success(let hobby):
+                    single(.success(hobby))
+                case .failure(let error):
+                    single(.failure(error))
+                }
+            }
+            return Disposables.create()
         }
     }
 }
