@@ -50,7 +50,7 @@ struct DownloadButton: View {
             .tint(buttonColor.backgroundColor)
             .frame(width: 84, height: 32)
             
-        case .reDownload:
+        case .redownload:
             Button(action: action) {
                 Image(systemName: "icloud.and.arrow.down")
                     .resizable()

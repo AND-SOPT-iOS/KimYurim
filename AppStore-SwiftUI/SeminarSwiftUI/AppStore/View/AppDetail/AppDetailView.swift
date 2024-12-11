@@ -67,7 +67,7 @@ struct AppDetailTitleView: View {
             Text(app.title)
                 .font(Font.system(size: 23, weight: .medium))
             
-            Text(app.subTitle)
+            Text(app.subtitle)
                 .font(Font.system(size: 16, weight: .regular))
                 .foregroundStyle(.secondary)
             Spacer()
@@ -284,5 +284,5 @@ struct AppDetailPreviewView: View {
 
 
 #Preview {
-    AppDetailView(app: AppData(id: UUID(), iconImage: Image("toss_icon"), ranking: 1, title: "안녕", subTitle: "안녕하세요", downloadState: .reDownload))
+    AppDetailView(app: AppData(id: UUID(), ranking: 1, title: "토스", subtitle: "금융이 쉬워진다", tag: "새로운 경험", category: .finance, price: 0, downloadState: .downloaded, iconImage: Image(uiImage: UIImage.tossIcon), bannerImage: Image(uiImage: UIImage.tossBanner)))
 }

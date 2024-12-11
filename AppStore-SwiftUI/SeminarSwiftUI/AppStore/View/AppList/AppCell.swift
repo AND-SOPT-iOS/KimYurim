@@ -50,7 +50,7 @@ struct AppCell: View {
         VStack(alignment: .leading) {
             Text(app.title)
                 .font(.headline)
-            Text(app.subTitle)
+            Text(app.subtitle)
                 .font(.caption)
         }
     }
@@ -58,5 +58,5 @@ struct AppCell: View {
 
 
 #Preview {
-    AppCell(app: AppData(id: UUID(), iconImage: Image(systemName: "person"), ranking: 1, title: "안녕", subTitle: "안녕하세요", downloadState: .reDownload))
+    AppCell(app: AppData(id: UUID(), ranking: 1, title: "토스", subtitle: "금융이 쉬워진다", tag: "새로운 경험", category: .finance, price: 0, downloadState: .downloaded, iconImage: Image(uiImage: UIImage.tossIcon), bannerImage: Image(uiImage: UIImage.tossBanner)))
 }
