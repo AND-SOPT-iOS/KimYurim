@@ -20,7 +20,7 @@ struct AppCell: View {
             ranking
             titleAndSubTitle
             Spacer()
-            DownloadButton(state: appStore.downloadState) { }
+            DownloadButton(state: appStore.downloadState, buttonColor: .gray) { }
         }
     }
     
