@@ -26,7 +26,6 @@ struct AppDetailView: View {
         .padding(.horizontal, 20)
     }
     
-    // MARK: - Components
     var border: some View {
         Rectangle()
             .frame(height: 1)
@@ -238,19 +237,20 @@ struct AppDetailPreviewView: View {
     ]
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .leading, spacing: 14) {
             title
-            previewImages
+            imageSlide
+            device
         }
     }
     
     var title: Text {
-        Text("새로운 소식")
+        Text("미리 보기")
             .font(Font.system(size: 23, weight: .bold))
             .foregroundStyle(.black)
     }
     
-    var previewImages: some View {
+    var imageSlide: some View {
         ScrollView(.horizontal) {
             HStack {
                 ForEach(previewStr, id: \.self) { imageName in
@@ -266,7 +266,22 @@ struct AppDetailPreviewView: View {
             }
         }
     }
+    
+    var device: some View {
+        HStack {
+            Image(systemName: "iphone")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(height: 18)
+                .tint(.secondary)
+            
+            Text("iPhone")
+                .foregroundStyle(.secondary)
+                .font(Font.system(size: 16, weight: .medium))
+        }
+    }
 }
+
 
 #Preview {
     AppDetailView(app: AppData(id: UUID(), iconImage: Image("toss_icon"), ranking: 1, title: "안녕", subTitle: "안녕하세요", downloadState: .reDownload))
