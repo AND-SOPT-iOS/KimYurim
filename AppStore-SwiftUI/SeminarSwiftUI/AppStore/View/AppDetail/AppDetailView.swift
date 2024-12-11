@@ -19,6 +19,8 @@ struct AppDetailView: View {
                 border
                 AppDetailVersionView()
                 border
+                AppDetailPreviewView()
+                border
             }
         }
         .padding(.horizontal, 20)
@@ -225,6 +227,47 @@ struct AppDetailVersionView: View {
     }
 }
 
+struct AppDetailPreviewView: View {
+    let width = UIScreen.main.bounds.width
+    let previewStr: [String] = [
+        "toss_preview1",
+        "toss_preview2",
+        "toss_preview3",
+        "toss_preview4",
+        "toss_preview5",
+    ]
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            title
+            previewImages
+        }
+    }
+    
+    var title: Text {
+        Text("새로운 소식")
+            .font(Font.system(size: 23, weight: .bold))
+            .foregroundStyle(.black)
+    }
+    
+    var previewImages: some View {
+        ScrollView(.horizontal) {
+            HStack {
+                ForEach(previewStr, id: \.self) { imageName in
+                    Image(imageName)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: width - 100)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(.placeholder, lineWidth: 1)
+                        )
+                }
+            }
+        }
+    }
+}
+
 #Preview {
-    AppDetailView(app: AppData(id: UUID(), iconImage: Image(systemName: "person"), ranking: 1, title: "안녕", subTitle: "안녕하세요", downloadState: .reDownload))
+    AppDetailView(app: AppData(id: UUID(), iconImage: Image("toss_icon"), ranking: 1, title: "안녕", subTitle: "안녕하세요", downloadState: .reDownload))
 }
