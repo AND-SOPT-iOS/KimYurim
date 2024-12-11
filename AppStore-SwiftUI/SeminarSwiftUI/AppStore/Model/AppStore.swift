@@ -35,19 +35,19 @@ enum DownloadState: CustomStringConvertible {
 
 let sampleApps: [AppStore] = [
     AppStore(id: UUID(), iconImage: Image(systemName: "person"), ranking: 1, title: "안녕", subTitle: "안녕하세요", downloadState: .download),
-    AppStore(id: UUID(), iconImage: Image(systemName: "person"), ranking: 2, title: "안녕", subTitle: "안녕하세요", downloadState: .download),
-    AppStore(id: UUID(), iconImage: Image(systemName: "person"), ranking: 3, title: "안녕", subTitle: "안녕하세요", downloadState: .download),
-    AppStore(id: UUID(), iconImage: Image(systemName: "person"), ranking: 4, title: "안녕", subTitle: "안녕하세요", downloadState: .download),
-    AppStore(id: UUID(), iconImage: Image(systemName: "person"), ranking: 5, title: "안녕", subTitle: "안녕하세요", downloadState: .download),
-    AppStore(id: UUID(), iconImage: Image(systemName: "person"), ranking: 6, title: "안녕", subTitle: "안녕하세요", downloadState: .download),
+    AppStore(id: UUID(), iconImage: Image(systemName: "person"), ranking: 2, title: "안녕", subTitle: "안녕하세요", downloadState: .downloaded),
+    AppStore(id: UUID(), iconImage: Image(systemName: "person"), ranking: 3, title: "안녕", subTitle: "안녕하세요", downloadState: .reDownload),
+    AppStore(id: UUID(), iconImage: Image(systemName: "person"), ranking: 4, title: "안녕", subTitle: "안녕하세요", downloadState: .update),
+    AppStore(id: UUID(), iconImage: Image(systemName: "person"), ranking: 5, title: "안녕", subTitle: "안녕하세요", downloadState: .downloaded),
+    AppStore(id: UUID(), iconImage: Image(systemName: "person"), ranking: 6, title: "안녕", subTitle: "안녕하세요", downloadState: .reDownload),
     AppStore(id: UUID(), iconImage: Image(systemName: "person"), ranking: 7, title: "안녕", subTitle: "안녕하세요", downloadState: .download),
-    AppStore(id: UUID(), iconImage: Image(systemName: "person"), ranking: 2, title: "안녕", subTitle: "안녕하세요", downloadState: .download),
-    AppStore(id: UUID(), iconImage: Image(systemName: "person"), ranking: 3, title: "안녕", subTitle: "안녕하세요", downloadState: .download),
+    AppStore(id: UUID(), iconImage: Image(systemName: "person"), ranking: 2, title: "안녕", subTitle: "안녕하세요", downloadState: .update),
+    AppStore(id: UUID(), iconImage: Image(systemName: "person"), ranking: 3, title: "안녕", subTitle: "안녕하세요", downloadState: .downloaded),
     AppStore(id: UUID(), iconImage: Image(systemName: "person"), ranking: 4, title: "안녕", subTitle: "안녕하세요", downloadState: .download),
-    AppStore(id: UUID(), iconImage: Image(systemName: "person"), ranking: 5, title: "안녕", subTitle: "안녕하세요", downloadState: .download),
+    AppStore(id: UUID(), iconImage: Image(systemName: "person"), ranking: 5, title: "안녕", subTitle: "안녕하세요", downloadState: .reDownload),
     AppStore(id: UUID(), iconImage: Image(systemName: "person"), ranking: 6, title: "안녕", subTitle: "안녕하세요", downloadState: .download),
-    AppStore(id: UUID(), iconImage: Image(systemName: "person"), ranking: 7, title: "안녕", subTitle: "안녕하세요", downloadState: .download),
-    AppStore(id: UUID(), iconImage: Image(systemName: "person"), ranking: 8, title: "안녕", subTitle: "안녕하세요", downloadState: .download)
+    AppStore(id: UUID(), iconImage: Image(systemName: "person"), ranking: 7, title: "안녕", subTitle: "안녕하세요", downloadState: .downloaded),
+    AppStore(id: UUID(), iconImage: Image(systemName: "person"), ranking: 8, title: "안녕", subTitle: "안녕하세요", downloadState: .update)
 ]
 
 

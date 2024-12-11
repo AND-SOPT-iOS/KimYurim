@@ -56,11 +56,11 @@ struct AppCell: View {
             ranking
             titleAndSubTitle
             Spacer()
-            downloadButton
+            DownloadButton(state: appStore.downloadState) { }
         }
     }
     
-    var iconImage: some View {
+    private var iconImage: some View {
         appStore.iconImage
             .resizable()
             .frame(width: 55, height: 55)
@@ -72,7 +72,7 @@ struct AppCell: View {
             }
     }
     
-    var ranking: some View {
+    private var ranking: some View {
         VStack {
             Text(appStore.ranking.description)
                 .font(.headline)
@@ -82,7 +82,7 @@ struct AppCell: View {
         }
     }
     
-    var titleAndSubTitle: some View {
+    private var titleAndSubTitle: some View {
         VStack(alignment: .leading) {
             Text(appStore.title)
                 .font(.headline)
@@ -90,21 +90,9 @@ struct AppCell: View {
                 .font(.caption)
         }
     }
-    
-    var downloadButton: some View {
-        Button {
-            
-        } label: {
-            Text(appStore.downloadState.description)
-                .fontWeight(.semibold)
-        }
-        .buttonStyle(.bordered)
-        .buttonBorderShape(.capsule)
-        .frame(width: 88)
-    }
 }
 
 
 #Preview {
-    AppCell(appStore: AppStore(id: UUID(), iconImage: Image(systemName: "person"), ranking: 1, title: "안녕", subTitle: "안녕하세요", downloadState: .download))
+    AppCell(appStore: AppStore(id: UUID(), iconImage: Image(systemName: "person"), ranking: 1, title: "안녕", subTitle: "안녕하세요", downloadState: .reDownload))
 }
