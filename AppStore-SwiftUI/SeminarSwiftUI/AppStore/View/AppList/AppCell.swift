@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AppCell: View {
     
-    let appStore: AppStore
+    let app: AppData
     
     var body: some View {
         
@@ -20,12 +20,12 @@ struct AppCell: View {
             ranking
             titleAndSubTitle
             Spacer()
-            DownloadButton(state: appStore.downloadState, buttonColor: .gray) { }
+            DownloadButton(state: app.downloadState, buttonColor: .gray) { }
         }
     }
     
     private var iconImage: some View {
-        appStore.iconImage
+        app.iconImage
             .resizable()
             .frame(width: 55, height: 55)
             .overlay {
@@ -38,7 +38,7 @@ struct AppCell: View {
     
     private var ranking: some View {
         VStack {
-            Text(appStore.ranking.description)
+            Text(app.ranking.description)
                 .font(.headline)
             Text("0")
                 .foregroundStyle(.white)
@@ -48,9 +48,9 @@ struct AppCell: View {
     
     private var titleAndSubTitle: some View {
         VStack(alignment: .leading) {
-            Text(appStore.title)
+            Text(app.title)
                 .font(.headline)
-            Text(appStore.subTitle)
+            Text(app.subTitle)
                 .font(.caption)
         }
     }
@@ -58,5 +58,5 @@ struct AppCell: View {
 
 
 #Preview {
-    AppCell(appStore: AppStore(id: UUID(), iconImage: Image(systemName: "person"), ranking: 1, title: "안녕", subTitle: "안녕하세요", downloadState: .reDownload))
+    AppCell(app: AppData(id: UUID(), iconImage: Image(systemName: "person"), ranking: 1, title: "안녕", subTitle: "안녕하세요", downloadState: .reDownload))
 }

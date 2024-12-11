@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-struct AppList: View {
+struct AppListView: View {
     var body: some View {
         
         List(sampleApps) { app in
-            AppCell(appStore: app)
+            AppCell(app: app)
         }
     }
 }
 
 #Preview {
-    AppList()
+    AppListView()
 }

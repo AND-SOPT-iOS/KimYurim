@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AppDetailView: View {
-    let app: AppStore
+    let app: AppData
     
     var body: some View {
         ScrollView {
@@ -34,7 +34,7 @@ struct AppDetailView: View {
 // MARK: - Components
 
 struct AppDetailTitleView: View {
-    let app: AppStore
+    let app: AppData
     
     var body: some View {
         titleHStack
@@ -183,5 +183,5 @@ struct AppDetailSummaryView: View {
 
 
 #Preview {
-    AppDetailView(app: AppStore(id: UUID(), iconImage: Image(systemName: "person"), ranking: 1, title: "안녕", subTitle: "안녕하세요", downloadState: .reDownload))
+    AppDetailView(app: AppData(id: UUID(), iconImage: Image(systemName: "person"), ranking: 1, title: "안녕", subTitle: "안녕하세요", downloadState: .reDownload))
 }
