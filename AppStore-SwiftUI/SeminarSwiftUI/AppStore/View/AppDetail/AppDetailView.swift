@@ -17,6 +17,8 @@ struct AppDetailView: View {
                 border
                 AppDetailSummaryView()
                 border
+                AppDetailVersionView()
+                border
             }
         }
         .padding(.horizontal, 20)
@@ -62,11 +64,10 @@ struct AppDetailTitleView: View {
     var titleVStack: some View {
         VStack(alignment: .leading, spacing: 5) {
             Text(app.title)
-                .font(.title2)
-                .fontWeight(.medium)
+                .font(Font.system(size: 23, weight: .medium))
             
             Text(app.subTitle)
-                .font(.subheadline)
+                .font(Font.system(size: 16, weight: .regular))
                 .foregroundStyle(.secondary)
             Spacer()
             
@@ -181,6 +182,48 @@ struct AppDetailSummaryView: View {
     }
 }
 
+struct AppDetailVersionView: View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            titleButton
+            subTitleHStack
+            content
+        }
+    }
+    
+    var titleButton: some View {
+        Button {
+            
+        } label: {
+            Text("새로운 소식")
+                .font(Font.system(size: 23, weight: .bold))
+                .foregroundStyle(.black)
+            Image(systemName: "chevron.right")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(height: 18)
+                .fontWeight(.bold)
+                .tint(.gray)
+        }
+    }
+    
+    var subTitleHStack: some View {
+        HStack {
+            Text("버전 5.192.1")
+                .font(Font.system(size: 16, weight: .regular))
+            Spacer()
+            Text("2일 전")
+                .font(Font.system(size: 16, weight: .regular))
+        }
+        .foregroundStyle(.secondary)
+    }
+    
+    var content: some View {
+        Text("• 구석구석 숨어있던 버그들을 잡았어요. 또 다른 버그가 나타나면 토스 고객센터를 찾아주세요. 늘 열려있답니다. 365일 24시간 언제든지요.")
+            .font(Font.system(size: 16, weight: .regular))
+            .lineSpacing(8)
+    }
+}
 
 #Preview {
     AppDetailView(app: AppData(id: UUID(), iconImage: Image(systemName: "person"), ranking: 1, title: "안녕", subTitle: "안녕하세요", downloadState: .reDownload))
