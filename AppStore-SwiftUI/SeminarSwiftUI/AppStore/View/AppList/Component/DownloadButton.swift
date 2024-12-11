@@ -41,7 +41,7 @@ struct DownloadButton: View {
         case .download, .downloaded, .update:
             Button(action: action) {
                 Text(state.description)
-                    .fontWeight(.bold)
+                    .font(Font.system(size: 16, weight: .bold))
                     .foregroundStyle(buttonColor.foregroundColor)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
