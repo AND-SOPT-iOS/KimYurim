@@ -7,42 +7,6 @@
 
 import SwiftUI
 
-struct AppCellView: View {
-    let app: AppStore
-
-    var body: some View {
-        HStack {
-            iconImage
-            listNumber
-            titleView
-        }
-    }
-
-    var iconImage: some View {
-        Image(systemName: "person")
-    }
-
-    var listNumber: some View {
-        Text("1")
-    }
-
-    var titleView: some View {
-        VStack {
-            Text("제목")
-            Text("subTitle")
-        }
-    }
-
-    var downloadButton: some View {
-        Button {
-
-        } label: {
-            Text("다운로드")
-        }
-    }
-}
-
-
 struct AppCell: View {
     
     let appStore: AppStore
