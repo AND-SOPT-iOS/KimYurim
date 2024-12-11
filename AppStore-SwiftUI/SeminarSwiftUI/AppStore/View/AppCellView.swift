@@ -7,40 +7,40 @@
 
 import SwiftUI
 
-//struct AppCellView: View {
-//    let app: AppStore
-//
-//    var body: some View {
-//        HStack {
-//            iconImage
-//            listNumber
-//            titleView
-//        }
-//    }
-//
-//    var iconImage: some View {
-//        Image(systemName: "person")
-//    }
-//
-//    var listNumber: some View {
-//        Text("1")
-//    }
-//
-//    var titleView: some View {
-//        VStack {
-//            Text("제목")
-//            Text("subTitle")
-//        }
-//    }
-//
-//    var downloadButton: some View {
-//        Button {
-//
-//        } label: {
-//            Text("다운로드")
-//        }
-//    }
-//}
+struct AppCellView: View {
+    let app: AppStore
+
+    var body: some View {
+        HStack {
+            iconImage
+            listNumber
+            titleView
+        }
+    }
+
+    var iconImage: some View {
+        Image(systemName: "person")
+    }
+
+    var listNumber: some View {
+        Text("1")
+    }
+
+    var titleView: some View {
+        VStack {
+            Text("제목")
+            Text("subTitle")
+        }
+    }
+
+    var downloadButton: some View {
+        Button {
+
+        } label: {
+            Text("다운로드")
+        }
+    }
+}
 
 
 struct AppCell: View {
@@ -58,7 +58,6 @@ struct AppCell: View {
             Spacer()
             downloadButton
         }
-//        .padding(.horizontal, 20)
     }
     
     var iconImage: some View {
@@ -68,7 +67,7 @@ struct AppCell: View {
             .overlay {
                 RoundedRectangle(cornerRadius: 12)
                     .fill(.clear)
-                    .stroke(.black, lineWidth: 1)
+                    .stroke(.placeholder, lineWidth: 1)
                     .frame(width: 60, height: 60)
             }
     }
@@ -97,8 +96,11 @@ struct AppCell: View {
             
         } label: {
             Text(appStore.downloadState.description)
-                .foregroundStyle(.blue)
+                .fontWeight(.semibold)
         }
+        .buttonStyle(.bordered)
+        .buttonBorderShape(.capsule)
+        .frame(width: 88)
     }
 }
 
