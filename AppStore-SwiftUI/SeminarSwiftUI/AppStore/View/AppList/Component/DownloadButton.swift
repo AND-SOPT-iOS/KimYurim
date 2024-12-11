@@ -8,8 +8,33 @@
 import SwiftUI
 
 struct DownloadButton: View {
+    enum ButtonColor {
+        case blue
+        case gray
+        
+        var backgroundColor: Color {
+            switch self {
+            case .blue:
+                return .blue
+            case .gray:
+                return Color(.systemGray5)
+            }
+        }
+        
+        var foregroundColor: Color {
+            switch self {
+            case .blue:
+                return .white
+            case .gray:
+                return .blue
+            }
+        }
+    }
+    
     var state: DownloadState
+    var buttonColor: ButtonColor
     var action: () -> Void
+    
     
     var body: some View {
         switch state {
@@ -17,12 +42,12 @@ struct DownloadButton: View {
             Button(action: action) {
                 Text(state.description)
                     .fontWeight(.bold)
-                    .foregroundStyle(.blue)
+                    .foregroundStyle(buttonColor.foregroundColor)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
             .buttonStyle(.borderedProminent)
             .buttonBorderShape(.capsule)
-            .tint(Color(.systemGray5))
+            .tint(buttonColor.backgroundColor)
             .frame(width: 84, height: 32)
             
         case .reDownload:
@@ -38,5 +63,5 @@ struct DownloadButton: View {
 }
 
 #Preview {
-    DownloadButton(state: .reDownload) { }
+    DownloadButton(state: .download, buttonColor: .blue) { }
 }
