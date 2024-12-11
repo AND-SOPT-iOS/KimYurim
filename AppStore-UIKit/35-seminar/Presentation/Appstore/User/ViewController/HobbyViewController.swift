@@ -7,20 +7,25 @@
 
 import UIKit
 
+import RxCocoa
+import RxSwift
+
 class HobbyViewController: BaseViewController {
     
     // MARK: - Properties
     private let hobbyView = HobbyView()
-    private let appData = App.sampleApps
+    private let disposeBag = DisposeBag()
     
     private let token = UserDefaultsManager.fetchUserData().token
-    private var userHobby: String = ""
     
-    private var hobbies: [(Int,String)] = []
-    private var currentUserNo = 1 // 처음 요청할 유저 번호
+    private var userHobby = BehaviorSubject<String>(value: "")
+    private var hobbies = BehaviorSubject<[(Int, String)]>(value: [])
+    
+    private var currentUserNo = BehaviorSubject<Int>(value: 1) // 처음 요청할 유저 번호
     private let pageSize = 30     // 한 번에 요청할 유저 수
     private var isFetching = false // 중복 요청 방지
     private var hasMoreData = true // 추가 요청 가능 여부
+    
     
     // MARK: - Methods
     override func loadView() {
@@ -48,71 +53,103 @@ class HobbyViewController: BaseViewController {
         hobbyView.tableView.register(HobbyTableViewHeader.self, forHeaderFooterViewReuseIdentifier: HobbyTableViewHeader.identifier)
     }
     
-    private func fetchUserHobby() {
-        DispatchQueue.global().async { [weak self] in
-            guard let self = self else { return }
-            UserService.shared.fetchUserHobby(token: token) { result in
-                switch result {
-                case .success(let hobby):
-                    self.userHobby = hobby
-                    let indexPath = [IndexPath(row: 0, section: 0)]
-                    DispatchQueue.main.async {
-                        self.hobbyView.tableView.reloadRows(at: indexPath, with: .automatic)
-                    }
-                    
-                case .failure(let error):
-                    print("hobby 조회 에러: \(error.errorMessage)")
-                }
-            }
-        }
+    private func bindView() {
+        // 사용자 취미 바인딩
+        userHobby
+            .observe(on: MainScheduler.instance) // 메인 스레드에서 처리하도록 지정(for UI 업데이트)
+            .subscribe(onNext: { [weak self] hobby in
+                guard let self = self else { return }
+                let indexPath = [IndexPath(row: 0, section: 0)]
+                self.hobbyView.tableView.reloadRows(at: indexPath, with: .automatic)
+            })
+            .disposed(by: disposeBag)
+        
+        // 취미 목록 바인딩
+        hobbies
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
+                // TODO: insertRows로 수정
+                self?.hobbyView.tableView.reloadSections(IndexSet(integer: 1), with: .automatic)
+            })
+            .disposed(by: disposeBag)
     }
     
-    func loadMoreHobbies() {
+    private func fetchUserHobby() {
+        // 1. 옵저버블 생성
+        UserService.shared.fetchUserHobby(token: token)
+        
+            // 2. 네트워크 통신 결과가 백그라운드 스레드에서 즉시 방출되도록 설정
+            .subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background))
+        
+            // 3. 네트워크 요청 성공으로 방출된 옵저버블을 구독 (Single의 onSuccess 클로저)
+            .subscribe(onSuccess: { [weak self] hobby in
+                // 4. 데이터를 BehaviorSubject인 userHobby에 전달해, userHobby를 구독하는 곳에서 연관 작업 수행
+                self?.userHobby.onNext(hobby)
+                
+            }, onFailure: { error in
+                print("hobby 조회 에러: \(error)")
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func observeLoadMore() {
+        hobbyView.tableView.rx
+            .didScroll
+            .withUnretained(self) // self 캡쳐리스트 대신 사용
+            .filter { strongSelf, _ in
+                let offsetY = strongSelf.hobbyView.tableView.contentOffset.y
+                let contentHeight = strongSelf.hobbyView.tableView.contentSize.height
+                let height = strongSelf.hobbyView.tableView.frame.size.height
+                return offsetY > contentHeight - height * 1.5 && !strongSelf.isFetching
+            }
+            .subscribe(onNext: { strongSelf, _ in
+                strongSelf.loadMoreHobbies()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func loadMoreHobbies() {
         guard !isFetching, hasMoreData else { return }
         isFetching = true
         
-        let nextUserNos = (currentUserNo..<(currentUserNo + pageSize)).map { $0 }
-        let dispatchGroup = DispatchGroup()
-        var newHobbies: [(Int,String)] = []
-        var successfulFetches = 0 // 성공적으로 요청한 개수를 기록
-        
-        for userNo in nextUserNos {
-            dispatchGroup.enter()
-            
-            UserService.shared.fetchOtherHobby(token: token, no: userNo) { result in
-                switch result {
-                case .success(let hobby):
-                    newHobbies.append((userNo, hobby))
-                    successfulFetches += 1
-                    
-                case .failure(let error):
-                    print("유저 \(userNo)의 취미를 가져오지 못했습니다. error: \(error)")
-                }
-                
-                dispatchGroup.leave()
+        currentUserNo
+            .take(1)
+            .withUnretained(self)
+            .flatMapLatest { strongSelf, currentNo in // flatMapLatest로 중복 요청 방지
+                let nextUserNos = (currentNo..<(currentNo + strongSelf.pageSize)).map { $0 }
+                return Observable.merge(nextUserNos.map { userNo in
+                    UserService.shared.fetchOtherHobby(token: strongSelf.token, no: userNo)
+                        .asObservable()
+                        .map { (userNo, $0) }
+                        .catchAndReturn(nil)
+                })
             }
-        }
-        
-        dispatchGroup.notify(queue: .main) { [weak self] in
-            guard let self = self else { return }
-            self.isFetching = false
-            
-            if successfulFetches == 0 {
-                self.hasMoreData = false // 현재 페이지에서 모든 요청이 실패하면 추가 로드를 멈춥니다.
-                return
+            .toArray()
+            .map { results -> [(Int, String)] in
+                results.compactMap { $0 } // nil 값 제거
             }
-            appendNewHobbies(newHobbies: newHobbies)
-        }
+            .subscribe(onSuccess: { [weak self] newHobbies in
+                guard let self = self else { return }
+                self.appendNewHobbies(newHobbies: newHobbies)
+            }, onFailure: { [weak self] _ in
+                self?.hasMoreData = false
+            })
+            .disposed(by: disposeBag)
     }
     
     private func appendNewHobbies(newHobbies: [(Int, String)]) {
-        let startIndex = hobbies.count
-        let sortedNewHobbies = newHobbies.sorted { $0.0 < $1.0}
-        hobbies.append(contentsOf: sortedNewHobbies)
+        hobbies
+            .take(1)
+            .map { currentHobbies in
+                let sortedNewHobbies = newHobbies.sorted { $0.0 < $1.0 }
+                return currentHobbies + sortedNewHobbies
+            }
+            .bind(to: hobbies)
+            .disposed(by: disposeBag)
         
-        let indexPaths = (startIndex..<hobbies.count).map { IndexPath(row: $0, section: 1) }
-        hobbyView.tableView.insertRows(at: indexPaths, with: .automatic)
-        currentUserNo += pageSize
+        let nextUserNo = (try? currentUserNo.value()) ?? 1 + pageSize // TODO: 1로 옵셔널 해제 안 하도록 수정
+        currentUserNo.onNext(nextUserNo)
+        isFetching = false
     }
 }
 
@@ -127,8 +164,8 @@ extension HobbyViewController: UITableViewDataSource {
         case 0:
             return 1
         case 1:
-            return hobbies.count
-        default :
+            return (try? hobbies.value().count) ?? 0
+        default:
             return 0
         }
     }
@@ -141,12 +178,14 @@ extension HobbyViewController: UITableViewDataSource {
         
         switch indexPath.section {
         case 0:
-            cell.bind(no: nil, content: userHobby)
-            print(userHobby, "!!!!!")
+            let hobby = (try? userHobby.value()) ?? ""
+            cell.bind(no: nil, content: hobby)
         case 1:
-            cell.bind(no: hobbies[indexPath.row].0, content: hobbies[indexPath.row].1)
+            let hobbies = (try? hobbies.value()) ?? []
+            let hobby = hobbies[indexPath.row]
+            cell.bind(no: hobby.0, content: hobby.1)
         default:
-            return cell
+            break
         }
         return cell
     }
@@ -161,22 +200,6 @@ extension HobbyViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        switch section {
-        case 1:
-            return 70
-            
-        default:
-            return 30
-        }
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let offsetY = scrollView.contentOffset.y
-        let contentHeight = scrollView.contentSize.height
-        let height = scrollView.frame.size.height
-        
-        if offsetY > contentHeight - height * 1.5 {
-            loadMoreHobbies()
-        }
+        return section == 1 ? 70 : 30
     }
 }
