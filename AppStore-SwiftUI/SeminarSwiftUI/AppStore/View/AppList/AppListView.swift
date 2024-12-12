@@ -10,8 +10,13 @@ import SwiftUI
 struct AppListView: View {
     var body: some View {
         
-        List(sampleApps) { app in
-            AppCell(app: app)
+        NavigationView {
+            List(sampleApps) { app in
+                NavigationLink(destination: AppDetailView(app: app)) {
+                    AppCell(app: app)
+                }
+            }
+            .navigationTitle("앱")
         }
     }
 }
