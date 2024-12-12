@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct AppDetailView: View {
-    let app: AppData
+    let viewModel: AppDetailViewModel
     
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
-                AppDetailTitleView(app: app)
+                AppDetailTitleView(app: viewModel.app)
                 border
                 AppDetailSummaryView()
                 border
@@ -284,5 +284,5 @@ struct AppDetailPreviewView: View {
 
 
 #Preview {
-    AppDetailView(app: AppData(id: UUID(), ranking: 1, title: "토스", subtitle: "금융이 쉬워진다", tag: "새로운 경험", category: .finance, price: 0, downloadState: .downloaded, iconImage: Image(uiImage: UIImage.tossIcon), bannerImage: Image(uiImage: UIImage.tossBanner)))
+    AppDetailView(viewModel: AppDetailViewModel(app: AppData(id: UUID(), ranking: 1, title: "토스", subtitle: "금융이 쉬워진다", tag: "새로운 경험", category: .finance, price: 0, downloadState: .downloaded, iconImage: Image(uiImage: UIImage.tossIcon), bannerImage: Image(uiImage: UIImage.tossBanner))))
 }

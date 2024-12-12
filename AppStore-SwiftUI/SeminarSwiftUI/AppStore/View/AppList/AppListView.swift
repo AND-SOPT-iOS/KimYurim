@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct AppListView: View {
+    private let viewModel = AppListViewModel()
+    
     var body: some View {
         
         NavigationView {
             List(sampleApps) { app in
-                NavigationLink(destination: AppDetailView(app: app)) {
+                NavigationLink(destination: AppDetailView(viewModel: AppDetailViewModel(app: app))) {
                     AppCell(app: app)
                 }
             }
