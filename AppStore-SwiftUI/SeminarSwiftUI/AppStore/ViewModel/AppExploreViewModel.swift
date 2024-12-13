@@ -22,7 +22,7 @@ class AppExploreViewModel: ObservableObject {
     }
     
     private func setBannerApps() {
-        bannerApps = Array(apps[..<3])
+        bannerApps = Array(apps[..<4])
     }
     
     private func setListApps() {
