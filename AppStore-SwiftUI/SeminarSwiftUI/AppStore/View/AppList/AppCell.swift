@@ -52,6 +52,7 @@ struct AppCell: View {
                 .font(.headline)
             Text(app.subtitle)
                 .font(.caption)
+                .foregroundStyle(.secondary)
         }
     }
 }
