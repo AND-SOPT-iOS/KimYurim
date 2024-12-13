@@ -24,6 +24,21 @@ struct AppDetailView: View {
             }
         }
         .padding(.horizontal, 20)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                viewModel.app.iconImage
+                    .resizable()
+                    .frame(width: 24, height: 24)
+                    .clipShape(RoundedRectangle(cornerRadius: 4))
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 4)
+                            .stroke(.placeholder, lineWidth: 1)
+                    }
+                
+                // TODO: 우측에 다운로드 버튼 넣기
+                // 버튼 넣으면 에러 나는 문제 있음
+            }
+        }
     }
     
     var border: some View {
@@ -46,7 +61,7 @@ struct AppDetailTitleView: View {
     // components
     
     var titleHStack: some View {
-        HStack {
+        HStack(spacing: 16) {
             app.iconImage
                 .resizable()
                 .aspectRatio(contentMode: .fill)
@@ -57,8 +72,6 @@ struct AppDetailTitleView: View {
                         .stroke(.placeholder, lineWidth: 1)
                 )
             titleVStack
-            Spacer()
-            shareVStack
         }
     }
     
@@ -72,13 +85,17 @@ struct AppDetailTitleView: View {
                 .foregroundStyle(.secondary)
             Spacer()
             
-            DownloadButton(app: app, buttonColor: .blue) { }
+            HStack {
+                DownloadButton(app: app, buttonColor: .blue) { }
+                Spacer()
+                shareButton
+            }
         }
     }
     
-    var shareVStack: some View {
-        VStack {
-            Spacer()
+    var shareButton: some View {
+        Button {
+        } label: {
             Image(systemName: "square.and.arrow.up")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
