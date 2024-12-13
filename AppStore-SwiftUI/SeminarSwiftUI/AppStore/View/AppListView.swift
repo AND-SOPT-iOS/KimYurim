@@ -7,15 +7,20 @@
 
 import SwiftUI
 
-struct AppList: View {
+struct AppListView: View {
+    let viewModel: AppListViewModel
+    
     var body: some View {
-        
-        List(sampleApps) { app in
-            AppCell(appStore: app)
+        List(viewModel.apps) { app in
+            NavigationLink(destination: AppDetailView(viewModel: AppDetailViewModel(app: app))) {
+                AppCell(app: app)
+            }
         }
+        .navigationTitle(viewModel.title)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 #Preview {
-    AppList()
+    AppListView(viewModel: AppListViewModel(apps: sampleApps, title: "앱"))
 }
