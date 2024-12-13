@@ -156,9 +156,16 @@ struct AppListHSlideView: View {
     }
     
     var sectionTitleView: some View {
-        HStack {
+        NavigationLink(
+            destination: AppListView(
+                viewModel: AppListViewModel(
+                    apps: apps,
+                    title: sectionTitle
+                ))
+        ) {
             Text(sectionTitle)
                 .font(Font.system(size: 24, weight: .bold))
+                .foregroundStyle(.black)
             
             Image(systemName: "chevron.right")
                 .font(Font.system(size: 20, weight: .bold))
