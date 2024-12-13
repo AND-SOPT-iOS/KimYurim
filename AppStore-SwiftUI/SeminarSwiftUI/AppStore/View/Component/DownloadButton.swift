@@ -11,6 +11,7 @@ struct DownloadButton: View {
     enum ButtonColor {
         case blue
         case gray
+        case white
         
         var backgroundColor: Color {
             switch self {
@@ -18,6 +19,8 @@ struct DownloadButton: View {
                 return .blue
             case .gray:
                 return Color(.systemGray5)
+            case .white:
+                return Color(white: 0.7, opacity: 0.5)
             }
         }
         
@@ -27,6 +30,17 @@ struct DownloadButton: View {
                 return .white
             case .gray:
                 return .blue
+            case .white:
+                return .white
+            }
+        }
+        
+        var redownloadColor: Color {
+            switch self {
+            case .blue, .gray:
+                return .blue
+            case .white:
+                return .white
             }
         }
     }
@@ -56,6 +70,7 @@ struct DownloadButton: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .fontWeight(.semibold)
+                    .foregroundStyle(buttonColor.redownloadColor)
                     .frame(width: 84, height: 24)
             }
         }
@@ -63,5 +78,5 @@ struct DownloadButton: View {
 }
 
 #Preview {
-    DownloadButton(state: .download, buttonColor: .blue) { }
+    DownloadButton(state: .redownload, buttonColor: .white) { }
 }
