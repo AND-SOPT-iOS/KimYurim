@@ -44,9 +44,9 @@ enum DownloadState: CustomStringConvertible {
 
 let sampleApps: [AppData] = [
     AppData(id: UUID(), ranking: 1, title: "토스", subtitle: "금융이 쉬워진다", tag: "새로운 경험", category: .finance, price: 0, downloadState: .downloaded, iconImage: Image(uiImage: UIImage.tossIcon), bannerImage: Image(uiImage: UIImage.tossBanner)),
-    AppData(id: UUID(), ranking: 2, title: "Spendee Money & Budget Planner", subtitle: "금융", tag: "추천", category: .finance, price: 0, downloadState: .download, iconImage: Image("icon1"), bannerImage: Image("banner1")),
+    AppData(id: UUID(), ranking: 2, title: "Spendee Money & Budget Planner", subtitle: "금융", tag: "추천", category: .finance, price: 0, downloadState: .update, iconImage: Image("icon1"), bannerImage: Image("banner1")),
     AppData(id: UUID(), ranking: 3, title: "위플 가계부 Pro", subtitle: "아이폰 사용자 수 1위 가계부", tag: "새로운 경험", category: .finance, price: 0, downloadState: .redownload, iconImage: Image("icon2"), bannerImage: Image("banner2")),
-    AppData(id: UUID(), ranking: 4, title: "내돈내산", subtitle: "가계부 관리 앱", tag: "새로운 앱", category: .finance, price: 0, downloadState: .update, iconImage: Image("icon3"), bannerImage: Image("banner3")),
+    AppData(id: UUID(), ranking: 4, title: "내돈내산", subtitle: "가계부 관리 앱", tag: "새로운 앱", category: .finance, price: 4000, downloadState: .download, iconImage: Image("icon3"), bannerImage: Image("banner3")),
     AppData(id: UUID(), ranking: 5, title: "톡톡", subtitle: "가족과 친구와의 소통", tag: nil, category: .socialNetwork, price: 0, downloadState: .download, iconImage: Image(systemName: "message"), bannerImage: Image(systemName: "banknote")),
     AppData(id: UUID(), ranking: 6, title: "월렛", subtitle: "지갑 관리 및 결제", tag: nil, category: .finance, price: 0, downloadState: .downloaded, iconImage: Image(systemName: "wallet.pass"), bannerImage: Image(systemName: "banknote")),
     AppData(id: UUID(), ranking: 7, title: "동호회", subtitle: "취미 소셜 모임", tag: nil, category: .socialNetwork, price: 0, downloadState: .update, iconImage: Image(systemName: "person.3.fill"), bannerImage: Image(systemName: "banknote")),
