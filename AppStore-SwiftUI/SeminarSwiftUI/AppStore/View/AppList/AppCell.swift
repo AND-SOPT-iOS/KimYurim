@@ -27,12 +27,12 @@ struct AppCell: View {
     private var iconImage: some View {
         app.iconImage
             .resizable()
-            .frame(width: 55, height: 55)
+            .aspectRatio(contentMode: .fill)
+            .frame(width: 60, height: 60)
+            .clipShape(RoundedRectangle(cornerRadius: 12))
             .overlay {
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(.clear)
                     .stroke(.placeholder, lineWidth: 1)
-                    .frame(width: 60, height: 60)
             }
     }
     
