@@ -45,24 +45,40 @@ struct DownloadButton: View {
         }
     }
     
-    var state: DownloadState
+    var app: AppData
     var buttonColor: ButtonColor
     var action: () -> Void
+    var description: String
     
+    init(app: AppData, buttonColor: ButtonColor, action: @escaping () -> Void) {
+        self.app = app
+        self.buttonColor = buttonColor
+        self.action = action
+        self.description = {
+            switch app.downloadState {
+            case .download:
+                return app.price == 0 ? "다운로드" : app.price.formattedToWonString()
+                
+            case .downloaded, .redownload, .update:
+                return app.downloadState.description
+            }
+        }()
+    }
     
     var body: some View {
-        switch state {
+        switch app.downloadState {
         case .download, .downloaded, .update:
             Button(action: action) {
-                Text(state.description)
-                    .font(Font.system(size: 16, weight: .bold))
+                Text(description)
+                    .font(Font.system(size: fontSize(for: description), weight: .bold))
                     .foregroundStyle(buttonColor.foregroundColor)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .frame(minWidth: 58, maxWidth: 64)
             }
             .buttonStyle(.borderedProminent)
             .buttonBorderShape(.capsule)
             .tint(buttonColor.backgroundColor)
-            .frame(width: 84, height: 32)
+            .frame(height: 32)
+            .fixedSize(horizontal: true, vertical: false)
             
         case .redownload:
             Button(action: action) {
@@ -75,8 +91,19 @@ struct DownloadButton: View {
             }
         }
     }
+    
+    private func fontSize(for text: String) -> CGFloat {
+        switch text.count {
+        case 5...:
+            return 14
+        case 6...:
+            return 12
+        default:
+            return 16
+        }
+    }
 }
 
 #Preview {
-    DownloadButton(state: .redownload, buttonColor: .white) { }
+    DownloadButton(app: AppData(id: UUID(), ranking: 1, title: "토스", subtitle: "금융이 쉬워진다", tag: "새로운 경험", category: .finance, price: 10000000, downloadState: .download, iconImage: Image(uiImage: UIImage.tossIcon), bannerImage: Image(uiImage: UIImage.tossBanner)), buttonColor: .blue) { }
 }

@@ -99,7 +99,7 @@ struct BannerMiniTitleView: View {
             iconImage
             titleVStack
             Spacer()
-            DownloadButton(state: app.downloadState, buttonColor: .white) { }
+            DownloadButton(app: app, buttonColor: .white) { }
         }
         .padding(20)
         .frame(maxWidth: .infinity)
