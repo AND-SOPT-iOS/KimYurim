@@ -11,18 +11,22 @@ struct AppExploreView: View {
     @StateObject private var viewModel = AppExploreViewModel()
     
     var body: some View {
-        ScrollView {
-            VStack(spacing: 40) {
-                BannerHSlideView(bannerApps: viewModel.bannerApps)
-                
-                AppListHSlideView(sectionTitle: "필수 금융 앱", apps: viewModel.essentialApps)
-                
-                AppListHSlideView(sectionTitle: "유료 순위", apps: viewModel.paidApps)
-                
-                AppListHSlideView(sectionTitle: "무료 순위", apps: viewModel.freeApps)
+        NavigationView {
+            ScrollView {
+                VStack(spacing: 40) {
+                    BannerHSlideView(bannerApps: viewModel.bannerApps)
+                    
+                    AppListHSlideView(sectionTitle: "필수 금융 앱", apps: viewModel.essentialApps)
+                    
+                    AppListHSlideView(sectionTitle: "유료 순위", apps: viewModel.paidApps)
+                    
+                    AppListHSlideView(sectionTitle: "무료 순위", apps: viewModel.freeApps)
+                }
             }
+            .padding(.horizontal, 20)
+            .navigationTitle("금융")
+            .navigationBarTitleDisplayMode(.inline)
         }
-        .padding(.horizontal, 20)
     }
 }
 
@@ -31,28 +35,39 @@ struct AppExploreView: View {
 
 struct BannerHSlideView: View {
     let bannerApps: [AppData]
-    let width = UIScreen.main.bounds.width
     
     var body: some View {
         ScrollView(.horizontal) {
             HStack {
                 ForEach(bannerApps, id: \.id) { app in
-                    VStack(alignment: .leading) {
-                        BannerBigTitleView(app: app)
-                        
-                        ZStack(alignment: .bottom) {
-                            app.bannerImage
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .background(Color.gray)
-                            
-                            BannerMiniTitleView(app: app)
-                        }
-                        .frame(width: width - 40, height: width / 2)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                    NavigationLink(destination: AppDetailView(viewModel: AppDetailViewModel(app: app))) {
+                        BannerView(app: app)
                     }
+                    .buttonStyle(.plain)
                 }
             }
+        }
+    }
+}
+
+struct BannerView: View {
+    let app: AppData
+    let width = UIScreen.main.bounds.width
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            BannerBigTitleView(app: app)
+            
+            ZStack(alignment: .bottom) {
+                app.bannerImage
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .background(Color.gray)
+                
+                BannerMiniTitleView(app: app)
+            }
+            .frame(width: width - 40, height: width / 2)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
         }
     }
 }
@@ -129,8 +144,11 @@ struct AppListHSlideView: View {
             ScrollView(.horizontal) {
                 LazyHGrid(rows: rows, spacing: 20) {
                     ForEach(apps, id: \.id) { app in
-                        AppCell(app: app)
-                            .frame(width: width - 40)
+                        NavigationLink(destination: AppDetailView(viewModel: AppDetailViewModel(app: app))) {
+                            AppCell(app: app)
+                                .frame(width: width - 40)
+                        }
+                        .buttonStyle(.plain)
                     }
                 }
             }
