@@ -11,16 +11,13 @@ struct AppListView: View {
     let viewModel: AppListViewModel
     
     var body: some View {
-        
-        NavigationView {
-            List(viewModel.apps) { app in
-                NavigationLink(destination: AppDetailView(viewModel: AppDetailViewModel(app: app))) {
-                    AppCell(app: app)
-                }
+        List(viewModel.apps) { app in
+            NavigationLink(destination: AppDetailView(viewModel: AppDetailViewModel(app: app))) {
+                AppCell(app: app)
             }
-            .navigationTitle(viewModel.title)
-            .navigationBarTitleDisplayMode(.inline)
         }
+        .navigationTitle(viewModel.title)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
