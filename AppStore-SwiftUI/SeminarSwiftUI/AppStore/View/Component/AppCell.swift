@@ -50,9 +50,12 @@ struct AppCell: View {
         VStack(alignment: .leading) {
             Text(app.title)
                 .font(.headline)
+                .lineLimit(2)
+            
             Text(app.subtitle)
                 .font(.caption)
                 .foregroundStyle(.secondary)
+                .lineLimit(2)
         }
     }
 }
