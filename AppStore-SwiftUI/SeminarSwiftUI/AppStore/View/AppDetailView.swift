@@ -49,7 +49,7 @@ struct AppDetailTitleView: View {
         HStack {
             app.iconImage
                 .resizable()
-                .aspectRatio(contentMode: .fit)
+                .aspectRatio(contentMode: .fill)
                 .frame(width: 128, height: 128)
                 .clipShape(RoundedRectangle(cornerRadius: 20))
                 .overlay(
@@ -72,7 +72,7 @@ struct AppDetailTitleView: View {
                 .foregroundStyle(.secondary)
             Spacer()
             
-            DownloadButton(state: .download, buttonColor: .blue) { }
+            DownloadButton(app: app, buttonColor: .blue) { }
         }
     }
     
