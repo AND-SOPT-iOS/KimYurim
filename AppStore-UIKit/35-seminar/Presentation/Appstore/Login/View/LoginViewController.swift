@@ -67,19 +67,16 @@ class LoginViewController: BaseViewController {
             UserDefaultsManager
                 .registerLoginData(loginData: loginData, token: token)
             navigateToMainScreen()
-            case .failure(let error):
-            showLoginError(message: error.errorMessage)
-            }
+        case .failure(let error):
+            let message = error.errorMessage
+            EasyAlert.showAlert(title: "로그인 실패", message: message, vc: self)
         }
+    }
     
     private func navigateToMainScreen() {
         let tabBarController = TabBarController()
             tabBarController.modalPresentationStyle = .fullScreen
             self.present(tabBarController, animated: true)
-    }
-    
-    private func showLoginError(message: String) {
-        EasyAlert.showAlert(title: "로그인 실패", message: message, vc: self)
     }
     
     
