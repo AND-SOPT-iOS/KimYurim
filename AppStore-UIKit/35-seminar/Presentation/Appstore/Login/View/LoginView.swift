@@ -9,7 +9,7 @@ import UIKit
 
 class LoginView: BaseView {
     
-    // MARK: Properties
+    // MARK: - Properties
     
     private var verticalStackView = UIStackView()
     private var iconImageView = UIImageView()
@@ -25,7 +25,9 @@ class LoginView: BaseView {
     let loginButton = UIButton()
     let registerButton = UIButton()
     
+    
     // MARK: - Methods
+    
     override func setDelegate() { }
     
     override func setUI() {

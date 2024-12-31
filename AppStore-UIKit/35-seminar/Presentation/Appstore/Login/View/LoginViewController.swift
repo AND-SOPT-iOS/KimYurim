@@ -9,14 +9,16 @@ import UIKit
 
 class LoginViewController: BaseViewController {
     
+    // MARK: - Properties
+    
     private let loginView = LoginView()
+    private let loginViewModel = LoginViewModel()
+    
+    
+    // MARK: - Methods
     
     override func loadView() {
         view = loginView
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
     }
     
     override func setDelegate() {
@@ -30,12 +32,13 @@ class LoginViewController: BaseViewController {
     }
     
     override func bind() {
+        // auto login
         let userData = UserDefaultsManager.fetchUserData()
+        
         loginView.bind(username: userData.username,
                        password: userData.password,
                        autoLogin: userData.autoLogin)
         
-        // auto login
         if userData.autoLogin {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.conductLogin()
@@ -52,36 +55,8 @@ class LoginViewController: BaseViewController {
             return
         }
         
-        LoginService.shared.login(
-            username: loginData.username,
-            password: loginData.password) { [weak self] result in
-                guard let self = self else { return }
-                handleLoginResult(result: result, loginData: loginData)
-            }
+        loginViewModel.login(strongSelf: self, loginData: loginData)
     }
-    
-    private func handleLoginResult(result: Result<String, NetworkError>,
-                                   loginData: LoginDTO) {
-        switch result {
-        case .success(let token):
-            UserDefaultsManager
-                .registerLoginData(loginData: loginData, token: token)
-            navigateToMainScreen()
-            case .failure(let error):
-            showLoginError(message: error.errorMessage)
-            }
-        }
-    
-    private func navigateToMainScreen() {
-        let tabBarController = TabBarController()
-            tabBarController.modalPresentationStyle = .fullScreen
-            self.present(tabBarController, animated: true)
-    }
-    
-    private func showLoginError(message: String) {
-        EasyAlert.showAlert(title: "로그인 실패", message: message, vc: self)
-    }
-    
     
     @objc func tappedAutoLoginButton() {
         let autoLogin = UserDefaultsManager.fetchAutoLogin()
@@ -100,8 +75,13 @@ class LoginViewController: BaseViewController {
     }
 }
 
+
+// MARK: - Extensions
+
 extension LoginViewController: UITextFieldDelegate {
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
         do {
             let regex = try NSRegularExpression(pattern: ".*[^A-Za-z0-9].*", options: [])
             if regex.firstMatch(in: string, options: [], range: NSMakeRange(0, string.count)) != nil {
