@@ -8,63 +8,26 @@
 import UIKit
 
 final class CategoryExploreViewController: BaseViewController {
+    
     // MARK: - Properties
-    private var bannerApps: [App] = []
-    private var essentialApps: [App] = []
-    private var paidApps: [App] = []
-    private var freeApps: [App] = []
+    
+    private let categoryExploreView = CategoryExploreView()
+    private let viewModel = CategoryExploreViewModel()
+    
     
     // MARK: - Methods
-    private let categoryExploreView = CategoryExploreView()
     
     override func loadView() {
         view = categoryExploreView
     }
     
-    override func viewDidLoad() {
-        setListApps()
-        setBannerApps()
-        super.viewDidLoad()
-    }
-    
     override func setDelegate() {
         categoryExploreView.tableView.dataSource = self
         categoryExploreView.tableView.delegate = self
+        
         categoryExploreView.tableView.register(ExploreListTableViewCell.self, forCellReuseIdentifier: ExploreListTableViewCell.identifier)
         categoryExploreView.tableView.register(ExploreBannerTableViewCell.self, forCellReuseIdentifier: ExploreBannerTableViewCell.identifier)
         categoryExploreView.tableView.register(ExploreListTableViewHeader.self, forHeaderFooterViewReuseIdentifier: ExploreListTableViewHeader.identifier)
-    }
-    
-    private func setListApps() {
-        let apps = App.sampleApps
-        
-        var essentialAppsCount = 0
-        var paidAppsCount = 0
-        var freeAppsCount = 0
-        
-        for app in apps {
-            if app.price == 0 {
-                guard freeAppsCount < 15 else { continue }
-                freeApps.append(app)
-                freeAppsCount += 1
-            } else {
-                guard paidAppsCount < 15 else { continue }
-                paidApps.append(app)
-                paidAppsCount += 1
-            }
-            
-            if essentialAppsCount > 15,
-               paidAppsCount >= 15,
-               freeAppsCount >= 15 { break }
-            
-            guard essentialAppsCount < 15 else { continue }
-            essentialApps.append(app)
-            essentialAppsCount += 1
-        }
-    }
-    
-    private func setBannerApps() {
-        bannerApps = Array(App.sampleApps[0..<4])
     }
 }
 
@@ -81,34 +44,43 @@ extension CategoryExploreViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        let bannerCell = categoryExploreView.tableView.dequeueReusableCell(
+            withIdentifier: ExploreBannerTableViewCell.identifier,
+            for: indexPath
+        ) as? ExploreBannerTableViewCell
+        
+        let listCell = categoryExploreView.tableView.dequeueReusableCell(
+            withIdentifier: ExploreListTableViewCell.identifier,
+            for: indexPath
+        ) as? ExploreListTableViewCell
+        
+        
         switch indexPath.section {
+            
             // banner apps
         case 0:
-            guard let cell = categoryExploreView.tableView.dequeueReusableCell(
-                withIdentifier: ExploreBannerTableViewCell.identifier,
-                for: indexPath
-            ) as? ExploreBannerTableViewCell else { return UITableViewCell() }
-            
-            cell.bind(apps: bannerApps)
+            guard let cell = bannerCell else { return UITableViewCell() }
+            cell.bind(apps: viewModel.bannerApps)
             return cell
             
             // list apps
-        default:
-            guard let cell = categoryExploreView.tableView.dequeueReusableCell(
-                withIdentifier: ExploreListTableViewCell.identifier,
-                for: indexPath
-            ) as? ExploreListTableViewCell else { return UITableViewCell() }
-            
-            switch indexPath.section {
-            case 1:
-                cell.bind(apps: essentialApps, exploreVC: self)
-            case 2:
-                cell.bind(apps: paidApps, exploreVC: self)
-            default:
-                cell.bind(apps: freeApps, exploreVC: self)
-            }
-            
+        case 1:
+            guard let cell = listCell else { return UITableViewCell() }
+            cell.bind(apps: viewModel.essentialApps, exploreVC: self)
             return cell
+            
+        case 2:
+            guard let cell = listCell else { return UITableViewCell() }
+            cell.bind(apps: viewModel.paidApps, exploreVC: self)
+            return cell
+            
+        case 3:
+            guard let cell = listCell else { return UITableViewCell() }
+            cell.bind(apps: viewModel.freeApps, exploreVC: self)
+            return cell
+            
+        default:
+            return UITableViewCell()
         }
     }
 }
