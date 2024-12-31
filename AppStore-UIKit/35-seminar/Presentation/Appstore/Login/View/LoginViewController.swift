@@ -9,15 +9,16 @@ import UIKit
 
 class LoginViewController: BaseViewController {
     
+    // MARK: - Properties
+    
     private let loginView = LoginView()
     private let loginViewModel = LoginViewModel()
     
+    
+    // MARK: - Methods
+    
     override func loadView() {
         view = loginView
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
     }
     
     override func setDelegate() {
@@ -31,12 +32,13 @@ class LoginViewController: BaseViewController {
     }
     
     override func bind() {
+        // auto login
         let userData = UserDefaultsManager.fetchUserData()
+        
         loginView.bind(username: userData.username,
                        password: userData.password,
                        autoLogin: userData.autoLogin)
         
-        // auto login
         if userData.autoLogin {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.conductLogin()
@@ -73,8 +75,13 @@ class LoginViewController: BaseViewController {
     }
 }
 
+
+// MARK: - Extensions
+
 extension LoginViewController: UITextFieldDelegate {
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
         do {
             let regex = try NSRegularExpression(pattern: ".*[^A-Za-z0-9].*", options: [])
             if regex.firstMatch(in: string, options: [], range: NSMakeRange(0, string.count)) != nil {
