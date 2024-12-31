@@ -10,6 +10,7 @@ import UIKit
 class LoginViewController: BaseViewController {
     
     private let loginView = LoginView()
+    private let loginViewModel = LoginViewModel()
     
     override func loadView() {
         view = loginView
@@ -52,33 +53,8 @@ class LoginViewController: BaseViewController {
             return
         }
         
-        LoginService.shared.login(
-            username: loginData.username,
-            password: loginData.password) { [weak self] result in
-                guard let self = self else { return }
-                handleLoginResult(result: result, loginData: loginData)
-            }
+        loginViewModel.login(strongSelf: self, loginData: loginData)
     }
-    
-    private func handleLoginResult(result: Result<String, NetworkError>,
-                                   loginData: LoginDTO) {
-        switch result {
-        case .success(let token):
-            UserDefaultsManager
-                .registerLoginData(loginData: loginData, token: token)
-            navigateToMainScreen()
-        case .failure(let error):
-            let message = error.errorMessage
-            EasyAlert.showAlert(title: "로그인 실패", message: message, vc: self)
-        }
-    }
-    
-    private func navigateToMainScreen() {
-        let tabBarController = TabBarController()
-            tabBarController.modalPresentationStyle = .fullScreen
-            self.present(tabBarController, animated: true)
-    }
-    
     
     @objc func tappedAutoLoginButton() {
         let autoLogin = UserDefaultsManager.fetchAutoLogin()
