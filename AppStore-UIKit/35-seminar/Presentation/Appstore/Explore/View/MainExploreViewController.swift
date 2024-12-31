@@ -9,7 +9,12 @@ import UIKit
 
 final class MainExploreViewController: BaseViewController {
     
+    // MARK: - Properties
+    
     private let financeButton = UIButton()
+    
+    
+    // MARK: - Methods
     
     override func setStyle() {
         view.backgroundColor = .systemBackground

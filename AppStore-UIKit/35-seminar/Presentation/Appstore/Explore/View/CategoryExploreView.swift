@@ -8,10 +8,14 @@
 import UIKit
 
 final class CategoryExploreView: BaseView {
+    
     // MARK: - Properties
+    
     let tableView = UITableView(frame: .zero, style: .grouped)
     
+    
     // MARK: - Methods
+    
     override func setUI() {
         super.setUI()
         tableView.backgroundColor = .systemBackground
