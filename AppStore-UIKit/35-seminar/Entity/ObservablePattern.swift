@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class Observable<T: Equatable> {
+final class ObservablePattern<T: Equatable> {
     
     var value: T? {
         didSet {

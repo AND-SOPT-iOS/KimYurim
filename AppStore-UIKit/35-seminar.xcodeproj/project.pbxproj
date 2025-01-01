@@ -10,7 +10,7 @@
 		1502973B2CDB0C9700281377 /* DetailFeedbackCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1502973A2CDB0C9700281377 /* DetailFeedbackCollectionViewCell.swift */; };
 		1506C1B42CFF02EB00C084C2 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 1506C1B32CFF02EB00C084C2 /* RxCocoa */; };
 		152919B72CB10FE200438E2B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 152919B62CB10FE200438E2B /* SnapKit */; };
-		15586B622D2578A200100D05 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15586B612D2578A200100D05 /* Observable.swift */; };
+		15586B622D2578A200100D05 /* ObservablePattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15586B612D2578A200100D05 /* ObservablePattern.swift */; };
 		156CD7F62CD77D4800F47DA0 /* CategoryExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156CD7F52CD77D4800F47DA0 /* CategoryExploreView.swift */; };
 		156CD7F82CD77FC800F47DA0 /* ExploreListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156CD7F72CD77FC800F47DA0 /* ExploreListCollectionViewCell.swift */; };
 		156CD7FA2CD785B000F47DA0 /* AppListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156CD7F92CD785B000F47DA0 /* AppListCellView.swift */; };
@@ -101,7 +101,7 @@
 /* Begin PBXFileReference section */
 		1502973A2CDB0C9700281377 /* DetailFeedbackCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFeedbackCollectionViewCell.swift; sourceTree = "<group>"; };
 		152919992CB101BA00438E2B /* 35-seminar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "35-seminar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		15586B612D2578A200100D05 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		15586B612D2578A200100D05 /* ObservablePattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservablePattern.swift; sourceTree = "<group>"; };
 		156CD7F52CD77D4800F47DA0 /* CategoryExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryExploreView.swift; sourceTree = "<group>"; };
 		156CD7F72CD77FC800F47DA0 /* ExploreListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreListCollectionViewCell.swift; sourceTree = "<group>"; };
 		156CD7F92CD785B000F47DA0 /* AppListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppListCellView.swift; sourceTree = "<group>"; };
@@ -353,7 +353,7 @@
 				15728FC42CCCAF0100E1E151 /* Feedback.swift */,
 				15728FC62CCCAF3100E1E151 /* StarColor.swift */,
 				15F923B72CE21F8900B6F49A /* UserData.swift */,
-				15586B612D2578A200100D05 /* Observable.swift */,
+				15586B612D2578A200100D05 /* ObservablePattern.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -768,7 +768,7 @@
 				15EC305D2CCB792300A0480B /* FeedbackWriteViewController.swift in Sources */,
 				15F9EE042CD5F8D200172E82 /* NetworkError.swift in Sources */,
 				15F9EE0A2CD5FBC300172E82 /* RegisterDTO.swift in Sources */,
-				15586B622D2578A200100D05 /* Observable.swift in Sources */,
+				15586B622D2578A200100D05 /* ObservablePattern.swift in Sources */,
 				15769B5C2CD13A25000DBAD3 /* Week3PhotoViewController.swift in Sources */,
 				15EAC45C2CDD32FF00419E14 /* UICollectionView+Extension.swift in Sources */,
 				15F4FD072CC73D0A00C99A20 /* StarStackView.swift in Sources */,
