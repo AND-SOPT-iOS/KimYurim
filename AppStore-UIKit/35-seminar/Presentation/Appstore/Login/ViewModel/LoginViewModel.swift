@@ -9,25 +9,31 @@ import UIKit
 
 class LoginViewModel {
     
+    let userData = UserDefaultsManager.fetchUserData()
+    var usernameBinding: ObservablePattern<String> = ObservablePattern(nil)
+    var passwordBinding: ObservablePattern<String> = ObservablePattern(nil)
+    
+    
     // MARK: - Methods
     
-    func login(strongSelf: UIViewController, loginData: LoginDTO) {
+    func login(strongSelf: UIViewController, loginInfo: LoginInfo) {
         LoginService.shared.login(
-            username: loginData.username,
-            password: loginData.password) { [weak self] result in
+            username: loginInfo.username,
+            password: loginInfo.password) { [weak self] result in
                 guard let self = self else { return }
-                handleLoginResult(strongSelf, result: result, loginData: loginData)
+                handleLoginResult(strongSelf, result: result, loginInfo: loginInfo)
             }
     }
     
     private func handleLoginResult(_ strongSelf: UIViewController,
                                    result: Result<String, NetworkError>,
-                                   loginData: LoginDTO) {
+                                   loginInfo: LoginInfo) {
         switch result {
         case .success(let token):
             UserDefaultsManager
-                .registerLoginData(loginData: loginData, token: token)
+                .registerLoginData(loginInfo: loginInfo, token: token)
             navigateToMainScreen(strongSelf)
+            
         case .failure(let error):
             let message = error.errorMessage
             EasyAlert.showAlert(title: "로그인 실패", message: message, vc: strongSelf)

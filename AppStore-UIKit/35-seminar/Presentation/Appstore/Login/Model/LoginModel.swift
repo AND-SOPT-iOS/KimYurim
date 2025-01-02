@@ -13,3 +13,9 @@ struct LoginStatus {
     
     static var autoLogin: Bool = false
 }
+
+
+struct LoginInfo {
+    var username: String
+    var password: String
+}

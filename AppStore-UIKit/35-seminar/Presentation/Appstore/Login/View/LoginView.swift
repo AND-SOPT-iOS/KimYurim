@@ -143,7 +143,7 @@ class LoginView: BaseView {
         }
     }
     
-    func returnInputs() -> LoginDTO? {
+    func returnInputs() -> LoginInfo? {
         guard let username = usernameTextField.text,
               let password = passwordTextField.text,
               !username.isEmpty, // TextField가 비어있으면 nil이 아니라 ""이기 때문에 필요.
@@ -151,7 +151,7 @@ class LoginView: BaseView {
         else {
             return nil
         }
-        return LoginDTO(username: username, password: password)
+        return LoginInfo(username: username, password: password)
     }
     
     func bind(username: String, password: String, autoLogin: Bool) {

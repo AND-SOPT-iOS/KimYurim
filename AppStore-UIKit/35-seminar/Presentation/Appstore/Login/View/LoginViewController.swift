@@ -47,7 +47,7 @@ class LoginViewController: BaseViewController {
     }
     
     private func conductLogin() {
-        guard let loginData: LoginDTO = loginView.returnInputs() else {
+        guard let loginInfo: LoginInfo = loginView.returnInputs() else {
             EasyAlert.showAlert(
                 title: "로그인 실패",
                 message: "username과 password를 정확히 입력하세요.",
@@ -55,7 +55,7 @@ class LoginViewController: BaseViewController {
             return
         }
         
-        loginViewModel.login(strongSelf: self, loginData: loginData)
+        loginViewModel.login(strongSelf: self, loginInfo: loginInfo)
     }
     
     @objc func tappedAutoLoginButton() {
