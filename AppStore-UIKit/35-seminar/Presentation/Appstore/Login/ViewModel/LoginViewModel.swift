@@ -10,6 +10,7 @@ import UIKit
 class LoginViewModel {
     
     let userData = UserDefaultsManager.fetchUserData()
+    var isAutoLogin: ObservablePattern<Bool> = ObservablePattern(nil)
     var usernameBinding: ObservablePattern<String> = ObservablePattern(nil)
     var passwordBinding: ObservablePattern<String> = ObservablePattern(nil)
     var isLoginSuccess: ObservablePattern<Bool> = ObservablePattern(nil)
@@ -17,6 +18,25 @@ class LoginViewModel {
     
     
     // MARK: - Methods
+    
+    func setSavedLoginInfo() {
+        let username = userData.username
+        let password = userData.password
+        
+        usernameBinding.value = username
+        passwordBinding.value = password
+        isAutoLogin.value = userData.autoLogin
+    }
+    
+    func autoLogin() {
+        if isAutoLogin.value ?? false {
+            let username = userData.username
+            let password = userData.password
+            let loginInfo = LoginInfo(username: username, password: password)
+            
+            login(loginInfo)
+        }
+    }
     
     func login(_ loginInfo: LoginInfo) {
         LoginService.shared.login(
@@ -36,7 +56,7 @@ class LoginViewModel {
             isLoginSuccess.value = true
             
         case .failure(let error):
-            let message = error.errorMessage
+            loginErrorMessage = error.errorMessage
             isLoginSuccess.value = false
         }
     }
