@@ -19,6 +19,10 @@ class LoginViewModel {
     
     // MARK: - Methods
     
+    init() {
+        setSavedLoginInfo()
+    }
+    
     func setSavedLoginInfo() {
         let username = userData.username
         let password = userData.password
