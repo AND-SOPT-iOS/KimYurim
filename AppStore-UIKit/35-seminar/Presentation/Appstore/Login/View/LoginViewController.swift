@@ -21,6 +21,11 @@ class LoginViewController: BaseViewController {
         view = loginView
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        conductAutoLogin()
+    }
+    
     override func setDelegate() {
         loginView.usernameTextField.delegate = self
     }
@@ -32,22 +37,46 @@ class LoginViewController: BaseViewController {
     }
     
     override func bind() {
-        // auto login
-        let userData = UserDefaultsManager.fetchUserData()
+        loginViewModel.autoLogin()
         
-        loginView.bind(username: userData.username,
-                       password: userData.password,
-                       autoLogin: userData.autoLogin)
+        loginViewModel.usernameBinding.bind { [weak self] username in
+            guard let self = self else { return }
+            loginView.usernameTextField.text = username
+        }
         
-        if userData.autoLogin {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self.conductLogin()
-            }
+        loginViewModel.passwordBinding.bind { [weak self] password in
+            guard let self = self else { return }
+            loginView.passwordTextField.text = password
+        }
+        
+        loginViewModel.isAutoLogin.bind { [weak self] isAutoLogin in
+            guard let self = self,
+                  let isAutoLogin = isAutoLogin else { return }
+            loginView.updateAutoLoginCheckButton(autoLogin: isAutoLogin)
+        }
+        
+        loginViewModel.isLoginSuccess.bind { [weak self] isLoginSuccess in
+            guard let self = self,
+                  let isLoginSuccess = isLoginSuccess else { return }
+            isLoginSuccess ? navigateToMainScreen() : EasyAlert.showAlert(title: "로그인 실패",
+                                                                 message: loginViewModel.loginErrorMessage,
+                                                                 vc: self)
         }
     }
     
+    private func handleLoginInfo() -> LoginInfo? {
+        guard let username = loginView.getUsername(),
+              let password = loginView.getPassword(),
+              !username.isEmpty, // TextField가 비어있으면 nil이 아니라 ""이기 때문에 필요.
+              !password.isEmpty else {
+            return nil
+        }
+        
+        return LoginInfo(username: username, password: password)
+    }
+    
     private func conductLogin() {
-        guard let loginData: LoginDTO = loginView.returnInputs() else {
+        guard let loginInfo = handleLoginInfo() else {
             EasyAlert.showAlert(
                 title: "로그인 실패",
                 message: "username과 password를 정확히 입력하세요.",
@@ -55,13 +84,25 @@ class LoginViewController: BaseViewController {
             return
         }
         
-        loginViewModel.login(strongSelf: self, loginData: loginData)
+        loginViewModel.login(loginInfo)
+    }
+    
+    private func conductAutoLogin() {
+        if loginViewModel.isAutoLogin.value ?? false {
+            conductLogin()
+        }
+    }
+    
+    private func navigateToMainScreen() {
+        let tabBarController = TabBarController()
+        tabBarController.modalPresentationStyle = .fullScreen
+        self.present(tabBarController, animated: true)
     }
     
     @objc func tappedAutoLoginButton() {
         let autoLogin = UserDefaultsManager.fetchAutoLogin()
         UserDefaultsManager.updateAutoLogin(autoLogin: !autoLogin)
-        loginView.updateAutoLoginCheckButton(autoLogin: !autoLogin)
+        loginViewModel.isAutoLogin.value = !autoLogin
     }
     
     @objc func tappedLoginButton() {
@@ -73,12 +114,14 @@ class LoginViewController: BaseViewController {
         let registerVC = RegisterViewController()
         self.present(registerVC, animated: true)
     }
+    
 }
 
 
 // MARK: - Extensions
 
 extension LoginViewController: UITextFieldDelegate {
+    
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
@@ -93,4 +136,5 @@ extension LoginViewController: UITextFieldDelegate {
         }
         return true
     }
+    
 }
