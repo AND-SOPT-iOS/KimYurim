@@ -24,11 +24,8 @@ class LoginViewModel {
     }
     
     func setSavedLoginInfo() {
-        let username = userData.username
-        let password = userData.password
-        
-        usernameBinding.value = username
-        passwordBinding.value = password
+        usernameBinding.value = userData.username
+        passwordBinding.value = userData.password
         isAutoLogin.value = userData.autoLogin
     }
     
