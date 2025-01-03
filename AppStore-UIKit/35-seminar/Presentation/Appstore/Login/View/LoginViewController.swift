@@ -21,6 +21,11 @@ class LoginViewController: BaseViewController {
         view = loginView
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        bindViewModel()
+    }
+    
     override func setDelegate() {
         loginView.usernameTextField.delegate = self
     }
@@ -46,8 +51,18 @@ class LoginViewController: BaseViewController {
         }
     }
     
+    private func bindViewModel() {
+        loginViewModel.isLoginSuccess.bind { [weak self] isLoginSuccess in
+            guard let self = self,
+                  let isLoginSuccess = isLoginSuccess else { return }
+            isLoginSuccess ? navigateToMainScreen() : EasyAlert.showAlert(title: "로그인 실패",
+                                                                 message: loginViewModel.loginErrorMessage,
+                                                                 vc: self)
+        }
+    }
+    
     private func conductLogin() {
-        guard let loginInfo: LoginInfo = loginView.returnInputs() else {
+        guard let loginInfo = loginView.returnInputs() else {
             EasyAlert.showAlert(
                 title: "로그인 실패",
                 message: "username과 password를 정확히 입력하세요.",
@@ -55,7 +70,13 @@ class LoginViewController: BaseViewController {
             return
         }
         
-        loginViewModel.login(strongSelf: self, loginInfo: loginInfo)
+        loginViewModel.login(loginInfo)
+    }
+    
+    private func navigateToMainScreen() {
+        let tabBarController = TabBarController()
+        tabBarController.modalPresentationStyle = .fullScreen
+        self.present(tabBarController, animated: true)
     }
     
     @objc func tappedAutoLoginButton() {
