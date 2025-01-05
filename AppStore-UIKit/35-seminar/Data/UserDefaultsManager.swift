@@ -19,9 +19,9 @@ class UserDefaultsManager {
         UserDefaults.standard.set(username, forKey: UserDefaultsKeys.username)
     }
     
-    static func registerLoginData(loginData: LoginDTO, token: String) {
-        UserDefaults.standard.set(loginData.username, forKey: UserDefaultsKeys.username)
-        UserDefaults.standard.set(loginData.password, forKey: UserDefaultsKeys.password)
+    static func registerLoginData(loginInfo: LoginInfo, token: String) {
+        UserDefaults.standard.set(loginInfo.username, forKey: UserDefaultsKeys.username)
+        UserDefaults.standard.set(loginInfo.password, forKey: UserDefaultsKeys.password)
         UserDefaults.standard.set(token, forKey: UserDefaultsKeys.token)
     }
     

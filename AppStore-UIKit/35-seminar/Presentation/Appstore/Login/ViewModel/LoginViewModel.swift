@@ -9,34 +9,57 @@ import UIKit
 
 class LoginViewModel {
     
+    let userData = UserDefaultsManager.fetchUserData()
+    var isAutoLogin: ObservablePattern<Bool> = ObservablePattern(nil)
+    var usernameBinding: ObservablePattern<String> = ObservablePattern(nil)
+    var passwordBinding: ObservablePattern<String> = ObservablePattern(nil)
+    var isLoginSuccess: ObservablePattern<Bool> = ObservablePattern(nil)
+    var loginErrorMessage: String? = nil
+    
+    
     // MARK: - Methods
     
-    func login(strongSelf: UIViewController, loginData: LoginDTO) {
-        LoginService.shared.login(
-            username: loginData.username,
-            password: loginData.password) { [weak self] result in
-                guard let self = self else { return }
-                handleLoginResult(strongSelf, result: result, loginData: loginData)
-            }
+    init() {
+        setSavedLoginInfo()
     }
     
-    private func handleLoginResult(_ strongSelf: UIViewController,
-                                   result: Result<String, NetworkError>,
-                                   loginData: LoginDTO) {
-        switch result {
-        case .success(let token):
-            UserDefaultsManager
-                .registerLoginData(loginData: loginData, token: token)
-            navigateToMainScreen(strongSelf)
-        case .failure(let error):
-            let message = error.errorMessage
-            EasyAlert.showAlert(title: "로그인 실패", message: message, vc: strongSelf)
+    func setSavedLoginInfo() {
+        usernameBinding.value = userData.username
+        passwordBinding.value = userData.password
+        isAutoLogin.value = userData.autoLogin
+    }
+    
+    func autoLogin() {
+        if isAutoLogin.value ?? false {
+            let username = userData.username
+            let password = userData.password
+            let loginInfo = LoginInfo(username: username, password: password)
+            
+            login(loginInfo)
         }
     }
     
-    private func navigateToMainScreen(_ strongSelf: UIViewController) {
-        let tabBarController = TabBarController()
-        tabBarController.modalPresentationStyle = .fullScreen
-        strongSelf.present(tabBarController, animated: true)
+    func login(_ loginInfo: LoginInfo) {
+        LoginService.shared.login(
+            username: loginInfo.username,
+            password: loginInfo.password) { [weak self] result in
+                guard let self = self else { return }
+                handleLoginResult(result: result, loginInfo: loginInfo)
+            }
     }
+    
+    private func handleLoginResult(result: Result<String, NetworkError>,
+                                   loginInfo: LoginInfo) {
+        switch result {
+        case .success(let token):
+            UserDefaultsManager
+                .registerLoginData(loginInfo: loginInfo, token: token)
+            isLoginSuccess.value = true
+            
+        case .failure(let error):
+            loginErrorMessage = error.errorMessage
+            isLoginSuccess.value = false
+        }
+    }
+    
 }

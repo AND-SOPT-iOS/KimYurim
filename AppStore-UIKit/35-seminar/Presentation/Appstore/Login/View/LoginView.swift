@@ -14,8 +14,8 @@ class LoginView: BaseView {
     private var verticalStackView = UIStackView()
     private var iconImageView = UIImageView()
     
-    var usernameTextField = UITextField()
-    var passwordTextField = UITextField()
+    private var usernameTextField = UITextField()
+    private var passwordTextField = UITextField()
     
     private let autoLoginCheckStackView = UIStackView()
     private let autoLoginEmptyView = UIView()
@@ -26,7 +26,7 @@ class LoginView: BaseView {
     let registerButton = UIButton()
     
     
-    // MARK: - Methods
+    // MARK: - Private Methods
     
     override func setDelegate() { }
     
@@ -135,6 +135,33 @@ class LoginView: BaseView {
         }
     }
     
+}
+
+
+// MARK: - Internal Methods
+
+extension LoginView {
+    
+    func getUsername() -> String? {
+        return usernameTextField.text
+    }
+    
+    func setUsername(text: String?) {
+        usernameTextField.text = text
+    }
+    
+    func getPassword() -> String? {
+        return passwordTextField.text
+    }
+    
+    func setPassword(text: String?) {
+        passwordTextField.text = text
+    }
+    
+    func setUsernameDelegate(_ delegate: UITextFieldDelegate) {
+        usernameTextField.delegate = delegate
+    }
+    
     func updateAutoLoginCheckButton(autoLogin: Bool) {
         if autoLogin {
             autoLoginCheckButton.configureButton(systemName: "checkmark.square.fill", foregroundColor: .systemGray5)
@@ -143,20 +170,4 @@ class LoginView: BaseView {
         }
     }
     
-    func returnInputs() -> LoginDTO? {
-        guard let username = usernameTextField.text,
-              let password = passwordTextField.text,
-              !username.isEmpty, // TextField가 비어있으면 nil이 아니라 ""이기 때문에 필요.
-              !password.isEmpty
-        else {
-            return nil
-        }
-        return LoginDTO(username: username, password: password)
-    }
-    
-    func bind(username: String, password: String, autoLogin: Bool) {
-        usernameTextField.text = username
-        passwordTextField.text = password
-        updateAutoLoginCheckButton(autoLogin: autoLogin)
-    }
 }
