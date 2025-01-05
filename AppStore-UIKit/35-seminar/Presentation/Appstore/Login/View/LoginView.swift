@@ -14,8 +14,8 @@ class LoginView: BaseView {
     private var verticalStackView = UIStackView()
     private var iconImageView = UIImageView()
     
-    var usernameTextField = UITextField()
-    var passwordTextField = UITextField()
+    private var usernameTextField = UITextField()
+    private var passwordTextField = UITextField()
     
     private let autoLoginCheckStackView = UIStackView()
     private let autoLoginEmptyView = UIView()
@@ -26,7 +26,7 @@ class LoginView: BaseView {
     let registerButton = UIButton()
     
     
-    // MARK: - Methods
+    // MARK: - Private Methods
     
     override func setDelegate() { }
     
@@ -135,15 +135,10 @@ class LoginView: BaseView {
         }
     }
     
-    func updateAutoLoginCheckButton(autoLogin: Bool) {
-        if autoLogin {
-            autoLoginCheckButton.configureButton(systemName: "checkmark.square.fill", foregroundColor: .systemGray5)
-        } else {
-            autoLoginCheckButton.configureButton(systemName: "square.fill", foregroundColor: .systemGray5)
-        }
-    }
-    
 }
+
+
+// MARK: - Internal Methods
 
 extension LoginView {
     
@@ -151,8 +146,28 @@ extension LoginView {
         return usernameTextField.text
     }
     
+    func setUsername(text: String?) {
+        usernameTextField.text = text
+    }
+    
     func getPassword() -> String? {
         return passwordTextField.text
+    }
+    
+    func setPassword(text: String?) {
+        passwordTextField.text = text
+    }
+    
+    func setUsernameDelegate(_ delegate: UITextFieldDelegate) {
+        usernameTextField.delegate = delegate
+    }
+    
+    func updateAutoLoginCheckButton(autoLogin: Bool) {
+        if autoLogin {
+            autoLoginCheckButton.configureButton(systemName: "checkmark.square.fill", foregroundColor: .systemGray5)
+        } else {
+            autoLoginCheckButton.configureButton(systemName: "square.fill", foregroundColor: .systemGray5)
+        }
     }
     
 }

@@ -27,7 +27,7 @@ class LoginViewController: BaseViewController {
     }
     
     override func setDelegate() {
-        loginView.usernameTextField.delegate = self
+        loginView.setUsernameDelegate(self)
     }
     
     override func setAddTarget() {
@@ -41,12 +41,12 @@ class LoginViewController: BaseViewController {
         
         loginViewModel.usernameBinding.bind { [weak self] username in
             guard let self = self else { return }
-            loginView.usernameTextField.text = username
+            loginView.setUsername(text: username)
         }
         
         loginViewModel.passwordBinding.bind { [weak self] password in
             guard let self = self else { return }
-            loginView.passwordTextField.text = password
+            loginView.setPassword(text: password)
         }
         
         loginViewModel.isAutoLogin.bind { [weak self] isAutoLogin in
